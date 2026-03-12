@@ -1,0 +1,291 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+import httpx
+
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
+    to_raw_response_wrapper,
+    to_streamed_response_wrapper,
+    async_to_raw_response_wrapper,
+    async_to_streamed_response_wrapper,
+)
+from ...types.mcp import v1_send_message_params
+from ..._streaming import Stream, AsyncStream
+from ..._base_client import make_request_options
+
+__all__ = ["V1Resource", "AsyncV1Resource"]
+
+
+class V1Resource(SyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> V1ResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/alphaxiv_cat-python#accessing-raw-response-data-eg-headers
+        """
+        return V1ResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> V1ResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/alphaxiv_cat-python#with_streaming_response
+        """
+        return V1ResourceWithStreamingResponse(self)
+
+    def establish_connection(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> Stream[object]:
+        """
+        Establish SSE connection for server-to-client MCP messages
+
+        Source file: `api-server/src/controllers/mcp/v1/get.controller.ts`
+        """
+        extra_headers = {"Accept": "text/event-stream", **(extra_headers or {})}
+        return self._get(
+            "/mcp/v1",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+            stream=True,
+            stream_cls=Stream[object],
+        )
+
+    def send_message(
+        self,
+        *,
+        body: object | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Send a message to the MCP server
+
+        Source file: `api-server/src/controllers/mcp/v1/post.controller.ts`
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/mcp/v1",
+            body=maybe_transform(body, v1_send_message_params.V1SendMessageParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+        )
+
+    def terminate_session(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Terminate an MCP session
+
+        Source file: `api-server/src/controllers/mcp/v1/delete.controller.ts`
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._delete(
+            "/mcp/v1",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+
+class AsyncV1Resource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncV1ResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/stainless-sdks/alphaxiv_cat-python#accessing-raw-response-data-eg-headers
+        """
+        return AsyncV1ResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncV1ResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/stainless-sdks/alphaxiv_cat-python#with_streaming_response
+        """
+        return AsyncV1ResourceWithStreamingResponse(self)
+
+    async def establish_connection(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> AsyncStream[object]:
+        """
+        Establish SSE connection for server-to-client MCP messages
+
+        Source file: `api-server/src/controllers/mcp/v1/get.controller.ts`
+        """
+        extra_headers = {"Accept": "text/event-stream", **(extra_headers or {})}
+        return await self._get(
+            "/mcp/v1",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+            stream=True,
+            stream_cls=AsyncStream[object],
+        )
+
+    async def send_message(
+        self,
+        *,
+        body: object | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> object:
+        """
+        Send a message to the MCP server
+
+        Source file: `api-server/src/controllers/mcp/v1/post.controller.ts`
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/mcp/v1",
+            body=await async_maybe_transform(body, v1_send_message_params.V1SendMessageParams),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=object,
+        )
+
+    async def terminate_session(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> None:
+        """
+        Terminate an MCP session
+
+        Source file: `api-server/src/controllers/mcp/v1/delete.controller.ts`
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._delete(
+            "/mcp/v1",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
+
+class V1ResourceWithRawResponse:
+    def __init__(self, v1: V1Resource) -> None:
+        self._v1 = v1
+
+        self.establish_connection = to_raw_response_wrapper(
+            v1.establish_connection,
+        )
+        self.send_message = to_raw_response_wrapper(
+            v1.send_message,
+        )
+        self.terminate_session = to_raw_response_wrapper(
+            v1.terminate_session,
+        )
+
+
+class AsyncV1ResourceWithRawResponse:
+    def __init__(self, v1: AsyncV1Resource) -> None:
+        self._v1 = v1
+
+        self.establish_connection = async_to_raw_response_wrapper(
+            v1.establish_connection,
+        )
+        self.send_message = async_to_raw_response_wrapper(
+            v1.send_message,
+        )
+        self.terminate_session = async_to_raw_response_wrapper(
+            v1.terminate_session,
+        )
+
+
+class V1ResourceWithStreamingResponse:
+    def __init__(self, v1: V1Resource) -> None:
+        self._v1 = v1
+
+        self.establish_connection = to_streamed_response_wrapper(
+            v1.establish_connection,
+        )
+        self.send_message = to_streamed_response_wrapper(
+            v1.send_message,
+        )
+        self.terminate_session = to_streamed_response_wrapper(
+            v1.terminate_session,
+        )
+
+
+class AsyncV1ResourceWithStreamingResponse:
+    def __init__(self, v1: AsyncV1Resource) -> None:
+        self._v1 = v1
+
+        self.establish_connection = async_to_streamed_response_wrapper(
+            v1.establish_connection,
+        )
+        self.send_message = async_to_streamed_response_wrapper(
+            v1.send_message,
+        )
+        self.terminate_session = async_to_streamed_response_wrapper(
+            v1.terminate_session,
+        )
