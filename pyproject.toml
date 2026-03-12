@@ -5,7 +5,7 @@ description = "The official Python library for the alphaxiv_cat API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Alphaxiv Cat", email = "" },
+{ name = "Alphaxiv Cat", email = "ironjarvisbot@163.com" },
 ]
 
 dependencies = [
