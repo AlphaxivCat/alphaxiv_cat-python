@@ -16,12 +16,9 @@ The REST API documentation can be found on [api-dev.alphaxiv.org](https://api-de
 ## Installation
 
 ```sh
-# install from the production repo
-pip install git+ssh://git@github.com/AlphaxivCat/alphaxiv_cat-python.git
+# install from PyPI
+pip install alphaxiv_cat
 ```
-
-> [!NOTE]
-> Once this package is [published to PyPI](https://www.stainless.com/docs/guides/publish), this will become: `pip install alphaxiv_cat`
 
 ## Usage
 
@@ -83,8 +80,8 @@ By default, the async client uses `httpx` for HTTP requests. However, for improv
 You can enable this by installing `aiohttp`:
 
 ```sh
-# install from the production repo
-pip install 'alphaxiv_cat[aiohttp] @ git+ssh://git@github.com/AlphaxivCat/alphaxiv_cat-python.git'
+# install from PyPI
+pip install alphaxiv_cat[aiohttp]
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
