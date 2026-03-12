@@ -131,7 +131,7 @@ class AlphaxivCat(SyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("ALPHAXIV_CAT_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.example.com"
+            base_url = f"https://api.alphaxiv.org"
 
         super().__init__(
             version=__version__,
@@ -440,7 +440,7 @@ class AsyncAlphaxivCat(AsyncAPIClient):
         if base_url is None:
             base_url = os.environ.get("ALPHAXIV_CAT_BASE_URL")
         if base_url is None:
-            base_url = f"https://api.example.com"
+            base_url = f"https://api.alphaxiv.org"
 
         super().__init__(
             version=__version__,
