@@ -754,36 +754,41 @@ class TestPapers:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_process_metadata(self, client: AlphaxivCat) -> None:
-        paper = client.papers.process_metadata(
-            metadata={},
-            universal_paper_id="universalPaperId",
-        )
+        with pytest.warns(DeprecationWarning):
+            paper = client.papers.process_metadata(
+                metadata={},
+                universal_paper_id="universalPaperId",
+            )
+
         assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_process_metadata_with_all_params(self, client: AlphaxivCat) -> None:
-        paper = client.papers.process_metadata(
-            metadata={
-                "bibtex": True,
-                "custom_categories": True,
-                "embedding": True,
-                "github": True,
-                "organizations": True,
-                "overview": True,
-                "thumbnail": True,
-            },
-            universal_paper_id="universalPaperId",
-        )
+        with pytest.warns(DeprecationWarning):
+            paper = client.papers.process_metadata(
+                metadata={
+                    "bibtex": True,
+                    "custom_categories": True,
+                    "embedding": True,
+                    "github": True,
+                    "organizations": True,
+                    "overview": True,
+                    "thumbnail": True,
+                },
+                universal_paper_id="universalPaperId",
+            )
+
         assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_process_metadata(self, client: AlphaxivCat) -> None:
-        response = client.papers.with_raw_response.process_metadata(
-            metadata={},
-            universal_paper_id="universalPaperId",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.papers.with_raw_response.process_metadata(
+                metadata={},
+                universal_paper_id="universalPaperId",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -793,15 +798,16 @@ class TestPapers:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_process_metadata(self, client: AlphaxivCat) -> None:
-        with client.papers.with_streaming_response.process_metadata(
-            metadata={},
-            universal_paper_id="universalPaperId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.papers.with_streaming_response.process_metadata(
+                metadata={},
+                universal_paper_id="universalPaperId",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            paper = response.parse()
-            assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
+                paper = response.parse()
+                assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1841,36 +1847,41 @@ class TestAsyncPapers:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_process_metadata(self, async_client: AsyncAlphaxivCat) -> None:
-        paper = await async_client.papers.process_metadata(
-            metadata={},
-            universal_paper_id="universalPaperId",
-        )
+        with pytest.warns(DeprecationWarning):
+            paper = await async_client.papers.process_metadata(
+                metadata={},
+                universal_paper_id="universalPaperId",
+            )
+
         assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_process_metadata_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        paper = await async_client.papers.process_metadata(
-            metadata={
-                "bibtex": True,
-                "custom_categories": True,
-                "embedding": True,
-                "github": True,
-                "organizations": True,
-                "overview": True,
-                "thumbnail": True,
-            },
-            universal_paper_id="universalPaperId",
-        )
+        with pytest.warns(DeprecationWarning):
+            paper = await async_client.papers.process_metadata(
+                metadata={
+                    "bibtex": True,
+                    "custom_categories": True,
+                    "embedding": True,
+                    "github": True,
+                    "organizations": True,
+                    "overview": True,
+                    "thumbnail": True,
+                },
+                universal_paper_id="universalPaperId",
+            )
+
         assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_process_metadata(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.with_raw_response.process_metadata(
-            metadata={},
-            universal_paper_id="universalPaperId",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.papers.with_raw_response.process_metadata(
+                metadata={},
+                universal_paper_id="universalPaperId",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1880,15 +1891,16 @@ class TestAsyncPapers:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_process_metadata(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.with_streaming_response.process_metadata(
-            metadata={},
-            universal_paper_id="universalPaperId",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.papers.with_streaming_response.process_metadata(
+                metadata={},
+                universal_paper_id="universalPaperId",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            paper = await response.parse()
-            assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
+                paper = await response.parse()
+                assert_matches_type(PaperProcessMetadataResponse, paper, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
