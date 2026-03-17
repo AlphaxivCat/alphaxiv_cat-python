@@ -115,6 +115,7 @@ class V3Resource(SyncAPIResource):
         """
         return V3ResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def autocomplete_profile(
         self,
         *,
@@ -764,6 +765,7 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         return AsyncV3ResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def autocomplete_profile(
         self,
         *,
@@ -1385,8 +1387,10 @@ class V3ResourceWithRawResponse:
     def __init__(self, v3: V3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = to_raw_response_wrapper(
-            v3.autocomplete_profile,
+        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete_banner = to_raw_response_wrapper(
             v3.delete_banner,
@@ -1460,8 +1464,10 @@ class AsyncV3ResourceWithRawResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = async_to_raw_response_wrapper(
-            v3.autocomplete_profile,
+        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete_banner = async_to_raw_response_wrapper(
             v3.delete_banner,
@@ -1535,8 +1541,10 @@ class V3ResourceWithStreamingResponse:
     def __init__(self, v3: V3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = to_streamed_response_wrapper(
-            v3.autocomplete_profile,
+        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete_banner = to_streamed_response_wrapper(
             v3.delete_banner,
@@ -1610,8 +1618,10 @@ class AsyncV3ResourceWithStreamingResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = async_to_streamed_response_wrapper(
-            v3.autocomplete_profile,
+        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.delete_banner = async_to_streamed_response_wrapper(
             v3.delete_banner,

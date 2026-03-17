@@ -512,6 +512,7 @@ class V3Resource(SyncAPIResource):
             cast_to=V3LikeResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def podcast(
         self,
         paper_group_id: str,
@@ -551,6 +552,7 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def process_ai(
         self,
         paper_version_id: str,
@@ -655,6 +657,7 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def process_countries(
         self,
         *,
@@ -696,6 +699,7 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def process_full_text(
         self,
         *,
@@ -1791,6 +1795,7 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=V3LikeResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def podcast(
         self,
         paper_group_id: str,
@@ -1830,6 +1835,7 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def process_ai(
         self,
         paper_version_id: str,
@@ -1934,6 +1940,7 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def process_countries(
         self,
         *,
@@ -1975,6 +1982,7 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def process_full_text(
         self,
         *,
@@ -2684,17 +2692,25 @@ class V3ResourceWithRawResponse:
         self.like = to_raw_response_wrapper(
             v3.like,
         )
-        self.podcast = to_raw_response_wrapper(
-            v3.podcast,
+        self.podcast = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                v3.podcast,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_ai = to_raw_response_wrapper(
-            v3.process_ai,
+        self.process_ai = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                v3.process_ai,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_countries = to_raw_response_wrapper(
-            v3.process_countries,
+        self.process_countries = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                v3.process_countries,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_full_text = to_raw_response_wrapper(
-            v3.process_full_text,
+        self.process_full_text = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                v3.process_full_text,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
             to_raw_response_wrapper(
@@ -2795,17 +2811,25 @@ class AsyncV3ResourceWithRawResponse:
         self.like = async_to_raw_response_wrapper(
             v3.like,
         )
-        self.podcast = async_to_raw_response_wrapper(
-            v3.podcast,
+        self.podcast = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                v3.podcast,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_ai = async_to_raw_response_wrapper(
-            v3.process_ai,
+        self.process_ai = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                v3.process_ai,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_countries = async_to_raw_response_wrapper(
-            v3.process_countries,
+        self.process_countries = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                v3.process_countries,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_full_text = async_to_raw_response_wrapper(
-            v3.process_full_text,
+        self.process_full_text = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                v3.process_full_text,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
             async_to_raw_response_wrapper(
@@ -2906,17 +2930,25 @@ class V3ResourceWithStreamingResponse:
         self.like = to_streamed_response_wrapper(
             v3.like,
         )
-        self.podcast = to_streamed_response_wrapper(
-            v3.podcast,
+        self.podcast = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                v3.podcast,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_ai = to_streamed_response_wrapper(
-            v3.process_ai,
+        self.process_ai = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                v3.process_ai,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_countries = to_streamed_response_wrapper(
-            v3.process_countries,
+        self.process_countries = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                v3.process_countries,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_full_text = to_streamed_response_wrapper(
-            v3.process_full_text,
+        self.process_full_text = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                v3.process_full_text,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
             to_streamed_response_wrapper(
@@ -3017,17 +3049,25 @@ class AsyncV3ResourceWithStreamingResponse:
         self.like = async_to_streamed_response_wrapper(
             v3.like,
         )
-        self.podcast = async_to_streamed_response_wrapper(
-            v3.podcast,
+        self.podcast = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                v3.podcast,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_ai = async_to_streamed_response_wrapper(
-            v3.process_ai,
+        self.process_ai = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                v3.process_ai,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_countries = async_to_streamed_response_wrapper(
-            v3.process_countries,
+        self.process_countries = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                v3.process_countries,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_full_text = async_to_streamed_response_wrapper(
-            v3.process_full_text,
+        self.process_full_text = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                v3.process_full_text,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(

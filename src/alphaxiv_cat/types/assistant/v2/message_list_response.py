@@ -41,5 +41,7 @@ class MessageListResponseItem(BaseModel):
         "output_text",
     ]
 
+    trace: Optional[str] = None
+
 
 MessageListResponse: TypeAlias = List[MessageListResponseItem]

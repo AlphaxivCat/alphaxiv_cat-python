@@ -147,6 +147,7 @@ class PaperViewCountResource(SyncAPIResource):
             cast_to=PaperViewCountKickoffJobResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def process_job(
         self,
         *,
@@ -315,6 +316,7 @@ class AsyncPaperViewCountResource(AsyncAPIResource):
             cast_to=PaperViewCountKickoffJobResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def process_job(
         self,
         *,
@@ -378,8 +380,10 @@ class PaperViewCountResourceWithRawResponse:
         self.kickoff_job = to_raw_response_wrapper(
             paper_view_count.kickoff_job,
         )
-        self.process_job = to_raw_response_wrapper(
-            paper_view_count.process_job,
+        self.process_job = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -395,8 +399,10 @@ class AsyncPaperViewCountResourceWithRawResponse:
         self.kickoff_job = async_to_raw_response_wrapper(
             paper_view_count.kickoff_job,
         )
-        self.process_job = async_to_raw_response_wrapper(
-            paper_view_count.process_job,
+        self.process_job = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -412,8 +418,10 @@ class PaperViewCountResourceWithStreamingResponse:
         self.kickoff_job = to_streamed_response_wrapper(
             paper_view_count.kickoff_job,
         )
-        self.process_job = to_streamed_response_wrapper(
-            paper_view_count.process_job,
+        self.process_job = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -429,6 +437,8 @@ class AsyncPaperViewCountResourceWithStreamingResponse:
         self.kickoff_job = async_to_streamed_response_wrapper(
             paper_view_count.kickoff_job,
         )
-        self.process_job = async_to_streamed_response_wrapper(
-            paper_view_count.process_job,
+        self.process_job = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
+            )
         )

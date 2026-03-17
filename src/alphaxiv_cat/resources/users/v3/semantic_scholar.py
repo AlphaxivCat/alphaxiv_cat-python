@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import typing_extensions
+
 import httpx
 
 from ...._types import Body, Query, Headers, NotGiven, not_given
@@ -40,6 +42,7 @@ class SemanticScholarResource(SyncAPIResource):
         """
         return SemanticScholarResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def link(
         self,
         id: str,
@@ -76,6 +79,7 @@ class SemanticScholarResource(SyncAPIResource):
             cast_to=SemanticScholarLinkResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def scrape(
         self,
         id: str,
@@ -133,6 +137,7 @@ class AsyncSemanticScholarResource(AsyncAPIResource):
         """
         return AsyncSemanticScholarResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def link(
         self,
         id: str,
@@ -169,6 +174,7 @@ class AsyncSemanticScholarResource(AsyncAPIResource):
             cast_to=SemanticScholarLinkResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def scrape(
         self,
         id: str,
@@ -210,11 +216,15 @@ class SemanticScholarResourceWithRawResponse:
     def __init__(self, semantic_scholar: SemanticScholarResource) -> None:
         self._semantic_scholar = semantic_scholar
 
-        self.link = to_raw_response_wrapper(
-            semantic_scholar.link,
+        self.link = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                semantic_scholar.link,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.scrape = to_raw_response_wrapper(
-            semantic_scholar.scrape,
+        self.scrape = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                semantic_scholar.scrape,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -222,11 +232,15 @@ class AsyncSemanticScholarResourceWithRawResponse:
     def __init__(self, semantic_scholar: AsyncSemanticScholarResource) -> None:
         self._semantic_scholar = semantic_scholar
 
-        self.link = async_to_raw_response_wrapper(
-            semantic_scholar.link,
+        self.link = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                semantic_scholar.link,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.scrape = async_to_raw_response_wrapper(
-            semantic_scholar.scrape,
+        self.scrape = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                semantic_scholar.scrape,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -234,11 +248,15 @@ class SemanticScholarResourceWithStreamingResponse:
     def __init__(self, semantic_scholar: SemanticScholarResource) -> None:
         self._semantic_scholar = semantic_scholar
 
-        self.link = to_streamed_response_wrapper(
-            semantic_scholar.link,
+        self.link = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                semantic_scholar.link,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.scrape = to_streamed_response_wrapper(
-            semantic_scholar.scrape,
+        self.scrape = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                semantic_scholar.scrape,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -246,9 +264,13 @@ class AsyncSemanticScholarResourceWithStreamingResponse:
     def __init__(self, semantic_scholar: AsyncSemanticScholarResource) -> None:
         self._semantic_scholar = semantic_scholar
 
-        self.link = async_to_streamed_response_wrapper(
-            semantic_scholar.link,
+        self.link = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                semantic_scholar.link,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.scrape = async_to_streamed_response_wrapper(
-            semantic_scholar.scrape,
+        self.scrape = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                semantic_scholar.scrape,  # pyright: ignore[reportDeprecated],
+            )
         )
