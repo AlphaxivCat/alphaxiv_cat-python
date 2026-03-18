@@ -756,6 +756,7 @@ class PapersResource(SyncAPIResource):
             cast_to=PaperProcessAbstractEmbedResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def process_metadata(
         self,
         *,
@@ -1889,6 +1890,7 @@ class AsyncPapersResource(AsyncAPIResource):
             cast_to=PaperProcessAbstractEmbedResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def process_metadata(
         self,
         *,
@@ -2436,8 +2438,10 @@ class PapersResourceWithRawResponse:
                 papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_metadata = to_raw_response_wrapper(
-            papers.process_metadata,
+        self.process_metadata = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                papers.process_metadata,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.request_ai_latest = to_raw_response_wrapper(
             papers.request_ai_latest,
@@ -2549,8 +2553,10 @@ class AsyncPapersResourceWithRawResponse:
                 papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_metadata = async_to_raw_response_wrapper(
-            papers.process_metadata,
+        self.process_metadata = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                papers.process_metadata,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.request_ai_latest = async_to_raw_response_wrapper(
             papers.request_ai_latest,
@@ -2662,8 +2668,10 @@ class PapersResourceWithStreamingResponse:
                 papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_metadata = to_streamed_response_wrapper(
-            papers.process_metadata,
+        self.process_metadata = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                papers.process_metadata,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.request_ai_latest = to_streamed_response_wrapper(
             papers.request_ai_latest,
@@ -2775,8 +2783,10 @@ class AsyncPapersResourceWithStreamingResponse:
                 papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_metadata = async_to_streamed_response_wrapper(
-            papers.process_metadata,
+        self.process_metadata = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                papers.process_metadata,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.request_ai_latest = async_to_streamed_response_wrapper(
             papers.request_ai_latest,

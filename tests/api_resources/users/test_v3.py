@@ -38,17 +38,20 @@ class TestV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_autocomplete_profile(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.autocomplete_profile(
-            user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            v3 = client.users.v3.autocomplete_profile(
+                user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
+
         assert_matches_type(V3AutocompleteProfileResponse, v3, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_autocomplete_profile(self, client: AlphaxivCat) -> None:
-        response = client.users.v3.with_raw_response.autocomplete_profile(
-            user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.users.v3.with_raw_response.autocomplete_profile(
+                user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -58,14 +61,15 @@ class TestV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_autocomplete_profile(self, client: AlphaxivCat) -> None:
-        with client.users.v3.with_streaming_response.autocomplete_profile(
-            user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.users.v3.with_streaming_response.autocomplete_profile(
+                user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            v3 = response.parse()
-            assert_matches_type(V3AutocompleteProfileResponse, v3, path=["response"])
+                v3 = response.parse()
+                assert_matches_type(V3AutocompleteProfileResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -738,17 +742,20 @@ class TestAsyncV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_autocomplete_profile(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.autocomplete_profile(
-            user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            v3 = await async_client.users.v3.autocomplete_profile(
+                user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
+
         assert_matches_type(V3AutocompleteProfileResponse, v3, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_autocomplete_profile(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.users.v3.with_raw_response.autocomplete_profile(
-            user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.users.v3.with_raw_response.autocomplete_profile(
+                user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -758,14 +765,15 @@ class TestAsyncV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_autocomplete_profile(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.users.v3.with_streaming_response.autocomplete_profile(
-            user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.users.v3.with_streaming_response.autocomplete_profile(
+                user_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            v3 = await response.parse()
-            assert_matches_type(V3AutocompleteProfileResponse, v3, path=["response"])
+                v3 = await response.parse()
+                assert_matches_type(V3AutocompleteProfileResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -270,6 +270,7 @@ class EmailsResource(SyncAPIResource):
             cast_to=EmailProcessBouncedEmailResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def process_comment_update(
         self,
         *,
@@ -312,6 +313,7 @@ class EmailsResource(SyncAPIResource):
             cast_to=EmailProcessCommentUpdateResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def process_general_update(
         self,
         *,
@@ -586,6 +588,7 @@ class AsyncEmailsResource(AsyncAPIResource):
             cast_to=EmailProcessBouncedEmailResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def process_comment_update(
         self,
         *,
@@ -628,6 +631,7 @@ class AsyncEmailsResource(AsyncAPIResource):
             cast_to=EmailProcessCommentUpdateResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def process_general_update(
         self,
         *,
@@ -687,11 +691,15 @@ class EmailsResourceWithRawResponse:
                 emails.process_bounced_email,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_comment_update = to_raw_response_wrapper(
-            emails.process_comment_update,
+        self.process_comment_update = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                emails.process_comment_update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_general_update = to_raw_response_wrapper(
-            emails.process_general_update,
+        self.process_general_update = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                emails.process_general_update,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -716,11 +724,15 @@ class AsyncEmailsResourceWithRawResponse:
                 emails.process_bounced_email,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_comment_update = async_to_raw_response_wrapper(
-            emails.process_comment_update,
+        self.process_comment_update = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                emails.process_comment_update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_general_update = async_to_raw_response_wrapper(
-            emails.process_general_update,
+        self.process_general_update = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                emails.process_general_update,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -745,11 +757,15 @@ class EmailsResourceWithStreamingResponse:
                 emails.process_bounced_email,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_comment_update = to_streamed_response_wrapper(
-            emails.process_comment_update,
+        self.process_comment_update = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                emails.process_comment_update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_general_update = to_streamed_response_wrapper(
-            emails.process_general_update,
+        self.process_general_update = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                emails.process_general_update,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -774,9 +790,13 @@ class AsyncEmailsResourceWithStreamingResponse:
                 emails.process_bounced_email,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.process_comment_update = async_to_streamed_response_wrapper(
-            emails.process_comment_update,
+        self.process_comment_update = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                emails.process_comment_update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.process_general_update = async_to_streamed_response_wrapper(
-            emails.process_general_update,
+        self.process_general_update = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                emails.process_general_update,  # pyright: ignore[reportDeprecated],
+            )
         )
