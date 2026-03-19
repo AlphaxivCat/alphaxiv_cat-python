@@ -55,7 +55,9 @@ class V2ChatParams(TypedDict, total=False):
         "kimi-k2",
         "kimi-k2.5",
         "glm-5",
+        "glm-5-turbo",
         "minimax-m2.5",
+        "minimax-m2.7",
         "aurelle-1",
     ]
 
