@@ -16,7 +16,7 @@ from .shared import (
     AsyncSharedResourceWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -154,7 +154,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/folders/v3/{folder_id}",
+            path_template("/folders/v3/{folder_id}", folder_id=folder_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -192,7 +192,7 @@ class V3Resource(SyncAPIResource):
         if not folder_id:
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         return self._post(
-            f"/folders/v3/{folder_id}/add-papers",
+            path_template("/folders/v3/{folder_id}/add-papers", folder_id=folder_id),
             body=maybe_transform(
                 {
                     "paper_group_ids": paper_group_ids,
@@ -237,7 +237,7 @@ class V3Resource(SyncAPIResource):
         if not folder_id:
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         return self._post(
-            f"/folders/v3/{folder_id}/move-papers",
+            path_template("/folders/v3/{folder_id}/move-papers", folder_id=folder_id),
             body=maybe_transform(
                 {
                     "paper_group_ids": paper_group_ids,
@@ -281,7 +281,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/folders/v3/{folder_id}/remove-papers",
+            path_template("/folders/v3/{folder_id}/remove-papers", folder_id=folder_id),
             body=maybe_transform({"paper_group_ids": paper_group_ids}, v3_remove_papers_params.V3RemovePapersParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -319,7 +319,7 @@ class V3Resource(SyncAPIResource):
         if not folder_id:
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         return self._patch(
-            f"/folders/v3/{folder_id}/sharing",
+            path_template("/folders/v3/{folder_id}/sharing", folder_id=folder_id),
             body=maybe_transform({"sharing_status": sharing_status}, v3_toggle_sharing_params.V3ToggleSharingParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -358,7 +358,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._patch(
-            f"/folders/v3/{folder_id}",
+            path_template("/folders/v3/{folder_id}", folder_id=folder_id),
             body=maybe_transform({"name": name}, v3_update_name_params.V3UpdateNameParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -397,7 +397,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._patch(
-            f"/folders/v3/{folder_id}/parent",
+            path_template("/folders/v3/{folder_id}/parent", folder_id=folder_id),
             body=maybe_transform({"parent_id": parent_id}, v3_update_parent_params.V3UpdateParentParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -516,7 +516,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/folders/v3/{folder_id}",
+            path_template("/folders/v3/{folder_id}", folder_id=folder_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -554,7 +554,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not folder_id:
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         return await self._post(
-            f"/folders/v3/{folder_id}/add-papers",
+            path_template("/folders/v3/{folder_id}/add-papers", folder_id=folder_id),
             body=await async_maybe_transform(
                 {
                     "paper_group_ids": paper_group_ids,
@@ -599,7 +599,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not folder_id:
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         return await self._post(
-            f"/folders/v3/{folder_id}/move-papers",
+            path_template("/folders/v3/{folder_id}/move-papers", folder_id=folder_id),
             body=await async_maybe_transform(
                 {
                     "paper_group_ids": paper_group_ids,
@@ -643,7 +643,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/folders/v3/{folder_id}/remove-papers",
+            path_template("/folders/v3/{folder_id}/remove-papers", folder_id=folder_id),
             body=await async_maybe_transform(
                 {"paper_group_ids": paper_group_ids}, v3_remove_papers_params.V3RemovePapersParams
             ),
@@ -683,7 +683,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not folder_id:
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         return await self._patch(
-            f"/folders/v3/{folder_id}/sharing",
+            path_template("/folders/v3/{folder_id}/sharing", folder_id=folder_id),
             body=await async_maybe_transform(
                 {"sharing_status": sharing_status}, v3_toggle_sharing_params.V3ToggleSharingParams
             ),
@@ -724,7 +724,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._patch(
-            f"/folders/v3/{folder_id}",
+            path_template("/folders/v3/{folder_id}", folder_id=folder_id),
             body=await async_maybe_transform({"name": name}, v3_update_name_params.V3UpdateNameParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -763,7 +763,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `folder_id` but received {folder_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._patch(
-            f"/folders/v3/{folder_id}/parent",
+            path_template("/folders/v3/{folder_id}/parent", folder_id=folder_id),
             body=await async_maybe_transform({"parent_id": parent_id}, v3_update_parent_params.V3UpdateParentParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

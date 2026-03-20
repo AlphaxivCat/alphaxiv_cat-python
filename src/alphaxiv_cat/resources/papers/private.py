@@ -7,7 +7,7 @@ from typing import Iterable, Optional
 import httpx
 
 from ..._types import Body, Query, Headers, NoneType, NotGiven, SequenceNotStr, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -125,7 +125,7 @@ class PrivateResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._patch(
-            f"/v2/papers/private/{paper_id}/metadata",
+            path_template("/v2/papers/private/{paper_id}/metadata", paper_id=paper_id),
             body=maybe_transform(
                 {
                     "abstract": abstract,
@@ -246,7 +246,7 @@ class AsyncPrivateResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._patch(
-            f"/v2/papers/private/{paper_id}/metadata",
+            path_template("/v2/papers/private/{paper_id}/metadata", paper_id=paper_id),
             body=await async_maybe_transform(
                 {
                     "abstract": abstract,

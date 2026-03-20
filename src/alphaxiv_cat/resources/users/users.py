@@ -14,7 +14,7 @@ from .v3.v3 import (
 )
 from ...types import user_get_private_notes_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -103,7 +103,7 @@ class UsersResource(SyncAPIResource):
         if not uid:
             raise ValueError(f"Expected a non-empty value for `uid` but received {uid!r}")
         return self._get(
-            f"/v1/users/{uid}/notes",
+            path_template("/v1/users/{uid}/notes", uid=uid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -210,7 +210,7 @@ class AsyncUsersResource(AsyncAPIResource):
         if not uid:
             raise ValueError(f"Expected a non-empty value for `uid` but received {uid!r}")
         return await self._get(
-            f"/v1/users/{uid}/notes",
+            path_template("/v1/users/{uid}/notes", uid=uid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

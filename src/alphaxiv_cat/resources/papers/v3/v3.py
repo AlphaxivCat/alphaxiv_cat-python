@@ -25,7 +25,7 @@ from .overview import (
     AsyncOverviewResourceWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from .x_mentions import (
     XMentionsResource,
@@ -159,7 +159,7 @@ class V3Resource(SyncAPIResource):
         if not unresolved:
             raise ValueError(f"Expected a non-empty value for `unresolved` but received {unresolved!r}")
         return self._get(
-            f"/papers/v3/{unresolved}",
+            path_template("/papers/v3/{unresolved}", unresolved=unresolved),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -198,7 +198,7 @@ class V3Resource(SyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return self._post(
-            f"/papers/v3/{version}/comment",
+            path_template("/papers/v3/{version}/comment", version=version),
             body=maybe_transform(
                 {
                     "tag": tag,
@@ -280,7 +280,7 @@ class V3Resource(SyncAPIResource):
         if not paper_group_id:
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         return self._post(
-            f"/papers/v3/{paper_group_id}/implementation",
+            path_template("/papers/v3/{paper_group_id}/implementation", paper_group_id=paper_group_id),
             body=maybe_transform({"url": url}, v3_implementation_params.V3ImplementationParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -505,7 +505,7 @@ class V3Resource(SyncAPIResource):
         if not group:
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return self._post(
-            f"/papers/v3/{group}/like",
+            path_template("/papers/v3/{group}/like", group=group),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -545,7 +545,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/papers/v3/{paper_group_id}/podcast",
+            path_template("/papers/v3/{paper_group_id}/podcast", paper_group_id=paper_group_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -644,7 +644,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `paper_version_id` but received {paper_version_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/papers/v3/{paper_version_id}/process-ai",
+            path_template("/papers/v3/{paper_version_id}/process-ai", paper_version_id=paper_version_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -797,7 +797,7 @@ class V3Resource(SyncAPIResource):
         if not group:
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return self._post(
-            f"/papers/v3/{group}/request-implementation",
+            path_template("/papers/v3/{group}/request-implementation", group=group),
             body=maybe_transform(
                 {
                     "paper_title": paper_title,
@@ -843,7 +843,7 @@ class V3Resource(SyncAPIResource):
         if not paper_group_id:
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         return self._post(
-            f"/papers/v3/{paper_group_id}/request-podcast",
+            path_template("/papers/v3/{paper_group_id}/request-podcast", paper_group_id=paper_group_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1024,7 +1024,7 @@ class V3Resource(SyncAPIResource):
         if not paper_group_id:
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         return self._get(
-            f"/papers/v3/{paper_group_id}/figures",
+            path_template("/papers/v3/{paper_group_id}/figures", paper_group_id=paper_group_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1059,7 +1059,7 @@ class V3Resource(SyncAPIResource):
         if not paper_version:
             raise ValueError(f"Expected a non-empty value for `paper_version` but received {paper_version!r}")
         return self._get(
-            f"/papers/v3/{paper_version}/full-text",
+            path_template("/papers/v3/{paper_version}/full-text", paper_version=paper_version),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1146,7 +1146,7 @@ class V3Resource(SyncAPIResource):
         if not unresolved:
             raise ValueError(f"Expected a non-empty value for `unresolved` but received {unresolved!r}")
         return self._get(
-            f"/papers/v3/{unresolved}/metrics",
+            path_template("/papers/v3/{unresolved}/metrics", unresolved=unresolved),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1229,7 +1229,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/papers/v3/{id}/preview",
+            path_template("/papers/v3/{id}/preview", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1271,7 +1271,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/papers/v3/{id}/similar-papers",
+            path_template("/papers/v3/{id}/similar-papers", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1367,7 +1367,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/papers/v3/{group}/view",
+            path_template("/papers/v3/{group}/view", group=group),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1442,7 +1442,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not unresolved:
             raise ValueError(f"Expected a non-empty value for `unresolved` but received {unresolved!r}")
         return await self._get(
-            f"/papers/v3/{unresolved}",
+            path_template("/papers/v3/{unresolved}", unresolved=unresolved),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1481,7 +1481,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return await self._post(
-            f"/papers/v3/{version}/comment",
+            path_template("/papers/v3/{version}/comment", version=version),
             body=await async_maybe_transform(
                 {
                     "tag": tag,
@@ -1563,7 +1563,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not paper_group_id:
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         return await self._post(
-            f"/papers/v3/{paper_group_id}/implementation",
+            path_template("/papers/v3/{paper_group_id}/implementation", paper_group_id=paper_group_id),
             body=await async_maybe_transform({"url": url}, v3_implementation_params.V3ImplementationParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1788,7 +1788,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not group:
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return await self._post(
-            f"/papers/v3/{group}/like",
+            path_template("/papers/v3/{group}/like", group=group),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1828,7 +1828,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/papers/v3/{paper_group_id}/podcast",
+            path_template("/papers/v3/{paper_group_id}/podcast", paper_group_id=paper_group_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1927,7 +1927,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `paper_version_id` but received {paper_version_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/papers/v3/{paper_version_id}/process-ai",
+            path_template("/papers/v3/{paper_version_id}/process-ai", paper_version_id=paper_version_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2080,7 +2080,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not group:
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return await self._post(
-            f"/papers/v3/{group}/request-implementation",
+            path_template("/papers/v3/{group}/request-implementation", group=group),
             body=await async_maybe_transform(
                 {
                     "paper_title": paper_title,
@@ -2126,7 +2126,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not paper_group_id:
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         return await self._post(
-            f"/papers/v3/{paper_group_id}/request-podcast",
+            path_template("/papers/v3/{paper_group_id}/request-podcast", paper_group_id=paper_group_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2307,7 +2307,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not paper_group_id:
             raise ValueError(f"Expected a non-empty value for `paper_group_id` but received {paper_group_id!r}")
         return await self._get(
-            f"/papers/v3/{paper_group_id}/figures",
+            path_template("/papers/v3/{paper_group_id}/figures", paper_group_id=paper_group_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2342,7 +2342,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not paper_version:
             raise ValueError(f"Expected a non-empty value for `paper_version` but received {paper_version!r}")
         return await self._get(
-            f"/papers/v3/{paper_version}/full-text",
+            path_template("/papers/v3/{paper_version}/full-text", paper_version=paper_version),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2429,7 +2429,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not unresolved:
             raise ValueError(f"Expected a non-empty value for `unresolved` but received {unresolved!r}")
         return await self._get(
-            f"/papers/v3/{unresolved}/metrics",
+            path_template("/papers/v3/{unresolved}/metrics", unresolved=unresolved),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2512,7 +2512,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/papers/v3/{id}/preview",
+            path_template("/papers/v3/{id}/preview", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2554,7 +2554,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/papers/v3/{id}/similar-papers",
+            path_template("/papers/v3/{id}/similar-papers", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2650,7 +2650,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/papers/v3/{group}/view",
+            path_template("/papers/v3/{group}/view", group=group),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

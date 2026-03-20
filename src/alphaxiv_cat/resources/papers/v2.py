@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -81,7 +81,7 @@ class V2Resource(SyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return self._post(
-            f"/papers/v2/{version}/comment",
+            path_template("/papers/v2/{version}/comment", version=version),
             body=maybe_transform(
                 {
                     "anchor_position": anchor_position,
@@ -160,7 +160,7 @@ class AsyncV2Resource(AsyncAPIResource):
         if not version:
             raise ValueError(f"Expected a non-empty value for `version` but received {version!r}")
         return await self._post(
-            f"/papers/v2/{version}/comment",
+            path_template("/papers/v2/{version}/comment", version=version),
             body=await async_maybe_transform(
                 {
                     "anchor_position": anchor_position,

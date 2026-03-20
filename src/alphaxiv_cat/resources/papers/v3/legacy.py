@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._utils import path_template
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -74,7 +75,7 @@ class LegacyResource(SyncAPIResource):
         if not unresolved:
             raise ValueError(f"Expected a non-empty value for `unresolved` but received {unresolved!r}")
         return self._get(
-            f"/papers/v3/legacy/{unresolved}",
+            path_template("/papers/v3/legacy/{unresolved}", unresolved=unresolved),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -112,7 +113,7 @@ class LegacyResource(SyncAPIResource):
         if not group:
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return self._get(
-            f"/papers/v3/legacy/{group}/comments",
+            path_template("/papers/v3/legacy/{group}/comments", group=group),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -174,7 +175,7 @@ class AsyncLegacyResource(AsyncAPIResource):
         if not unresolved:
             raise ValueError(f"Expected a non-empty value for `unresolved` but received {unresolved!r}")
         return await self._get(
-            f"/papers/v3/legacy/{unresolved}",
+            path_template("/papers/v3/legacy/{unresolved}", unresolved=unresolved),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -212,7 +213,7 @@ class AsyncLegacyResource(AsyncAPIResource):
         if not group:
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return await self._get(
-            f"/papers/v3/legacy/{group}/comments",
+            path_template("/papers/v3/legacy/{group}/comments", group=group),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
