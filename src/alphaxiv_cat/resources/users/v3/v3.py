@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from .citations import (
     CitationsResource,
     AsyncCitationsResource,
@@ -180,7 +180,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `banner_id` but received {banner_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/users/v3/banners/{banner_id}",
+            path_template("/users/v3/banners/{banner_id}", banner_id=banner_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -240,7 +240,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/users/v3/{id}/activity",
+            path_template("/users/v3/{id}/activity", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -281,7 +281,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/users/v3/{id}/claimed-papers",
+            path_template("/users/v3/{id}/claimed-papers", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -344,7 +344,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/users/v3/{id}/featured",
+            path_template("/users/v3/{id}/featured", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -379,7 +379,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/users/v3/{id}/followers",
+            path_template("/users/v3/{id}/followers", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -437,7 +437,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/users/v3/{id}",
+            path_template("/users/v3/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -519,7 +519,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/users/v3/{id}/process-notification-email",
+            path_template("/users/v3/{id}/process-notification-email", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -599,7 +599,7 @@ class V3Resource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/users/v3/{id}/follow",
+            path_template("/users/v3/{id}/follow", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -832,7 +832,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `banner_id` but received {banner_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/users/v3/banners/{banner_id}",
+            path_template("/users/v3/banners/{banner_id}", banner_id=banner_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -892,7 +892,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/users/v3/{id}/activity",
+            path_template("/users/v3/{id}/activity", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -933,7 +933,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/users/v3/{id}/claimed-papers",
+            path_template("/users/v3/{id}/claimed-papers", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -998,7 +998,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/users/v3/{id}/featured",
+            path_template("/users/v3/{id}/featured", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1033,7 +1033,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/users/v3/{id}/followers",
+            path_template("/users/v3/{id}/followers", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1091,7 +1091,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/users/v3/{id}",
+            path_template("/users/v3/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1173,7 +1173,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/users/v3/{id}/process-notification-email",
+            path_template("/users/v3/{id}/process-notification-email", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1253,7 +1253,7 @@ class AsyncV3Resource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/users/v3/{id}/follow",
+            path_template("/users/v3/{id}/follow", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

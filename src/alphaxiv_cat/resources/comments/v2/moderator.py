@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -72,7 +72,7 @@ class ModeratorResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/comments/v2/{comment}/moderator/send-feedback",
+            path_template("/comments/v2/{comment}/moderator/send-feedback", comment=comment),
             body=maybe_transform({"message": message}, moderator_send_feedback_params.ModeratorSendFeedbackParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -112,7 +112,7 @@ class ModeratorResource(SyncAPIResource):
         if not comment:
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         return self._post(
-            f"/comments/v2/{comment}/moderator/toggle-flags",
+            path_template("/comments/v2/{comment}/moderator/toggle-flags", comment=comment),
             body=maybe_transform(
                 {
                     "addressed": addressed,
@@ -179,7 +179,7 @@ class AsyncModeratorResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/comments/v2/{comment}/moderator/send-feedback",
+            path_template("/comments/v2/{comment}/moderator/send-feedback", comment=comment),
             body=await async_maybe_transform(
                 {"message": message}, moderator_send_feedback_params.ModeratorSendFeedbackParams
             ),
@@ -221,7 +221,7 @@ class AsyncModeratorResource(AsyncAPIResource):
         if not comment:
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         return await self._post(
-            f"/comments/v2/{comment}/moderator/toggle-flags",
+            path_template("/comments/v2/{comment}/moderator/toggle-flags", comment=comment),
             body=await async_maybe_transform(
                 {
                     "addressed": addressed,

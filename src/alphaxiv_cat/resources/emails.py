@@ -15,7 +15,7 @@ from ..types import (
     email_capture_resend_bounced_email_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -189,7 +189,9 @@ class EmailsResource(SyncAPIResource):
         if not custom:
             raise ValueError(f"Expected a non-empty value for `custom` but received {custom!r}")
         return self._post(
-            f"/v1/emails/kickoff-comment-update/{role}/{window}/{custom}",
+            path_template(
+                "/v1/emails/kickoff-comment-update/{role}/{window}/{custom}", role=role, window=window, custom=custom
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -227,7 +229,7 @@ class EmailsResource(SyncAPIResource):
         if not role:
             raise ValueError(f"Expected a non-empty value for `role` but received {role!r}")
         return self._post(
-            f"/v1/emails/kickoff-general-update/{role}",
+            path_template("/v1/emails/kickoff-general-update/{role}", role=role),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -505,7 +507,9 @@ class AsyncEmailsResource(AsyncAPIResource):
         if not custom:
             raise ValueError(f"Expected a non-empty value for `custom` but received {custom!r}")
         return await self._post(
-            f"/v1/emails/kickoff-comment-update/{role}/{window}/{custom}",
+            path_template(
+                "/v1/emails/kickoff-comment-update/{role}/{window}/{custom}", role=role, window=window, custom=custom
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -543,7 +547,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         if not role:
             raise ValueError(f"Expected a non-empty value for `role` but received {role!r}")
         return await self._post(
-            f"/v1/emails/kickoff-general-update/{role}",
+            path_template("/v1/emails/kickoff-general-update/{role}", role=role),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

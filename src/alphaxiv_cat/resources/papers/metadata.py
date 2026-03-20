@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -72,7 +72,7 @@ class MetadataResource(SyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return self._get(
-            f"/v2/papers/{upid}/metadata",
+            path_template("/v2/papers/{upid}/metadata", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -120,7 +120,9 @@ class MetadataResource(SyncAPIResource):
         if not version_order:
             raise ValueError(f"Expected a non-empty value for `version_order` but received {version_order!r}")
         return self._get(
-            f"/v2/papers/{upid}/metadata/versions/{version_order}",
+            path_template(
+                "/v2/papers/{upid}/metadata/versions/{version_order}", upid=upid, version_order=version_order
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -185,7 +187,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return await self._get(
-            f"/v2/papers/{upid}/metadata",
+            path_template("/v2/papers/{upid}/metadata", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -233,7 +235,9 @@ class AsyncMetadataResource(AsyncAPIResource):
         if not version_order:
             raise ValueError(f"Expected a non-empty value for `version_order` but received {version_order!r}")
         return await self._get(
-            f"/v2/papers/{upid}/metadata/versions/{version_order}",
+            path_template(
+                "/v2/papers/{upid}/metadata/versions/{version_order}", upid=upid, version_order=version_order
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

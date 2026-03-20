@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -73,7 +73,7 @@ class IngestResource(SyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return self._get(
-            f"/v2/papers/{upid}/ingest",
+            path_template("/v2/papers/{upid}/ingest", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -119,7 +119,7 @@ class IngestResource(SyncAPIResource):
         if not version_label:
             raise ValueError(f"Expected a non-empty value for `version_label` but received {version_label!r}")
         return self._get(
-            f"/v2/papers/{upid}/ingest/versions/{version_label}",
+            path_template("/v2/papers/{upid}/ingest/versions/{version_label}", upid=upid, version_label=version_label),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -184,7 +184,7 @@ class AsyncIngestResource(AsyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return await self._get(
-            f"/v2/papers/{upid}/ingest",
+            path_template("/v2/papers/{upid}/ingest", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -230,7 +230,7 @@ class AsyncIngestResource(AsyncAPIResource):
         if not version_label:
             raise ValueError(f"Expected a non-empty value for `version_label` but received {version_label!r}")
         return await self._get(
-            f"/v2/papers/{upid}/ingest/versions/{version_label}",
+            path_template("/v2/papers/{upid}/ingest/versions/{version_label}", upid=upid, version_label=version_label),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
