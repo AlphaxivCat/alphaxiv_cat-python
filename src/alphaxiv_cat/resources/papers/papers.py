@@ -49,7 +49,7 @@ from .private import (
     AsyncPrivateResourceWithStreamingResponse,
 )
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from .metadata import (
     MetadataResource,
     AsyncMetadataResource,
@@ -189,7 +189,7 @@ class PapersResource(SyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return self._post(
-            f"/v2/papers/{paper_id}/add-author",
+            path_template("/v2/papers/{paper_id}/add-author", paper_id=paper_id),
             body=maybe_transform(
                 {
                     "author_email": author_email,
@@ -233,7 +233,7 @@ class PapersResource(SyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return self._post(
-            f"/v2/papers/{paper_id}/admin-vote",
+            path_template("/v2/papers/{paper_id}/admin-vote", paper_id=paper_id),
             body=maybe_transform({"entry": entry}, paper_admin_vote_params.PaperAdminVoteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -277,7 +277,7 @@ class PapersResource(SyncAPIResource):
         if not ref:
             raise ValueError(f"Expected a non-empty value for `ref` but received {ref!r}")
         return self._get(
-            f"/v1/papers/crxabstractclick/{pid}/{ref}",
+            path_template("/v1/papers/crxabstractclick/{pid}/{ref}", pid=pid, ref=ref),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -314,7 +314,7 @@ class PapersResource(SyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return self._get(
-            f"/v1/papers/crxabstracthit/{pid}",
+            path_template("/v1/papers/crxabstracthit/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -356,7 +356,7 @@ class PapersResource(SyncAPIResource):
         if not ref:
             raise ValueError(f"Expected a non-empty value for `ref` but received {ref!r}")
         return self._get(
-            f"/v1/papers/crxpdfclick/{pid}/{ref}",
+            path_template("/v1/papers/crxpdfclick/{pid}/{ref}", pid=pid, ref=ref),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -393,7 +393,7 @@ class PapersResource(SyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return self._get(
-            f"/v1/papers/crxpdfhit/{pid}",
+            path_template("/v1/papers/crxpdfhit/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -434,7 +434,7 @@ class PapersResource(SyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return self._post(
-            f"/v2/papers/{paper_id}/email-author",
+            path_template("/v2/papers/{paper_id}/email-author", paper_id=paper_id),
             body=maybe_transform(
                 {
                     "author_individual_email": author_individual_email,
@@ -482,7 +482,7 @@ class PapersResource(SyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return self._get(
-            f"/v1/papers/getcrxpaperinfo/{pid}",
+            path_template("/v1/papers/getcrxpaperinfo/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -519,7 +519,7 @@ class PapersResource(SyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return self._get(
-            f"/v1/papers/getpaperinfo/{pid}",
+            path_template("/v1/papers/getpaperinfo/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -650,7 +650,7 @@ class PapersResource(SyncAPIResource):
         if not all:
             raise ValueError(f"Expected a non-empty value for `all` but received {all!r}")
         return self._post(
-            f"/v2/papers/kickoff-paper-categorization/{all}",
+            path_template("/v2/papers/kickoff-paper-categorization/{all}", all=all),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -710,7 +710,7 @@ class PapersResource(SyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return self._post(
-            f"/v2/papers/{upid}/view",
+            path_template("/v2/papers/{upid}/view", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -890,7 +890,7 @@ class PapersResource(SyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return self._post(
-            f"/v2/papers/{upid}/request-ai",
+            path_template("/v2/papers/{upid}/request-ai", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -995,7 +995,7 @@ class PapersResource(SyncAPIResource):
         if not language:
             raise ValueError(f"Expected a non-empty value for `language` but received {language!r}")
         return self._post(
-            f"/v2/papers/{upid}/request-ai-translation/{language}",
+            path_template("/v2/papers/{upid}/request-ai-translation/{language}", upid=upid, language=language),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1031,7 +1031,7 @@ class PapersResource(SyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return self._post(
-            f"/v2/papers/{paper_id}/github",
+            path_template("/v2/papers/{paper_id}/github", paper_id=paper_id),
             body=maybe_transform({"github": github}, paper_set_github_repository_params.PaperSetGitHubRepositoryParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1068,7 +1068,7 @@ class PapersResource(SyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return self._post(
-            f"/v2/papers/{paper_id}/follow",
+            path_template("/v2/papers/{paper_id}/follow", paper_id=paper_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1167,7 +1167,11 @@ class PapersResource(SyncAPIResource):
         if not language:
             raise ValueError(f"Expected a non-empty value for `language` but received {language!r}")
         return self._post(
-            f"/v2/papers/translate-ai-overview/{paper_version_id}/{language}",
+            path_template(
+                "/v2/papers/translate-ai-overview/{paper_version_id}/{language}",
+                paper_version_id=paper_version_id,
+                language=language,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1202,7 +1206,7 @@ class PapersResource(SyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return self._post(
-            f"/v2/papers/{paper_id}/unclaim",
+            path_template("/v2/papers/{paper_id}/unclaim", paper_id=paper_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1237,7 +1241,7 @@ class PapersResource(SyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return self._post(
-            f"/v2/papers/{paper_id}/vote",
+            path_template("/v2/papers/{paper_id}/vote", paper_id=paper_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1323,7 +1327,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return await self._post(
-            f"/v2/papers/{paper_id}/add-author",
+            path_template("/v2/papers/{paper_id}/add-author", paper_id=paper_id),
             body=await async_maybe_transform(
                 {
                     "author_email": author_email,
@@ -1367,7 +1371,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return await self._post(
-            f"/v2/papers/{paper_id}/admin-vote",
+            path_template("/v2/papers/{paper_id}/admin-vote", paper_id=paper_id),
             body=await async_maybe_transform({"entry": entry}, paper_admin_vote_params.PaperAdminVoteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1411,7 +1415,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not ref:
             raise ValueError(f"Expected a non-empty value for `ref` but received {ref!r}")
         return await self._get(
-            f"/v1/papers/crxabstractclick/{pid}/{ref}",
+            path_template("/v1/papers/crxabstractclick/{pid}/{ref}", pid=pid, ref=ref),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1448,7 +1452,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return await self._get(
-            f"/v1/papers/crxabstracthit/{pid}",
+            path_template("/v1/papers/crxabstracthit/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1490,7 +1494,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not ref:
             raise ValueError(f"Expected a non-empty value for `ref` but received {ref!r}")
         return await self._get(
-            f"/v1/papers/crxpdfclick/{pid}/{ref}",
+            path_template("/v1/papers/crxpdfclick/{pid}/{ref}", pid=pid, ref=ref),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1527,7 +1531,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return await self._get(
-            f"/v1/papers/crxpdfhit/{pid}",
+            path_template("/v1/papers/crxpdfhit/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1568,7 +1572,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return await self._post(
-            f"/v2/papers/{paper_id}/email-author",
+            path_template("/v2/papers/{paper_id}/email-author", paper_id=paper_id),
             body=await async_maybe_transform(
                 {
                     "author_individual_email": author_individual_email,
@@ -1616,7 +1620,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return await self._get(
-            f"/v1/papers/getcrxpaperinfo/{pid}",
+            path_template("/v1/papers/getcrxpaperinfo/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1653,7 +1657,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not pid:
             raise ValueError(f"Expected a non-empty value for `pid` but received {pid!r}")
         return await self._get(
-            f"/v1/papers/getpaperinfo/{pid}",
+            path_template("/v1/papers/getpaperinfo/{pid}", pid=pid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1784,7 +1788,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not all:
             raise ValueError(f"Expected a non-empty value for `all` but received {all!r}")
         return await self._post(
-            f"/v2/papers/kickoff-paper-categorization/{all}",
+            path_template("/v2/papers/kickoff-paper-categorization/{all}", all=all),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1844,7 +1848,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return await self._post(
-            f"/v2/papers/{upid}/view",
+            path_template("/v2/papers/{upid}/view", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2024,7 +2028,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not upid:
             raise ValueError(f"Expected a non-empty value for `upid` but received {upid!r}")
         return await self._post(
-            f"/v2/papers/{upid}/request-ai",
+            path_template("/v2/papers/{upid}/request-ai", upid=upid),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -2129,7 +2133,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not language:
             raise ValueError(f"Expected a non-empty value for `language` but received {language!r}")
         return await self._post(
-            f"/v2/papers/{upid}/request-ai-translation/{language}",
+            path_template("/v2/papers/{upid}/request-ai-translation/{language}", upid=upid, language=language),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2165,7 +2169,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return await self._post(
-            f"/v2/papers/{paper_id}/github",
+            path_template("/v2/papers/{paper_id}/github", paper_id=paper_id),
             body=await async_maybe_transform(
                 {"github": github}, paper_set_github_repository_params.PaperSetGitHubRepositoryParams
             ),
@@ -2204,7 +2208,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return await self._post(
-            f"/v2/papers/{paper_id}/follow",
+            path_template("/v2/papers/{paper_id}/follow", paper_id=paper_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2303,7 +2307,11 @@ class AsyncPapersResource(AsyncAPIResource):
         if not language:
             raise ValueError(f"Expected a non-empty value for `language` but received {language!r}")
         return await self._post(
-            f"/v2/papers/translate-ai-overview/{paper_version_id}/{language}",
+            path_template(
+                "/v2/papers/translate-ai-overview/{paper_version_id}/{language}",
+                paper_version_id=paper_version_id,
+                language=language,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2338,7 +2346,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return await self._post(
-            f"/v2/papers/{paper_id}/unclaim",
+            path_template("/v2/papers/{paper_id}/unclaim", paper_id=paper_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2373,7 +2381,7 @@ class AsyncPapersResource(AsyncAPIResource):
         if not paper_id:
             raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
         return await self._post(
-            f"/v2/papers/{paper_id}/vote",
+            path_template("/v2/papers/{paper_id}/vote", paper_id=paper_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

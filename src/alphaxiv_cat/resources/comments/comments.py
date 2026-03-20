@@ -16,7 +16,7 @@ from .v2.v2 import (
 )
 from ...types import comment_edit_params
 from ..._types import Body, Query, Headers, NoneType, NotGiven, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -90,7 +90,7 @@ class CommentsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._patch(
-            f"/comments/v1/{comment}",
+            path_template("/comments/v1/{comment}", comment=comment),
             body=maybe_transform(
                 {
                     "anchor_position": anchor_position,
@@ -170,7 +170,7 @@ class AsyncCommentsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._patch(
-            f"/comments/v1/{comment}",
+            path_template("/comments/v1/{comment}", comment=comment),
             body=await async_maybe_transform(
                 {
                     "anchor_position": anchor_position,

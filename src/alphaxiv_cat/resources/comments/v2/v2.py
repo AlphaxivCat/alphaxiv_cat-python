@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ...._types import Body, Query, Headers, NoneType, NotGiven, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from .moderator import (
     ModeratorResource,
     AsyncModeratorResource,
@@ -82,7 +82,7 @@ class V2Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/comments/v2/{comment}",
+            path_template("/comments/v2/{comment}", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -119,7 +119,7 @@ class V2Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/comments/v2/{comment}/downvote",
+            path_template("/comments/v2/{comment}/downvote", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -156,7 +156,7 @@ class V2Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/comments/v2/{comment}/flag",
+            path_template("/comments/v2/{comment}/flag", comment=comment),
             body=maybe_transform({"reason": reason}, v2_flag_params.V2FlagParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -194,7 +194,7 @@ class V2Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/comments/v2/{comment}/endorse",
+            path_template("/comments/v2/{comment}/endorse", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -231,7 +231,7 @@ class V2Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/comments/v2/{comment}/upvote",
+            path_template("/comments/v2/{comment}/upvote", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -293,7 +293,7 @@ class AsyncV2Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/comments/v2/{comment}",
+            path_template("/comments/v2/{comment}", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -330,7 +330,7 @@ class AsyncV2Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/comments/v2/{comment}/downvote",
+            path_template("/comments/v2/{comment}/downvote", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -367,7 +367,7 @@ class AsyncV2Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/comments/v2/{comment}/flag",
+            path_template("/comments/v2/{comment}/flag", comment=comment),
             body=await async_maybe_transform({"reason": reason}, v2_flag_params.V2FlagParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -405,7 +405,7 @@ class AsyncV2Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/comments/v2/{comment}/endorse",
+            path_template("/comments/v2/{comment}/endorse", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -442,7 +442,7 @@ class AsyncV2Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `comment` but received {comment!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/comments/v2/{comment}/upvote",
+            path_template("/comments/v2/{comment}/upvote", comment=comment),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

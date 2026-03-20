@@ -7,6 +7,7 @@ import typing_extensions
 import httpx
 
 from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._utils import path_template
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -72,7 +73,7 @@ class SemanticScholarResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/users/v3/{id}/semantic-scholar/link",
+            path_template("/users/v3/{id}/semantic-scholar/link", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -109,7 +110,7 @@ class SemanticScholarResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._post(
-            f"/users/v3/{id}/semantic-scholar/scrape",
+            path_template("/users/v3/{id}/semantic-scholar/scrape", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -167,7 +168,7 @@ class AsyncSemanticScholarResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/users/v3/{id}/semantic-scholar/link",
+            path_template("/users/v3/{id}/semantic-scholar/link", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -204,7 +205,7 @@ class AsyncSemanticScholarResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._post(
-            f"/users/v3/{id}/semantic-scholar/scrape",
+            path_template("/users/v3/{id}/semantic-scholar/scrape", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -7,6 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ...._types import Body, Query, Headers, NotGiven, not_given
+from ...._utils import path_template
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -135,7 +136,9 @@ class OverviewResource(SyncAPIResource):
         if not language:
             raise ValueError(f"Expected a non-empty value for `language` but received {language!r}")
         return self._get(
-            f"/papers/v3/{paper_version}/overview/{language}",
+            path_template(
+                "/papers/v3/{paper_version}/overview/{language}", paper_version=paper_version, language=language
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -171,7 +174,7 @@ class OverviewResource(SyncAPIResource):
         if not paper_version:
             raise ValueError(f"Expected a non-empty value for `paper_version` but received {paper_version!r}")
         return self._get(
-            f"/papers/v3/{paper_version}/overview/status",
+            path_template("/papers/v3/{paper_version}/overview/status", paper_version=paper_version),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -292,7 +295,9 @@ class AsyncOverviewResource(AsyncAPIResource):
         if not language:
             raise ValueError(f"Expected a non-empty value for `language` but received {language!r}")
         return await self._get(
-            f"/papers/v3/{paper_version}/overview/{language}",
+            path_template(
+                "/papers/v3/{paper_version}/overview/{language}", paper_version=paper_version, language=language
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -328,7 +333,7 @@ class AsyncOverviewResource(AsyncAPIResource):
         if not paper_version:
             raise ValueError(f"Expected a non-empty value for `paper_version` but received {paper_version!r}")
         return await self._get(
-            f"/papers/v3/{paper_version}/overview/status",
+            path_template("/papers/v3/{paper_version}/overview/status", paper_version=paper_version),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

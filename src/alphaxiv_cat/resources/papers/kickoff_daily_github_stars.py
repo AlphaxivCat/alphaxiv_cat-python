@@ -5,6 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ..._types import Body, Query, Headers, NotGiven, not_given
+from ..._utils import path_template
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -71,7 +72,7 @@ class KickoffDailyGitHubStarsResource(SyncAPIResource):
         if not max:
             raise ValueError(f"Expected a non-empty value for `max` but received {max!r}")
         return self._post(
-            f"/v2/papers/kickoff-daily-github-stars/{max}",
+            path_template("/v2/papers/kickoff-daily-github-stars/{max}", max=max),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -152,7 +153,7 @@ class AsyncKickoffDailyGitHubStarsResource(AsyncAPIResource):
         if not max:
             raise ValueError(f"Expected a non-empty value for `max` but received {max!r}")
         return await self._post(
-            f"/v2/papers/kickoff-daily-github-stars/{max}",
+            path_template("/v2/papers/kickoff-daily-github-stars/{max}", max=max),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
