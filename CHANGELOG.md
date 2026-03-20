@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.0 (2026-03-20)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** api update ([69b21d3](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/69b21d37b5ad5a92f0004c29b33deabbd2d96191))
+
+
+### Bug Fixes
+
+* sanitize endpoint path params ([5df3952](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/5df3952a4e3b533023374c83bdc6a07db13d43a8))
+
 ## 0.2.0 (2026-03-18)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.1.0...v0.2.0)
