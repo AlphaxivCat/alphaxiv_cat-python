@@ -55,7 +55,7 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Queue monthly digest emails to users via Upstash
+        Queue monthly digest emails to users
 
         Source file:
         `api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
@@ -96,7 +96,7 @@ class EmailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Queue weekly digest emails to users via Upstash
+        Queue weekly digest emails to users
 
         Source file:
         `api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`
@@ -169,7 +169,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Queue monthly digest emails to users via Upstash
+        Queue monthly digest emails to users
 
         Source file:
         `api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
@@ -212,7 +212,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Queue weekly digest emails to users via Upstash
+        Queue weekly digest emails to users
 
         Source file:
         `api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`

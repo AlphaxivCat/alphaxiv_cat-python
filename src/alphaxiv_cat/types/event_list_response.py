@@ -19,7 +19,7 @@ class EventListResponseItem(BaseModel):
 
     recording: Optional[str] = None
 
-    speaker: str
+    speaker: Optional[str] = None
 
     title: str
 
