@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.4.0 (2026-04-11)
+
+Full Changelog: [v0.3.0...v0.4.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.3.0...v0.4.0)
+
+### Features
+
+* **api:** api update ([a5fc6c1](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/a5fc6c1782e755642692cbf223e18418948df2d1))
+* **internal:** implement indices array format for query and form serialization ([ff6cfc3](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/ff6cfc38b19d0ffdf9856b7f3a0c11dfb6914657))
+
+
+### Bug Fixes
+
+* **client:** preserve hardcoded query params when merging with user params ([cc5a8f4](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/cc5a8f46c018b8c795d790a277c3b97a66c0acff))
+* ensure file data are only sent as 1 parameter ([64052ee](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/64052ee5ffa70fbfc5dd567db2ea4b16584842c3))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([c4bec15](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/c4bec15a116ae383b938c7dffafeaea557e1a3fb))
+* **internal:** update gitignore ([fa608cc](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/fa608ccb0f761aca80fb97c51a50b2d69233f285))
+
+
+### Documentation
+
+* improve examples ([bcfe13b](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/bcfe13b38a9e638a1ceed8404c1815ef2a036e87))
+
 ## 0.3.0 (2026-03-20)
 
 Full Changelog: [v0.2.0...v0.3.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.2.0...v0.3.0)
