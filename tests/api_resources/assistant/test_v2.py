@@ -60,7 +60,9 @@ class TestV2:
             assistant_variant="homepage",
             folder_add_papers=True,
             folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            model="gemini-2.5-flash",
+            model="claude-opus-4.5",
+            plan="free",
+            signature="signature",
         )
         v2_stream.response.close()
 
@@ -319,7 +321,9 @@ class TestAsyncV2:
             assistant_variant="homepage",
             folder_add_papers=True,
             folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            model="gemini-2.5-flash",
+            model="claude-opus-4.5",
+            plan="free",
+            signature="signature",
         )
         await v2_stream.response.aclose()
 

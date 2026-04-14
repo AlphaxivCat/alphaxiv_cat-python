@@ -127,7 +127,13 @@ class Base(TypedDict, total=False):
         PropertyInfo(alias="preferredLanguage"),
     ]
 
+    preferred_llm_follow_latest_category: Annotated[
+        Optional[str], PropertyInfo(alias="preferredLlmFollowLatestCategory")
+    ]
+
     preferred_llm_model: Annotated[Optional[str], PropertyInfo(alias="preferredLlmModel")]
+
+    preferred_llm_thinking: Annotated[Optional[str], PropertyInfo(alias="preferredLlmThinking")]
 
     reading_mode_enabled: Annotated[bool, PropertyInfo(alias="readingModeEnabled")]
 

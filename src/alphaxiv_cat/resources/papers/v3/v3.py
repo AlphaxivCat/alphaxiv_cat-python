@@ -302,7 +302,7 @@ class V3Resource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Kickoff paper countries processing on Upstash for hot papers
+        Kickoff paper countries processing for hot papers
 
         Source file:
         `api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
@@ -351,7 +351,7 @@ class V3Resource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Kickoff paper full text processing on Upstash for recent papers
+        Kickoff paper full text processing for recent papers
 
         Source file:
         `api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
@@ -1585,7 +1585,7 @@ class AsyncV3Resource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Kickoff paper countries processing on Upstash for hot papers
+        Kickoff paper countries processing for hot papers
 
         Source file:
         `api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
@@ -1634,7 +1634,7 @@ class AsyncV3Resource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
-        Kickoff paper full text processing on Upstash for recent papers
+        Kickoff paper full text processing for recent papers
 
         Source file:
         `api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`

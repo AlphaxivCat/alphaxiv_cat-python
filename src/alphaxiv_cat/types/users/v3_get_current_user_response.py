@@ -141,7 +141,13 @@ class PreferencesBase(BaseModel):
         ]
     ] = FieldInfo(alias="preferredLanguage", default=None)
 
+    preferred_llm_follow_latest_category: Optional[str] = FieldInfo(
+        alias="preferredLlmFollowLatestCategory", default=None
+    )
+
     preferred_llm_model: Optional[str] = FieldInfo(alias="preferredLlmModel", default=None)
+
+    preferred_llm_thinking: Optional[str] = FieldInfo(alias="preferredLlmThinking", default=None)
 
     reading_mode_enabled: bool = FieldInfo(alias="readingModeEnabled")
 
@@ -289,7 +295,13 @@ class UserPreferencesBase(BaseModel):
         ]
     ] = FieldInfo(alias="preferredLanguage", default=None)
 
+    preferred_llm_follow_latest_category: Optional[str] = FieldInfo(
+        alias="preferredLlmFollowLatestCategory", default=None
+    )
+
     preferred_llm_model: Optional[str] = FieldInfo(alias="preferredLlmModel", default=None)
+
+    preferred_llm_thinking: Optional[str] = FieldInfo(alias="preferredLlmThinking", default=None)
 
     reading_mode_enabled: bool = FieldInfo(alias="readingModeEnabled")
 
