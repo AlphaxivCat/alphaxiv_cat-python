@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.5.0 (2026-04-27)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** api update ([5af1596](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/5af1596261d34518d88d1ca639a1927476af82cc))
+* **api:** api update ([80e68ca](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/80e68cae8da723b0bfe02f8a211d817ea90571c2))
+
+
+### Performance Improvements
+
+* **client:** optimize file structure copying in multipart requests ([02e07ed](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/02e07ed1709b0b89fc0b00e4a0e49d35fd21bf87))
+
+
+### Chores
+
+* **internal:** more robust bootstrap script ([311789c](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/311789cd617535751d9f2fe0eb6fec2847182ebd))
+
 ## 0.4.0 (2026-04-11)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.3.0...v0.4.0)
