@@ -18,11 +18,7 @@ class V3RetrieveFeedParams(TypedDict, total=False):
 
     sort: Required[Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"]]
 
-    exclude_seen_briefs: Annotated[Literal["true", "false"], PropertyInfo(alias="excludeSeenBriefs")]
-
     organizations: str
-
-    require_summary: Annotated[Literal["true", "false"], PropertyInfo(alias="requireSummary")]
 
     source: Literal["GitHub", "Twitter (X)"]
 

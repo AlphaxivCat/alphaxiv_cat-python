@@ -62,9 +62,6 @@ class V2ChatParams(TypedDict, total=False):
         "fast",
         "smart",
         "pro",
-        "gemini-3-pro",
-        "claude-4.5-sonnet",
-        "claude-4.6-sonnet",
     ]
 
     plan: Literal["free", "pro"]
