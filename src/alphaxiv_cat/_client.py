@@ -35,16 +35,13 @@ if TYPE_CHECKING:
     from .resources import (
         mcp,
         admin,
-        arxiv,
         users,
-        briefs,
         emails,
         events,
         papers,
         retool,
         search,
         folders,
-        wrapped,
         api_keys,
         comments,
         research,
@@ -60,14 +57,11 @@ if TYPE_CHECKING:
     from .resources.emails import EmailsResource, AsyncEmailsResource
     from .resources.events import EventsResource, AsyncEventsResource
     from .resources.mcp.mcp import McpResource, AsyncMcpResource
-    from .resources.wrapped import WrappedResource, AsyncWrappedResource
     from .resources.research import ResearchResource, AsyncResearchResource
     from .resources.sitemaps import SitemapsResource, AsyncSitemapsResource
     from .resources.well_known import WellKnownResource, AsyncWellKnownResource
     from .resources.admin.admin import AdminResource, AsyncAdminResource
-    from .resources.arxiv.arxiv import ArxivResource, AsyncArxivResource
     from .resources.users.users import UsersResource, AsyncUsersResource
-    from .resources.briefs.briefs import BriefsResource, AsyncBriefsResource
     from .resources.papers.papers import PapersResource, AsyncPapersResource
     from .resources.retool.retool import RetoolResource, AsyncRetoolResource
     from .resources.search.search import SearchResource, AsyncSearchResource
@@ -205,12 +199,6 @@ class AlphaxivCat(SyncAPIClient):
         return GoogleScholarResource(self)
 
     @cached_property
-    def arxiv(self) -> ArxivResource:
-        from .resources.arxiv import ArxivResource
-
-        return ArxivResource(self)
-
-    @cached_property
     def api_keys(self) -> APIKeysResource:
         from .resources.api_keys import APIKeysResource
 
@@ -221,12 +209,6 @@ class AlphaxivCat(SyncAPIClient):
         from .resources.admin import AdminResource
 
         return AdminResource(self)
-
-    @cached_property
-    def wrapped(self) -> WrappedResource:
-        from .resources.wrapped import WrappedResource
-
-        return WrappedResource(self)
 
     @cached_property
     def notifications(self) -> NotificationsResource:
@@ -251,12 +233,6 @@ class AlphaxivCat(SyncAPIClient):
         from .resources.retool import RetoolResource
 
         return RetoolResource(self)
-
-    @cached_property
-    def briefs(self) -> BriefsResource:
-        from .resources.briefs import BriefsResource
-
-        return BriefsResource(self)
 
     @cached_property
     def research(self) -> ResearchResource:
@@ -514,12 +490,6 @@ class AsyncAlphaxivCat(AsyncAPIClient):
         return AsyncGoogleScholarResource(self)
 
     @cached_property
-    def arxiv(self) -> AsyncArxivResource:
-        from .resources.arxiv import AsyncArxivResource
-
-        return AsyncArxivResource(self)
-
-    @cached_property
     def api_keys(self) -> AsyncAPIKeysResource:
         from .resources.api_keys import AsyncAPIKeysResource
 
@@ -530,12 +500,6 @@ class AsyncAlphaxivCat(AsyncAPIClient):
         from .resources.admin import AsyncAdminResource
 
         return AsyncAdminResource(self)
-
-    @cached_property
-    def wrapped(self) -> AsyncWrappedResource:
-        from .resources.wrapped import AsyncWrappedResource
-
-        return AsyncWrappedResource(self)
 
     @cached_property
     def notifications(self) -> AsyncNotificationsResource:
@@ -560,12 +524,6 @@ class AsyncAlphaxivCat(AsyncAPIClient):
         from .resources.retool import AsyncRetoolResource
 
         return AsyncRetoolResource(self)
-
-    @cached_property
-    def briefs(self) -> AsyncBriefsResource:
-        from .resources.briefs import AsyncBriefsResource
-
-        return AsyncBriefsResource(self)
 
     @cached_property
     def research(self) -> AsyncResearchResource:
@@ -778,12 +736,6 @@ class AlphaxivCatWithRawResponse:
         return GoogleScholarResourceWithRawResponse(self._client.google_scholar)
 
     @cached_property
-    def arxiv(self) -> arxiv.ArxivResourceWithRawResponse:
-        from .resources.arxiv import ArxivResourceWithRawResponse
-
-        return ArxivResourceWithRawResponse(self._client.arxiv)
-
-    @cached_property
     def api_keys(self) -> api_keys.APIKeysResourceWithRawResponse:
         from .resources.api_keys import APIKeysResourceWithRawResponse
 
@@ -794,12 +746,6 @@ class AlphaxivCatWithRawResponse:
         from .resources.admin import AdminResourceWithRawResponse
 
         return AdminResourceWithRawResponse(self._client.admin)
-
-    @cached_property
-    def wrapped(self) -> wrapped.WrappedResourceWithRawResponse:
-        from .resources.wrapped import WrappedResourceWithRawResponse
-
-        return WrappedResourceWithRawResponse(self._client.wrapped)
 
     @cached_property
     def notifications(self) -> notifications.NotificationsResourceWithRawResponse:
@@ -824,12 +770,6 @@ class AlphaxivCatWithRawResponse:
         from .resources.retool import RetoolResourceWithRawResponse
 
         return RetoolResourceWithRawResponse(self._client.retool)
-
-    @cached_property
-    def briefs(self) -> briefs.BriefsResourceWithRawResponse:
-        from .resources.briefs import BriefsResourceWithRawResponse
-
-        return BriefsResourceWithRawResponse(self._client.briefs)
 
     @cached_property
     def research(self) -> research.ResearchResourceWithRawResponse:
@@ -923,12 +863,6 @@ class AsyncAlphaxivCatWithRawResponse:
         return AsyncGoogleScholarResourceWithRawResponse(self._client.google_scholar)
 
     @cached_property
-    def arxiv(self) -> arxiv.AsyncArxivResourceWithRawResponse:
-        from .resources.arxiv import AsyncArxivResourceWithRawResponse
-
-        return AsyncArxivResourceWithRawResponse(self._client.arxiv)
-
-    @cached_property
     def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithRawResponse:
         from .resources.api_keys import AsyncAPIKeysResourceWithRawResponse
 
@@ -939,12 +873,6 @@ class AsyncAlphaxivCatWithRawResponse:
         from .resources.admin import AsyncAdminResourceWithRawResponse
 
         return AsyncAdminResourceWithRawResponse(self._client.admin)
-
-    @cached_property
-    def wrapped(self) -> wrapped.AsyncWrappedResourceWithRawResponse:
-        from .resources.wrapped import AsyncWrappedResourceWithRawResponse
-
-        return AsyncWrappedResourceWithRawResponse(self._client.wrapped)
 
     @cached_property
     def notifications(self) -> notifications.AsyncNotificationsResourceWithRawResponse:
@@ -969,12 +897,6 @@ class AsyncAlphaxivCatWithRawResponse:
         from .resources.retool import AsyncRetoolResourceWithRawResponse
 
         return AsyncRetoolResourceWithRawResponse(self._client.retool)
-
-    @cached_property
-    def briefs(self) -> briefs.AsyncBriefsResourceWithRawResponse:
-        from .resources.briefs import AsyncBriefsResourceWithRawResponse
-
-        return AsyncBriefsResourceWithRawResponse(self._client.briefs)
 
     @cached_property
     def research(self) -> research.AsyncResearchResourceWithRawResponse:
@@ -1068,12 +990,6 @@ class AlphaxivCatWithStreamedResponse:
         return GoogleScholarResourceWithStreamingResponse(self._client.google_scholar)
 
     @cached_property
-    def arxiv(self) -> arxiv.ArxivResourceWithStreamingResponse:
-        from .resources.arxiv import ArxivResourceWithStreamingResponse
-
-        return ArxivResourceWithStreamingResponse(self._client.arxiv)
-
-    @cached_property
     def api_keys(self) -> api_keys.APIKeysResourceWithStreamingResponse:
         from .resources.api_keys import APIKeysResourceWithStreamingResponse
 
@@ -1084,12 +1000,6 @@ class AlphaxivCatWithStreamedResponse:
         from .resources.admin import AdminResourceWithStreamingResponse
 
         return AdminResourceWithStreamingResponse(self._client.admin)
-
-    @cached_property
-    def wrapped(self) -> wrapped.WrappedResourceWithStreamingResponse:
-        from .resources.wrapped import WrappedResourceWithStreamingResponse
-
-        return WrappedResourceWithStreamingResponse(self._client.wrapped)
 
     @cached_property
     def notifications(self) -> notifications.NotificationsResourceWithStreamingResponse:
@@ -1114,12 +1024,6 @@ class AlphaxivCatWithStreamedResponse:
         from .resources.retool import RetoolResourceWithStreamingResponse
 
         return RetoolResourceWithStreamingResponse(self._client.retool)
-
-    @cached_property
-    def briefs(self) -> briefs.BriefsResourceWithStreamingResponse:
-        from .resources.briefs import BriefsResourceWithStreamingResponse
-
-        return BriefsResourceWithStreamingResponse(self._client.briefs)
 
     @cached_property
     def research(self) -> research.ResearchResourceWithStreamingResponse:
@@ -1213,12 +1117,6 @@ class AsyncAlphaxivCatWithStreamedResponse:
         return AsyncGoogleScholarResourceWithStreamingResponse(self._client.google_scholar)
 
     @cached_property
-    def arxiv(self) -> arxiv.AsyncArxivResourceWithStreamingResponse:
-        from .resources.arxiv import AsyncArxivResourceWithStreamingResponse
-
-        return AsyncArxivResourceWithStreamingResponse(self._client.arxiv)
-
-    @cached_property
     def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithStreamingResponse:
         from .resources.api_keys import AsyncAPIKeysResourceWithStreamingResponse
 
@@ -1229,12 +1127,6 @@ class AsyncAlphaxivCatWithStreamedResponse:
         from .resources.admin import AsyncAdminResourceWithStreamingResponse
 
         return AsyncAdminResourceWithStreamingResponse(self._client.admin)
-
-    @cached_property
-    def wrapped(self) -> wrapped.AsyncWrappedResourceWithStreamingResponse:
-        from .resources.wrapped import AsyncWrappedResourceWithStreamingResponse
-
-        return AsyncWrappedResourceWithStreamingResponse(self._client.wrapped)
 
     @cached_property
     def notifications(self) -> notifications.AsyncNotificationsResourceWithStreamingResponse:
@@ -1259,12 +1151,6 @@ class AsyncAlphaxivCatWithStreamedResponse:
         from .resources.retool import AsyncRetoolResourceWithStreamingResponse
 
         return AsyncRetoolResourceWithStreamingResponse(self._client.retool)
-
-    @cached_property
-    def briefs(self) -> briefs.AsyncBriefsResourceWithStreamingResponse:
-        from .resources.briefs import AsyncBriefsResourceWithStreamingResponse
-
-        return AsyncBriefsResourceWithStreamingResponse(self._client.briefs)
 
     @cached_property
     def research(self) -> research.AsyncResearchResourceWithStreamingResponse:

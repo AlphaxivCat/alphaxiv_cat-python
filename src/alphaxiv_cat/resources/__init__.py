@@ -16,14 +16,6 @@ from .admin import (
     AdminResourceWithStreamingResponse,
     AsyncAdminResourceWithStreamingResponse,
 )
-from .arxiv import (
-    ArxivResource,
-    AsyncArxivResource,
-    ArxivResourceWithRawResponse,
-    AsyncArxivResourceWithRawResponse,
-    ArxivResourceWithStreamingResponse,
-    AsyncArxivResourceWithStreamingResponse,
-)
 from .users import (
     UsersResource,
     AsyncUsersResource,
@@ -31,14 +23,6 @@ from .users import (
     AsyncUsersResourceWithRawResponse,
     UsersResourceWithStreamingResponse,
     AsyncUsersResourceWithStreamingResponse,
-)
-from .briefs import (
-    BriefsResource,
-    AsyncBriefsResource,
-    BriefsResourceWithRawResponse,
-    AsyncBriefsResourceWithRawResponse,
-    BriefsResourceWithStreamingResponse,
-    AsyncBriefsResourceWithStreamingResponse,
 )
 from .emails import (
     EmailsResource,
@@ -87,14 +71,6 @@ from .folders import (
     AsyncFoldersResourceWithRawResponse,
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
-)
-from .wrapped import (
-    WrappedResource,
-    AsyncWrappedResource,
-    WrappedResourceWithRawResponse,
-    AsyncWrappedResourceWithRawResponse,
-    WrappedResourceWithStreamingResponse,
-    AsyncWrappedResourceWithStreamingResponse,
 )
 from .api_keys import (
     APIKeysResource,
@@ -246,12 +222,6 @@ __all__ = [
     "AsyncGoogleScholarResourceWithRawResponse",
     "GoogleScholarResourceWithStreamingResponse",
     "AsyncGoogleScholarResourceWithStreamingResponse",
-    "ArxivResource",
-    "AsyncArxivResource",
-    "ArxivResourceWithRawResponse",
-    "AsyncArxivResourceWithRawResponse",
-    "ArxivResourceWithStreamingResponse",
-    "AsyncArxivResourceWithStreamingResponse",
     "APIKeysResource",
     "AsyncAPIKeysResource",
     "APIKeysResourceWithRawResponse",
@@ -264,12 +234,6 @@ __all__ = [
     "AsyncAdminResourceWithRawResponse",
     "AdminResourceWithStreamingResponse",
     "AsyncAdminResourceWithStreamingResponse",
-    "WrappedResource",
-    "AsyncWrappedResource",
-    "WrappedResourceWithRawResponse",
-    "AsyncWrappedResourceWithRawResponse",
-    "WrappedResourceWithStreamingResponse",
-    "AsyncWrappedResourceWithStreamingResponse",
     "NotificationsResource",
     "AsyncNotificationsResource",
     "NotificationsResourceWithRawResponse",
@@ -294,12 +258,6 @@ __all__ = [
     "AsyncRetoolResourceWithRawResponse",
     "RetoolResourceWithStreamingResponse",
     "AsyncRetoolResourceWithStreamingResponse",
-    "BriefsResource",
-    "AsyncBriefsResource",
-    "BriefsResourceWithRawResponse",
-    "AsyncBriefsResourceWithRawResponse",
-    "BriefsResourceWithStreamingResponse",
-    "AsyncBriefsResourceWithStreamingResponse",
     "ResearchResource",
     "AsyncResearchResource",
     "ResearchResourceWithRawResponse",

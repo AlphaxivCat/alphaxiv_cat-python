@@ -99,9 +99,6 @@ class V2Resource(SyncAPIResource):
             "fast",
             "smart",
             "pro",
-            "gemini-3-pro",
-            "claude-4.5-sonnet",
-            "claude-4.6-sonnet",
         ]
         | Omit = omit,
         plan: Literal["free", "pro"] | Omit = omit,
@@ -385,9 +382,6 @@ class AsyncV2Resource(AsyncAPIResource):
             "fast",
             "smart",
             "pro",
-            "gemini-3-pro",
-            "claude-4.5-sonnet",
-            "claude-4.6-sonnet",
         ]
         | Omit = omit,
         plan: Literal["free", "pro"] | Omit = omit,

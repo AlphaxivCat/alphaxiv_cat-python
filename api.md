@@ -657,22 +657,6 @@ Methods:
 - <code title="post /google-scholar/v1/sync">client.google_scholar.v1.<a href="./src/alphaxiv_cat/resources/google_scholar/v1.py">sync</a>() -> <a href="./src/alphaxiv_cat/types/google_scholar/v1_sync_response.py">V1SyncResponse</a></code>
 - <code title="post /google-scholar/v1/verify">client.google_scholar.v1.<a href="./src/alphaxiv_cat/resources/google_scholar/v1.py">verify_email</a>(\*\*<a href="src/alphaxiv_cat/types/google_scholar/v1_verify_email_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/google_scholar/v1_verify_email_response.py">V1VerifyEmailResponse</a></code>
 
-# Arxiv
-
-## V1
-
-### Labs
-
-Types:
-
-```python
-from alphaxiv_cat.types.arxiv.v1 import LabRetrieveResponse
-```
-
-Methods:
-
-- <code title="get /arxiv/v1/{unresolved}/labs">client.arxiv.v1.labs.<a href="./src/alphaxiv_cat/resources/arxiv/v1/labs.py">retrieve</a>(unresolved) -> <a href="./src/alphaxiv_cat/types/arxiv/v1/lab_retrieve_response.py">LabRetrieveResponse</a></code>
-
 # APIKeys
 
 ## V1
@@ -716,18 +700,6 @@ Methods:
 
 - <code title="post /admin/v1/emails/send-monthly-digest">client.admin.v1.emails.<a href="./src/alphaxiv_cat/resources/admin/v1/emails.py">send_monthly_digest</a>(\*\*<a href="src/alphaxiv_cat/types/admin/v1/email_send_monthly_digest_params.py">params</a>) -> None</code>
 - <code title="post /admin/v1/emails/send-weekly-digest">client.admin.v1.emails.<a href="./src/alphaxiv_cat/resources/admin/v1/emails.py">send_weekly_digest</a>(\*\*<a href="src/alphaxiv_cat/types/admin/v1/email_send_weekly_digest_params.py">params</a>) -> None</code>
-
-# Wrapped
-
-Types:
-
-```python
-from alphaxiv_cat.types import WrappedRetrieveByUserResponse
-```
-
-Methods:
-
-- <code title="get /wrapped/v1/{userId}">client.wrapped.<a href="./src/alphaxiv_cat/resources/wrapped.py">retrieve_by_user</a>(user_id) -> <a href="./src/alphaxiv_cat/types/wrapped_retrieve_by_user_response.py">WrappedRetrieveByUserResponse</a></code>
 
 # Notifications
 
@@ -829,33 +801,6 @@ Methods:
 - <code title="get /retool/v1/weekly-message-counts-by-user">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_message_counts_by_user</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_message_counts_by_user_response.py">V1GetWeeklyMessageCountsByUserResponse</a></code>
 - <code title="get /retool/v1/weekly-private-notes">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_private_notes</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_private_notes_response.py">V1GetWeeklyPrivateNotesResponse</a></code>
 - <code title="get /retool/v1/weekly-public-comments">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_public_comments</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_public_comments_response.py">V1GetWeeklyPublicCommentsResponse</a></code>
-
-# Briefs
-
-## V1
-
-Types:
-
-```python
-from alphaxiv_cat.types.briefs import V1GenerateSpeechResponse
-```
-
-Methods:
-
-- <code title="post /briefs/v1/speech">client.briefs.v1.<a href="./src/alphaxiv_cat/resources/briefs/v1/v1.py">generate_speech</a>(\*\*<a href="src/alphaxiv_cat/types/briefs/v1_generate_speech_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/briefs/v1_generate_speech_response.py">V1GenerateSpeechResponse</a></code>
-
-### Seen
-
-Types:
-
-```python
-from alphaxiv_cat.types.briefs.v1 import SeenGetSeenResponse
-```
-
-Methods:
-
-- <code title="get /briefs/v1/seen">client.briefs.v1.seen.<a href="./src/alphaxiv_cat/resources/briefs/v1/seen.py">get_seen</a>() -> <a href="./src/alphaxiv_cat/types/briefs/v1/seen_get_seen_response.py">SeenGetSeenResponse</a></code>
-- <code title="post /briefs/v1/seen">client.briefs.v1.seen.<a href="./src/alphaxiv_cat/resources/briefs/v1/seen.py">mark_seen</a>(\*\*<a href="src/alphaxiv_cat/types/briefs/v1/seen_mark_seen_params.py">params</a>) -> None</code>
 
 # Research
 
