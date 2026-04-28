@@ -38,12 +38,12 @@ class V2ChatParams(TypedDict, total=False):
     model: Literal[
         "claude-opus-4.5",
         "claude-opus-4.6",
+        "claude-opus-4.7",
         "claude-sonnet-4.5",
         "claude-sonnet-4.6",
         "gemini-2.5-flash",
         "gemini-2.5-pro",
         "gemini-3-flash",
-        "gemini-3-pro",
         "gemini-3.1-pro",
         "glm-5-turbo",
         "glm-5.1",
@@ -54,16 +54,14 @@ class V2ChatParams(TypedDict, total=False):
         "gpt-5.4-mini",
         "gpt-5.4-nano",
         "kimi-k2.5",
+        "kimi-k2.6",
         "mercury-2",
         "minimax-m2.5",
         "minimax-m2.7",
         "qwen-3.5",
-        "aurelle-1",
         "fast",
         "smart",
         "pro",
-        "claude-4.5-sonnet",
-        "claude-4.6-sonnet",
     ]
 
     plan: Literal["free", "pro"]

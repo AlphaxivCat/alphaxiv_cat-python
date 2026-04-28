@@ -39,6 +39,7 @@ class MessageListResponseItem(BaseModel):
         "input_text",
         "output_reasoning",
         "output_text",
+        "context_summary",
     ]
 
     trace: Optional[str] = None
