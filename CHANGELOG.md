@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.6.0 (2026-04-30)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* support setting headers via env ([7092850](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/7092850e1a84d2161f9df2c95f02511bdf69a099))
+
+
+### Bug Fixes
+
+* use correct field name format for multipart file arrays ([d6aae9f](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/d6aae9f9f2b6fe2c281c61404abd93142b4c6247))
+
 ## 0.5.0 (2026-04-27)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.4.0...v0.5.0)
