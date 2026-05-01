@@ -27,13 +27,7 @@ class V2ChatParams(TypedDict, total=False):
 
     web_search: Required[Annotated[Literal["off", "full"], PropertyInfo(alias="webSearch")]]
 
-    assistant_variant: Annotated[
-        Literal["homepage", "paper", "folder", "landing", "folder-add-papers"], PropertyInfo(alias="assistantVariant")
-    ]
-
-    folder_add_papers: Annotated[bool, PropertyInfo(alias="folderAddPapers")]
-
-    folder_id: Annotated[str, PropertyInfo(alias="folderId")]
+    assistant_variant: Annotated[Literal["homepage", "paper", "landing"], PropertyInfo(alias="assistantVariant")]
 
     model: Literal[
         "claude-opus-4.5",

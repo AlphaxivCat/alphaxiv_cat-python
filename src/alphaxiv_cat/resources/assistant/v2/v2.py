@@ -69,9 +69,7 @@ class V2Resource(SyncAPIResource):
         selection_page_range: Optional[Iterable[int]],
         thinking: Union[bool, str, None],
         web_search: Literal["off", "full"],
-        assistant_variant: Literal["homepage", "paper", "folder", "landing", "folder-add-papers"] | Omit = omit,
-        folder_add_papers: bool | Omit = omit,
-        folder_id: str | Omit = omit,
+        assistant_variant: Literal["homepage", "paper", "landing"] | Omit = omit,
         model: Literal[
             "claude-opus-4.5",
             "claude-opus-4.6",
@@ -138,8 +136,6 @@ class V2Resource(SyncAPIResource):
                     "thinking": thinking,
                     "web_search": web_search,
                     "assistant_variant": assistant_variant,
-                    "folder_add_papers": folder_add_papers,
-                    "folder_id": folder_id,
                     "model": model,
                     "plan": plan,
                     "signature": signature,
@@ -232,9 +228,8 @@ class V2Resource(SyncAPIResource):
     def get_chats(
         self,
         *,
-        folder: str | Omit = omit,
         paper_version: str | Omit = omit,
-        variant: Literal["homepage", "paper", "folder"] | Omit = omit,
+        variant: Literal["homepage", "paper"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -266,7 +261,6 @@ class V2Resource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "folder": folder,
                         "paper_version": paper_version,
                         "variant": variant,
                     },
@@ -352,9 +346,7 @@ class AsyncV2Resource(AsyncAPIResource):
         selection_page_range: Optional[Iterable[int]],
         thinking: Union[bool, str, None],
         web_search: Literal["off", "full"],
-        assistant_variant: Literal["homepage", "paper", "folder", "landing", "folder-add-papers"] | Omit = omit,
-        folder_add_papers: bool | Omit = omit,
-        folder_id: str | Omit = omit,
+        assistant_variant: Literal["homepage", "paper", "landing"] | Omit = omit,
         model: Literal[
             "claude-opus-4.5",
             "claude-opus-4.6",
@@ -421,8 +413,6 @@ class AsyncV2Resource(AsyncAPIResource):
                     "thinking": thinking,
                     "web_search": web_search,
                     "assistant_variant": assistant_variant,
-                    "folder_add_papers": folder_add_papers,
-                    "folder_id": folder_id,
                     "model": model,
                     "plan": plan,
                     "signature": signature,
@@ -515,9 +505,8 @@ class AsyncV2Resource(AsyncAPIResource):
     async def get_chats(
         self,
         *,
-        folder: str | Omit = omit,
         paper_version: str | Omit = omit,
-        variant: Literal["homepage", "paper", "folder"] | Omit = omit,
+        variant: Literal["homepage", "paper"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -549,7 +538,6 @@ class AsyncV2Resource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "folder": folder,
                         "paper_version": paper_version,
                         "variant": variant,
                     },
