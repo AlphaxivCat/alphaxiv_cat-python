@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.7.0 (2026-05-01)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** api update ([1c64ccd](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/1c64ccd6cc2d84638873959dd60b4556b0824d38))
+
+
+### Chores
+
+* **internal:** reformat pyproject.toml ([15650b5](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/15650b5ff32df5dee3c4789b7fb5f695b0a1e7ed))
+
 ## 0.6.0 (2026-04-30)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.5.0...v0.6.0)
