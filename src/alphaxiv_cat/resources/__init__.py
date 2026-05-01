@@ -88,14 +88,6 @@ from .comments import (
     CommentsResourceWithStreamingResponse,
     AsyncCommentsResourceWithStreamingResponse,
 )
-from .research import (
-    ResearchResource,
-    AsyncResearchResource,
-    ResearchResourceWithRawResponse,
-    AsyncResearchResourceWithRawResponse,
-    ResearchResourceWithStreamingResponse,
-    AsyncResearchResourceWithStreamingResponse,
-)
 from .retrieve import (
     RetrieveResource,
     AsyncRetrieveResource,
@@ -258,12 +250,6 @@ __all__ = [
     "AsyncRetoolResourceWithRawResponse",
     "RetoolResourceWithStreamingResponse",
     "AsyncRetoolResourceWithStreamingResponse",
-    "ResearchResource",
-    "AsyncResearchResource",
-    "ResearchResourceWithRawResponse",
-    "AsyncResearchResourceWithRawResponse",
-    "ResearchResourceWithStreamingResponse",
-    "AsyncResearchResourceWithStreamingResponse",
     "McpResource",
     "AsyncMcpResource",
     "McpResourceWithRawResponse",
