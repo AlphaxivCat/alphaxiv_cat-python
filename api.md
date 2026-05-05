@@ -802,18 +802,6 @@ Methods:
 - <code title="get /retool/v1/weekly-private-notes">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_private_notes</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_private_notes_response.py">V1GetWeeklyPrivateNotesResponse</a></code>
 - <code title="get /retool/v1/weekly-public-comments">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_public_comments</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_public_comments_response.py">V1GetWeeklyPublicCommentsResponse</a></code>
 
-# Research
-
-Types:
-
-```python
-from alphaxiv_cat.types import ResearchCreateProjectResponse
-```
-
-Methods:
-
-- <code title="post /research/v1">client.research.<a href="./src/alphaxiv_cat/resources/research.py">create_project</a>(\*\*<a href="src/alphaxiv_cat/types/research_create_project_params.py">params</a>) -> str</code>
-
 # Mcp
 
 ## V1

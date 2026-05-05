@@ -10,8 +10,6 @@ __all__ = ["V2GetChatsParams"]
 
 
 class V2GetChatsParams(TypedDict, total=False):
-    folder: str
-
     paper_version: Annotated[str, PropertyInfo(alias="paperVersion")]
 
-    variant: Literal["homepage", "paper", "folder"]
+    variant: Literal["homepage", "paper"]

@@ -13,7 +13,7 @@ class V1GetDailyUserChatMessagesResponseItem(BaseModel):
 
     date: str
 
-    variant: Literal["homepage", "paper", "folder"]
+    variant: Literal["homepage", "paper"]
 
 
 V1GetDailyUserChatMessagesResponse: TypeAlias = List[V1GetDailyUserChatMessagesResponseItem]

@@ -13,7 +13,7 @@ class V1GetDailyConversationsResponseItem(BaseModel):
 
     date: str
 
-    variant: Literal["homepage", "paper", "folder"]
+    variant: Literal["homepage", "paper"]
 
 
 V1GetDailyConversationsResponse: TypeAlias = List[V1GetDailyConversationsResponseItem]

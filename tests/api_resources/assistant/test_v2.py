@@ -58,8 +58,6 @@ class TestV2:
             thinking=True,
             web_search="off",
             assistant_variant="homepage",
-            folder_add_papers=True,
-            folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             model="claude-opus-4.5",
             plan="free",
             signature="signature",
@@ -213,7 +211,6 @@ class TestV2:
     @parametrize
     def test_method_get_chats_with_all_params(self, client: AlphaxivCat) -> None:
         v2 = client.assistant.v2.get_chats(
-            folder="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             paper_version="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             variant="homepage",
         )
@@ -319,8 +316,6 @@ class TestAsyncV2:
             thinking=True,
             web_search="off",
             assistant_variant="homepage",
-            folder_add_papers=True,
-            folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             model="claude-opus-4.5",
             plan="free",
             signature="signature",
@@ -474,7 +469,6 @@ class TestAsyncV2:
     @parametrize
     async def test_method_get_chats_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
         v2 = await async_client.assistant.v2.get_chats(
-            folder="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             paper_version="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             variant="homepage",
         )
