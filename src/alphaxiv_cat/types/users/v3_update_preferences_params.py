@@ -45,13 +45,12 @@ class Base(TypedDict, total=False):
     ]
 
     default_public_paper_sidebar_tab: Annotated[
-        Optional[Literal["comments", "assistant", "similar", "notes", "social"]],
+        Optional[Literal["comments", "assistant", "similar", "notes"]],
         PropertyInfo(alias="defaultPublicPaperSidebarTab"),
     ]
 
     feed_sort: Annotated[
-        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"],
-        PropertyInfo(alias="feedSort"),
+        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"], PropertyInfo(alias="feedSort")
     ]
 
     is_dark_mode_enabled: Annotated[bool, PropertyInfo(alias="isDarkModeEnabled")]
