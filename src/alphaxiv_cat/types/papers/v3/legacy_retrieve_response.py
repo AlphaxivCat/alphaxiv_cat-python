@@ -73,7 +73,7 @@ class CommentAnnotation(BaseModel):
 
     type: Literal["highlight"]
 
-    color: Optional[str] = None
+    highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
 class CommentAuthorAvatar(BaseModel):
@@ -165,7 +165,7 @@ class CommentResponseAnnotation(BaseModel):
 
     type: Literal["highlight"]
 
-    color: Optional[str] = None
+    highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
 class CommentResponseAuthorAvatar(BaseModel):
