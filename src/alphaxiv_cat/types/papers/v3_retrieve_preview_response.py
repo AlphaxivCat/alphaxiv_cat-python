@@ -82,8 +82,6 @@ class Metrics(BaseModel):
 
     visits_count: MetricsVisitsCount
 
-    x_likes: float
-
 
 class OrganizationInfo(BaseModel):
     image: Optional[str] = None

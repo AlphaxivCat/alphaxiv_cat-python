@@ -27,14 +27,6 @@ from .overview import (
 from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
-from .x_mentions import (
-    XMentionsResource,
-    AsyncXMentionsResource,
-    XMentionsResourceWithRawResponse,
-    AsyncXMentionsResourceWithRawResponse,
-    XMentionsResourceWithStreamingResponse,
-    AsyncXMentionsResourceWithStreamingResponse,
-)
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
     to_raw_response_wrapper,
@@ -56,7 +48,6 @@ from ....types.papers import (
     v3_request_implementation_params,
     v3_kickoff_paper_countries_params,
     v3_kickoff_paper_full_text_params,
-    v3_kickoff_x_mentions_sync_params,
     v3_retrieve_diverse_papers_params,
     v3_retrieve_similar_papers_params,
     v3_retrieve_papers_by_country_params,
@@ -104,10 +95,6 @@ class V3Resource(SyncAPIResource):
     @cached_property
     def implementations(self) -> ImplementationsResource:
         return ImplementationsResource(self._client)
-
-    @cached_property
-    def x_mentions(self) -> XMentionsResource:
-        return XMentionsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> V3ResourceWithRawResponse:
@@ -426,55 +413,6 @@ class V3Resource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3KickoffThumbnailsTrendingPapersResponse,
-        )
-
-    def kickoff_x_mentions_sync(
-        self,
-        *,
-        dry_run: bool | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """Kickoff X mentions sync for hot papers.
-
-        Uses x-mentions-sync-queue with
-        parallelism=1 and built-in delays.
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-x-mentions-sync.controller.ts`
-
-        Args:
-          dry_run: If true, only logs papers without queuing
-
-          limit: Number of hot papers to sync (default: 500)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/papers/v3/kickoff-x-mentions-sync",
-            body=maybe_transform(
-                {
-                    "dry_run": dry_run,
-                    "limit": limit,
-                },
-                v3_kickoff_x_mentions_sync_params.V3KickoffXMentionsSyncParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     def like(
@@ -939,9 +877,9 @@ class V3Resource(SyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"],
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
         organizations: str | Omit = omit,
-        source: Literal["GitHub", "Twitter (X)"] | Omit = omit,
+        source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1385,10 +1323,6 @@ class AsyncV3Resource(AsyncAPIResource):
         return AsyncImplementationsResource(self._client)
 
     @cached_property
-    def x_mentions(self) -> AsyncXMentionsResource:
-        return AsyncXMentionsResource(self._client)
-
-    @cached_property
     def with_raw_response(self) -> AsyncV3ResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -1705,55 +1639,6 @@ class AsyncV3Resource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3KickoffThumbnailsTrendingPapersResponse,
-        )
-
-    async def kickoff_x_mentions_sync(
-        self,
-        *,
-        dry_run: bool | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """Kickoff X mentions sync for hot papers.
-
-        Uses x-mentions-sync-queue with
-        parallelism=1 and built-in delays.
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-x-mentions-sync.controller.ts`
-
-        Args:
-          dry_run: If true, only logs papers without queuing
-
-          limit: Number of hot papers to sync (default: 500)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/papers/v3/kickoff-x-mentions-sync",
-            body=await async_maybe_transform(
-                {
-                    "dry_run": dry_run,
-                    "limit": limit,
-                },
-                v3_kickoff_x_mentions_sync_params.V3KickoffXMentionsSyncParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     async def like(
@@ -2218,9 +2103,9 @@ class AsyncV3Resource(AsyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"],
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
         organizations: str | Omit = omit,
-        source: Literal["GitHub", "Twitter (X)"] | Omit = omit,
+        source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2678,9 +2563,6 @@ class V3ResourceWithRawResponse:
         self.kickoff_thumbnails_trending_papers = to_raw_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
         )
-        self.kickoff_x_mentions_sync = to_raw_response_wrapper(
-            v3.kickoff_x_mentions_sync,
-        )
         self.like = to_raw_response_wrapper(
             v3.like,
         )
@@ -2764,10 +2646,6 @@ class V3ResourceWithRawResponse:
     def implementations(self) -> ImplementationsResourceWithRawResponse:
         return ImplementationsResourceWithRawResponse(self._v3.implementations)
 
-    @cached_property
-    def x_mentions(self) -> XMentionsResourceWithRawResponse:
-        return XMentionsResourceWithRawResponse(self._v3.x_mentions)
-
 
 class AsyncV3ResourceWithRawResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
@@ -2796,9 +2674,6 @@ class AsyncV3ResourceWithRawResponse:
         )
         self.kickoff_thumbnails_trending_papers = async_to_raw_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
-        )
-        self.kickoff_x_mentions_sync = async_to_raw_response_wrapper(
-            v3.kickoff_x_mentions_sync,
         )
         self.like = async_to_raw_response_wrapper(
             v3.like,
@@ -2883,10 +2758,6 @@ class AsyncV3ResourceWithRawResponse:
     def implementations(self) -> AsyncImplementationsResourceWithRawResponse:
         return AsyncImplementationsResourceWithRawResponse(self._v3.implementations)
 
-    @cached_property
-    def x_mentions(self) -> AsyncXMentionsResourceWithRawResponse:
-        return AsyncXMentionsResourceWithRawResponse(self._v3.x_mentions)
-
 
 class V3ResourceWithStreamingResponse:
     def __init__(self, v3: V3Resource) -> None:
@@ -2915,9 +2786,6 @@ class V3ResourceWithStreamingResponse:
         )
         self.kickoff_thumbnails_trending_papers = to_streamed_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
-        )
-        self.kickoff_x_mentions_sync = to_streamed_response_wrapper(
-            v3.kickoff_x_mentions_sync,
         )
         self.like = to_streamed_response_wrapper(
             v3.like,
@@ -3002,10 +2870,6 @@ class V3ResourceWithStreamingResponse:
     def implementations(self) -> ImplementationsResourceWithStreamingResponse:
         return ImplementationsResourceWithStreamingResponse(self._v3.implementations)
 
-    @cached_property
-    def x_mentions(self) -> XMentionsResourceWithStreamingResponse:
-        return XMentionsResourceWithStreamingResponse(self._v3.x_mentions)
-
 
 class AsyncV3ResourceWithStreamingResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
@@ -3034,9 +2898,6 @@ class AsyncV3ResourceWithStreamingResponse:
         )
         self.kickoff_thumbnails_trending_papers = async_to_streamed_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
-        )
-        self.kickoff_x_mentions_sync = async_to_streamed_response_wrapper(
-            v3.kickoff_x_mentions_sync,
         )
         self.like = async_to_streamed_response_wrapper(
             v3.like,
@@ -3120,7 +2981,3 @@ class AsyncV3ResourceWithStreamingResponse:
     @cached_property
     def implementations(self) -> AsyncImplementationsResourceWithStreamingResponse:
         return AsyncImplementationsResourceWithStreamingResponse(self._v3.implementations)
-
-    @cached_property
-    def x_mentions(self) -> AsyncXMentionsResourceWithStreamingResponse:
-        return AsyncXMentionsResourceWithStreamingResponse(self._v3.x_mentions)

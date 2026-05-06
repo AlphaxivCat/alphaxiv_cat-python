@@ -64,6 +64,7 @@ if TYPE_CHECKING:
     from .resources.well_known import WellKnownResource, AsyncWellKnownResource
     from .resources.admin.admin import AdminResource, AsyncAdminResource
     from .resources.users.users import UsersResource, AsyncUsersResource
+    from .resources.notifications import NotificationsResource, AsyncNotificationsResource
     from .resources.papers.papers import PapersResource, AsyncPapersResource
     from .resources.retool.retool import RetoolResource, AsyncRetoolResource
     from .resources.search.search import SearchResource, AsyncSearchResource
@@ -73,7 +74,6 @@ if TYPE_CHECKING:
     from .resources.retrieve.retrieve import RetrieveResource, AsyncRetrieveResource
     from .resources.analytics.analytics import AnalyticsResource, AsyncAnalyticsResource
     from .resources.assistant.assistant import AssistantResource, AsyncAssistantResource
-    from .resources.notifications.notifications import NotificationsResource, AsyncNotificationsResource
     from .resources.organizations.organizations import OrganizationsResource, AsyncOrganizationsResource
     from .resources.google_scholar.google_scholar import GoogleScholarResource, AsyncGoogleScholarResource
 
