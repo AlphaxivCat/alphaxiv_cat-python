@@ -353,43 +353,6 @@ class TestV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_kickoff_x_mentions_sync(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.kickoff_x_mentions_sync()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_kickoff_x_mentions_sync_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.kickoff_x_mentions_sync(
-            dry_run=True,
-            limit=1,
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_kickoff_x_mentions_sync(self, client: AlphaxivCat) -> None:
-        response = client.papers.v3.with_raw_response.kickoff_x_mentions_sync()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_kickoff_x_mentions_sync(self, client: AlphaxivCat) -> None:
-        with client.papers.v3.with_streaming_response.kickoff_x_mentions_sync() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     def test_method_like(self, client: AlphaxivCat) -> None:
         v3 = client.papers.v3.like(
             "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1571,43 +1534,6 @@ class TestAsyncV3:
 
             v3 = await response.parse()
             assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_kickoff_x_mentions_sync(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.kickoff_x_mentions_sync()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_kickoff_x_mentions_sync_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.kickoff_x_mentions_sync(
-            dry_run=True,
-            limit=1,
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_kickoff_x_mentions_sync(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.v3.with_raw_response.kickoff_x_mentions_sync()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_kickoff_x_mentions_sync(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.v3.with_streaming_response.kickoff_x_mentions_sync() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert v3 is None
 
         assert cast(Any, response.is_closed) is True
 
