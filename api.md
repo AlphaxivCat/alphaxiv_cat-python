@@ -152,9 +152,7 @@ from alphaxiv_cat.types.papers import (
     V3RetrieveFeedResponse,
     V3RetrieveFiguresResponse,
     V3RetrieveFullTextResponse,
-    V3RetrieveGeoTrendsResponse,
     V3RetrieveMetricsResponse,
-    V3RetrievePapersByCountryResponse,
     V3RetrievePreviewResponse,
     V3RetrieveSimilarPapersResponse,
     V3RetrieveUnrelatedResponse,
@@ -184,9 +182,7 @@ Methods:
 - <code title="get /papers/v3/feed">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_feed</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_feed_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_feed_response.py">V3RetrieveFeedResponse</a></code>
 - <code title="get /papers/v3/{paperGroupId}/figures">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_figures</a>(paper_group_id) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_figures_response.py">V3RetrieveFiguresResponse</a></code>
 - <code title="get /papers/v3/{paperVersion}/full-text">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_full_text</a>(paper_version) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_full_text_response.py">V3RetrieveFullTextResponse</a></code>
-- <code title="get /papers/v3/geo-trends">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_geo_trends</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_geo_trends_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_geo_trends_response.py">V3RetrieveGeoTrendsResponse</a></code>
 - <code title="get /papers/v3/{unresolved}/metrics">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_metrics</a>(unresolved) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_metrics_response.py">V3RetrieveMetricsResponse</a></code>
-- <code title="get /papers/v3/papers-by-country">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_papers_by_country</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_papers_by_country_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_papers_by_country_response.py">V3RetrievePapersByCountryResponse</a></code>
 - <code title="get /papers/v3/{id}/preview">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_preview</a>(id) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_preview_response.py">V3RetrievePreviewResponse</a></code>
 - <code title="get /papers/v3/{id}/similar-papers">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_similar_papers</a>(id, \*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_similar_papers_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_similar_papers_response.py">V3RetrieveSimilarPapersResponse</a></code>
 - <code title="get /papers/v3/unrelated">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_unrelated</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_unrelated_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_unrelated_response.py">V3RetrieveUnrelatedResponse</a></code>
