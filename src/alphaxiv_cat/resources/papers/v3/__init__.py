@@ -24,14 +24,6 @@ from .overview import (
     OverviewResourceWithStreamingResponse,
     AsyncOverviewResourceWithStreamingResponse,
 )
-from .x_mentions import (
-    XMentionsResource,
-    AsyncXMentionsResource,
-    XMentionsResourceWithRawResponse,
-    AsyncXMentionsResourceWithRawResponse,
-    XMentionsResourceWithStreamingResponse,
-    AsyncXMentionsResourceWithStreamingResponse,
-)
 from .implementations import (
     ImplementationsResource,
     AsyncImplementationsResource,
@@ -60,12 +52,6 @@ __all__ = [
     "AsyncImplementationsResourceWithRawResponse",
     "ImplementationsResourceWithStreamingResponse",
     "AsyncImplementationsResourceWithStreamingResponse",
-    "XMentionsResource",
-    "AsyncXMentionsResource",
-    "XMentionsResourceWithRawResponse",
-    "AsyncXMentionsResourceWithRawResponse",
-    "XMentionsResourceWithStreamingResponse",
-    "AsyncXMentionsResourceWithStreamingResponse",
     "V3Resource",
     "AsyncV3Resource",
     "V3ResourceWithRawResponse",

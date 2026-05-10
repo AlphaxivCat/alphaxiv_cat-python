@@ -152,9 +152,7 @@ from alphaxiv_cat.types.papers import (
     V3RetrieveFeedResponse,
     V3RetrieveFiguresResponse,
     V3RetrieveFullTextResponse,
-    V3RetrieveGeoTrendsResponse,
     V3RetrieveMetricsResponse,
-    V3RetrievePapersByCountryResponse,
     V3RetrievePreviewResponse,
     V3RetrieveSimilarPapersResponse,
     V3RetrieveUnrelatedResponse,
@@ -171,7 +169,6 @@ Methods:
 - <code title="post /papers/v3/kickoff-paper-full-text">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_paper_full_text</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_kickoff_paper_full_text_params.py">params</a>) -> None</code>
 - <code title="post /papers/v3/kickoff-paper-podcasts">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_paper_podcasts</a>() -> None</code>
 - <code title="post /papers/v3/kickoff-thumbnails-trending-papers">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_thumbnails_trending_papers</a>() -> <a href="./src/alphaxiv_cat/types/papers/v3_kickoff_thumbnails_trending_papers_response.py">V3KickoffThumbnailsTrendingPapersResponse</a></code>
-- <code title="post /papers/v3/kickoff-x-mentions-sync">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_x_mentions_sync</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_kickoff_x_mentions_sync_params.py">params</a>) -> None</code>
 - <code title="post /papers/v3/{group}/like">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">like</a>(group) -> <a href="./src/alphaxiv_cat/types/papers/v3_like_response.py">V3LikeResponse</a></code>
 - <code title="post /papers/v3/{paperGroupId}/podcast">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">podcast</a>(paper_group_id) -> None</code>
 - <code title="post /papers/v3/{paperVersionId}/process-ai">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">process_ai</a>(paper_version_id, \*\*<a href="src/alphaxiv_cat/types/papers/v3_process_ai_params.py">params</a>) -> None</code>
@@ -185,9 +182,7 @@ Methods:
 - <code title="get /papers/v3/feed">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_feed</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_feed_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_feed_response.py">V3RetrieveFeedResponse</a></code>
 - <code title="get /papers/v3/{paperGroupId}/figures">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_figures</a>(paper_group_id) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_figures_response.py">V3RetrieveFiguresResponse</a></code>
 - <code title="get /papers/v3/{paperVersion}/full-text">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_full_text</a>(paper_version) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_full_text_response.py">V3RetrieveFullTextResponse</a></code>
-- <code title="get /papers/v3/geo-trends">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_geo_trends</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_geo_trends_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_geo_trends_response.py">V3RetrieveGeoTrendsResponse</a></code>
 - <code title="get /papers/v3/{unresolved}/metrics">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_metrics</a>(unresolved) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_metrics_response.py">V3RetrieveMetricsResponse</a></code>
-- <code title="get /papers/v3/papers-by-country">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_papers_by_country</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_papers_by_country_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_papers_by_country_response.py">V3RetrievePapersByCountryResponse</a></code>
 - <code title="get /papers/v3/{id}/preview">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_preview</a>(id) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_preview_response.py">V3RetrievePreviewResponse</a></code>
 - <code title="get /papers/v3/{id}/similar-papers">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_similar_papers</a>(id, \*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_similar_papers_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_similar_papers_response.py">V3RetrieveSimilarPapersResponse</a></code>
 - <code title="get /papers/v3/unrelated">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">retrieve_unrelated</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_retrieve_unrelated_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_retrieve_unrelated_response.py">V3RetrieveUnrelatedResponse</a></code>
@@ -232,19 +227,6 @@ Methods:
 - <code title="post /papers/v3/{paperGroupId}/implementations">client.papers.v3.implementations.<a href="./src/alphaxiv_cat/resources/papers/v3/implementations.py">create</a>(paper_group_id, \*\*<a href="src/alphaxiv_cat/types/papers/v3/implementation_create_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3/implementation_create_response.py">ImplementationCreateResponse</a></code>
 - <code title="get /papers/v3/{paperGroupId}/implementations">client.papers.v3.implementations.<a href="./src/alphaxiv_cat/resources/papers/v3/implementations.py">list</a>(paper_group_id) -> <a href="./src/alphaxiv_cat/types/papers/v3/implementation_list_response.py">ImplementationListResponse</a></code>
 - <code title="delete /papers/v3/{paperGroupId}/implementations/{implementationId}">client.papers.v3.implementations.<a href="./src/alphaxiv_cat/resources/papers/v3/implementations.py">delete</a>(implementation_id, \*, paper_group_id, \*\*<a href="src/alphaxiv_cat/types/papers/v3/implementation_delete_params.py">params</a>) -> None</code>
-
-### XMentions
-
-Types:
-
-```python
-from alphaxiv_cat.types.papers.v3 import XMentionUpdateResponse
-```
-
-Methods:
-
-- <code title="post /papers/v3/x-mentions/{paperGroupId}">client.papers.v3.x_mentions.<a href="./src/alphaxiv_cat/resources/papers/v3/x_mentions.py">update</a>(paper_group_id, \*\*<a href="src/alphaxiv_cat/types/papers/v3/x_mention_update_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3/x_mention_update_response.py">XMentionUpdateResponse</a></code>
-- <code title="delete /papers/v3/x-mentions/{paperGroupId}">client.papers.v3.x_mentions.<a href="./src/alphaxiv_cat/resources/papers/v3/x_mentions.py">delete</a>(paper_group_id) -> None</code>
 
 ## V2
 
@@ -711,34 +693,7 @@ from alphaxiv_cat.types import NotificationSendKickoffNotificationEmailsResponse
 
 Methods:
 
-- <code title="post /v2/notifications/kickoff-notification-emails">client.notifications.<a href="./src/alphaxiv_cat/resources/notifications/notifications.py">send_kickoff_notification_emails</a>() -> <a href="./src/alphaxiv_cat/types/notification_send_kickoff_notification_emails_response.py">NotificationSendKickoffNotificationEmailsResponse</a></code>
-
-## V4
-
-Types:
-
-```python
-from alphaxiv_cat.types.notifications import V4ListNotificationsResponse
-```
-
-Methods:
-
-- <code title="get /notifications/v4">client.notifications.v4.<a href="./src/alphaxiv_cat/resources/notifications/v4/v4.py">list_notifications</a>() -> <a href="./src/alphaxiv_cat/types/notifications/v4_list_notifications_response.py">V4ListNotificationsResponse</a></code>
-- <code title="post /notifications/v4/subscribe">client.notifications.v4.<a href="./src/alphaxiv_cat/resources/notifications/v4/v4.py">subscribe</a>(\*\*<a href="src/alphaxiv_cat/types/notifications/v4_subscribe_params.py">params</a>) -> None</code>
-- <code title="post /notifications/v4/unsubscribe">client.notifications.v4.<a href="./src/alphaxiv_cat/resources/notifications/v4/v4.py">unsubscribe</a>(\*\*<a href="src/alphaxiv_cat/types/notifications/v4_unsubscribe_params.py">params</a>) -> None</code>
-
-### Archive
-
-Types:
-
-```python
-from alphaxiv_cat.types.notifications.v4 import ArchiveCreateResponse, ArchiveListResponse
-```
-
-Methods:
-
-- <code title="post /notifications/v4/archive">client.notifications.v4.archive.<a href="./src/alphaxiv_cat/resources/notifications/v4/archive.py">create</a>(\*\*<a href="src/alphaxiv_cat/types/notifications/v4/archive_create_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/notifications/v4/archive_create_response.py">ArchiveCreateResponse</a></code>
-- <code title="get /notifications/v4/archive">client.notifications.v4.archive.<a href="./src/alphaxiv_cat/resources/notifications/v4/archive.py">list</a>(\*\*<a href="src/alphaxiv_cat/types/notifications/v4/archive_list_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/notifications/v4/archive_list_response.py">ArchiveListResponse</a></code>
+- <code title="post /v2/notifications/kickoff-notification-emails">client.notifications.<a href="./src/alphaxiv_cat/resources/notifications.py">send_kickoff_notification_emails</a>() -> <a href="./src/alphaxiv_cat/types/notification_send_kickoff_notification_emails_response.py">NotificationSendKickoffNotificationEmailsResponse</a></code>
 
 # Sitemaps
 

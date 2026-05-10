@@ -83,8 +83,6 @@ class V3RetrieveUnrelatedResponseItemMetrics(BaseModel):
 
     visits_count: V3RetrieveUnrelatedResponseItemMetricsVisitsCount
 
-    x_likes: float
-
 
 class V3RetrieveUnrelatedResponseItemOrganizationInfo(BaseModel):
     image: Optional[str] = None

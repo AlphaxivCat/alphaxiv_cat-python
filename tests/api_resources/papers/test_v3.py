@@ -21,13 +21,11 @@ from alphaxiv_cat.types.papers import (
     V3RetrieveMetricsResponse,
     V3RetrievePreviewResponse,
     V3RetrieveFullTextResponse,
-    V3RetrieveGeoTrendsResponse,
     V3RetrieveUnrelatedResponse,
     V3PruneEmbeddingsByDateResponse,
     V3RequestImplementationResponse,
     V3RetrieveDiversePapersResponse,
     V3RetrieveSimilarPapersResponse,
-    V3RetrievePapersByCountryResponse,
     V3KickoffThumbnailsTrendingPapersResponse,
 )
 
@@ -348,43 +346,6 @@ class TestV3:
 
             v3 = response.parse()
             assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_kickoff_x_mentions_sync(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.kickoff_x_mentions_sync()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_kickoff_x_mentions_sync_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.kickoff_x_mentions_sync(
-            dry_run=True,
-            limit=1,
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_kickoff_x_mentions_sync(self, client: AlphaxivCat) -> None:
-        response = client.papers.v3.with_raw_response.kickoff_x_mentions_sync()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_kickoff_x_mentions_sync(self, client: AlphaxivCat) -> None:
-        with client.papers.v3.with_streaming_response.kickoff_x_mentions_sync() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert v3 is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -961,46 +922,6 @@ class TestV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_retrieve_geo_trends(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.retrieve_geo_trends()
-        assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_retrieve_geo_trends_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.retrieve_geo_trends(
-            collaboration_limit="collaborationLimit",
-            paper_limit="paperLimit",
-            past_months="pastMonths",
-            repo_limit="repoLimit",
-            top_countries="topCountries",
-        )
-        assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_retrieve_geo_trends(self, client: AlphaxivCat) -> None:
-        response = client.papers.v3.with_raw_response.retrieve_geo_trends()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_retrieve_geo_trends(self, client: AlphaxivCat) -> None:
-        with client.papers.v3.with_streaming_response.retrieve_geo_trends() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     def test_method_retrieve_metrics(self, client: AlphaxivCat) -> None:
         v3 = client.papers.v3.retrieve_metrics(
             "unresolved",
@@ -1040,43 +961,6 @@ class TestV3:
             client.papers.v3.with_raw_response.retrieve_metrics(
                 "",
             )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_retrieve_papers_by_country(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.retrieve_papers_by_country()
-        assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_retrieve_papers_by_country_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.retrieve_papers_by_country(
-            country="country",
-            limit="limit",
-        )
-        assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_retrieve_papers_by_country(self, client: AlphaxivCat) -> None:
-        response = client.papers.v3.with_raw_response.retrieve_papers_by_country()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_retrieve_papers_by_country(self, client: AlphaxivCat) -> None:
-        with client.papers.v3.with_streaming_response.retrieve_papers_by_country() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1571,43 +1455,6 @@ class TestAsyncV3:
 
             v3 = await response.parse()
             assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_kickoff_x_mentions_sync(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.kickoff_x_mentions_sync()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_kickoff_x_mentions_sync_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.kickoff_x_mentions_sync(
-            dry_run=True,
-            limit=1,
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_kickoff_x_mentions_sync(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.v3.with_raw_response.kickoff_x_mentions_sync()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_kickoff_x_mentions_sync(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.v3.with_streaming_response.kickoff_x_mentions_sync() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert v3 is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -2184,46 +2031,6 @@ class TestAsyncV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_retrieve_geo_trends(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.retrieve_geo_trends()
-        assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_retrieve_geo_trends_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.retrieve_geo_trends(
-            collaboration_limit="collaborationLimit",
-            paper_limit="paperLimit",
-            past_months="pastMonths",
-            repo_limit="repoLimit",
-            top_countries="topCountries",
-        )
-        assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_retrieve_geo_trends(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.v3.with_raw_response.retrieve_geo_trends()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_retrieve_geo_trends(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.v3.with_streaming_response.retrieve_geo_trends() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert_matches_type(V3RetrieveGeoTrendsResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_retrieve_metrics(self, async_client: AsyncAlphaxivCat) -> None:
         v3 = await async_client.papers.v3.retrieve_metrics(
             "unresolved",
@@ -2263,43 +2070,6 @@ class TestAsyncV3:
             await async_client.papers.v3.with_raw_response.retrieve_metrics(
                 "",
             )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_retrieve_papers_by_country(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.retrieve_papers_by_country()
-        assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_retrieve_papers_by_country_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.retrieve_papers_by_country(
-            country="country",
-            limit="limit",
-        )
-        assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_retrieve_papers_by_country(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.v3.with_raw_response.retrieve_papers_by_country()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_retrieve_papers_by_country(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.v3.with_streaming_response.retrieve_papers_by_country() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert_matches_type(V3RetrievePapersByCountryResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

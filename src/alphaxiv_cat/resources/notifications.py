@@ -4,25 +4,17 @@ from __future__ import annotations
 
 import httpx
 
-from .v4.v4 import (
-    V4Resource,
-    AsyncV4Resource,
-    V4ResourceWithRawResponse,
-    AsyncV4ResourceWithRawResponse,
-    V4ResourceWithStreamingResponse,
-    AsyncV4ResourceWithStreamingResponse,
-)
-from ..._types import Body, Query, Headers, NotGiven, not_given
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .._types import Body, Query, Headers, NotGiven, not_given
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.notification_send_kickoff_notification_emails_response import (
+from .._base_client import make_request_options
+from ..types.notification_send_kickoff_notification_emails_response import (
     NotificationSendKickoffNotificationEmailsResponse,
 )
 
@@ -30,10 +22,6 @@ __all__ = ["NotificationsResource", "AsyncNotificationsResource"]
 
 
 class NotificationsResource(SyncAPIResource):
-    @cached_property
-    def v4(self) -> V4Resource:
-        return V4Resource(self._client)
-
     @cached_property
     def with_raw_response(self) -> NotificationsResourceWithRawResponse:
         """
@@ -79,10 +67,6 @@ class NotificationsResource(SyncAPIResource):
 
 
 class AsyncNotificationsResource(AsyncAPIResource):
-    @cached_property
-    def v4(self) -> AsyncV4Resource:
-        return AsyncV4Resource(self._client)
-
     @cached_property
     def with_raw_response(self) -> AsyncNotificationsResourceWithRawResponse:
         """
@@ -135,10 +119,6 @@ class NotificationsResourceWithRawResponse:
             notifications.send_kickoff_notification_emails,
         )
 
-    @cached_property
-    def v4(self) -> V4ResourceWithRawResponse:
-        return V4ResourceWithRawResponse(self._notifications.v4)
-
 
 class AsyncNotificationsResourceWithRawResponse:
     def __init__(self, notifications: AsyncNotificationsResource) -> None:
@@ -147,10 +127,6 @@ class AsyncNotificationsResourceWithRawResponse:
         self.send_kickoff_notification_emails = async_to_raw_response_wrapper(
             notifications.send_kickoff_notification_emails,
         )
-
-    @cached_property
-    def v4(self) -> AsyncV4ResourceWithRawResponse:
-        return AsyncV4ResourceWithRawResponse(self._notifications.v4)
 
 
 class NotificationsResourceWithStreamingResponse:
@@ -161,10 +137,6 @@ class NotificationsResourceWithStreamingResponse:
             notifications.send_kickoff_notification_emails,
         )
 
-    @cached_property
-    def v4(self) -> V4ResourceWithStreamingResponse:
-        return V4ResourceWithStreamingResponse(self._notifications.v4)
-
 
 class AsyncNotificationsResourceWithStreamingResponse:
     def __init__(self, notifications: AsyncNotificationsResource) -> None:
@@ -173,7 +145,3 @@ class AsyncNotificationsResourceWithStreamingResponse:
         self.send_kickoff_notification_emails = async_to_streamed_response_wrapper(
             notifications.send_kickoff_notification_emails,
         )
-
-    @cached_property
-    def v4(self) -> AsyncV4ResourceWithStreamingResponse:
-        return AsyncV4ResourceWithStreamingResponse(self._notifications.v4)

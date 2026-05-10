@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from .x_mention_update_params import XMentionUpdateParams as XMentionUpdateParams
 from .legacy_retrieve_response import LegacyRetrieveResponse as LegacyRetrieveResponse
-from .x_mention_update_response import XMentionUpdateResponse as XMentionUpdateResponse
 from .overview_retrieve_response import OverviewRetrieveResponse as OverviewRetrieveResponse
 from .implementation_create_params import ImplementationCreateParams as ImplementationCreateParams
 from .implementation_delete_params import ImplementationDeleteParams as ImplementationDeleteParams

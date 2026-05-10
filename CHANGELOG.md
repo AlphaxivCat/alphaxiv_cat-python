@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.8.0 (2026-05-09)
+
+Full Changelog: [v0.7.0...v0.8.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.7.0...v0.8.0)
+
+### Features
+
+* **api:** api update ([4c6de16](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/4c6de16d34259fb653bd761b8027b1096edf811d))
+* **api:** api update ([8b8fcef](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/8b8fceff23406e623794b22eead17a2e39ea6b34))
+* **api:** api update ([1c10c88](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/1c10c88c91449891a7cd8a5e6e937f8b2bb8ab3e))
+* **api:** api update ([66f3bd8](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/66f3bd8f632c1258d8013c87b0cb332289c61a29))
+
+
+### Bug Fixes
+
+* **client:** add missing f-string prefix in file type error message ([fac905c](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/fac905ca83d841789aa27ef516689c94d1492067))
+
 ## 0.7.0 (2026-05-01)
 
 Full Changelog: [v0.6.0...v0.7.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.6.0...v0.7.0)

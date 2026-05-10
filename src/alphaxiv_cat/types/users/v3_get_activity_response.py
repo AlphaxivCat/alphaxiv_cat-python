@@ -65,7 +65,7 @@ class V3GetActivityResponseItemItemAnnotation(BaseModel):
 
     type: Literal["highlight"]
 
-    color: Optional[str] = None
+    highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
 class V3GetActivityResponseItemItemAuthorAvatar(BaseModel):

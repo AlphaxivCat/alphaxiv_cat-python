@@ -83,8 +83,6 @@ class PaperMetrics(BaseModel):
 
     visits_count: PaperMetricsVisitsCount
 
-    x_likes: float
-
 
 class PaperOrganizationInfo(BaseModel):
     image: Optional[str] = None

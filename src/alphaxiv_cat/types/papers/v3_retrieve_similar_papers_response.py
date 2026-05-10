@@ -83,8 +83,6 @@ class V3RetrieveSimilarPapersResponseItemMetrics(BaseModel):
 
     visits_count: V3RetrieveSimilarPapersResponseItemMetricsVisitsCount
 
-    x_likes: float
-
 
 class V3RetrieveSimilarPapersResponseItemOrganizationInfo(BaseModel):
     image: Optional[str] = None

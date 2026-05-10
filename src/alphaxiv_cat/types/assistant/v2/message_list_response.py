@@ -7,7 +7,38 @@ from pydantic import Field as FieldInfo
 
 from ...._models import BaseModel
 
-__all__ = ["MessageListResponse", "MessageListResponseItem"]
+__all__ = [
+    "MessageListResponse",
+    "MessageListResponseItem",
+    "MessageListResponseItemToolUseActivity",
+    "MessageListResponseItemToolUseActivitySearchCounters",
+]
+
+
+class MessageListResponseItemToolUseActivitySearchCounters(BaseModel):
+    files: Optional[int] = None
+
+    organizations: Optional[int] = None
+
+    pages: Optional[int] = None
+
+    papers: Optional[int] = None
+
+    sources: Optional[int] = None
+
+
+class MessageListResponseItemToolUseActivity(BaseModel):
+    read_kind: Optional[
+        Literal["paper", "page", "webpage", "repository", "file", "organization", "source", "multi"]
+    ] = FieldInfo(alias="readKind", default=None)
+
+    read_subjects: List[str] = FieldInfo(alias="readSubjects")
+
+    search_counters: MessageListResponseItemToolUseActivitySearchCounters = FieldInfo(alias="searchCounters")
+
+    search_queries: int = FieldInfo(alias="searchQueries")
+
+    search_results: List[str] = FieldInfo(alias="searchResults")
 
 
 class MessageListResponseItem(BaseModel):
@@ -41,6 +72,10 @@ class MessageListResponseItem(BaseModel):
         "output_text",
         "context_summary",
     ]
+
+    tool_use_activity: Optional[MessageListResponseItemToolUseActivity] = FieldInfo(
+        alias="toolUseActivity", default=None
+    )
 
     trace: Optional[str] = None
 

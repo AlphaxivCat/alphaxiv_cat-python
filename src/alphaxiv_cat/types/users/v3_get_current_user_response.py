@@ -9,7 +9,6 @@ from ..._models import BaseModel
 
 __all__ = [
     "V3GetCurrentUserResponse",
-    "Badges",
     "Preferences",
     "PreferencesBanner",
     "PreferencesBase",
@@ -24,14 +23,9 @@ __all__ = [
     "UserPreferencesBaseAssistantCustomStyle",
     "UserPreferencesEmail",
     "UserPreferencesFolder",
-    "UserPushSubscription",
     "UserSemanticScholar",
     "UserFeatured",
 ]
-
-
-class Badges(BaseModel):
-    site: int
 
 
 class PreferencesBanner(BaseModel):
@@ -63,13 +57,11 @@ class PreferencesBase(BaseModel):
         alias="defaultPrivatePaperSidebarTab", default=None
     )
 
-    default_public_paper_sidebar_tab: Optional[Literal["comments", "assistant", "similar", "notes", "social"]] = (
-        FieldInfo(alias="defaultPublicPaperSidebarTab", default=None)
+    default_public_paper_sidebar_tab: Optional[Literal["comments", "assistant", "similar", "notes"]] = FieldInfo(
+        alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"] = FieldInfo(
-        alias="feedSort"
-    )
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"] = FieldInfo(alias="feedSort")
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
@@ -217,13 +209,11 @@ class UserPreferencesBase(BaseModel):
         alias="defaultPrivatePaperSidebarTab", default=None
     )
 
-    default_public_paper_sidebar_tab: Optional[Literal["comments", "assistant", "similar", "notes", "social"]] = (
-        FieldInfo(alias="defaultPublicPaperSidebarTab", default=None)
+    default_public_paper_sidebar_tab: Optional[Literal["comments", "assistant", "similar", "notes"]] = FieldInfo(
+        alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"] = FieldInfo(
-        alias="feedSort"
-    )
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"] = FieldInfo(alias="feedSort")
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
@@ -336,14 +326,6 @@ class UserPreferences(BaseModel):
     folders: List[UserPreferencesFolder]
 
 
-class UserPushSubscription(BaseModel):
-    auth_key: str = FieldInfo(alias="authKey")
-
-    endpoint: str
-
-    p256dh_key: str = FieldInfo(alias="p256dhKey")
-
-
 class UserSemanticScholar(BaseModel):
     id: str
 
@@ -403,8 +385,6 @@ class User(BaseModel):
 
     public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
 
-    push_subscriptions: List[UserPushSubscription] = FieldInfo(alias="pushSubscriptions")
-
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
@@ -431,8 +411,6 @@ class User(BaseModel):
 
 
 class V3GetCurrentUserResponse(BaseModel):
-    badges: Badges
-
     preferences: Preferences
 
     user: User

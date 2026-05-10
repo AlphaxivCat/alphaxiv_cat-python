@@ -73,7 +73,7 @@ class LegacyRetrieveCommentsResponseItemAnnotation(BaseModel):
 
     type: Literal["highlight"]
 
-    color: Optional[str] = None
+    highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
 class LegacyRetrieveCommentsResponseItemAuthorAvatar(BaseModel):
@@ -169,7 +169,7 @@ class LegacyRetrieveCommentsResponseItemResponseAnnotation(BaseModel):
 
     type: Literal["highlight"]
 
-    color: Optional[str] = None
+    highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
 class LegacyRetrieveCommentsResponseItemResponseAuthorAvatar(BaseModel):

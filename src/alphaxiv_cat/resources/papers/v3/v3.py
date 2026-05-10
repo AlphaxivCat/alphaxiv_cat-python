@@ -27,14 +27,6 @@ from .overview import (
 from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
-from .x_mentions import (
-    XMentionsResource,
-    AsyncXMentionsResource,
-    XMentionsResourceWithRawResponse,
-    AsyncXMentionsResourceWithRawResponse,
-    XMentionsResourceWithStreamingResponse,
-    AsyncXMentionsResourceWithStreamingResponse,
-)
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
     to_raw_response_wrapper,
@@ -52,14 +44,11 @@ from ....types.papers import (
     v3_process_countries_params,
     v3_process_full_text_params,
     v3_retrieve_unrelated_params,
-    v3_retrieve_geo_trends_params,
     v3_request_implementation_params,
     v3_kickoff_paper_countries_params,
     v3_kickoff_paper_full_text_params,
-    v3_kickoff_x_mentions_sync_params,
     v3_retrieve_diverse_papers_params,
     v3_retrieve_similar_papers_params,
-    v3_retrieve_papers_by_country_params,
 )
 from .implementations import (
     ImplementationsResource,
@@ -81,12 +70,10 @@ from ....types.papers.v3_retrieve_metrics_response import V3RetrieveMetricsRespo
 from ....types.papers.v3_retrieve_preview_response import V3RetrievePreviewResponse
 from ....types.papers.v3_retrieve_full_text_response import V3RetrieveFullTextResponse
 from ....types.papers.v3_retrieve_unrelated_response import V3RetrieveUnrelatedResponse
-from ....types.papers.v3_retrieve_geo_trends_response import V3RetrieveGeoTrendsResponse
 from ....types.papers.v3_request_implementation_response import V3RequestImplementationResponse
 from ....types.papers.v3_retrieve_diverse_papers_response import V3RetrieveDiversePapersResponse
 from ....types.papers.v3_retrieve_similar_papers_response import V3RetrieveSimilarPapersResponse
 from ....types.papers.v3_prune_embeddings_by_date_response import V3PruneEmbeddingsByDateResponse
-from ....types.papers.v3_retrieve_papers_by_country_response import V3RetrievePapersByCountryResponse
 from ....types.papers.v3_kickoff_thumbnails_trending_papers_response import V3KickoffThumbnailsTrendingPapersResponse
 
 __all__ = ["V3Resource", "AsyncV3Resource"]
@@ -104,10 +91,6 @@ class V3Resource(SyncAPIResource):
     @cached_property
     def implementations(self) -> ImplementationsResource:
         return ImplementationsResource(self._client)
-
-    @cached_property
-    def x_mentions(self) -> XMentionsResource:
-        return XMentionsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> V3ResourceWithRawResponse:
@@ -426,55 +409,6 @@ class V3Resource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3KickoffThumbnailsTrendingPapersResponse,
-        )
-
-    def kickoff_x_mentions_sync(
-        self,
-        *,
-        dry_run: bool | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """Kickoff X mentions sync for hot papers.
-
-        Uses x-mentions-sync-queue with
-        parallelism=1 and built-in delays.
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-x-mentions-sync.controller.ts`
-
-        Args:
-          dry_run: If true, only logs papers without queuing
-
-          limit: Number of hot papers to sync (default: 500)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/papers/v3/kickoff-x-mentions-sync",
-            body=maybe_transform(
-                {
-                    "dry_run": dry_run,
-                    "limit": limit,
-                },
-                v3_kickoff_x_mentions_sync_params.V3KickoffXMentionsSyncParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     def like(
@@ -939,9 +873,9 @@ class V3Resource(SyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"],
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
         organizations: str | Omit = omit,
-        source: Literal["GitHub", "Twitter (X)"] | Omit = omit,
+        source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1062,56 +996,6 @@ class V3Resource(SyncAPIResource):
             cast_to=V3RetrieveFullTextResponse,
         )
 
-    def retrieve_geo_trends(
-        self,
-        *,
-        collaboration_limit: str | Omit = omit,
-        paper_limit: str | Omit = omit,
-        past_months: str | Omit = omit,
-        repo_limit: str | Omit = omit,
-        top_countries: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3RetrieveGeoTrendsResponse:
-        """
-        Retrieve geographical trends and analytics data for papers
-
-        Source file: `api-server/src/controllers/papers/v3/get-geo-trends.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/papers/v3/geo-trends",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "collaboration_limit": collaboration_limit,
-                        "paper_limit": paper_limit,
-                        "past_months": past_months,
-                        "repo_limit": repo_limit,
-                        "top_countries": top_countries,
-                    },
-                    v3_retrieve_geo_trends_params.V3RetrieveGeoTrendsParams,
-                ),
-            ),
-            cast_to=V3RetrieveGeoTrendsResponse,
-        )
-
     def retrieve_metrics(
         self,
         unresolved: str,
@@ -1147,51 +1031,6 @@ class V3Resource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3RetrieveMetricsResponse,
-        )
-
-    def retrieve_papers_by_country(
-        self,
-        *,
-        country: str | Omit = omit,
-        limit: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3RetrievePapersByCountryResponse:
-        """
-        Retrieve top papers by country with optional country filter
-
-        Source file:
-        `api-server/src/controllers/papers/v3/get-papers-by-country.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/papers/v3/papers-by-country",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "country": country,
-                        "limit": limit,
-                    },
-                    v3_retrieve_papers_by_country_params.V3RetrievePapersByCountryParams,
-                ),
-            ),
-            cast_to=V3RetrievePapersByCountryResponse,
         )
 
     def retrieve_preview(
@@ -1383,10 +1222,6 @@ class AsyncV3Resource(AsyncAPIResource):
     @cached_property
     def implementations(self) -> AsyncImplementationsResource:
         return AsyncImplementationsResource(self._client)
-
-    @cached_property
-    def x_mentions(self) -> AsyncXMentionsResource:
-        return AsyncXMentionsResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncV3ResourceWithRawResponse:
@@ -1705,55 +1540,6 @@ class AsyncV3Resource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3KickoffThumbnailsTrendingPapersResponse,
-        )
-
-    async def kickoff_x_mentions_sync(
-        self,
-        *,
-        dry_run: bool | Omit = omit,
-        limit: int | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """Kickoff X mentions sync for hot papers.
-
-        Uses x-mentions-sync-queue with
-        parallelism=1 and built-in delays.
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-x-mentions-sync.controller.ts`
-
-        Args:
-          dry_run: If true, only logs papers without queuing
-
-          limit: Number of hot papers to sync (default: 500)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/papers/v3/kickoff-x-mentions-sync",
-            body=await async_maybe_transform(
-                {
-                    "dry_run": dry_run,
-                    "limit": limit,
-                },
-                v3_kickoff_x_mentions_sync_params.V3KickoffXMentionsSyncParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     async def like(
@@ -2218,9 +2004,9 @@ class AsyncV3Resource(AsyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"],
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
         organizations: str | Omit = omit,
-        source: Literal["GitHub", "Twitter (X)"] | Omit = omit,
+        source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -2341,56 +2127,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=V3RetrieveFullTextResponse,
         )
 
-    async def retrieve_geo_trends(
-        self,
-        *,
-        collaboration_limit: str | Omit = omit,
-        paper_limit: str | Omit = omit,
-        past_months: str | Omit = omit,
-        repo_limit: str | Omit = omit,
-        top_countries: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3RetrieveGeoTrendsResponse:
-        """
-        Retrieve geographical trends and analytics data for papers
-
-        Source file: `api-server/src/controllers/papers/v3/get-geo-trends.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/papers/v3/geo-trends",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "collaboration_limit": collaboration_limit,
-                        "paper_limit": paper_limit,
-                        "past_months": past_months,
-                        "repo_limit": repo_limit,
-                        "top_countries": top_countries,
-                    },
-                    v3_retrieve_geo_trends_params.V3RetrieveGeoTrendsParams,
-                ),
-            ),
-            cast_to=V3RetrieveGeoTrendsResponse,
-        )
-
     async def retrieve_metrics(
         self,
         unresolved: str,
@@ -2426,51 +2162,6 @@ class AsyncV3Resource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3RetrieveMetricsResponse,
-        )
-
-    async def retrieve_papers_by_country(
-        self,
-        *,
-        country: str | Omit = omit,
-        limit: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3RetrievePapersByCountryResponse:
-        """
-        Retrieve top papers by country with optional country filter
-
-        Source file:
-        `api-server/src/controllers/papers/v3/get-papers-by-country.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/papers/v3/papers-by-country",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "country": country,
-                        "limit": limit,
-                    },
-                    v3_retrieve_papers_by_country_params.V3RetrievePapersByCountryParams,
-                ),
-            ),
-            cast_to=V3RetrievePapersByCountryResponse,
         )
 
     async def retrieve_preview(
@@ -2678,9 +2369,6 @@ class V3ResourceWithRawResponse:
         self.kickoff_thumbnails_trending_papers = to_raw_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
         )
-        self.kickoff_x_mentions_sync = to_raw_response_wrapper(
-            v3.kickoff_x_mentions_sync,
-        )
         self.like = to_raw_response_wrapper(
             v3.like,
         )
@@ -2730,14 +2418,8 @@ class V3ResourceWithRawResponse:
         self.retrieve_full_text = to_raw_response_wrapper(
             v3.retrieve_full_text,
         )
-        self.retrieve_geo_trends = to_raw_response_wrapper(
-            v3.retrieve_geo_trends,
-        )
         self.retrieve_metrics = to_raw_response_wrapper(
             v3.retrieve_metrics,
-        )
-        self.retrieve_papers_by_country = to_raw_response_wrapper(
-            v3.retrieve_papers_by_country,
         )
         self.retrieve_preview = to_raw_response_wrapper(
             v3.retrieve_preview,
@@ -2763,10 +2445,6 @@ class V3ResourceWithRawResponse:
     @cached_property
     def implementations(self) -> ImplementationsResourceWithRawResponse:
         return ImplementationsResourceWithRawResponse(self._v3.implementations)
-
-    @cached_property
-    def x_mentions(self) -> XMentionsResourceWithRawResponse:
-        return XMentionsResourceWithRawResponse(self._v3.x_mentions)
 
 
 class AsyncV3ResourceWithRawResponse:
@@ -2796,9 +2474,6 @@ class AsyncV3ResourceWithRawResponse:
         )
         self.kickoff_thumbnails_trending_papers = async_to_raw_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
-        )
-        self.kickoff_x_mentions_sync = async_to_raw_response_wrapper(
-            v3.kickoff_x_mentions_sync,
         )
         self.like = async_to_raw_response_wrapper(
             v3.like,
@@ -2849,14 +2524,8 @@ class AsyncV3ResourceWithRawResponse:
         self.retrieve_full_text = async_to_raw_response_wrapper(
             v3.retrieve_full_text,
         )
-        self.retrieve_geo_trends = async_to_raw_response_wrapper(
-            v3.retrieve_geo_trends,
-        )
         self.retrieve_metrics = async_to_raw_response_wrapper(
             v3.retrieve_metrics,
-        )
-        self.retrieve_papers_by_country = async_to_raw_response_wrapper(
-            v3.retrieve_papers_by_country,
         )
         self.retrieve_preview = async_to_raw_response_wrapper(
             v3.retrieve_preview,
@@ -2882,10 +2551,6 @@ class AsyncV3ResourceWithRawResponse:
     @cached_property
     def implementations(self) -> AsyncImplementationsResourceWithRawResponse:
         return AsyncImplementationsResourceWithRawResponse(self._v3.implementations)
-
-    @cached_property
-    def x_mentions(self) -> AsyncXMentionsResourceWithRawResponse:
-        return AsyncXMentionsResourceWithRawResponse(self._v3.x_mentions)
 
 
 class V3ResourceWithStreamingResponse:
@@ -2915,9 +2580,6 @@ class V3ResourceWithStreamingResponse:
         )
         self.kickoff_thumbnails_trending_papers = to_streamed_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
-        )
-        self.kickoff_x_mentions_sync = to_streamed_response_wrapper(
-            v3.kickoff_x_mentions_sync,
         )
         self.like = to_streamed_response_wrapper(
             v3.like,
@@ -2968,14 +2630,8 @@ class V3ResourceWithStreamingResponse:
         self.retrieve_full_text = to_streamed_response_wrapper(
             v3.retrieve_full_text,
         )
-        self.retrieve_geo_trends = to_streamed_response_wrapper(
-            v3.retrieve_geo_trends,
-        )
         self.retrieve_metrics = to_streamed_response_wrapper(
             v3.retrieve_metrics,
-        )
-        self.retrieve_papers_by_country = to_streamed_response_wrapper(
-            v3.retrieve_papers_by_country,
         )
         self.retrieve_preview = to_streamed_response_wrapper(
             v3.retrieve_preview,
@@ -3001,10 +2657,6 @@ class V3ResourceWithStreamingResponse:
     @cached_property
     def implementations(self) -> ImplementationsResourceWithStreamingResponse:
         return ImplementationsResourceWithStreamingResponse(self._v3.implementations)
-
-    @cached_property
-    def x_mentions(self) -> XMentionsResourceWithStreamingResponse:
-        return XMentionsResourceWithStreamingResponse(self._v3.x_mentions)
 
 
 class AsyncV3ResourceWithStreamingResponse:
@@ -3034,9 +2686,6 @@ class AsyncV3ResourceWithStreamingResponse:
         )
         self.kickoff_thumbnails_trending_papers = async_to_streamed_response_wrapper(
             v3.kickoff_thumbnails_trending_papers,
-        )
-        self.kickoff_x_mentions_sync = async_to_streamed_response_wrapper(
-            v3.kickoff_x_mentions_sync,
         )
         self.like = async_to_streamed_response_wrapper(
             v3.like,
@@ -3087,14 +2736,8 @@ class AsyncV3ResourceWithStreamingResponse:
         self.retrieve_full_text = async_to_streamed_response_wrapper(
             v3.retrieve_full_text,
         )
-        self.retrieve_geo_trends = async_to_streamed_response_wrapper(
-            v3.retrieve_geo_trends,
-        )
         self.retrieve_metrics = async_to_streamed_response_wrapper(
             v3.retrieve_metrics,
-        )
-        self.retrieve_papers_by_country = async_to_streamed_response_wrapper(
-            v3.retrieve_papers_by_country,
         )
         self.retrieve_preview = async_to_streamed_response_wrapper(
             v3.retrieve_preview,
@@ -3120,7 +2763,3 @@ class AsyncV3ResourceWithStreamingResponse:
     @cached_property
     def implementations(self) -> AsyncImplementationsResourceWithStreamingResponse:
         return AsyncImplementationsResourceWithStreamingResponse(self._v3.implementations)
-
-    @cached_property
-    def x_mentions(self) -> AsyncXMentionsResourceWithStreamingResponse:
-        return AsyncXMentionsResourceWithStreamingResponse(self._v3.x_mentions)

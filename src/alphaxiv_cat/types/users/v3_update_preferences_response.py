@@ -39,13 +39,11 @@ class Base(BaseModel):
         alias="defaultPrivatePaperSidebarTab", default=None
     )
 
-    default_public_paper_sidebar_tab: Optional[Literal["comments", "assistant", "similar", "notes", "social"]] = (
-        FieldInfo(alias="defaultPublicPaperSidebarTab", default=None)
+    default_public_paper_sidebar_tab: Optional[Literal["comments", "assistant", "similar", "notes"]] = FieldInfo(
+        alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Twitter (X)", "Recommended"] = FieldInfo(
-        alias="feedSort"
-    )
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"] = FieldInfo(alias="feedSort")
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
