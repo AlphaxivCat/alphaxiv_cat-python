@@ -24,7 +24,7 @@ class TestMetadata:
     @parametrize
     def test_method_retrieve_latest_metadata(self, client: AlphaxivCat) -> None:
         metadata = client.papers.metadata.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
         )
         assert_matches_type(MetadataRetrieveLatestMetadataResponse, metadata, path=["response"])
 
@@ -32,7 +32,7 @@ class TestMetadata:
     @parametrize
     def test_method_retrieve_latest_metadata_with_all_params(self, client: AlphaxivCat) -> None:
         metadata = client.papers.metadata.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(MetadataRetrieveLatestMetadataResponse, metadata, path=["response"])
@@ -41,7 +41,7 @@ class TestMetadata:
     @parametrize
     def test_raw_response_retrieve_latest_metadata(self, client: AlphaxivCat) -> None:
         response = client.papers.metadata.with_raw_response.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -53,7 +53,7 @@ class TestMetadata:
     @parametrize
     def test_streaming_response_retrieve_latest_metadata(self, client: AlphaxivCat) -> None:
         with client.papers.metadata.with_streaming_response.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -75,8 +75,8 @@ class TestMetadata:
     @parametrize
     def test_method_retrieve_version_metadata(self, client: AlphaxivCat) -> None:
         metadata = client.papers.metadata.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
         )
         assert_matches_type(MetadataRetrieveVersionMetadataResponse, metadata, path=["response"])
 
@@ -84,8 +84,8 @@ class TestMetadata:
     @parametrize
     def test_method_retrieve_version_metadata_with_all_params(self, client: AlphaxivCat) -> None:
         metadata = client.papers.metadata.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(MetadataRetrieveVersionMetadataResponse, metadata, path=["response"])
@@ -94,8 +94,8 @@ class TestMetadata:
     @parametrize
     def test_raw_response_retrieve_version_metadata(self, client: AlphaxivCat) -> None:
         response = client.papers.metadata.with_raw_response.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -107,8 +107,8 @@ class TestMetadata:
     @parametrize
     def test_streaming_response_retrieve_version_metadata(self, client: AlphaxivCat) -> None:
         with client.papers.metadata.with_streaming_response.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -123,14 +123,14 @@ class TestMetadata:
     def test_path_params_retrieve_version_metadata(self, client: AlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `upid` but received ''"):
             client.papers.metadata.with_raw_response.retrieve_version_metadata(
-                version_order="x",
+                version_order="469",
                 upid="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version_order` but received ''"):
             client.papers.metadata.with_raw_response.retrieve_version_metadata(
                 version_order="",
-                upid="x",
+                upid="upid",
             )
 
 
@@ -143,7 +143,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_retrieve_latest_metadata(self, async_client: AsyncAlphaxivCat) -> None:
         metadata = await async_client.papers.metadata.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
         )
         assert_matches_type(MetadataRetrieveLatestMetadataResponse, metadata, path=["response"])
 
@@ -151,7 +151,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_retrieve_latest_metadata_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
         metadata = await async_client.papers.metadata.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(MetadataRetrieveLatestMetadataResponse, metadata, path=["response"])
@@ -160,7 +160,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_raw_response_retrieve_latest_metadata(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.metadata.with_raw_response.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -172,7 +172,7 @@ class TestAsyncMetadata:
     @parametrize
     async def test_streaming_response_retrieve_latest_metadata(self, async_client: AsyncAlphaxivCat) -> None:
         async with async_client.papers.metadata.with_streaming_response.retrieve_latest_metadata(
-            upid="x",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -194,8 +194,8 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_retrieve_version_metadata(self, async_client: AsyncAlphaxivCat) -> None:
         metadata = await async_client.papers.metadata.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
         )
         assert_matches_type(MetadataRetrieveVersionMetadataResponse, metadata, path=["response"])
 
@@ -203,8 +203,8 @@ class TestAsyncMetadata:
     @parametrize
     async def test_method_retrieve_version_metadata_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
         metadata = await async_client.papers.metadata.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(MetadataRetrieveVersionMetadataResponse, metadata, path=["response"])
@@ -213,8 +213,8 @@ class TestAsyncMetadata:
     @parametrize
     async def test_raw_response_retrieve_version_metadata(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.metadata.with_raw_response.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -226,8 +226,8 @@ class TestAsyncMetadata:
     @parametrize
     async def test_streaming_response_retrieve_version_metadata(self, async_client: AsyncAlphaxivCat) -> None:
         async with async_client.papers.metadata.with_streaming_response.retrieve_version_metadata(
-            version_order="x",
-            upid="x",
+            version_order="469",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -242,12 +242,12 @@ class TestAsyncMetadata:
     async def test_path_params_retrieve_version_metadata(self, async_client: AsyncAlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `upid` but received ''"):
             await async_client.papers.metadata.with_raw_response.retrieve_version_metadata(
-                version_order="x",
+                version_order="469",
                 upid="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version_order` but received ''"):
             await async_client.papers.metadata.with_raw_response.retrieve_version_metadata(
                 version_order="",
-                upid="x",
+                upid="upid",
             )
