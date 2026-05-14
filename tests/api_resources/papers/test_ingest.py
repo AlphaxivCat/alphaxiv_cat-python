@@ -24,7 +24,7 @@ class TestIngest:
     @parametrize
     def test_method_ingest_latest(self, client: AlphaxivCat) -> None:
         ingest = client.papers.ingest.ingest_latest(
-            upid="x",
+            upid="upid",
         )
         assert_matches_type(IngestIngestLatestResponse, ingest, path=["response"])
 
@@ -32,7 +32,7 @@ class TestIngest:
     @parametrize
     def test_method_ingest_latest_with_all_params(self, client: AlphaxivCat) -> None:
         ingest = client.papers.ingest.ingest_latest(
-            upid="x",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(IngestIngestLatestResponse, ingest, path=["response"])
@@ -41,7 +41,7 @@ class TestIngest:
     @parametrize
     def test_raw_response_ingest_latest(self, client: AlphaxivCat) -> None:
         response = client.papers.ingest.with_raw_response.ingest_latest(
-            upid="x",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -53,7 +53,7 @@ class TestIngest:
     @parametrize
     def test_streaming_response_ingest_latest(self, client: AlphaxivCat) -> None:
         with client.papers.ingest.with_streaming_response.ingest_latest(
-            upid="x",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -75,8 +75,8 @@ class TestIngest:
     @parametrize
     def test_method_ingest_version(self, client: AlphaxivCat) -> None:
         ingest = client.papers.ingest.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
         )
         assert_matches_type(IngestIngestVersionResponse, ingest, path=["response"])
 
@@ -84,8 +84,8 @@ class TestIngest:
     @parametrize
     def test_method_ingest_version_with_all_params(self, client: AlphaxivCat) -> None:
         ingest = client.papers.ingest.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(IngestIngestVersionResponse, ingest, path=["response"])
@@ -94,8 +94,8 @@ class TestIngest:
     @parametrize
     def test_raw_response_ingest_version(self, client: AlphaxivCat) -> None:
         response = client.papers.ingest.with_raw_response.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -107,8 +107,8 @@ class TestIngest:
     @parametrize
     def test_streaming_response_ingest_version(self, client: AlphaxivCat) -> None:
         with client.papers.ingest.with_streaming_response.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -123,14 +123,14 @@ class TestIngest:
     def test_path_params_ingest_version(self, client: AlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `upid` but received ''"):
             client.papers.ingest.with_raw_response.ingest_version(
-                version_label="x",
+                version_label="v469",
                 upid="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version_label` but received ''"):
             client.papers.ingest.with_raw_response.ingest_version(
                 version_label="",
-                upid="x",
+                upid="upid",
             )
 
 
@@ -143,7 +143,7 @@ class TestAsyncIngest:
     @parametrize
     async def test_method_ingest_latest(self, async_client: AsyncAlphaxivCat) -> None:
         ingest = await async_client.papers.ingest.ingest_latest(
-            upid="x",
+            upid="upid",
         )
         assert_matches_type(IngestIngestLatestResponse, ingest, path=["response"])
 
@@ -151,7 +151,7 @@ class TestAsyncIngest:
     @parametrize
     async def test_method_ingest_latest_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
         ingest = await async_client.papers.ingest.ingest_latest(
-            upid="x",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(IngestIngestLatestResponse, ingest, path=["response"])
@@ -160,7 +160,7 @@ class TestAsyncIngest:
     @parametrize
     async def test_raw_response_ingest_latest(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.ingest.with_raw_response.ingest_latest(
-            upid="x",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -172,7 +172,7 @@ class TestAsyncIngest:
     @parametrize
     async def test_streaming_response_ingest_latest(self, async_client: AsyncAlphaxivCat) -> None:
         async with async_client.papers.ingest.with_streaming_response.ingest_latest(
-            upid="x",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -194,8 +194,8 @@ class TestAsyncIngest:
     @parametrize
     async def test_method_ingest_version(self, async_client: AsyncAlphaxivCat) -> None:
         ingest = await async_client.papers.ingest.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
         )
         assert_matches_type(IngestIngestVersionResponse, ingest, path=["response"])
 
@@ -203,8 +203,8 @@ class TestAsyncIngest:
     @parametrize
     async def test_method_ingest_version_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
         ingest = await async_client.papers.ingest.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
             prevent_tracking="preventTracking",
         )
         assert_matches_type(IngestIngestVersionResponse, ingest, path=["response"])
@@ -213,8 +213,8 @@ class TestAsyncIngest:
     @parametrize
     async def test_raw_response_ingest_version(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.ingest.with_raw_response.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
         )
 
         assert response.is_closed is True
@@ -226,8 +226,8 @@ class TestAsyncIngest:
     @parametrize
     async def test_streaming_response_ingest_version(self, async_client: AsyncAlphaxivCat) -> None:
         async with async_client.papers.ingest.with_streaming_response.ingest_version(
-            version_label="x",
-            upid="x",
+            version_label="v469",
+            upid="upid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -242,12 +242,12 @@ class TestAsyncIngest:
     async def test_path_params_ingest_version(self, async_client: AsyncAlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `upid` but received ''"):
             await async_client.papers.ingest.with_raw_response.ingest_version(
-                version_label="x",
+                version_label="v469",
                 upid="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `version_label` but received ''"):
             await async_client.papers.ingest.with_raw_response.ingest_version(
                 version_label="",
-                upid="x",
+                upid="upid",
             )
