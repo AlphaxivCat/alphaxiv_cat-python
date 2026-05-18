@@ -58,7 +58,7 @@ class KickoffDailyGitHubStarsResource(SyncAPIResource):
         Kickoff background job to update daily GitHub stars with max limit
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-daily-github-stars-max.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-daily-github-stars-max.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -93,7 +93,7 @@ class KickoffDailyGitHubStarsResource(SyncAPIResource):
         Kickoff background job to update daily GitHub stars
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-daily-github-stars.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-daily-github-stars.controller.ts`
         """
         return self._post(
             "/v2/papers/kickoff-daily-github-stars",
@@ -139,7 +139,7 @@ class AsyncKickoffDailyGitHubStarsResource(AsyncAPIResource):
         Kickoff background job to update daily GitHub stars with max limit
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-daily-github-stars-max.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-daily-github-stars-max.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -174,7 +174,7 @@ class AsyncKickoffDailyGitHubStarsResource(AsyncAPIResource):
         Kickoff background job to update daily GitHub stars
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-daily-github-stars.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-daily-github-stars.controller.ts`
         """
         return await self._post(
             "/v2/papers/kickoff-daily-github-stars",

@@ -7,7 +7,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["V2ChatParams", "File"]
+__all__ = ["V2ChatParams", "File", "CustomFilter"]
 
 
 class V2ChatParams(TypedDict, total=False):
@@ -28,6 +28,10 @@ class V2ChatParams(TypedDict, total=False):
     web_search: Required[Annotated[Literal["off", "full"], PropertyInfo(alias="webSearch")]]
 
     assistant_variant: Annotated[Literal["homepage", "paper", "landing"], PropertyInfo(alias="assistantVariant")]
+
+    custom_filter: Annotated[CustomFilter, PropertyInfo(alias="customFilter")]
+
+    filter_model: Annotated[Literal["baseline", "v1-baseten"], PropertyInfo(alias="filterModel")]
 
     model: Literal[
         "claude-opus-4.5",
@@ -65,5 +69,11 @@ class V2ChatParams(TypedDict, total=False):
 
 class File(TypedDict, total=False):
     content_type: Required[Annotated[str, PropertyInfo(alias="contentType")]]
+
+    url: Required[str]
+
+
+class CustomFilter(TypedDict, total=False):
+    api_key: Required[Annotated[str, PropertyInfo(alias="apiKey")]]
 
     url: Required[str]

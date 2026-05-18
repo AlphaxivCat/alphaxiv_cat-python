@@ -55,7 +55,7 @@ class NotificationsResource(SyncAPIResource):
         Queues notification emails for all users with unseen notifications
 
         Source file:
-        `api-server/src/controllers/v2/notifications/kickoff-notification-emails.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/notifications/kickoff-notification-emails.controller.ts`
         """
         return self._post(
             "/v2/notifications/kickoff-notification-emails",
@@ -100,7 +100,7 @@ class AsyncNotificationsResource(AsyncAPIResource):
         Queues notification emails for all users with unseen notifications
 
         Source file:
-        `api-server/src/controllers/v2/notifications/kickoff-notification-emails.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/notifications/kickoff-notification-emails.controller.ts`
         """
         return await self._post(
             "/v2/notifications/kickoff-notification-emails",

@@ -54,7 +54,8 @@ class V1Resource(SyncAPIResource):
         """
         Establish SSE connection for server-to-client MCP messages
 
-        Source file: `api-server/src/controllers/mcp/v1/get.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/mcp/v1/get.controller.ts`
         """
         extra_headers = {"Accept": "text/event-stream", **(extra_headers or {})}
         return self._get(
@@ -81,7 +82,8 @@ class V1Resource(SyncAPIResource):
         """
         Send a message to the MCP server
 
-        Source file: `api-server/src/controllers/mcp/v1/post.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/mcp/v1/post.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -114,7 +116,8 @@ class V1Resource(SyncAPIResource):
         """
         Terminate an MCP session
 
-        Source file: `api-server/src/controllers/mcp/v1/delete.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/mcp/v1/delete.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
@@ -159,7 +162,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Establish SSE connection for server-to-client MCP messages
 
-        Source file: `api-server/src/controllers/mcp/v1/get.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/mcp/v1/get.controller.ts`
         """
         extra_headers = {"Accept": "text/event-stream", **(extra_headers or {})}
         return await self._get(
@@ -186,7 +190,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Send a message to the MCP server
 
-        Source file: `api-server/src/controllers/mcp/v1/post.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/mcp/v1/post.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -219,7 +224,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Terminate an MCP session
 
-        Source file: `api-server/src/controllers/mcp/v1/delete.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/mcp/v1/delete.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(

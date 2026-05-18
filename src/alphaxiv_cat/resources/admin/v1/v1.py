@@ -73,7 +73,7 @@ class V1Resource(SyncAPIResource):
         Get page of comments for moderator feed
 
         Source file:
-        `api-server/src/controllers/admin/v1/get-moderator-feed.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/get-moderator-feed.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -118,7 +118,7 @@ class V1Resource(SyncAPIResource):
         Look up a user by email address (admin only)
 
         Source file:
-        `api-server/src/controllers/admin/v1/lookup-user-by-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/lookup-user-by-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -183,7 +183,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get page of comments for moderator feed
 
         Source file:
-        `api-server/src/controllers/admin/v1/get-moderator-feed.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/get-moderator-feed.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -228,7 +228,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Look up a user by email address (admin only)
 
         Source file:
-        `api-server/src/controllers/admin/v1/lookup-user-by-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/lookup-user-by-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers

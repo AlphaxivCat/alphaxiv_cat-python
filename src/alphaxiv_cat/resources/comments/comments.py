@@ -75,7 +75,8 @@ class CommentsResource(SyncAPIResource):
         """
         Edit a comment by UUID
 
-        Source file: `api-server/src/controllers/comments/v1/edit-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/comments/v1/edit-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -155,7 +156,8 @@ class AsyncCommentsResource(AsyncAPIResource):
         """
         Edit a comment by UUID
 
-        Source file: `api-server/src/controllers/comments/v1/edit-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/comments/v1/edit-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers

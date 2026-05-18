@@ -67,7 +67,7 @@ class V2Resource(SyncAPIResource):
         Delete a comment by UUID
 
         Source file:
-        `api-server/src/controllers/comments/v2/delete-comment.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/delete-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -104,7 +104,7 @@ class V2Resource(SyncAPIResource):
         Downvote a comment by UUID
 
         Source file:
-        `api-server/src/controllers/comments/v2/downvote-comment.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/downvote-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -141,7 +141,8 @@ class V2Resource(SyncAPIResource):
         """
         Flag a comment for moderator review
 
-        Source file: `api-server/src/controllers/comments/v2/flag-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/comments/v2/flag-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -179,7 +180,7 @@ class V2Resource(SyncAPIResource):
         Toggle author endorsement of a comment
 
         Source file:
-        `api-server/src/controllers/comments/v2/toggle-comment-endorse.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/toggle-comment-endorse.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -216,7 +217,7 @@ class V2Resource(SyncAPIResource):
         Upvote a comment by UUID
 
         Source file:
-        `api-server/src/controllers/comments/v2/upvote-comment.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/upvote-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -278,7 +279,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Delete a comment by UUID
 
         Source file:
-        `api-server/src/controllers/comments/v2/delete-comment.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/delete-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -315,7 +316,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Downvote a comment by UUID
 
         Source file:
-        `api-server/src/controllers/comments/v2/downvote-comment.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/downvote-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -352,7 +353,8 @@ class AsyncV2Resource(AsyncAPIResource):
         """
         Flag a comment for moderator review
 
-        Source file: `api-server/src/controllers/comments/v2/flag-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/comments/v2/flag-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -390,7 +392,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Toggle author endorsement of a comment
 
         Source file:
-        `api-server/src/controllers/comments/v2/toggle-comment-endorse.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/toggle-comment-endorse.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -427,7 +429,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Upvote a comment by UUID
 
         Source file:
-        `api-server/src/controllers/comments/v2/upvote-comment.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/upvote-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers

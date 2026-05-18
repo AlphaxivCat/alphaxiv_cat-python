@@ -59,7 +59,7 @@ class SitemapsResource(SyncAPIResource):
         Get paginated list of paper versions with AI overviews for sitemap generation
 
         Source file:
-        `api-server/src/controllers/v1/sitemaps/get-overviews-for-sitemap.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-overviews-for-sitemap.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -106,7 +106,7 @@ class SitemapsResource(SyncAPIResource):
         for efficient deep pagination.
 
         Source file:
-        `api-server/src/controllers/v1/sitemaps/get-papers-for-sitemap.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-papers-for-sitemap.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -151,7 +151,7 @@ class SitemapsResource(SyncAPIResource):
         Get paginated list of users for sitemap generation
 
         Source file:
-        `api-server/src/controllers/v1/sitemaps/get-users-for-sitemap.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-users-for-sitemap.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -217,7 +217,7 @@ class AsyncSitemapsResource(AsyncAPIResource):
         Get paginated list of paper versions with AI overviews for sitemap generation
 
         Source file:
-        `api-server/src/controllers/v1/sitemaps/get-overviews-for-sitemap.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-overviews-for-sitemap.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -264,7 +264,7 @@ class AsyncSitemapsResource(AsyncAPIResource):
         for efficient deep pagination.
 
         Source file:
-        `api-server/src/controllers/v1/sitemaps/get-papers-for-sitemap.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-papers-for-sitemap.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -309,7 +309,7 @@ class AsyncSitemapsResource(AsyncAPIResource):
         Get paginated list of users for sitemap generation
 
         Source file:
-        `api-server/src/controllers/v1/sitemaps/get-users-for-sitemap.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-users-for-sitemap.controller.ts`
 
         Args:
           extra_headers: Send extra headers

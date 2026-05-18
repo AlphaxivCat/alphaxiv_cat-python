@@ -56,7 +56,7 @@ class V1Resource(SyncAPIResource):
         Get the top AI papers
 
         Source file:
-        `api-server/src/controllers/retrieve/v1/retrieve-top-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retrieve/v1/retrieve-top-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -122,7 +122,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get the top AI papers
 
         Source file:
-        `api-server/src/controllers/retrieve/v1/retrieve-top-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retrieve/v1/retrieve-top-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers

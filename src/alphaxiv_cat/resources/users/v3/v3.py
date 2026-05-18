@@ -131,7 +131,7 @@ class V3Resource(SyncAPIResource):
         Generate a biography and institution for a user using their claimed papers
 
         Source file:
-        `api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -165,7 +165,8 @@ class V3Resource(SyncAPIResource):
         """
         Delete the given banner
 
-        Source file: `api-server/src/controllers/users/v3/delete-banner.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-banner.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -200,7 +201,8 @@ class V3Resource(SyncAPIResource):
         """
         Deletes the user's account
 
-        Source file: `api-server/src/controllers/users/v3/delete-own-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-own-user.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
@@ -226,7 +228,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve public activity timeline for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-activity.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-activity.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -267,7 +270,7 @@ class V3Resource(SyncAPIResource):
         Retrieve the claimed papers for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -306,7 +309,7 @@ class V3Resource(SyncAPIResource):
         Retrieve information about yourself
 
         Source file:
-        `api-server/src/controllers/users/v3/get-current-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-current-user.controller.ts`
         """
         return self._get(
             "/users/v3",
@@ -330,7 +333,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve highlighted activity for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-featured.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-featured.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -365,7 +369,8 @@ class V3Resource(SyncAPIResource):
         """
         List the users following the specified user
 
-        Source file: `api-server/src/controllers/users/v3/get-followers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-followers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -399,7 +404,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve weekly and all-time leaderboards for users ranked by reputation
 
-        Source file: `api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
         """
         return self._get(
             "/users/v3/leaderboard",
@@ -423,7 +429,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve a user's basic information given its UUID
 
-        Source file: `api-server/src/controllers/users/v3/get-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -460,7 +467,7 @@ class V3Resource(SyncAPIResource):
         Retrieve the view history for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -505,7 +512,7 @@ class V3Resource(SyncAPIResource):
         Send a notification digest email for the given user when necessary.
 
         Source file:
-        `api-server/src/controllers/users/v3/process-notification-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/process-notification-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -541,7 +548,8 @@ class V3Resource(SyncAPIResource):
         """
         Search for users by name, username, or institution
 
-        Source file: `api-server/src/controllers/users/v3/search-users.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/search-users.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -585,7 +593,7 @@ class V3Resource(SyncAPIResource):
         Follow or unfollow another user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -622,7 +630,7 @@ class V3Resource(SyncAPIResource):
         Update base or banner preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/users/v3/update-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-preferences.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -671,7 +679,8 @@ class V3Resource(SyncAPIResource):
         """
         Update profile details for the authenticated user
 
-        Source file: `api-server/src/controllers/users/v3/update-profile.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-profile.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -718,7 +727,8 @@ class V3Resource(SyncAPIResource):
         """
         Upload or remove the authenticated user's avatar image.
 
-        Source file: `api-server/src/controllers/users/v3/upload-avatar.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/upload-avatar.controller.ts`
         """
         return self._post(
             "/users/v3/avatar",
@@ -781,7 +791,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Generate a biography and institution for a user using their claimed papers
 
         Source file:
-        `api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -817,7 +827,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Delete the given banner
 
-        Source file: `api-server/src/controllers/users/v3/delete-banner.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-banner.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -852,7 +863,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Deletes the user's account
 
-        Source file: `api-server/src/controllers/users/v3/delete-own-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-own-user.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
@@ -878,7 +890,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve public activity timeline for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-activity.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-activity.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -919,7 +932,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve the claimed papers for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -960,7 +973,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve information about yourself
 
         Source file:
-        `api-server/src/controllers/users/v3/get-current-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-current-user.controller.ts`
         """
         return await self._get(
             "/users/v3",
@@ -984,7 +997,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve highlighted activity for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-featured.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-featured.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1019,7 +1033,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         List the users following the specified user
 
-        Source file: `api-server/src/controllers/users/v3/get-followers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-followers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1053,7 +1068,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve weekly and all-time leaderboards for users ranked by reputation
 
-        Source file: `api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
         """
         return await self._get(
             "/users/v3/leaderboard",
@@ -1077,7 +1093,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve a user's basic information given its UUID
 
-        Source file: `api-server/src/controllers/users/v3/get-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1114,7 +1131,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve the view history for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1159,7 +1176,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Send a notification digest email for the given user when necessary.
 
         Source file:
-        `api-server/src/controllers/users/v3/process-notification-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/process-notification-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1195,7 +1212,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Search for users by name, username, or institution
 
-        Source file: `api-server/src/controllers/users/v3/search-users.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/search-users.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1239,7 +1257,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Follow or unfollow another user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1276,7 +1294,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Update base or banner preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/users/v3/update-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-preferences.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1325,7 +1343,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Update profile details for the authenticated user
 
-        Source file: `api-server/src/controllers/users/v3/update-profile.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-profile.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1372,7 +1391,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Upload or remove the authenticated user's avatar image.
 
-        Source file: `api-server/src/controllers/users/v3/upload-avatar.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/upload-avatar.controller.ts`
         """
         return await self._post(
             "/users/v3/avatar",

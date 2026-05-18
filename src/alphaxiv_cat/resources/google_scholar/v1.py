@@ -64,7 +64,7 @@ class V1Resource(SyncAPIResource):
         connection with a different profile
 
         Source file:
-        `api-server/src/controllers/google-scholar/v1/connect.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/connect.controller.ts`
 
         Args:
           google_scholar_id: Google Scholar ID
@@ -99,7 +99,8 @@ class V1Resource(SyncAPIResource):
         """
         Remove Google Scholar ID and queued papers from a user
 
-        Source file: `api-server/src/controllers/google-scholar/v1/delete.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/delete.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
@@ -123,7 +124,8 @@ class V1Resource(SyncAPIResource):
         """
         Get a full report of a user's Google Scholar sync (including lists of papers)
 
-        Source file: `api-server/src/controllers/google-scholar/v1/report.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/report.controller.ts`
         """
         return self._get(
             "/google-scholar/v1/report",
@@ -146,7 +148,8 @@ class V1Resource(SyncAPIResource):
         """
         Get status of user's Google Scholar sync
 
-        Source file: `api-server/src/controllers/google-scholar/v1/status.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/status.controller.ts`
         """
         return self._get(
             "/google-scholar/v1/status",
@@ -170,7 +173,8 @@ class V1Resource(SyncAPIResource):
         """
         Start a new Google Scholar sync for this user
 
-        Source file: `api-server/src/controllers/google-scholar/v1/resync.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/resync.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -208,7 +212,7 @@ class V1Resource(SyncAPIResource):
         verification email to that address
 
         Source file:
-        `api-server/src/controllers/google-scholar/v1/set-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/set-email.controller.ts`
 
         Args:
           local_part: Institutional email local-part
@@ -253,7 +257,8 @@ class V1Resource(SyncAPIResource):
         """
         Make some progress syncing a user's Google Scholar papers
 
-        Source file: `api-server/src/controllers/google-scholar/v1/sync.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/sync.controller.ts`
         """
         return self._post(
             "/google-scholar/v1/sync",
@@ -277,7 +282,8 @@ class V1Resource(SyncAPIResource):
         """
         Verify a user's Google Scholar email by entering the code sent to that email
 
-        Source file: `api-server/src/controllers/google-scholar/v1/verify.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/verify.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -334,7 +340,7 @@ class AsyncV1Resource(AsyncAPIResource):
         connection with a different profile
 
         Source file:
-        `api-server/src/controllers/google-scholar/v1/connect.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/connect.controller.ts`
 
         Args:
           google_scholar_id: Google Scholar ID
@@ -371,7 +377,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Remove Google Scholar ID and queued papers from a user
 
-        Source file: `api-server/src/controllers/google-scholar/v1/delete.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/delete.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
@@ -395,7 +402,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Get a full report of a user's Google Scholar sync (including lists of papers)
 
-        Source file: `api-server/src/controllers/google-scholar/v1/report.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/report.controller.ts`
         """
         return await self._get(
             "/google-scholar/v1/report",
@@ -418,7 +426,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Get status of user's Google Scholar sync
 
-        Source file: `api-server/src/controllers/google-scholar/v1/status.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/status.controller.ts`
         """
         return await self._get(
             "/google-scholar/v1/status",
@@ -442,7 +451,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Start a new Google Scholar sync for this user
 
-        Source file: `api-server/src/controllers/google-scholar/v1/resync.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/resync.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -480,7 +490,7 @@ class AsyncV1Resource(AsyncAPIResource):
         verification email to that address
 
         Source file:
-        `api-server/src/controllers/google-scholar/v1/set-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/set-email.controller.ts`
 
         Args:
           local_part: Institutional email local-part
@@ -525,7 +535,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Make some progress syncing a user's Google Scholar papers
 
-        Source file: `api-server/src/controllers/google-scholar/v1/sync.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/sync.controller.ts`
         """
         return await self._post(
             "/google-scholar/v1/sync",
@@ -549,7 +560,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         Verify a user's Google Scholar email by entering the code sent to that email
 
-        Source file: `api-server/src/controllers/google-scholar/v1/verify.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/google-scholar/v1/verify.controller.ts`
 
         Args:
           extra_headers: Send extra headers

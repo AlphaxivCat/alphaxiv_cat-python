@@ -52,7 +52,8 @@ class EventsResource(SyncAPIResource):
         """
         Retrieve events for the homepage
 
-        Source file: `api-server/src/controllers/events/v1/get-events.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/events/v1/get-events.controller.ts`
         """
         return self._get(
             "/events/v1",
@@ -96,7 +97,8 @@ class AsyncEventsResource(AsyncAPIResource):
         """
         Retrieve events for the homepage
 
-        Source file: `api-server/src/controllers/events/v1/get-events.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/events/v1/get-events.controller.ts`
         """
         return await self._get(
             "/events/v1",

@@ -65,7 +65,7 @@ class PreferencesResource(SyncAPIResource):
         Get folder preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/v2/users/get-folders-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/users/get-folders-preferences.controller.ts`
         """
         return self._get(
             "/v2/users/preferences/folders",
@@ -114,7 +114,7 @@ class AsyncPreferencesResource(AsyncAPIResource):
         Get folder preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/v2/users/get-folders-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/users/get-folders-preferences.controller.ts`
         """
         return await self._get(
             "/v2/users/preferences/folders",

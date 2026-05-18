@@ -58,7 +58,7 @@ class MetadataResource(SyncAPIResource):
         Get metadata for latest paper version (deprecated, used by browser extension)
 
         Source file:
-        `api-server/src/controllers/v2/papers/get-paper-metadata-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/get-paper-metadata-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -104,7 +104,7 @@ class MetadataResource(SyncAPIResource):
         extension)
 
         Source file:
-        `api-server/src/controllers/v2/papers/get-paper-metadata.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/get-paper-metadata.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -173,7 +173,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         Get metadata for latest paper version (deprecated, used by browser extension)
 
         Source file:
-        `api-server/src/controllers/v2/papers/get-paper-metadata-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/get-paper-metadata-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -219,7 +219,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         extension)
 
         Source file:
-        `api-server/src/controllers/v2/papers/get-paper-metadata.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/get-paper-metadata.controller.ts`
 
         Args:
           extra_headers: Send extra headers

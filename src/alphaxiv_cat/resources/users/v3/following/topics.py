@@ -57,7 +57,7 @@ class TopicsResource(SyncAPIResource):
         List the topics followed by a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-following-topics.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-following-topics.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -94,7 +94,7 @@ class TopicsResource(SyncAPIResource):
         Toggle following a topic for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-following-topic.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-following-topic.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -152,7 +152,7 @@ class AsyncTopicsResource(AsyncAPIResource):
         List the topics followed by a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-following-topics.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-following-topics.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -189,7 +189,7 @@ class AsyncTopicsResource(AsyncAPIResource):
         Toggle following a topic for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-following-topic.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-following-topic.controller.ts`
 
         Args:
           extra_headers: Send extra headers

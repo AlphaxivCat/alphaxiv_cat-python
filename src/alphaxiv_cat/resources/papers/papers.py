@@ -175,7 +175,8 @@ class PapersResource(SyncAPIResource):
         """
         Add a new author to a paper
 
-        Source file: `api-server/src/controllers/v2/papers/add-new-author.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/add-new-author.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -219,7 +220,7 @@ class PapersResource(SyncAPIResource):
         Set paper vote count (admin only)
 
         Source file:
-        `api-server/src/controllers/v2/papers/admin-vote-paper.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/admin-vote-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -257,7 +258,7 @@ class PapersResource(SyncAPIResource):
         Legacy route for v1 browser extensions to track abstract page clicks
 
         Source file:
-        `api-server/src/controllers/v1/papers/crxabstractclick.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxabstractclick.controller.ts`
 
         Args:
           pid: Paper ID
@@ -298,7 +299,8 @@ class PapersResource(SyncAPIResource):
         """
         Legacy route for v1 browser extensions to track abstract page hits
 
-        Source file: `api-server/src/controllers/v1/papers/crxabstracthit.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxabstracthit.controller.ts`
 
         Args:
           pid: Paper ID
@@ -336,7 +338,8 @@ class PapersResource(SyncAPIResource):
         """
         Legacy route for v1 browser extensions to track PDF page clicks
 
-        Source file: `api-server/src/controllers/v1/papers/crxpdfclick.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxpdfclick.controller.ts`
 
         Args:
           pid: Paper ID
@@ -377,7 +380,8 @@ class PapersResource(SyncAPIResource):
         """
         Legacy route for v1 browser extensions to track PDF page hits
 
-        Source file: `api-server/src/controllers/v1/papers/crxpdfhit.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxpdfhit.controller.ts`
 
         Args:
           pid: Paper ID
@@ -420,7 +424,7 @@ class PapersResource(SyncAPIResource):
         Send email to individual author about paper comments or trending
 
         Source file:
-        `api-server/src/controllers/v2/papers/email-individual-author.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/email-individual-author.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -466,7 +470,7 @@ class PapersResource(SyncAPIResource):
         Legacy route for v1 browser extensions to get paper information
 
         Source file:
-        `api-server/src/controllers/v1/papers/getcrxpaperinfo.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/papers/getcrxpaperinfo.controller.ts`
 
         Args:
           pid: Paper ID
@@ -503,7 +507,8 @@ class PapersResource(SyncAPIResource):
         """
         Legacy route for getting paper information from arXiv abstract pages
 
-        Source file: `api-server/src/controllers/v1/papers/getpaperinfo.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/getpaperinfo.controller.ts`
 
         Args:
           pid: Paper ID
@@ -540,7 +545,7 @@ class PapersResource(SyncAPIResource):
         Kickoff background job to generate abstract embeddings for paper versions
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-version-abstract-embed.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-version-abstract-embed.controller.ts`
         """
         return self._post(
             "/v2/papers/kickoff-paper-version-abstract-embed",
@@ -564,7 +569,7 @@ class PapersResource(SyncAPIResource):
         Kickoff background job to generate AI overviews for papers
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-ai.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-ai.controller.ts`
         """
         return self._post(
             "/v2/papers/kickoff-paper-ai",
@@ -588,7 +593,7 @@ class PapersResource(SyncAPIResource):
         Kickoff background job to generate bibtex for papers
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-bibtex.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-bibtex.controller.ts`
         """
         return self._post(
             "/v2/papers/kickoff-paper-bibtex",
@@ -611,7 +616,8 @@ class PapersResource(SyncAPIResource):
         """
         Kickoff background job to link papers with GitHub repositories
 
-        Source file: `api-server/src/controllers/v2/papers/kickoff-github.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-github.controller.ts`
         """
         return self._post(
             "/v2/papers/kickoff-github",
@@ -636,7 +642,7 @@ class PapersResource(SyncAPIResource):
         Kickoff background job to categorize papers
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-categorization.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-categorization.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -671,7 +677,7 @@ class PapersResource(SyncAPIResource):
         Kickoff background job to ingest recent papers from arXiv
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-recent-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-recent-papers.controller.ts`
         """
         return self._post(
             "/v2/papers/kickoff-recent-papers",
@@ -696,7 +702,7 @@ class PapersResource(SyncAPIResource):
         Track paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/v2/papers/mark-paper-view.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/mark-paper-view.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -733,7 +739,7 @@ class PapersResource(SyncAPIResource):
         Process abstract embedding for a paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/process-paper-version-abstract-embed.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/process-paper-version-abstract-embed.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -773,7 +779,7 @@ class PapersResource(SyncAPIResource):
         Process various metadata for a paper (thumbnail, github, bibtex, etc.)
 
         Source file:
-        `api-server/src/controllers/v2/papers/process-metadata.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/process-metadata.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -876,7 +882,7 @@ class PapersResource(SyncAPIResource):
         Request AI overview generation for the latest paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/request-ai-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -979,7 +985,7 @@ class PapersResource(SyncAPIResource):
         Request AI overview translation for the latest paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/request-ai-translation-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai-translation-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1017,7 +1023,8 @@ class PapersResource(SyncAPIResource):
         """
         Set GitHub repository for a paper
 
-        Source file: `api-server/src/controllers/v2/papers/set-github.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/set-github.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1054,7 +1061,8 @@ class PapersResource(SyncAPIResource):
         Toggle paper follow status (add to Want to read folder or remove from all
         folders)
 
-        Source file: `api-server/src/controllers/v2/papers/follow-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/follow-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1151,7 +1159,7 @@ class PapersResource(SyncAPIResource):
         Translate AI overview to specified language
 
         Source file:
-        `api-server/src/controllers/v2/papers/translate-ai-overview.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/translate-ai-overview.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1192,7 +1200,8 @@ class PapersResource(SyncAPIResource):
         """
         Remove authorship claim from a paper
 
-        Source file: `api-server/src/controllers/v2/papers/unclaim-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/unclaim-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1227,7 +1236,8 @@ class PapersResource(SyncAPIResource):
         """
         Toggle vote for a paper
 
-        Source file: `api-server/src/controllers/v2/papers/vote-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/vote-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1313,7 +1323,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Add a new author to a paper
 
-        Source file: `api-server/src/controllers/v2/papers/add-new-author.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/add-new-author.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1357,7 +1368,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Set paper vote count (admin only)
 
         Source file:
-        `api-server/src/controllers/v2/papers/admin-vote-paper.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/admin-vote-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1395,7 +1406,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Legacy route for v1 browser extensions to track abstract page clicks
 
         Source file:
-        `api-server/src/controllers/v1/papers/crxabstractclick.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxabstractclick.controller.ts`
 
         Args:
           pid: Paper ID
@@ -1436,7 +1447,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Legacy route for v1 browser extensions to track abstract page hits
 
-        Source file: `api-server/src/controllers/v1/papers/crxabstracthit.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxabstracthit.controller.ts`
 
         Args:
           pid: Paper ID
@@ -1474,7 +1486,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Legacy route for v1 browser extensions to track PDF page clicks
 
-        Source file: `api-server/src/controllers/v1/papers/crxpdfclick.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxpdfclick.controller.ts`
 
         Args:
           pid: Paper ID
@@ -1515,7 +1528,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Legacy route for v1 browser extensions to track PDF page hits
 
-        Source file: `api-server/src/controllers/v1/papers/crxpdfhit.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/crxpdfhit.controller.ts`
 
         Args:
           pid: Paper ID
@@ -1558,7 +1572,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Send email to individual author about paper comments or trending
 
         Source file:
-        `api-server/src/controllers/v2/papers/email-individual-author.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/email-individual-author.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1604,7 +1618,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Legacy route for v1 browser extensions to get paper information
 
         Source file:
-        `api-server/src/controllers/v1/papers/getcrxpaperinfo.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/papers/getcrxpaperinfo.controller.ts`
 
         Args:
           pid: Paper ID
@@ -1641,7 +1655,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Legacy route for getting paper information from arXiv abstract pages
 
-        Source file: `api-server/src/controllers/v1/papers/getpaperinfo.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/papers/getpaperinfo.controller.ts`
 
         Args:
           pid: Paper ID
@@ -1678,7 +1693,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Kickoff background job to generate abstract embeddings for paper versions
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-version-abstract-embed.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-version-abstract-embed.controller.ts`
         """
         return await self._post(
             "/v2/papers/kickoff-paper-version-abstract-embed",
@@ -1702,7 +1717,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Kickoff background job to generate AI overviews for papers
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-ai.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-ai.controller.ts`
         """
         return await self._post(
             "/v2/papers/kickoff-paper-ai",
@@ -1726,7 +1741,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Kickoff background job to generate bibtex for papers
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-bibtex.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-bibtex.controller.ts`
         """
         return await self._post(
             "/v2/papers/kickoff-paper-bibtex",
@@ -1749,7 +1764,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Kickoff background job to link papers with GitHub repositories
 
-        Source file: `api-server/src/controllers/v2/papers/kickoff-github.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-github.controller.ts`
         """
         return await self._post(
             "/v2/papers/kickoff-github",
@@ -1774,7 +1790,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Kickoff background job to categorize papers
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-paper-categorization.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-categorization.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1809,7 +1825,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Kickoff background job to ingest recent papers from arXiv
 
         Source file:
-        `api-server/src/controllers/v2/papers/kickoff-recent-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-recent-papers.controller.ts`
         """
         return await self._post(
             "/v2/papers/kickoff-recent-papers",
@@ -1834,7 +1850,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Track paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/v2/papers/mark-paper-view.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/mark-paper-view.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1871,7 +1887,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Process abstract embedding for a paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/process-paper-version-abstract-embed.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/process-paper-version-abstract-embed.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1911,7 +1927,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Process various metadata for a paper (thumbnail, github, bibtex, etc.)
 
         Source file:
-        `api-server/src/controllers/v2/papers/process-metadata.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/process-metadata.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2014,7 +2030,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Request AI overview generation for the latest paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/request-ai-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2117,7 +2133,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Request AI overview translation for the latest paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/request-ai-translation-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai-translation-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2155,7 +2171,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Set GitHub repository for a paper
 
-        Source file: `api-server/src/controllers/v2/papers/set-github.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/set-github.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2194,7 +2211,8 @@ class AsyncPapersResource(AsyncAPIResource):
         Toggle paper follow status (add to Want to read folder or remove from all
         folders)
 
-        Source file: `api-server/src/controllers/v2/papers/follow-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/follow-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2291,7 +2309,7 @@ class AsyncPapersResource(AsyncAPIResource):
         Translate AI overview to specified language
 
         Source file:
-        `api-server/src/controllers/v2/papers/translate-ai-overview.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/translate-ai-overview.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2332,7 +2350,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Remove authorship claim from a paper
 
-        Source file: `api-server/src/controllers/v2/papers/unclaim-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/unclaim-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2367,7 +2386,8 @@ class AsyncPapersResource(AsyncAPIResource):
         """
         Toggle vote for a paper
 
-        Source file: `api-server/src/controllers/v2/papers/vote-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/vote-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers

@@ -79,7 +79,7 @@ class FollowingResource(SyncAPIResource):
         List the users that the given user is following
 
         Source file:
-        `api-server/src/controllers/users/v3/get-following-users.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-following-users.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -144,7 +144,7 @@ class AsyncFollowingResource(AsyncAPIResource):
         List the users that the given user is following
 
         Source file:
-        `api-server/src/controllers/users/v3/get-following-users.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-following-users.controller.ts`
 
         Args:
           extra_headers: Send extra headers
