@@ -58,7 +58,7 @@ class EmailResource(SyncAPIResource):
         Update email preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/v2/users/update-email-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/users/update-email-preferences.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -98,7 +98,7 @@ class EmailResource(SyncAPIResource):
         Get email preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/v2/users/get-email-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/users/get-email-preferences.controller.ts`
         """
         return self._get(
             "/v2/users/preferences/email",
@@ -145,7 +145,7 @@ class AsyncEmailResource(AsyncAPIResource):
         Update email preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/v2/users/update-email-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/users/update-email-preferences.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -185,7 +185,7 @@ class AsyncEmailResource(AsyncAPIResource):
         Get email preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/v2/users/get-email-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/users/get-email-preferences.controller.ts`
         """
         return await self._get(
             "/v2/users/preferences/email",

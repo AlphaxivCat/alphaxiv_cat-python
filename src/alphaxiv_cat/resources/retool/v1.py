@@ -63,7 +63,7 @@ class V1Resource(SyncAPIResource):
         Get cumulative user count over time (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-cumulative-users.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-cumulative-users.controller.ts`
         """
         return self._get(
             "/retool/v1/cumulative-users",
@@ -87,7 +87,7 @@ class V1Resource(SyncAPIResource):
         Get daily conversation counts by variant (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-daily-conversations.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-daily-conversations.controller.ts`
         """
         return self._get(
             "/retool/v1/daily-conversations",
@@ -111,7 +111,7 @@ class V1Resource(SyncAPIResource):
         Get daily new account counts (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-daily-new-accounts.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-daily-new-accounts.controller.ts`
         """
         return self._get(
             "/retool/v1/daily-new-accounts",
@@ -135,7 +135,7 @@ class V1Resource(SyncAPIResource):
         Get daily user chat message counts by variant (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-daily-user-chat-messages.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-daily-user-chat-messages.controller.ts`
         """
         return self._get(
             "/retool/v1/daily-user-chat-messages",
@@ -159,7 +159,7 @@ class V1Resource(SyncAPIResource):
         Get total count of all comments
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-comment-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-comment-count.controller.ts`
         """
         return self._get(
             "/retool/v1/total-comment-count",
@@ -183,7 +183,7 @@ class V1Resource(SyncAPIResource):
         Get total count of public, non-blocked papers
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-paper-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-paper-count.controller.ts`
         """
         return self._get(
             "/retool/v1/total-paper-count",
@@ -207,7 +207,7 @@ class V1Resource(SyncAPIResource):
         Get total count of private notes (comments with tag=personal)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-private-notes-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-private-notes-count.controller.ts`
         """
         return self._get(
             "/retool/v1/total-private-notes-count",
@@ -231,7 +231,7 @@ class V1Resource(SyncAPIResource):
         Get total count of non-deleted users
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-user-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-user-count.controller.ts`
         """
         return self._get(
             "/retool/v1/total-user-count",
@@ -256,7 +256,7 @@ class V1Resource(SyncAPIResource):
         descending
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-weekly-message-counts-by-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-weekly-message-counts-by-user.controller.ts`
         """
         return self._get(
             "/retool/v1/weekly-message-counts-by-user",
@@ -280,7 +280,7 @@ class V1Resource(SyncAPIResource):
         Get weekly private note counts (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-weekly-private-notes.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-weekly-private-notes.controller.ts`
         """
         return self._get(
             "/retool/v1/weekly-private-notes",
@@ -304,7 +304,7 @@ class V1Resource(SyncAPIResource):
         Get weekly public comment counts (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-weekly-public-comments.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-weekly-public-comments.controller.ts`
         """
         return self._get(
             "/retool/v1/weekly-public-comments",
@@ -349,7 +349,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get cumulative user count over time (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-cumulative-users.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-cumulative-users.controller.ts`
         """
         return await self._get(
             "/retool/v1/cumulative-users",
@@ -373,7 +373,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get daily conversation counts by variant (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-daily-conversations.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-daily-conversations.controller.ts`
         """
         return await self._get(
             "/retool/v1/daily-conversations",
@@ -397,7 +397,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get daily new account counts (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-daily-new-accounts.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-daily-new-accounts.controller.ts`
         """
         return await self._get(
             "/retool/v1/daily-new-accounts",
@@ -421,7 +421,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get daily user chat message counts by variant (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-daily-user-chat-messages.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-daily-user-chat-messages.controller.ts`
         """
         return await self._get(
             "/retool/v1/daily-user-chat-messages",
@@ -445,7 +445,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get total count of all comments
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-comment-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-comment-count.controller.ts`
         """
         return await self._get(
             "/retool/v1/total-comment-count",
@@ -469,7 +469,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get total count of public, non-blocked papers
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-paper-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-paper-count.controller.ts`
         """
         return await self._get(
             "/retool/v1/total-paper-count",
@@ -493,7 +493,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get total count of private notes (comments with tag=personal)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-private-notes-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-private-notes-count.controller.ts`
         """
         return await self._get(
             "/retool/v1/total-private-notes-count",
@@ -517,7 +517,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get total count of non-deleted users
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-total-user-count.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-total-user-count.controller.ts`
         """
         return await self._get(
             "/retool/v1/total-user-count",
@@ -542,7 +542,7 @@ class AsyncV1Resource(AsyncAPIResource):
         descending
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-weekly-message-counts-by-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-weekly-message-counts-by-user.controller.ts`
         """
         return await self._get(
             "/retool/v1/weekly-message-counts-by-user",
@@ -566,7 +566,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get weekly private note counts (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-weekly-private-notes.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-weekly-private-notes.controller.ts`
         """
         return await self._get(
             "/retool/v1/weekly-private-notes",
@@ -590,7 +590,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Get weekly public comment counts (all time)
 
         Source file:
-        `api-server/src/controllers/retool/v1/get-weekly-public-comments.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/retool/v1/get-weekly-public-comments.controller.ts`
         """
         return await self._get(
             "/retool/v1/weekly-public-comments",

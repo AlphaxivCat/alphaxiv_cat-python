@@ -58,7 +58,7 @@ class MessagesResource(SyncAPIResource):
         Get all messages for an llm chat
 
         Source file:
-        `api-server/src/controllers/assistant/v2/get-chat-messages.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/get-chat-messages.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -95,7 +95,7 @@ class MessagesResource(SyncAPIResource):
         Select an llm chat message by id
 
         Source file:
-        `api-server/src/controllers/assistant/v2/select-message.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/select-message.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -135,7 +135,7 @@ class MessagesResource(SyncAPIResource):
         Set or update feedback for a message
 
         Source file:
-        `api-server/src/controllers/assistant/v2/set-message-feedback.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/set-message-feedback.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -194,7 +194,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         Get all messages for an llm chat
 
         Source file:
-        `api-server/src/controllers/assistant/v2/get-chat-messages.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/get-chat-messages.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -231,7 +231,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         Select an llm chat message by id
 
         Source file:
-        `api-server/src/controllers/assistant/v2/select-message.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/select-message.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -271,7 +271,7 @@ class AsyncMessagesResource(AsyncAPIResource):
         Set or update feedback for a message
 
         Source file:
-        `api-server/src/controllers/assistant/v2/set-message-feedback.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/set-message-feedback.controller.ts`
 
         Args:
           extra_headers: Send extra headers

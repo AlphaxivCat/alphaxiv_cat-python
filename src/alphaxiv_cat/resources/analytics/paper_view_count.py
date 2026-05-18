@@ -68,7 +68,7 @@ class PaperViewCountResource(SyncAPIResource):
         Track a paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/v1/analytics/ingest-paper-view-count-event.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/analytics/ingest-paper-view-count-event.controller.ts`
 
         Args:
           paper_id: Paper ID to track view for
@@ -117,7 +117,7 @@ class PaperViewCountResource(SyncAPIResource):
         Kicks off a background job to aggregate paper view counts
 
         Source file:
-        `api-server/src/controllers/v1/analytics/kickoff-paper-view-count-aggregation-job.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/analytics/kickoff-paper-view-count-aggregation-job.controller.ts`
 
         Args:
           type: Time period filter: 'all' or number of days
@@ -165,7 +165,7 @@ class PaperViewCountResource(SyncAPIResource):
         Process view count aggregation for a specific paper
 
         Source file:
-        `api-server/src/controllers/v1/analytics/process-paper-view-count-aggregation-job.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/analytics/process-paper-view-count-aggregation-job.controller.ts`
 
         Args:
           paper_id: Paper ID to process view counts for
@@ -237,7 +237,7 @@ class AsyncPaperViewCountResource(AsyncAPIResource):
         Track a paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/v1/analytics/ingest-paper-view-count-event.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/analytics/ingest-paper-view-count-event.controller.ts`
 
         Args:
           paper_id: Paper ID to track view for
@@ -286,7 +286,7 @@ class AsyncPaperViewCountResource(AsyncAPIResource):
         Kicks off a background job to aggregate paper view counts
 
         Source file:
-        `api-server/src/controllers/v1/analytics/kickoff-paper-view-count-aggregation-job.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/analytics/kickoff-paper-view-count-aggregation-job.controller.ts`
 
         Args:
           type: Time period filter: 'all' or number of days
@@ -334,7 +334,7 @@ class AsyncPaperViewCountResource(AsyncAPIResource):
         Process view count aggregation for a specific paper
 
         Source file:
-        `api-server/src/controllers/v1/analytics/process-paper-view-count-aggregation-job.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/analytics/process-paper-view-count-aggregation-job.controller.ts`
 
         Args:
           paper_id: Paper ID to process view counts for

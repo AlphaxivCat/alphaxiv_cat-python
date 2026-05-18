@@ -59,7 +59,7 @@ class PaperResource(SyncAPIResource):
         Search for public and optionally private papers
 
         Source file:
-        `api-server/src/controllers/search/v2/search-google-fast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/search/v2/search-google-fast.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -125,7 +125,7 @@ class AsyncPaperResource(AsyncAPIResource):
         Search for public and optionally private papers
 
         Source file:
-        `api-server/src/controllers/search/v2/search-google-fast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/search/v2/search-google-fast.controller.ts`
 
         Args:
           extra_headers: Send extra headers

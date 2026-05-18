@@ -121,7 +121,8 @@ class VersionsResource(SyncAPIResource):
         """
         Request AI overview generation for a paper version
 
-        Source file: `api-server/src/controllers/v2/papers/request-ai.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -229,7 +230,7 @@ class VersionsResource(SyncAPIResource):
         Request AI overview translation for a paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/request-ai-translation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai-translation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -357,7 +358,8 @@ class AsyncVersionsResource(AsyncAPIResource):
         """
         Request AI overview generation for a paper version
 
-        Source file: `api-server/src/controllers/v2/papers/request-ai.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -465,7 +467,7 @@ class AsyncVersionsResource(AsyncAPIResource):
         Request AI overview translation for a paper version
 
         Source file:
-        `api-server/src/controllers/v2/papers/request-ai-translation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/request-ai-translation.controller.ts`
 
         Args:
           extra_headers: Send extra headers

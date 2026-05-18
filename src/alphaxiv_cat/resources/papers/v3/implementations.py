@@ -61,7 +61,7 @@ class ImplementationsResource(SyncAPIResource):
         Add an implementation (AlphaXiv, Marimo, Author, or Other)
 
         Source file:
-        `api-server/src/controllers/papers/v3/add-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/add-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -104,7 +104,7 @@ class ImplementationsResource(SyncAPIResource):
         Get all implementations for a paper (AlphaXiv, Marimo, Author, and Other)
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-implementations.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-implementations.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -142,7 +142,7 @@ class ImplementationsResource(SyncAPIResource):
         Delete an implementation (AlphaXiv, Marimo, Author, or Other)
 
         Source file:
-        `api-server/src/controllers/papers/v3/delete-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/delete-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -212,7 +212,7 @@ class AsyncImplementationsResource(AsyncAPIResource):
         Add an implementation (AlphaXiv, Marimo, Author, or Other)
 
         Source file:
-        `api-server/src/controllers/papers/v3/add-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/add-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -255,7 +255,7 @@ class AsyncImplementationsResource(AsyncAPIResource):
         Get all implementations for a paper (AlphaXiv, Marimo, Author, and Other)
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-implementations.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-implementations.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -293,7 +293,7 @@ class AsyncImplementationsResource(AsyncAPIResource):
         Delete an implementation (AlphaXiv, Marimo, Author, or Other)
 
         Source file:
-        `api-server/src/controllers/papers/v3/delete-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/delete-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers

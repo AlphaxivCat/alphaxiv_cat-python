@@ -56,7 +56,7 @@ class CitationsResource(SyncAPIResource):
         Retrieve citation counts by year for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-citation-graph.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-citation-graph.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -92,7 +92,7 @@ class CitationsResource(SyncAPIResource):
         Retrieve aggregated citation metrics for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-citation-summary.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-citation-summary.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -149,7 +149,7 @@ class AsyncCitationsResource(AsyncAPIResource):
         Retrieve citation counts by year for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-citation-graph.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-citation-graph.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -185,7 +185,7 @@ class AsyncCitationsResource(AsyncAPIResource):
         Retrieve aggregated citation metrics for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-citation-summary.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-citation-summary.controller.ts`
 
         Args:
           extra_headers: Send extra headers

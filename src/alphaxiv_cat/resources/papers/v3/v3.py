@@ -126,7 +126,8 @@ class V3Resource(SyncAPIResource):
 
         Fetches from ArXiv if needed.
 
-        Source file: `api-server/src/controllers/papers/v3/get-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -167,7 +168,8 @@ class V3Resource(SyncAPIResource):
         """
         Create a public comment or private note on a paper.
 
-        Source file: `api-server/src/controllers/papers/v3/post-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/post-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -212,7 +214,7 @@ class V3Resource(SyncAPIResource):
         Remove votes from many papers at once
 
         Source file:
-        `api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -249,7 +251,7 @@ class V3Resource(SyncAPIResource):
         Create or update an implementation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -288,7 +290,7 @@ class V3Resource(SyncAPIResource):
         Kickoff paper countries processing for hot papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
 
         Args:
           batch: Number of papers to process in each batch
@@ -337,7 +339,7 @@ class V3Resource(SyncAPIResource):
         Kickoff paper full text processing for recent papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
 
         Args:
           max_papers: Maximum number of paper versions to process
@@ -376,7 +378,7 @@ class V3Resource(SyncAPIResource):
         Kickoff paper podcasts on Uptash for a subset of paper groups
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
@@ -401,7 +403,7 @@ class V3Resource(SyncAPIResource):
         Kickoff background job to generate thumbnails for trending papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
         """
         return self._post(
             "/papers/v3/kickoff-thumbnails-trending-papers",
@@ -425,7 +427,8 @@ class V3Resource(SyncAPIResource):
         """
         Toggle your like status on a paper group
 
-        Source file: `api-server/src/controllers/papers/v3/like-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/like-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -462,7 +465,7 @@ class V3Resource(SyncAPIResource):
         Generates a podcast for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -563,7 +566,8 @@ class V3Resource(SyncAPIResource):
         """
         Generates AI overviews for a paper version
 
-        Source file: `api-server/src/controllers/papers/v3/process-ai.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-ai.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -608,7 +612,7 @@ class V3Resource(SyncAPIResource):
         affiliations
 
         Source file:
-        `api-server/src/controllers/papers/v3/process-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-countries.controller.ts`
 
         Args:
           universal_paper_ids: Array of universal paper IDs (versionless)
@@ -649,7 +653,7 @@ class V3Resource(SyncAPIResource):
         Processes and extracts full text from paper PDFs for indexing and search
 
         Source file:
-        `api-server/src/controllers/papers/v3/process-full-text.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-full-text.controller.ts`
 
         Args:
           paper_version_id: Paper version ID to process for full text extraction
@@ -689,7 +693,7 @@ class V3Resource(SyncAPIResource):
         Clear 'is_last_X_days' flags from paper embeddings that have become too old
 
         Source file:
-        `api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
         """
         return self._post(
             "/papers/v3/prune-embeddings-by-date",
@@ -717,7 +721,7 @@ class V3Resource(SyncAPIResource):
         Toggle your implementation request status on a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -761,7 +765,7 @@ class V3Resource(SyncAPIResource):
         Request podcast generation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -799,7 +803,8 @@ class V3Resource(SyncAPIResource):
         """
         Get all paper universal IDs sorted by most recent publication date
 
-        Source file: `api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -842,7 +847,8 @@ class V3Resource(SyncAPIResource):
         """
         Get an initial batch of diverse papers on the given topics for recommendations
 
-        Source file: `api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -888,7 +894,8 @@ class V3Resource(SyncAPIResource):
         """
         Get an optionally filtered list of papers for the main feed
 
-        Source file: `api-server/src/controllers/papers/v3/feed.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/feed.controller.ts`
 
         Args:
           universal_id: A versionless universal paper ID (e.g. 1706.03762)
@@ -940,7 +947,7 @@ class V3Resource(SyncAPIResource):
         Get list of figure URLs for a paper
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -975,7 +982,8 @@ class V3Resource(SyncAPIResource):
         """
         Get the full extracted text of a paper, page by page
 
-        Source file: `api-server/src/controllers/papers/v3/get-full-text.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-full-text.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1010,7 +1018,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve metrics for a paper (comments count, upvotes, views)
 
-        Source file: `api-server/src/controllers/papers/v3/get-metrics.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-metrics.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1048,7 +1057,7 @@ class V3Resource(SyncAPIResource):
         Retrieve paper data for paper preview cards
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1090,7 +1099,7 @@ class V3Resource(SyncAPIResource):
         Get papers semantically similar to the selected one
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1142,7 +1151,7 @@ class V3Resource(SyncAPIResource):
         Get some papers on the provided topics that are unrelated to the provided papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1187,7 +1196,7 @@ class V3Resource(SyncAPIResource):
         Track paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1257,7 +1266,8 @@ class AsyncV3Resource(AsyncAPIResource):
 
         Fetches from ArXiv if needed.
 
-        Source file: `api-server/src/controllers/papers/v3/get-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1298,7 +1308,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Create a public comment or private note on a paper.
 
-        Source file: `api-server/src/controllers/papers/v3/post-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/post-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1343,7 +1354,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Remove votes from many papers at once
 
         Source file:
-        `api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1380,7 +1391,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Create or update an implementation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1419,7 +1430,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Kickoff paper countries processing for hot papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
 
         Args:
           batch: Number of papers to process in each batch
@@ -1468,7 +1479,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Kickoff paper full text processing for recent papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
 
         Args:
           max_papers: Maximum number of paper versions to process
@@ -1507,7 +1518,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Kickoff paper podcasts on Uptash for a subset of paper groups
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
@@ -1532,7 +1543,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Kickoff background job to generate thumbnails for trending papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
         """
         return await self._post(
             "/papers/v3/kickoff-thumbnails-trending-papers",
@@ -1556,7 +1567,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Toggle your like status on a paper group
 
-        Source file: `api-server/src/controllers/papers/v3/like-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/like-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1593,7 +1605,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Generates a podcast for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -1694,7 +1706,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Generates AI overviews for a paper version
 
-        Source file: `api-server/src/controllers/papers/v3/process-ai.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-ai.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1739,7 +1752,7 @@ class AsyncV3Resource(AsyncAPIResource):
         affiliations
 
         Source file:
-        `api-server/src/controllers/papers/v3/process-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-countries.controller.ts`
 
         Args:
           universal_paper_ids: Array of universal paper IDs (versionless)
@@ -1780,7 +1793,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Processes and extracts full text from paper PDFs for indexing and search
 
         Source file:
-        `api-server/src/controllers/papers/v3/process-full-text.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-full-text.controller.ts`
 
         Args:
           paper_version_id: Paper version ID to process for full text extraction
@@ -1820,7 +1833,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Clear 'is_last_X_days' flags from paper embeddings that have become too old
 
         Source file:
-        `api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
         """
         return await self._post(
             "/papers/v3/prune-embeddings-by-date",
@@ -1848,7 +1861,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Toggle your implementation request status on a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1892,7 +1905,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Request podcast generation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -1930,7 +1943,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get all paper universal IDs sorted by most recent publication date
 
-        Source file: `api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1973,7 +1987,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get an initial batch of diverse papers on the given topics for recommendations
 
-        Source file: `api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2019,7 +2034,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get an optionally filtered list of papers for the main feed
 
-        Source file: `api-server/src/controllers/papers/v3/feed.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/feed.controller.ts`
 
         Args:
           universal_id: A versionless universal paper ID (e.g. 1706.03762)
@@ -2071,7 +2087,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Get list of figure URLs for a paper
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2106,7 +2122,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get the full extracted text of a paper, page by page
 
-        Source file: `api-server/src/controllers/papers/v3/get-full-text.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-full-text.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2141,7 +2158,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve metrics for a paper (comments count, upvotes, views)
 
-        Source file: `api-server/src/controllers/papers/v3/get-metrics.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-metrics.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -2179,7 +2197,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve paper data for paper preview cards
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -2221,7 +2239,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Get papers semantically similar to the selected one
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -2273,7 +2291,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Get some papers on the provided topics that are unrelated to the provided papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2318,7 +2336,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Track paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
 
         Args:
           extra_headers: Send extra headers

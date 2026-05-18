@@ -59,7 +59,7 @@ class V2Resource(SyncAPIResource):
         Retrieve the top 20 organizations with images by paper count
 
         Source file:
-        `api-server/src/controllers/organizations/v2/get-top-orgs.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/get-top-orgs.controller.ts`
         """
         return self._get(
             "/organizations/v2/top",
@@ -84,7 +84,7 @@ class V2Resource(SyncAPIResource):
         Retrieve an organization's basic information given its ID.
 
         Source file:
-        `api-server/src/controllers/organizations/v2/get-organization-by-id.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/get-organization-by-id.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -121,7 +121,7 @@ class V2Resource(SyncAPIResource):
         matter (i.e. google and GOOGLE return the same results).
 
         Source file:
-        `api-server/src/controllers/organizations/v2/get-organization-by-name.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/get-organization-by-name.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -156,7 +156,8 @@ class V2Resource(SyncAPIResource):
         """
         Search organizations by name
 
-        Source file: `api-server/src/controllers/organizations/v2/search.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/search.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -194,7 +195,7 @@ class V2Resource(SyncAPIResource):
         Toggle following an organization, affects the current user's profile
 
         Source file:
-        `api-server/src/controllers/organizations/v2/toggle-follow-org.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/toggle-follow-org.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -250,7 +251,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Retrieve the top 20 organizations with images by paper count
 
         Source file:
-        `api-server/src/controllers/organizations/v2/get-top-orgs.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/get-top-orgs.controller.ts`
         """
         return await self._get(
             "/organizations/v2/top",
@@ -275,7 +276,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Retrieve an organization's basic information given its ID.
 
         Source file:
-        `api-server/src/controllers/organizations/v2/get-organization-by-id.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/get-organization-by-id.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -312,7 +313,7 @@ class AsyncV2Resource(AsyncAPIResource):
         matter (i.e. google and GOOGLE return the same results).
 
         Source file:
-        `api-server/src/controllers/organizations/v2/get-organization-by-name.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/get-organization-by-name.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -347,7 +348,8 @@ class AsyncV2Resource(AsyncAPIResource):
         """
         Search organizations by name
 
-        Source file: `api-server/src/controllers/organizations/v2/search.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/search.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -385,7 +387,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Toggle following an organization, affects the current user's profile
 
         Source file:
-        `api-server/src/controllers/organizations/v2/toggle-follow-org.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/organizations/v2/toggle-follow-org.controller.ts`
 
         Args:
           extra_headers: Send extra headers

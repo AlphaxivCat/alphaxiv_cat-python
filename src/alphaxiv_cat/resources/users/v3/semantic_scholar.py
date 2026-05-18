@@ -59,7 +59,7 @@ class SemanticScholarResource(SyncAPIResource):
         Link a user's account to a Semantic Scholar profile based on claimed papers
 
         Source file:
-        `api-server/src/controllers/users/v3/link-semantic-scholar.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/link-semantic-scholar.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -96,7 +96,7 @@ class SemanticScholarResource(SyncAPIResource):
         Refresh Semantic Scholar data for a linked user
 
         Source file:
-        `api-server/src/controllers/users/v3/scrape-semantic-scholar.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/scrape-semantic-scholar.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -154,7 +154,7 @@ class AsyncSemanticScholarResource(AsyncAPIResource):
         Link a user's account to a Semantic Scholar profile based on claimed papers
 
         Source file:
-        `api-server/src/controllers/users/v3/link-semantic-scholar.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/link-semantic-scholar.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -191,7 +191,7 @@ class AsyncSemanticScholarResource(AsyncAPIResource):
         Refresh Semantic Scholar data for a linked user
 
         Source file:
-        `api-server/src/controllers/users/v3/scrape-semantic-scholar.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/scrape-semantic-scholar.controller.ts`
 
         Args:
           extra_headers: Send extra headers

@@ -57,7 +57,7 @@ class OrganizationsResource(SyncAPIResource):
         List the organizations followed by a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-following-organizations.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-following-organizations.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -94,7 +94,7 @@ class OrganizationsResource(SyncAPIResource):
         Toggle following an organization for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-following-organization.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-following-organization.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -152,7 +152,7 @@ class AsyncOrganizationsResource(AsyncAPIResource):
         List the organizations followed by a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-following-organizations.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-following-organizations.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -189,7 +189,7 @@ class AsyncOrganizationsResource(AsyncAPIResource):
         Toggle following an organization for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-following-organization.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-following-organization.controller.ts`
 
         Args:
           extra_headers: Send extra headers

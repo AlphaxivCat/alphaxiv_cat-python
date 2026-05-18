@@ -51,7 +51,8 @@ class WellKnownResource(SyncAPIResource):
         """
         OAuth 2.0 Protected Resource Metadata (RFC 9728)
 
-        Source file: `api-server/src/controllers/oauth-protected-resource.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/oauth-protected-resource.controller.ts`
         """
         return self._get(
             "/.well-known/oauth-protected-resource",
@@ -95,7 +96,8 @@ class AsyncWellKnownResource(AsyncAPIResource):
         """
         OAuth 2.0 Protected Resource Metadata (RFC 9728)
 
-        Source file: `api-server/src/controllers/oauth-protected-resource.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/oauth-protected-resource.controller.ts`
         """
         return await self._get(
             "/.well-known/oauth-protected-resource",

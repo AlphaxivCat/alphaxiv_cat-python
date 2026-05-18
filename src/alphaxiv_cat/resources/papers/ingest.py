@@ -59,7 +59,7 @@ class IngestResource(SyncAPIResource):
         extension)
 
         Source file:
-        `api-server/src/controllers/v2/papers/ingest-paper-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/ingest-paper-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -103,7 +103,8 @@ class IngestResource(SyncAPIResource):
         Ingest a paper version if it doesn't exist (deprecated, used by browser
         extension)
 
-        Source file: `api-server/src/controllers/v2/papers/ingest-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/ingest-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -170,7 +171,7 @@ class AsyncIngestResource(AsyncAPIResource):
         extension)
 
         Source file:
-        `api-server/src/controllers/v2/papers/ingest-paper-latest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/ingest-paper-latest.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -214,7 +215,8 @@ class AsyncIngestResource(AsyncAPIResource):
         Ingest a paper version if it doesn't exist (deprecated, used by browser
         extension)
 
-        Source file: `api-server/src/controllers/v2/papers/ingest-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v2/papers/ingest-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers

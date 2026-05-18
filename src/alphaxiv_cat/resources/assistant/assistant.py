@@ -64,7 +64,8 @@ class AssistantResource(SyncAPIResource):
         """
         Upload a file for use with the assistant (max 30MB)
 
-        Source file: `api-server/src/controllers/v1/assistant/upload-file.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/assistant/upload-file.controller.ts`
         """
         return self._post(
             "/v1/assistant/upload-file",
@@ -112,7 +113,8 @@ class AsyncAssistantResource(AsyncAPIResource):
         """
         Upload a file for use with the assistant (max 30MB)
 
-        Source file: `api-server/src/controllers/v1/assistant/upload-file.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/assistant/upload-file.controller.ts`
         """
         return await self._post(
             "/v1/assistant/upload-file",

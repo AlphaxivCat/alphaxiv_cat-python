@@ -67,7 +67,8 @@ class V2Resource(SyncAPIResource):
         """
         Add comment to paper version
 
-        Source file: `api-server/src/controllers/papers/v2/add-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v2/add-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -146,7 +147,8 @@ class AsyncV2Resource(AsyncAPIResource):
         """
         Add comment to paper version
 
-        Source file: `api-server/src/controllers/papers/v2/add-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v2/add-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
