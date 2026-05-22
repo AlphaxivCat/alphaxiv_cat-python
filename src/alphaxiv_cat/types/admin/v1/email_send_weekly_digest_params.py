@@ -33,6 +33,8 @@ class Event(TypedDict, total=False):
 
     title: Required[str]
 
+    cta_text: Annotated[str, PropertyInfo(alias="ctaText")]
+
     end_time_raw: Annotated[str, PropertyInfo(alias="endTimeRaw")]
 
     start_time_raw: Annotated[str, PropertyInfo(alias="startTimeRaw")]

@@ -139,42 +139,6 @@ class TestV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_delete_votes(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.delete_votes()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_delete_votes_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.delete_votes(
-            body=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_delete_votes(self, client: AlphaxivCat) -> None:
-        response = client.papers.v3.with_raw_response.delete_votes()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_delete_votes(self, client: AlphaxivCat) -> None:
-        with client.papers.v3.with_streaming_response.delete_votes() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     def test_method_implementation(self, client: AlphaxivCat) -> None:
         v3 = client.papers.v3.implementation(
             paper_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -353,7 +317,8 @@ class TestV3:
     @parametrize
     def test_method_like(self, client: AlphaxivCat) -> None:
         v3 = client.papers.v3.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked=True,
         )
         assert_matches_type(V3LikeResponse, v3, path=["response"])
 
@@ -361,7 +326,8 @@ class TestV3:
     @parametrize
     def test_raw_response_like(self, client: AlphaxivCat) -> None:
         response = client.papers.v3.with_raw_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked=True,
         )
 
         assert response.is_closed is True
@@ -373,7 +339,8 @@ class TestV3:
     @parametrize
     def test_streaming_response_like(self, client: AlphaxivCat) -> None:
         with client.papers.v3.with_streaming_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -388,7 +355,8 @@ class TestV3:
     def test_path_params_like(self, client: AlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group` but received ''"):
             client.papers.v3.with_raw_response.like(
-                "",
+                group="",
+                liked=True,
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -797,7 +765,6 @@ class TestV3:
             page_num="pageNum",
             page_size="pageSize",
             sort="Hot",
-            organizations="organizations",
             source="GitHub",
             topics="topics",
             universal_id="universalId",
@@ -1248,42 +1215,6 @@ class TestAsyncV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_delete_votes(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.delete_votes()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_delete_votes_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.delete_votes(
-            body=["182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e"],
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_delete_votes(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.v3.with_raw_response.delete_votes()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_delete_votes(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.v3.with_streaming_response.delete_votes() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_implementation(self, async_client: AsyncAlphaxivCat) -> None:
         v3 = await async_client.papers.v3.implementation(
             paper_group_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
@@ -1462,7 +1393,8 @@ class TestAsyncV3:
     @parametrize
     async def test_method_like(self, async_client: AsyncAlphaxivCat) -> None:
         v3 = await async_client.papers.v3.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked=True,
         )
         assert_matches_type(V3LikeResponse, v3, path=["response"])
 
@@ -1470,7 +1402,8 @@ class TestAsyncV3:
     @parametrize
     async def test_raw_response_like(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.v3.with_raw_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked=True,
         )
 
         assert response.is_closed is True
@@ -1482,7 +1415,8 @@ class TestAsyncV3:
     @parametrize
     async def test_streaming_response_like(self, async_client: AsyncAlphaxivCat) -> None:
         async with async_client.papers.v3.with_streaming_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked=True,
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1497,7 +1431,8 @@ class TestAsyncV3:
     async def test_path_params_like(self, async_client: AsyncAlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group` but received ''"):
             await async_client.papers.v3.with_raw_response.like(
-                "",
+                group="",
+                liked=True,
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -1906,7 +1841,6 @@ class TestAsyncV3:
             page_num="pageNum",
             page_size="pageSize",
             sort="Hot",
-            organizations="organizations",
             source="GitHub",
             topics="topics",
             universal_id="universalId",
