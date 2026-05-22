@@ -11,6 +11,7 @@ from .v3_comment_response import V3CommentResponse as V3CommentResponse
 from .v3_process_ai_params import V3ProcessAIParams as V3ProcessAIParams
 from .v3_retrieve_response import V3RetrieveResponse as V3RetrieveResponse
 from .private_create_params import PrivateCreateParams as PrivateCreateParams
+from .v3_delete_votes_params import V3DeleteVotesParams as V3DeleteVotesParams
 from .v3_retrieve_all_params import V3RetrieveAllParams as V3RetrieveAllParams
 from .private_create_response import PrivateCreateResponse as PrivateCreateResponse
 from .v3_retrieve_feed_params import V3RetrieveFeedParams as V3RetrieveFeedParams
