@@ -67,6 +67,7 @@ class TestEmails:
                     "description": "description",
                     "link": "link",
                     "title": "title",
+                    "cta_text": "ctaText",
                     "end_time_raw": "endTimeRaw",
                     "start_time_raw": "startTimeRaw",
                 }
@@ -157,6 +158,7 @@ class TestAsyncEmails:
                     "description": "description",
                     "link": "link",
                     "title": "title",
+                    "cta_text": "ctaText",
                     "end_time_raw": "endTimeRaw",
                     "start_time_raw": "startTimeRaw",
                 }

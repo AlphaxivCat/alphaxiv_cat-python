@@ -71,7 +71,7 @@ class V2Resource(SyncAPIResource):
         web_search: Literal["off", "full"],
         assistant_variant: Literal["homepage", "paper", "landing"] | Omit = omit,
         custom_filter: v2_chat_params.CustomFilter | Omit = omit,
-        filter_model: Literal["baseline", "v1-baseten"] | Omit = omit,
+        filter_model: Literal["baseline", "v1-baseten", "cohere"] | Omit = omit,
         model: Literal[
             "claude-opus-4.5",
             "claude-opus-4.6",
@@ -356,7 +356,7 @@ class AsyncV2Resource(AsyncAPIResource):
         web_search: Literal["off", "full"],
         assistant_variant: Literal["homepage", "paper", "landing"] | Omit = omit,
         custom_filter: v2_chat_params.CustomFilter | Omit = omit,
-        filter_model: Literal["baseline", "v1-baseten"] | Omit = omit,
+        filter_model: Literal["baseline", "v1-baseten", "cohere"] | Omit = omit,
         model: Literal[
             "claude-opus-4.5",
             "claude-opus-4.6",

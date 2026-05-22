@@ -18,8 +18,6 @@ class V3RetrieveFeedParams(TypedDict, total=False):
 
     sort: Required[Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"]]
 
-    organizations: str
-
     source: Literal["GitHub"]
 
     topics: str

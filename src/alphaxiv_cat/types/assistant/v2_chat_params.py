@@ -31,7 +31,7 @@ class V2ChatParams(TypedDict, total=False):
 
     custom_filter: Annotated[CustomFilter, PropertyInfo(alias="customFilter")]
 
-    filter_model: Annotated[Literal["baseline", "v1-baseten"], PropertyInfo(alias="filterModel")]
+    filter_model: Annotated[Literal["baseline", "v1-baseten", "cohere"], PropertyInfo(alias="filterModel")]
 
     model: Literal[
         "claude-opus-4.5",

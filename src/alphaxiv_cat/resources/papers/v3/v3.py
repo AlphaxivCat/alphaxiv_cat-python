@@ -36,6 +36,7 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.papers import (
+    v3_like_params,
     v3_comment_params,
     v3_process_ai_params,
     v3_retrieve_all_params,
@@ -197,42 +198,6 @@ class V3Resource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3CommentResponse,
-        )
-
-    def delete_votes(
-        self,
-        *,
-        body: SequenceNotStr[str] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Remove votes from many papers at once
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._delete(
-            "/papers/v3/votes",
-            body=maybe_transform(body, SequenceNotStr[str]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
         )
 
     def implementation(
@@ -417,6 +382,7 @@ class V3Resource(SyncAPIResource):
         self,
         group: str,
         *,
+        liked: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -425,7 +391,7 @@ class V3Resource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V3LikeResponse:
         """
-        Toggle your like status on a paper group
+        Set your like status on a paper group
 
         Source file:
         `api-server/file:/app/api-server/src/controllers/papers/v3/like-paper.controller.ts`
@@ -443,6 +409,7 @@ class V3Resource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return self._post(
             path_template("/papers/v3/{group}/like", group=group),
+            body=maybe_transform({"liked": liked}, v3_like_params.V3LikeParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -880,7 +847,6 @@ class V3Resource(SyncAPIResource):
         page_num: str,
         page_size: str,
         sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
-        organizations: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
@@ -921,7 +887,6 @@ class V3Resource(SyncAPIResource):
                         "page_num": page_num,
                         "page_size": page_size,
                         "sort": sort,
-                        "organizations": organizations,
                         "source": source,
                         "topics": topics,
                         "universal_id": universal_id,
@@ -1339,42 +1304,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=V3CommentResponse,
         )
 
-    async def delete_votes(
-        self,
-        *,
-        body: SequenceNotStr[str] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Remove votes from many papers at once
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._delete(
-            "/papers/v3/votes",
-            body=await async_maybe_transform(body, SequenceNotStr[str]),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def implementation(
         self,
         paper_group_id: str,
@@ -1557,6 +1486,7 @@ class AsyncV3Resource(AsyncAPIResource):
         self,
         group: str,
         *,
+        liked: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1565,7 +1495,7 @@ class AsyncV3Resource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V3LikeResponse:
         """
-        Toggle your like status on a paper group
+        Set your like status on a paper group
 
         Source file:
         `api-server/file:/app/api-server/src/controllers/papers/v3/like-paper.controller.ts`
@@ -1583,6 +1513,7 @@ class AsyncV3Resource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `group` but received {group!r}")
         return await self._post(
             path_template("/papers/v3/{group}/like", group=group),
+            body=await async_maybe_transform({"liked": liked}, v3_like_params.V3LikeParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -2020,7 +1951,6 @@ class AsyncV3Resource(AsyncAPIResource):
         page_num: str,
         page_size: str,
         sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
-        organizations: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
@@ -2061,7 +1991,6 @@ class AsyncV3Resource(AsyncAPIResource):
                         "page_num": page_num,
                         "page_size": page_size,
                         "sort": sort,
-                        "organizations": organizations,
                         "source": source,
                         "topics": topics,
                         "universal_id": universal_id,
@@ -2369,9 +2298,6 @@ class V3ResourceWithRawResponse:
         self.comment = to_raw_response_wrapper(
             v3.comment,
         )
-        self.delete_votes = to_raw_response_wrapper(
-            v3.delete_votes,
-        )
         self.implementation = to_raw_response_wrapper(
             v3.implementation,
         )
@@ -2474,9 +2400,6 @@ class AsyncV3ResourceWithRawResponse:
         )
         self.comment = async_to_raw_response_wrapper(
             v3.comment,
-        )
-        self.delete_votes = async_to_raw_response_wrapper(
-            v3.delete_votes,
         )
         self.implementation = async_to_raw_response_wrapper(
             v3.implementation,
@@ -2581,9 +2504,6 @@ class V3ResourceWithStreamingResponse:
         self.comment = to_streamed_response_wrapper(
             v3.comment,
         )
-        self.delete_votes = to_streamed_response_wrapper(
-            v3.delete_votes,
-        )
         self.implementation = to_streamed_response_wrapper(
             v3.implementation,
         )
@@ -2686,9 +2606,6 @@ class AsyncV3ResourceWithStreamingResponse:
         )
         self.comment = async_to_streamed_response_wrapper(
             v3.comment,
-        )
-        self.delete_votes = async_to_streamed_response_wrapper(
-            v3.delete_votes,
         )
         self.implementation = async_to_streamed_response_wrapper(
             v3.implementation,
