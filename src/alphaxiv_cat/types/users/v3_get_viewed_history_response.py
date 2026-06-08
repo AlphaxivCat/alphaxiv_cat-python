@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List
 from typing_extensions import TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -15,7 +15,8 @@ class V3GetViewedHistoryResponseItem(BaseModel):
 
     abstract: str
 
-    image_url: Optional[str] = FieldInfo(alias="imageUrl", default=None)
+    canonical_id: str = FieldInfo(alias="canonicalId")
+    """A versioned paper ID (e.g. 1706.03762v1)"""
 
     paper_id: str = FieldInfo(alias="paperId")
     """A versionless universal paper ID (e.g. 1706.03762)"""

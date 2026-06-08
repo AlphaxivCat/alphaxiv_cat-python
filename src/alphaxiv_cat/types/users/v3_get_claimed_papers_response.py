@@ -17,11 +17,12 @@ class V3GetClaimedPapersResponseItem(BaseModel):
 
     authors: List[str]
 
+    canonical_id: str = FieldInfo(alias="canonicalId")
+    """A versioned paper ID (e.g. 1706.03762v1)"""
+
     citations: float
 
     google_citation_id: Optional[str] = None
-
-    image_url: Optional[str] = FieldInfo(alias="imageURL", default=None)
 
     paper_id: str
     """A versionless universal paper ID (e.g. 1706.03762)"""

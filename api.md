@@ -142,7 +142,6 @@ from alphaxiv_cat.types.papers import (
     V3RetrieveResponse,
     V3CommentResponse,
     V3ImplementationResponse,
-    V3KickoffThumbnailsTrendingPapersResponse,
     V3LikeResponse,
     V3PruneEmbeddingsByDateResponse,
     V3RequestImplementationResponse,
@@ -166,14 +165,11 @@ Methods:
 - <code title="delete /papers/v3/votes">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">delete_votes</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_delete_votes_params.py">params</a>) -> None</code>
 - <code title="post /papers/v3/{paperGroupId}/implementation">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">implementation</a>(paper_group_id, \*\*<a href="src/alphaxiv_cat/types/papers/v3_implementation_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_implementation_response.py">V3ImplementationResponse</a></code>
 - <code title="post /papers/v3/kickoff-paper-countries">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_paper_countries</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_kickoff_paper_countries_params.py">params</a>) -> None</code>
-- <code title="post /papers/v3/kickoff-paper-full-text">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_paper_full_text</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_kickoff_paper_full_text_params.py">params</a>) -> None</code>
 - <code title="post /papers/v3/kickoff-paper-podcasts">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_paper_podcasts</a>() -> None</code>
-- <code title="post /papers/v3/kickoff-thumbnails-trending-papers">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">kickoff_thumbnails_trending_papers</a>() -> <a href="./src/alphaxiv_cat/types/papers/v3_kickoff_thumbnails_trending_papers_response.py">V3KickoffThumbnailsTrendingPapersResponse</a></code>
 - <code title="post /papers/v3/{group}/like">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">like</a>(group, \*\*<a href="src/alphaxiv_cat/types/papers/v3_like_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_like_response.py">V3LikeResponse</a></code>
 - <code title="post /papers/v3/{paperGroupId}/podcast">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">podcast</a>(paper_group_id) -> None</code>
 - <code title="post /papers/v3/{paperVersionId}/process-ai">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">process_ai</a>(paper_version_id, \*\*<a href="src/alphaxiv_cat/types/papers/v3_process_ai_params.py">params</a>) -> None</code>
 - <code title="post /papers/v3/process-countries">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">process_countries</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_process_countries_params.py">params</a>) -> None</code>
-- <code title="post /papers/v3/process-full-text">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">process_full_text</a>(\*\*<a href="src/alphaxiv_cat/types/papers/v3_process_full_text_params.py">params</a>) -> None</code>
 - <code title="post /papers/v3/prune-embeddings-by-date">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">prune_embeddings_by_date</a>() -> <a href="./src/alphaxiv_cat/types/papers/v3_prune_embeddings_by_date_response.py">V3PruneEmbeddingsByDateResponse</a></code>
 - <code title="post /papers/v3/{group}/request-implementation">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">request_implementation</a>(group, \*\*<a href="src/alphaxiv_cat/types/papers/v3_request_implementation_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/papers/v3_request_implementation_response.py">V3RequestImplementationResponse</a></code>
 - <code title="post /papers/v3/{paperGroupId}/request-podcast">client.papers.v3.<a href="./src/alphaxiv_cat/resources/papers/v3/v3.py">request_podcast</a>(paper_group_id) -> <a href="./src/alphaxiv_cat/types/papers/v3_request_podcast_response.py">V3RequestPodcastResponse</a></code>
@@ -285,7 +281,6 @@ Types:
 
 ```python
 from alphaxiv_cat.types.users import (
-    V3AutocompleteProfileResponse,
     V3GetActivityResponse,
     V3GetClaimedPapersResponse,
     V3GetCurrentUserResponse,
@@ -305,7 +300,6 @@ from alphaxiv_cat.types.users import (
 
 Methods:
 
-- <code title="post /users/v3/autocomplete-profile">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">autocomplete_profile</a>(\*\*<a href="src/alphaxiv_cat/types/users/v3_autocomplete_profile_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_autocomplete_profile_response.py">V3AutocompleteProfileResponse</a></code>
 - <code title="delete /users/v3/banners/{bannerId}">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">delete_banner</a>(banner_id) -> None</code>
 - <code title="delete /users/v3">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">delete_own_user</a>() -> None</code>
 - <code title="get /users/v3/{id}/activity">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_activity</a>(id, \*\*<a href="src/alphaxiv_cat/types/users/v3_get_activity_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_get_activity_response.py">V3GetActivityResponse</a></code>
@@ -720,42 +714,6 @@ Methods:
 Methods:
 
 - <code title="get /retrieve/v1/top-papers">client.retrieve.v1.<a href="./src/alphaxiv_cat/resources/retrieve/v1.py">get_top_papers</a>(\*\*<a href="src/alphaxiv_cat/types/retrieve/v1_get_top_papers_params.py">params</a>) -> object</code>
-
-# Retool
-
-## V1
-
-Types:
-
-```python
-from alphaxiv_cat.types.retool import (
-    V1GetCumulativeUsersResponse,
-    V1GetDailyConversationsResponse,
-    V1GetDailyNewAccountsResponse,
-    V1GetDailyUserChatMessagesResponse,
-    V1GetTotalCommentCountResponse,
-    V1GetTotalPaperCountResponse,
-    V1GetTotalPrivateNotesCountResponse,
-    V1GetTotalUserCountResponse,
-    V1GetWeeklyMessageCountsByUserResponse,
-    V1GetWeeklyPrivateNotesResponse,
-    V1GetWeeklyPublicCommentsResponse,
-)
-```
-
-Methods:
-
-- <code title="get /retool/v1/cumulative-users">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_cumulative_users</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_cumulative_users_response.py">V1GetCumulativeUsersResponse</a></code>
-- <code title="get /retool/v1/daily-conversations">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_daily_conversations</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_daily_conversations_response.py">V1GetDailyConversationsResponse</a></code>
-- <code title="get /retool/v1/daily-new-accounts">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_daily_new_accounts</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_daily_new_accounts_response.py">V1GetDailyNewAccountsResponse</a></code>
-- <code title="get /retool/v1/daily-user-chat-messages">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_daily_user_chat_messages</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_daily_user_chat_messages_response.py">V1GetDailyUserChatMessagesResponse</a></code>
-- <code title="get /retool/v1/total-comment-count">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_total_comment_count</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_total_comment_count_response.py">V1GetTotalCommentCountResponse</a></code>
-- <code title="get /retool/v1/total-paper-count">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_total_paper_count</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_total_paper_count_response.py">V1GetTotalPaperCountResponse</a></code>
-- <code title="get /retool/v1/total-private-notes-count">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_total_private_notes_count</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_total_private_notes_count_response.py">V1GetTotalPrivateNotesCountResponse</a></code>
-- <code title="get /retool/v1/total-user-count">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_total_user_count</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_total_user_count_response.py">V1GetTotalUserCountResponse</a></code>
-- <code title="get /retool/v1/weekly-message-counts-by-user">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_message_counts_by_user</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_message_counts_by_user_response.py">V1GetWeeklyMessageCountsByUserResponse</a></code>
-- <code title="get /retool/v1/weekly-private-notes">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_private_notes</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_private_notes_response.py">V1GetWeeklyPrivateNotesResponse</a></code>
-- <code title="get /retool/v1/weekly-public-comments">client.retool.v1.<a href="./src/alphaxiv_cat/resources/retool/v1.py">get_weekly_public_comments</a>() -> <a href="./src/alphaxiv_cat/types/retool/v1_get_weekly_public_comments_response.py">V1GetWeeklyPublicCommentsResponse</a></code>
 
 # Mcp
 
