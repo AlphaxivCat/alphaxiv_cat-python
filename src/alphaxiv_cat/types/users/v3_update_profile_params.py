@@ -23,6 +23,8 @@ class V3UpdateProfileParams(TypedDict, total=False):
 
     location: Optional[str]
 
+    orcid_id: Annotated[Optional[str], PropertyInfo(alias="orcidId")]
+
     public_email: Annotated[Optional[str], PropertyInfo(alias="publicEmail")]
 
     real_name: Annotated[str, PropertyInfo(alias="realName")]

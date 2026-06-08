@@ -87,9 +87,10 @@ class ChildFolderPaper(BaseModel):
 
     authors: List[ChildFolderPaperAuthor]
 
-    citation: Optional[str] = None
+    canonical_id: Optional[str] = FieldInfo(alias="canonicalId", default=None)
+    """A versioned paper ID (e.g. 1706.03762v1)"""
 
-    image_url: Optional[str] = FieldInfo(alias="imageUrl", default=None)
+    citation: Optional[str] = None
 
     organizations: List[ChildFolderPaperOrganization]
 
@@ -187,9 +188,10 @@ class FolderPaper(BaseModel):
 
     authors: List[FolderPaperAuthor]
 
-    citation: Optional[str] = None
+    canonical_id: Optional[str] = FieldInfo(alias="canonicalId", default=None)
+    """A versioned paper ID (e.g. 1706.03762v1)"""
 
-    image_url: Optional[str] = FieldInfo(alias="imageUrl", default=None)
+    citation: Optional[str] = None
 
     organizations: List[FolderPaperOrganization]
 

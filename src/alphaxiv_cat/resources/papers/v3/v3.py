@@ -43,11 +43,9 @@ from ....types.papers import (
     v3_retrieve_feed_params,
     v3_implementation_params,
     v3_process_countries_params,
-    v3_process_full_text_params,
     v3_retrieve_unrelated_params,
     v3_request_implementation_params,
     v3_kickoff_paper_countries_params,
-    v3_kickoff_paper_full_text_params,
     v3_retrieve_diverse_papers_params,
     v3_retrieve_similar_papers_params,
 )
@@ -75,7 +73,6 @@ from ....types.papers.v3_request_implementation_response import V3RequestImpleme
 from ....types.papers.v3_retrieve_diverse_papers_response import V3RetrieveDiversePapersResponse
 from ....types.papers.v3_retrieve_similar_papers_response import V3RetrieveSimilarPapersResponse
 from ....types.papers.v3_prune_embeddings_by_date_response import V3PruneEmbeddingsByDateResponse
-from ....types.papers.v3_kickoff_thumbnails_trending_papers_response import V3KickoffThumbnailsTrendingPapersResponse
 
 __all__ = ["V3Resource", "AsyncV3Resource"]
 
@@ -325,46 +322,6 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def kickoff_paper_full_text(
-        self,
-        *,
-        max_papers: float | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Kickoff paper full text processing for recent papers
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
-
-        Args:
-          max_papers: Maximum number of paper versions to process
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/papers/v3/kickoff-paper-full-text",
-            body=maybe_transform(
-                {"max_papers": max_papers}, v3_kickoff_paper_full_text_params.V3KickoffPaperFullTextParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def kickoff_paper_podcasts(
         self,
         *,
@@ -388,30 +345,6 @@ class V3Resource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def kickoff_thumbnails_trending_papers(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3KickoffThumbnailsTrendingPapersResponse:
-        """
-        Kickoff background job to generate thumbnails for trending papers
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
-        """
-        return self._post(
-            "/papers/v3/kickoff-thumbnails-trending-papers",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3KickoffThumbnailsTrendingPapersResponse,
         )
 
     def like(
@@ -636,47 +569,6 @@ class V3Resource(SyncAPIResource):
             "/papers/v3/process-countries",
             body=maybe_transform(
                 {"universal_paper_ids": universal_paper_ids}, v3_process_countries_params.V3ProcessCountriesParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    @typing_extensions.deprecated("deprecated")
-    def process_full_text(
-        self,
-        *,
-        paper_version_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Processes and extracts full text from paper PDFs for indexing and search
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/process-full-text.controller.ts`
-
-        Args:
-          paper_version_id: Paper version ID to process for full text extraction
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/papers/v3/process-full-text",
-            body=maybe_transform(
-                {"paper_version_id": paper_version_id}, v3_process_full_text_params.V3ProcessFullTextParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -1468,46 +1360,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def kickoff_paper_full_text(
-        self,
-        *,
-        max_papers: float | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Kickoff paper full text processing for recent papers
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
-
-        Args:
-          max_papers: Maximum number of paper versions to process
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/papers/v3/kickoff-paper-full-text",
-            body=await async_maybe_transform(
-                {"max_papers": max_papers}, v3_kickoff_paper_full_text_params.V3KickoffPaperFullTextParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def kickoff_paper_podcasts(
         self,
         *,
@@ -1531,30 +1383,6 @@ class AsyncV3Resource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def kickoff_thumbnails_trending_papers(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3KickoffThumbnailsTrendingPapersResponse:
-        """
-        Kickoff background job to generate thumbnails for trending papers
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
-        """
-        return await self._post(
-            "/papers/v3/kickoff-thumbnails-trending-papers",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3KickoffThumbnailsTrendingPapersResponse,
         )
 
     async def like(
@@ -1779,47 +1607,6 @@ class AsyncV3Resource(AsyncAPIResource):
             "/papers/v3/process-countries",
             body=await async_maybe_transform(
                 {"universal_paper_ids": universal_paper_ids}, v3_process_countries_params.V3ProcessCountriesParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    @typing_extensions.deprecated("deprecated")
-    async def process_full_text(
-        self,
-        *,
-        paper_version_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Processes and extracts full text from paper PDFs for indexing and search
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/process-full-text.controller.ts`
-
-        Args:
-          paper_version_id: Paper version ID to process for full text extraction
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/papers/v3/process-full-text",
-            body=await async_maybe_transform(
-                {"paper_version_id": paper_version_id}, v3_process_full_text_params.V3ProcessFullTextParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -2385,14 +2172,8 @@ class V3ResourceWithRawResponse:
         self.kickoff_paper_countries = to_raw_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = to_raw_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = to_raw_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = to_raw_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = to_raw_response_wrapper(
             v3.like,
@@ -2410,11 +2191,6 @@ class V3ResourceWithRawResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             to_raw_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
             )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
@@ -2491,14 +2267,8 @@ class AsyncV3ResourceWithRawResponse:
         self.kickoff_paper_countries = async_to_raw_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = async_to_raw_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = async_to_raw_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = async_to_raw_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = async_to_raw_response_wrapper(
             v3.like,
@@ -2516,11 +2286,6 @@ class AsyncV3ResourceWithRawResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             async_to_raw_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
             )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
@@ -2597,14 +2362,8 @@ class V3ResourceWithStreamingResponse:
         self.kickoff_paper_countries = to_streamed_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = to_streamed_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = to_streamed_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = to_streamed_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = to_streamed_response_wrapper(
             v3.like,
@@ -2622,11 +2381,6 @@ class V3ResourceWithStreamingResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             to_streamed_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
             )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
@@ -2703,14 +2457,8 @@ class AsyncV3ResourceWithStreamingResponse:
         self.kickoff_paper_countries = async_to_streamed_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = async_to_streamed_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = async_to_streamed_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = async_to_streamed_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = async_to_streamed_response_wrapper(
             v3.like,
@@ -2728,11 +2476,6 @@ class AsyncV3ResourceWithStreamingResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
             )
         )
         self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]

@@ -41,7 +41,6 @@ from ....types.users import (
     v3_get_claimed_papers_params,
     v3_get_viewed_history_params,
     v3_update_preferences_params,
-    v3_autocomplete_profile_params,
 )
 from ...._base_client import make_request_options
 from .semantic_scholar import (
@@ -72,7 +71,6 @@ from ....types.users.v3_get_claimed_papers_response import V3GetClaimedPapersRes
 from ....types.users.v3_get_viewed_history_response import V3GetViewedHistoryResponse
 from ....types.users.v3_toggle_follow_user_response import V3ToggleFollowUserResponse
 from ....types.users.v3_update_preferences_response import V3UpdatePreferencesResponse
-from ....types.users.v3_autocomplete_profile_response import V3AutocompleteProfileResponse
 from ....types.users.v3_get_featured_activity_response import V3GetFeaturedActivityResponse
 from ....types.users.v3_process_notification_email_response import V3ProcessNotificationEmailResponse
 
@@ -114,42 +112,6 @@ class V3Resource(SyncAPIResource):
         For more information, see https://www.github.com/AlphaxivCat/alphaxiv_cat-python#with_streaming_response
         """
         return V3ResourceWithStreamingResponse(self)
-
-    @typing_extensions.deprecated("deprecated")
-    def autocomplete_profile(
-        self,
-        *,
-        user_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3AutocompleteProfileResponse:
-        """
-        Generate a biography and institution for a user using their claimed papers
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/users/v3/autocomplete-profile",
-            body=maybe_transform({"user_id": user_id}, v3_autocomplete_profile_params.V3AutocompleteProfileParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3AutocompleteProfileResponse,
-        )
 
     def delete_banner(
         self,
@@ -665,6 +627,7 @@ class V3Resource(SyncAPIResource):
         institution: Optional[str] | Omit = omit,
         linkedin_username: Optional[str] | Omit = omit,
         location: Optional[str] | Omit = omit,
+        orcid_id: Optional[str] | Omit = omit,
         public_email: Optional[str] | Omit = omit,
         real_name: str | Omit = omit,
         username: str | Omit = omit,
@@ -701,6 +664,7 @@ class V3Resource(SyncAPIResource):
                     "institution": institution,
                     "linkedin_username": linkedin_username,
                     "location": location,
+                    "orcid_id": orcid_id,
                     "public_email": public_email,
                     "real_name": real_name,
                     "username": username,
@@ -774,44 +738,6 @@ class AsyncV3Resource(AsyncAPIResource):
         For more information, see https://www.github.com/AlphaxivCat/alphaxiv_cat-python#with_streaming_response
         """
         return AsyncV3ResourceWithStreamingResponse(self)
-
-    @typing_extensions.deprecated("deprecated")
-    async def autocomplete_profile(
-        self,
-        *,
-        user_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3AutocompleteProfileResponse:
-        """
-        Generate a biography and institution for a user using their claimed papers
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/users/v3/autocomplete-profile",
-            body=await async_maybe_transform(
-                {"user_id": user_id}, v3_autocomplete_profile_params.V3AutocompleteProfileParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3AutocompleteProfileResponse,
-        )
 
     async def delete_banner(
         self,
@@ -1329,6 +1255,7 @@ class AsyncV3Resource(AsyncAPIResource):
         institution: Optional[str] | Omit = omit,
         linkedin_username: Optional[str] | Omit = omit,
         location: Optional[str] | Omit = omit,
+        orcid_id: Optional[str] | Omit = omit,
         public_email: Optional[str] | Omit = omit,
         real_name: str | Omit = omit,
         username: str | Omit = omit,
@@ -1365,6 +1292,7 @@ class AsyncV3Resource(AsyncAPIResource):
                     "institution": institution,
                     "linkedin_username": linkedin_username,
                     "location": location,
+                    "orcid_id": orcid_id,
                     "public_email": public_email,
                     "real_name": real_name,
                     "username": username,
@@ -1407,11 +1335,6 @@ class V3ResourceWithRawResponse:
     def __init__(self, v3: V3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = to_raw_response_wrapper(
             v3.delete_banner,
         )
@@ -1484,11 +1407,6 @@ class AsyncV3ResourceWithRawResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = async_to_raw_response_wrapper(
             v3.delete_banner,
         )
@@ -1561,11 +1479,6 @@ class V3ResourceWithStreamingResponse:
     def __init__(self, v3: V3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = to_streamed_response_wrapper(
             v3.delete_banner,
         )
@@ -1638,11 +1551,6 @@ class AsyncV3ResourceWithStreamingResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = async_to_streamed_response_wrapper(
             v3.delete_banner,
         )

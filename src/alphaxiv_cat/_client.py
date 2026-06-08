@@ -43,7 +43,6 @@ if TYPE_CHECKING:
         emails,
         events,
         papers,
-        retool,
         search,
         folders,
         api_keys,
@@ -66,7 +65,6 @@ if TYPE_CHECKING:
     from .resources.users.users import UsersResource, AsyncUsersResource
     from .resources.notifications import NotificationsResource, AsyncNotificationsResource
     from .resources.papers.papers import PapersResource, AsyncPapersResource
-    from .resources.retool.retool import RetoolResource, AsyncRetoolResource
     from .resources.search.search import SearchResource, AsyncSearchResource
     from .resources.folders.folders import FoldersResource, AsyncFoldersResource
     from .resources.api_keys.api_keys import APIKeysResource, AsyncAPIKeysResource
@@ -238,12 +236,6 @@ class AlphaxivCat(SyncAPIClient):
         from .resources.retrieve import RetrieveResource
 
         return RetrieveResource(self)
-
-    @cached_property
-    def retool(self) -> RetoolResource:
-        from .resources.retool import RetoolResource
-
-        return RetoolResource(self)
 
     @cached_property
     def mcp(self) -> McpResource:
@@ -534,12 +526,6 @@ class AsyncAlphaxivCat(AsyncAPIClient):
         return AsyncRetrieveResource(self)
 
     @cached_property
-    def retool(self) -> AsyncRetoolResource:
-        from .resources.retool import AsyncRetoolResource
-
-        return AsyncRetoolResource(self)
-
-    @cached_property
     def mcp(self) -> AsyncMcpResource:
         from .resources.mcp import AsyncMcpResource
 
@@ -774,12 +760,6 @@ class AlphaxivCatWithRawResponse:
         return RetrieveResourceWithRawResponse(self._client.retrieve)
 
     @cached_property
-    def retool(self) -> retool.RetoolResourceWithRawResponse:
-        from .resources.retool import RetoolResourceWithRawResponse
-
-        return RetoolResourceWithRawResponse(self._client.retool)
-
-    @cached_property
     def mcp(self) -> mcp.McpResourceWithRawResponse:
         from .resources.mcp import McpResourceWithRawResponse
 
@@ -893,12 +873,6 @@ class AsyncAlphaxivCatWithRawResponse:
         from .resources.retrieve import AsyncRetrieveResourceWithRawResponse
 
         return AsyncRetrieveResourceWithRawResponse(self._client.retrieve)
-
-    @cached_property
-    def retool(self) -> retool.AsyncRetoolResourceWithRawResponse:
-        from .resources.retool import AsyncRetoolResourceWithRawResponse
-
-        return AsyncRetoolResourceWithRawResponse(self._client.retool)
 
     @cached_property
     def mcp(self) -> mcp.AsyncMcpResourceWithRawResponse:
@@ -1016,12 +990,6 @@ class AlphaxivCatWithStreamedResponse:
         return RetrieveResourceWithStreamingResponse(self._client.retrieve)
 
     @cached_property
-    def retool(self) -> retool.RetoolResourceWithStreamingResponse:
-        from .resources.retool import RetoolResourceWithStreamingResponse
-
-        return RetoolResourceWithStreamingResponse(self._client.retool)
-
-    @cached_property
     def mcp(self) -> mcp.McpResourceWithStreamingResponse:
         from .resources.mcp import McpResourceWithStreamingResponse
 
@@ -1135,12 +1103,6 @@ class AsyncAlphaxivCatWithStreamedResponse:
         from .resources.retrieve import AsyncRetrieveResourceWithStreamingResponse
 
         return AsyncRetrieveResourceWithStreamingResponse(self._client.retrieve)
-
-    @cached_property
-    def retool(self) -> retool.AsyncRetoolResourceWithStreamingResponse:
-        from .resources.retool import AsyncRetoolResourceWithStreamingResponse
-
-        return AsyncRetoolResourceWithStreamingResponse(self._client.retool)
 
     @cached_property
     def mcp(self) -> mcp.AsyncMcpResourceWithStreamingResponse:
