@@ -33,12 +33,10 @@ from .ingest import (
 )
 from ...types import (
     paper_add_author_params,
-    paper_admin_vote_params,
     paper_email_author_params,
     paper_process_metadata_params,
     paper_request_ai_latest_params,
     paper_set_github_repository_params,
-    paper_process_abstract_embed_params,
 )
 from .private import (
     PrivateResource,
@@ -86,7 +84,6 @@ from .kickoff_daily_github_stars import (
 from ...types.paper_vote_response import PaperVoteResponse
 from ...types.paper_unclaim_response import PaperUnclaimResponse
 from ...types.paper_add_author_response import PaperAddAuthorResponse
-from ...types.paper_admin_vote_response import PaperAdminVoteResponse
 from ...types.paper_kickoff_ai_response import PaperKickoffAIResponse
 from ...types.paper_crx_pdf_hit_response import PaperCrxPdfHitResponse
 from ...types.paper_email_author_response import PaperEmailAuthorResponse
@@ -103,8 +100,6 @@ from ...types.paper_get_crx_paper_info_response import PaperGetCrxPaperInfoRespo
 from ...types.paper_kickoff_recent_papers_response import PaperKickoffRecentPapersResponse
 from ...types.paper_set_github_repository_response import PaperSetGitHubRepositoryResponse
 from ...types.paper_translate_ai_overview_response import PaperTranslateAIOverviewResponse
-from ...types.paper_kickoff_abstract_embed_response import PaperKickoffAbstractEmbedResponse
-from ...types.paper_process_abstract_embed_response import PaperProcessAbstractEmbedResponse
 from ...types.paper_kickoff_paper_categorization_response import PaperKickoffPaperCategorizationResponse
 from ...types.paper_request_ai_translation_latest_response import PaperRequestAITranslationLatestResponse
 
@@ -202,44 +197,6 @@ class PapersResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=PaperAddAuthorResponse,
-        )
-
-    def admin_vote(
-        self,
-        paper_id: str,
-        *,
-        entry: float,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperAdminVoteResponse:
-        """
-        Set paper vote count (admin only)
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v2/papers/admin-vote-paper.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not paper_id:
-            raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
-        return self._post(
-            path_template("/v2/papers/{paper_id}/admin-vote", paper_id=paper_id),
-            body=maybe_transform({"entry": entry}, paper_admin_vote_params.PaperAdminVoteParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperAdminVoteResponse,
         )
 
     def crx_abstract_click(
@@ -531,30 +488,6 @@ class PapersResource(SyncAPIResource):
             cast_to=PaperGetPaperInfoResponse,
         )
 
-    def kickoff_abstract_embed(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperKickoffAbstractEmbedResponse:
-        """
-        Kickoff background job to generate abstract embeddings for paper versions
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-version-abstract-embed.controller.ts`
-        """
-        return self._post(
-            "/v2/papers/kickoff-paper-version-abstract-embed",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperKickoffAbstractEmbedResponse,
-        )
-
     def kickoff_ai(
         self,
         *,
@@ -721,45 +654,6 @@ class PapersResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=object,
-        )
-
-    @typing_extensions.deprecated("deprecated")
-    def process_abstract_embed(
-        self,
-        *,
-        paper_version_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperProcessAbstractEmbedResponse:
-        """
-        Process abstract embedding for a paper version
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v2/papers/process-paper-version-abstract-embed.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/v2/papers/process-paper-version-abstract-embed",
-            body=maybe_transform(
-                {"paper_version_id": paper_version_id},
-                paper_process_abstract_embed_params.PaperProcessAbstractEmbedParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperProcessAbstractEmbedResponse,
         )
 
     @typing_extensions.deprecated("deprecated")
@@ -1352,44 +1246,6 @@ class AsyncPapersResource(AsyncAPIResource):
             cast_to=PaperAddAuthorResponse,
         )
 
-    async def admin_vote(
-        self,
-        paper_id: str,
-        *,
-        entry: float,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperAdminVoteResponse:
-        """
-        Set paper vote count (admin only)
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v2/papers/admin-vote-paper.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not paper_id:
-            raise ValueError(f"Expected a non-empty value for `paper_id` but received {paper_id!r}")
-        return await self._post(
-            path_template("/v2/papers/{paper_id}/admin-vote", paper_id=paper_id),
-            body=await async_maybe_transform({"entry": entry}, paper_admin_vote_params.PaperAdminVoteParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperAdminVoteResponse,
-        )
-
     async def crx_abstract_click(
         self,
         ref: str,
@@ -1679,30 +1535,6 @@ class AsyncPapersResource(AsyncAPIResource):
             cast_to=PaperGetPaperInfoResponse,
         )
 
-    async def kickoff_abstract_embed(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperKickoffAbstractEmbedResponse:
-        """
-        Kickoff background job to generate abstract embeddings for paper versions
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v2/papers/kickoff-paper-version-abstract-embed.controller.ts`
-        """
-        return await self._post(
-            "/v2/papers/kickoff-paper-version-abstract-embed",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperKickoffAbstractEmbedResponse,
-        )
-
     async def kickoff_ai(
         self,
         *,
@@ -1869,45 +1701,6 @@ class AsyncPapersResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=object,
-        )
-
-    @typing_extensions.deprecated("deprecated")
-    async def process_abstract_embed(
-        self,
-        *,
-        paper_version_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperProcessAbstractEmbedResponse:
-        """
-        Process abstract embedding for a paper version
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v2/papers/process-paper-version-abstract-embed.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/v2/papers/process-paper-version-abstract-embed",
-            body=await async_maybe_transform(
-                {"paper_version_id": paper_version_id},
-                paper_process_abstract_embed_params.PaperProcessAbstractEmbedParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperProcessAbstractEmbedResponse,
         )
 
     @typing_extensions.deprecated("deprecated")
@@ -2416,9 +2209,6 @@ class PapersResourceWithRawResponse:
         self.add_author = to_raw_response_wrapper(
             papers.add_author,
         )
-        self.admin_vote = to_raw_response_wrapper(
-            papers.admin_vote,
-        )
         self.crx_abstract_click = to_raw_response_wrapper(
             papers.crx_abstract_click,
         )
@@ -2440,9 +2230,6 @@ class PapersResourceWithRawResponse:
         self.get_paper_info = to_raw_response_wrapper(
             papers.get_paper_info,
         )
-        self.kickoff_abstract_embed = to_raw_response_wrapper(
-            papers.kickoff_abstract_embed,
-        )
         self.kickoff_ai = to_raw_response_wrapper(
             papers.kickoff_ai,
         )
@@ -2460,11 +2247,6 @@ class PapersResourceWithRawResponse:
         )
         self.mark_viewed = to_raw_response_wrapper(
             papers.mark_viewed,
-        )
-        self.process_abstract_embed = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.process_metadata = (  # pyright: ignore[reportDeprecated]
             to_raw_response_wrapper(
@@ -2531,9 +2313,6 @@ class AsyncPapersResourceWithRawResponse:
         self.add_author = async_to_raw_response_wrapper(
             papers.add_author,
         )
-        self.admin_vote = async_to_raw_response_wrapper(
-            papers.admin_vote,
-        )
         self.crx_abstract_click = async_to_raw_response_wrapper(
             papers.crx_abstract_click,
         )
@@ -2555,9 +2334,6 @@ class AsyncPapersResourceWithRawResponse:
         self.get_paper_info = async_to_raw_response_wrapper(
             papers.get_paper_info,
         )
-        self.kickoff_abstract_embed = async_to_raw_response_wrapper(
-            papers.kickoff_abstract_embed,
-        )
         self.kickoff_ai = async_to_raw_response_wrapper(
             papers.kickoff_ai,
         )
@@ -2575,11 +2351,6 @@ class AsyncPapersResourceWithRawResponse:
         )
         self.mark_viewed = async_to_raw_response_wrapper(
             papers.mark_viewed,
-        )
-        self.process_abstract_embed = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.process_metadata = (  # pyright: ignore[reportDeprecated]
             async_to_raw_response_wrapper(
@@ -2646,9 +2417,6 @@ class PapersResourceWithStreamingResponse:
         self.add_author = to_streamed_response_wrapper(
             papers.add_author,
         )
-        self.admin_vote = to_streamed_response_wrapper(
-            papers.admin_vote,
-        )
         self.crx_abstract_click = to_streamed_response_wrapper(
             papers.crx_abstract_click,
         )
@@ -2670,9 +2438,6 @@ class PapersResourceWithStreamingResponse:
         self.get_paper_info = to_streamed_response_wrapper(
             papers.get_paper_info,
         )
-        self.kickoff_abstract_embed = to_streamed_response_wrapper(
-            papers.kickoff_abstract_embed,
-        )
         self.kickoff_ai = to_streamed_response_wrapper(
             papers.kickoff_ai,
         )
@@ -2690,11 +2455,6 @@ class PapersResourceWithStreamingResponse:
         )
         self.mark_viewed = to_streamed_response_wrapper(
             papers.mark_viewed,
-        )
-        self.process_abstract_embed = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.process_metadata = (  # pyright: ignore[reportDeprecated]
             to_streamed_response_wrapper(
@@ -2761,9 +2521,6 @@ class AsyncPapersResourceWithStreamingResponse:
         self.add_author = async_to_streamed_response_wrapper(
             papers.add_author,
         )
-        self.admin_vote = async_to_streamed_response_wrapper(
-            papers.admin_vote,
-        )
         self.crx_abstract_click = async_to_streamed_response_wrapper(
             papers.crx_abstract_click,
         )
@@ -2785,9 +2542,6 @@ class AsyncPapersResourceWithStreamingResponse:
         self.get_paper_info = async_to_streamed_response_wrapper(
             papers.get_paper_info,
         )
-        self.kickoff_abstract_embed = async_to_streamed_response_wrapper(
-            papers.kickoff_abstract_embed,
-        )
         self.kickoff_ai = async_to_streamed_response_wrapper(
             papers.kickoff_ai,
         )
@@ -2805,11 +2559,6 @@ class AsyncPapersResourceWithStreamingResponse:
         )
         self.mark_viewed = async_to_streamed_response_wrapper(
             papers.mark_viewed,
-        )
-        self.process_abstract_embed = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                papers.process_abstract_embed,  # pyright: ignore[reportDeprecated],
-            )
         )
         self.process_metadata = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(

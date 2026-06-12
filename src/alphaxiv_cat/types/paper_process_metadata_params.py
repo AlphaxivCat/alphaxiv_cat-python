@@ -20,8 +20,6 @@ class Metadata(TypedDict, total=False):
 
     custom_categories: bool
 
-    embedding: bool
-
     github: bool
 
     organizations: bool

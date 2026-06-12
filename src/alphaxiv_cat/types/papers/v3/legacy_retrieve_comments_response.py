@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -16,7 +16,10 @@ __all__ = [
     "LegacyRetrieveCommentsResponseItemAnnotationHighlightRect",
     "LegacyRetrieveCommentsResponseItemAnnotationHighlightRectRect",
     "LegacyRetrieveCommentsResponseItemAuthor",
-    "LegacyRetrieveCommentsResponseItemAuthorAvatar",
+    "LegacyRetrieveCommentsResponseItemAuthorUnionMember0",
+    "LegacyRetrieveCommentsResponseItemAuthorUnionMember0Avatar",
+    "LegacyRetrieveCommentsResponseItemAuthorUnionMember1",
+    "LegacyRetrieveCommentsResponseItemAuthorUnionMember1Avatar",
     "LegacyRetrieveCommentsResponseItemEndorsement",
     "LegacyRetrieveCommentsResponseItemResponse",
     "LegacyRetrieveCommentsResponseItemResponseAnnotation",
@@ -25,7 +28,10 @@ __all__ = [
     "LegacyRetrieveCommentsResponseItemResponseAnnotationHighlightRect",
     "LegacyRetrieveCommentsResponseItemResponseAnnotationHighlightRectRect",
     "LegacyRetrieveCommentsResponseItemResponseAuthor",
-    "LegacyRetrieveCommentsResponseItemResponseAuthorAvatar",
+    "LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember0",
+    "LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember0Avatar",
+    "LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember1",
+    "LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember1Avatar",
     "LegacyRetrieveCommentsResponseItemResponseEndorsement",
 ]
 
@@ -76,16 +82,16 @@ class LegacyRetrieveCommentsResponseItemAnnotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class LegacyRetrieveCommentsResponseItemAuthorAvatar(BaseModel):
+class LegacyRetrieveCommentsResponseItemAuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class LegacyRetrieveCommentsResponseItemAuthor(BaseModel):
+class LegacyRetrieveCommentsResponseItemAuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[LegacyRetrieveCommentsResponseItemAuthorAvatar]] = None
+    avatar: Optional[List[LegacyRetrieveCommentsResponseItemAuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -114,6 +120,51 @@ class LegacyRetrieveCommentsResponseItemAuthor(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class LegacyRetrieveCommentsResponseItemAuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class LegacyRetrieveCommentsResponseItemAuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[LegacyRetrieveCommentsResponseItemAuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+LegacyRetrieveCommentsResponseItemAuthor: TypeAlias = Union[
+    LegacyRetrieveCommentsResponseItemAuthorUnionMember0, LegacyRetrieveCommentsResponseItemAuthorUnionMember1
+]
 
 
 class LegacyRetrieveCommentsResponseItemEndorsement(BaseModel):
@@ -172,16 +223,16 @@ class LegacyRetrieveCommentsResponseItemResponseAnnotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class LegacyRetrieveCommentsResponseItemResponseAuthorAvatar(BaseModel):
+class LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class LegacyRetrieveCommentsResponseItemResponseAuthor(BaseModel):
+class LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[LegacyRetrieveCommentsResponseItemResponseAuthorAvatar]] = None
+    avatar: Optional[List[LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -210,6 +261,52 @@ class LegacyRetrieveCommentsResponseItemResponseAuthor(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+LegacyRetrieveCommentsResponseItemResponseAuthor: TypeAlias = Union[
+    LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember0,
+    LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember1,
+]
 
 
 class LegacyRetrieveCommentsResponseItemResponseEndorsement(BaseModel):
