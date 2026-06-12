@@ -17,7 +17,10 @@ __all__ = [
     "ActivityItemAnnotationHighlightRect",
     "ActivityItemAnnotationHighlightRectRect",
     "ActivityItemAuthor",
-    "ActivityItemAuthorAvatar",
+    "ActivityItemAuthorUnionMember0",
+    "ActivityItemAuthorUnionMember0Avatar",
+    "ActivityItemAuthorUnionMember1",
+    "ActivityItemAuthorUnionMember1Avatar",
     "ActivityItemEndorsement",
     "ClaimedPaper",
     "Featured",
@@ -78,16 +81,16 @@ class ActivityItemAnnotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class ActivityItemAuthorAvatar(BaseModel):
+class ActivityItemAuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class ActivityItemAuthor(BaseModel):
+class ActivityItemAuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[ActivityItemAuthorAvatar]] = None
+    avatar: Optional[List[ActivityItemAuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -116,6 +119,49 @@ class ActivityItemAuthor(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class ActivityItemAuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class ActivityItemAuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[ActivityItemAuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+ActivityItemAuthor: TypeAlias = Union[ActivityItemAuthorUnionMember0, ActivityItemAuthorUnionMember1]
 
 
 class ActivityItemEndorsement(BaseModel):
@@ -283,10 +329,6 @@ class User(BaseModel):
     biography: Optional[str] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
-
-    email: str
-
-    first_login: bool = FieldInfo(alias="firstLogin")
 
     follower_count: float = FieldInfo(alias="followerCount")
 

@@ -50,7 +50,7 @@ class Base(TypedDict, total=False):
     ]
 
     feed_sort: Annotated[
-        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"], PropertyInfo(alias="feedSort")
+        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"], PropertyInfo(alias="feedSort")
     ]
 
     is_dark_mode_enabled: Annotated[bool, PropertyInfo(alias="isDarkModeEnabled")]

@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -17,7 +17,10 @@ __all__ = [
     "V3GetActivityResponseItemItemAnnotationHighlightRect",
     "V3GetActivityResponseItemItemAnnotationHighlightRectRect",
     "V3GetActivityResponseItemItemAuthor",
-    "V3GetActivityResponseItemItemAuthorAvatar",
+    "V3GetActivityResponseItemItemAuthorUnionMember0",
+    "V3GetActivityResponseItemItemAuthorUnionMember0Avatar",
+    "V3GetActivityResponseItemItemAuthorUnionMember1",
+    "V3GetActivityResponseItemItemAuthorUnionMember1Avatar",
     "V3GetActivityResponseItemItemEndorsement",
 ]
 
@@ -68,16 +71,16 @@ class V3GetActivityResponseItemItemAnnotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class V3GetActivityResponseItemItemAuthorAvatar(BaseModel):
+class V3GetActivityResponseItemItemAuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class V3GetActivityResponseItemItemAuthor(BaseModel):
+class V3GetActivityResponseItemItemAuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[V3GetActivityResponseItemItemAuthorAvatar]] = None
+    avatar: Optional[List[V3GetActivityResponseItemItemAuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -106,6 +109,51 @@ class V3GetActivityResponseItemItemAuthor(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class V3GetActivityResponseItemItemAuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class V3GetActivityResponseItemItemAuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[V3GetActivityResponseItemItemAuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+V3GetActivityResponseItemItemAuthor: TypeAlias = Union[
+    V3GetActivityResponseItemItemAuthorUnionMember0, V3GetActivityResponseItemItemAuthorUnionMember1
+]
 
 
 class V3GetActivityResponseItemItemEndorsement(BaseModel):

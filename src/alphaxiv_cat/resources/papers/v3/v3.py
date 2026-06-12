@@ -72,7 +72,6 @@ from ....types.papers.v3_retrieve_unrelated_response import V3RetrieveUnrelatedR
 from ....types.papers.v3_request_implementation_response import V3RequestImplementationResponse
 from ....types.papers.v3_retrieve_diverse_papers_response import V3RetrieveDiversePapersResponse
 from ....types.papers.v3_retrieve_similar_papers_response import V3RetrieveSimilarPapersResponse
-from ....types.papers.v3_prune_embeddings_by_date_response import V3PruneEmbeddingsByDateResponse
 
 __all__ = ["V3Resource", "AsyncV3Resource"]
 
@@ -576,31 +575,6 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    def prune_embeddings_by_date(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3PruneEmbeddingsByDateResponse:
-        """
-        Clear 'is_last_X_days' flags from paper embeddings that have become too old
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
-        """
-        return self._post(
-            "/papers/v3/prune-embeddings-by-date",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3PruneEmbeddingsByDateResponse,
-        )
-
     def request_implementation(
         self,
         group: str,
@@ -777,7 +751,8 @@ class V3Resource(SyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"],
+        include_external_blogs: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
@@ -818,6 +793,7 @@ class V3Resource(SyncAPIResource):
                         "page_num": page_num,
                         "page_size": page_size,
                         "sort": sort,
+                        "include_external_blogs": include_external_blogs,
                         "source": source,
                         "topics": topics,
                         "universal_id": universal_id,
@@ -1614,31 +1590,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    async def prune_embeddings_by_date(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3PruneEmbeddingsByDateResponse:
-        """
-        Clear 'is_last_X_days' flags from paper embeddings that have become too old
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
-        """
-        return await self._post(
-            "/papers/v3/prune-embeddings-by-date",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3PruneEmbeddingsByDateResponse,
-        )
-
     async def request_implementation(
         self,
         group: str,
@@ -1815,7 +1766,8 @@ class AsyncV3Resource(AsyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"],
+        include_external_blogs: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
@@ -1856,6 +1808,7 @@ class AsyncV3Resource(AsyncAPIResource):
                         "page_num": page_num,
                         "page_size": page_size,
                         "sort": sort,
+                        "include_external_blogs": include_external_blogs,
                         "source": source,
                         "topics": topics,
                         "universal_id": universal_id,
@@ -2193,11 +2146,6 @@ class V3ResourceWithRawResponse:
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.request_implementation = to_raw_response_wrapper(
             v3.request_implementation,
         )
@@ -2286,11 +2234,6 @@ class AsyncV3ResourceWithRawResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             async_to_raw_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
             )
         )
         self.request_implementation = async_to_raw_response_wrapper(
@@ -2383,11 +2326,6 @@ class V3ResourceWithStreamingResponse:
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.request_implementation = to_streamed_response_wrapper(
             v3.request_implementation,
         )
@@ -2476,11 +2414,6 @@ class AsyncV3ResourceWithStreamingResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
             )
         )
         self.request_implementation = async_to_streamed_response_wrapper(

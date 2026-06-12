@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -16,7 +16,10 @@ __all__ = [
     "CommentAnnotationHighlightRect",
     "CommentAnnotationHighlightRectRect",
     "CommentAuthor",
-    "CommentAuthorAvatar",
+    "CommentAuthorUnionMember0",
+    "CommentAuthorUnionMember0Avatar",
+    "CommentAuthorUnionMember1",
+    "CommentAuthorUnionMember1Avatar",
     "CommentEndorsement",
     "CommentResponse",
     "CommentResponseAnnotation",
@@ -25,7 +28,10 @@ __all__ = [
     "CommentResponseAnnotationHighlightRect",
     "CommentResponseAnnotationHighlightRectRect",
     "CommentResponseAuthor",
-    "CommentResponseAuthorAvatar",
+    "CommentResponseAuthorUnionMember0",
+    "CommentResponseAuthorUnionMember0Avatar",
+    "CommentResponseAuthorUnionMember1",
+    "CommentResponseAuthorUnionMember1Avatar",
     "CommentResponseEndorsement",
 ]
 
@@ -76,16 +82,16 @@ class CommentAnnotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class CommentAuthorAvatar(BaseModel):
+class CommentAuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class CommentAuthor(BaseModel):
+class CommentAuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[CommentAuthorAvatar]] = None
+    avatar: Optional[List[CommentAuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -114,6 +120,49 @@ class CommentAuthor(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class CommentAuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class CommentAuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[CommentAuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+CommentAuthor: TypeAlias = Union[CommentAuthorUnionMember0, CommentAuthorUnionMember1]
 
 
 class CommentEndorsement(BaseModel):
@@ -168,16 +217,16 @@ class CommentResponseAnnotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class CommentResponseAuthorAvatar(BaseModel):
+class CommentResponseAuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class CommentResponseAuthor(BaseModel):
+class CommentResponseAuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[CommentResponseAuthorAvatar]] = None
+    avatar: Optional[List[CommentResponseAuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -206,6 +255,49 @@ class CommentResponseAuthor(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class CommentResponseAuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class CommentResponseAuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[CommentResponseAuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+CommentResponseAuthor: TypeAlias = Union[CommentResponseAuthorUnionMember0, CommentResponseAuthorUnionMember1]
 
 
 class CommentResponseEndorsement(BaseModel):

@@ -61,7 +61,9 @@ class PreferencesBase(BaseModel):
         alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"] = FieldInfo(alias="feedSort")
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"] = FieldInfo(
+        alias="feedSort"
+    )
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
@@ -213,7 +215,9 @@ class UserPreferencesBase(BaseModel):
         alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"] = FieldInfo(alias="feedSort")
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"] = FieldInfo(
+        alias="feedSort"
+    )
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
@@ -358,8 +362,6 @@ class User(BaseModel):
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
     email: str
-
-    first_login: bool = FieldInfo(alias="firstLogin")
 
     follower_count: float = FieldInfo(alias="followerCount")
 
