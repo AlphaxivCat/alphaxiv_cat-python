@@ -12,6 +12,7 @@ __all__ = [
     "V3RetrieveUnrelatedResponseItem",
     "V3RetrieveUnrelatedResponseItemAuthorInfo",
     "V3RetrieveUnrelatedResponseItemAuthorInfoAvatar",
+    "V3RetrieveUnrelatedResponseItemExternalBlog",
     "V3RetrieveUnrelatedResponseItemFullAuthor",
     "V3RetrieveUnrelatedResponseItemMetrics",
     "V3RetrieveUnrelatedResponseItemMetricsVisitsCount",
@@ -58,6 +59,10 @@ class V3RetrieveUnrelatedResponseItemAuthorInfo(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class V3RetrieveUnrelatedResponseItemExternalBlog(BaseModel):
+    body_blob_id: str
 
 
 class V3RetrieveUnrelatedResponseItemFullAuthor(BaseModel):
@@ -113,6 +118,8 @@ class V3RetrieveUnrelatedResponseItem(BaseModel):
 
     canonical_id: str
     """A versioned paper ID (e.g. 1706.03762v1)"""
+
+    external_blog: Optional[V3RetrieveUnrelatedResponseItemExternalBlog] = None
 
     first_publication_date: str
 
