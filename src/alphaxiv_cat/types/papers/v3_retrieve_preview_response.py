@@ -11,6 +11,7 @@ __all__ = [
     "V3RetrievePreviewResponse",
     "AuthorInfo",
     "AuthorInfoAvatar",
+    "ExternalBlog",
     "FullAuthor",
     "Metrics",
     "MetricsVisitsCount",
@@ -57,6 +58,10 @@ class AuthorInfo(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class ExternalBlog(BaseModel):
+    body_blob_id: str
 
 
 class FullAuthor(BaseModel):
@@ -112,6 +117,8 @@ class V3RetrievePreviewResponse(BaseModel):
 
     canonical_id: str
     """A versioned paper ID (e.g. 1706.03762v1)"""
+
+    external_blog: Optional[ExternalBlog] = None
 
     first_publication_date: str
 
