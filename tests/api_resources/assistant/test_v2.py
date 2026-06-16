@@ -63,7 +63,7 @@ class TestV2:
                 "url": "https://example.com",
             },
             filter_model="cohere",
-            model="claude-opus-4.5",
+            model="model",
             plan="free",
             signature="signature",
         )
@@ -326,7 +326,7 @@ class TestAsyncV2:
                 "url": "https://example.com",
             },
             filter_model="cohere",
-            model="claude-opus-4.5",
+            model="model",
             plan="free",
             signature="signature",
         )

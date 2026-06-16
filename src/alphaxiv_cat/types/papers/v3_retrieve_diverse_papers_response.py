@@ -129,6 +129,8 @@ class V3RetrieveDiversePapersResponseItem(BaseModel):
 
     github_url: Optional[str] = None
 
+    has_run_report: bool
+
     image_url: Optional[str] = None
 
     metrics: V3RetrieveDiversePapersResponseItemMetrics
