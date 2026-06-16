@@ -128,6 +128,8 @@ class V3RetrievePreviewResponse(BaseModel):
 
     github_url: Optional[str] = None
 
+    has_run_report: bool
+
     image_url: Optional[str] = None
 
     metrics: Metrics

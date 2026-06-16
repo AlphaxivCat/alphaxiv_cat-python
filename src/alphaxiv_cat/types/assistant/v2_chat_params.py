@@ -33,39 +33,7 @@ class V2ChatParams(TypedDict, total=False):
 
     filter_model: Annotated[Literal["cohere"], PropertyInfo(alias="filterModel")]
 
-    model: Literal[
-        "claude-opus-4.5",
-        "claude-opus-4.6",
-        "claude-opus-4.7",
-        "claude-sonnet-4.5",
-        "claude-sonnet-4.6",
-        "deepseek-v4-flash",
-        "deepseek-v4-pro",
-        "gemini-2.5-flash",
-        "gemini-2.5-pro",
-        "gemini-3-flash",
-        "gemini-3.1-flash-lite",
-        "gemini-3.1-pro",
-        "gemini-3.5-flash",
-        "glm-5-turbo",
-        "glm-5.1",
-        "gpt-5",
-        "gpt-5.1",
-        "gpt-5.2",
-        "gpt-5.4",
-        "gpt-5.5",
-        "gpt-5.4-mini",
-        "gpt-5.4-nano",
-        "kimi-k2.5",
-        "kimi-k2.6",
-        "mercury-2",
-        "minimax-m2.5",
-        "minimax-m2.7",
-        "qwen-3.5",
-        "fast",
-        "smart",
-        "pro",
-    ]
+    model: str
 
     plan: Literal["free", "pro"]
 
