@@ -363,6 +363,8 @@ class User(BaseModel):
 
     email: str
 
+    first_login: bool = FieldInfo(alias="firstLogin")
+
     follower_count: float = FieldInfo(alias="followerCount")
 
     following_count: float = FieldInfo(alias="followingCount")

@@ -47,6 +47,10 @@ class V3GetUserByUuidResponse(BaseModel):
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
+    email: str
+
+    first_login: bool = FieldInfo(alias="firstLogin")
+
     follower_count: float = FieldInfo(alias="followerCount")
 
     following_count: float = FieldInfo(alias="followingCount")
