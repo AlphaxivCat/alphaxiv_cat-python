@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.9.0 (2026-06-18)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** api update ([33ae9a2](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/33ae9a263c4dc66c05d3e3ab9a0c7fad0d403301))
+* **api:** api update ([1a7902e](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/1a7902edc00310ec8dbf44a42964e47b3a35b53d))
+* **api:** api update ([9a1030d](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/9a1030dc5f5f0c13d0df1d20a05b9ebe9d520d7f))
+* **api:** api update ([7920386](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/7920386aecadc059d3396fb06e385179257e100b))
+* **api:** api update ([8350d4c](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/8350d4c2af6b702863c527bd4e4765aff743cd6f))
+* **api:** api update ([e3e3b1d](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/e3e3b1d803ad5eec3427b9fbb0b83f3f924dbd9c))
+* **api:** api update ([42501fa](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/42501fab0eb3f59ebb8a0424bcf3fc610bfd1d67))
+* **api:** api update ([5e3d9d5](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/5e3d9d5e9a689a3b5fe860baa7aa72497c553903))
+* **api:** api update ([03f3076](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/03f307630ed2afe11a4193d5ec2f0bbcaadb93c3))
+* **internal/types:** support eagerly validating pydantic iterators ([db4167b](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/db4167b8ba98bc9b75c2d292309038eaacd8c94b))
+
+
+### Bug Fixes
+
+* **auth:** prioritize first auth header ([c4596b0](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/c4596b0c45e7e5cf49ea44a99b2647bfddf50118))
+
 ## 0.8.0 (2026-05-09)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.7.0...v0.8.0)
