@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -15,7 +15,10 @@ __all__ = [
     "AnnotationHighlightRect",
     "AnnotationHighlightRectRect",
     "Author",
-    "AuthorAvatar",
+    "AuthorUnionMember0",
+    "AuthorUnionMember0Avatar",
+    "AuthorUnionMember1",
+    "AuthorUnionMember1Avatar",
     "Endorsement",
     "Response",
     "ResponseAnnotation",
@@ -24,7 +27,10 @@ __all__ = [
     "ResponseAnnotationHighlightRect",
     "ResponseAnnotationHighlightRectRect",
     "ResponseAuthor",
-    "ResponseAuthorAvatar",
+    "ResponseAuthorUnionMember0",
+    "ResponseAuthorUnionMember0Avatar",
+    "ResponseAuthorUnionMember1",
+    "ResponseAuthorUnionMember1Avatar",
     "ResponseEndorsement",
 ]
 
@@ -75,16 +81,16 @@ class Annotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class AuthorAvatar(BaseModel):
+class AuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class Author(BaseModel):
+class AuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[AuthorAvatar]] = None
+    avatar: Optional[List[AuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -113,6 +119,49 @@ class Author(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class AuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class AuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[AuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+Author: TypeAlias = Union[AuthorUnionMember0, AuthorUnionMember1]
 
 
 class Endorsement(BaseModel):
@@ -167,16 +216,16 @@ class ResponseAnnotation(BaseModel):
     highlight_color: Optional[str] = FieldInfo(alias="highlightColor", default=None)
 
 
-class ResponseAuthorAvatar(BaseModel):
+class ResponseAuthorUnionMember0Avatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
     url: str
 
 
-class ResponseAuthor(BaseModel):
+class ResponseAuthorUnionMember0(BaseModel):
     id: str
 
-    avatar: Optional[List[ResponseAuthorAvatar]] = None
+    avatar: Optional[List[ResponseAuthorUnionMember0Avatar]] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
@@ -205,6 +254,49 @@ class ResponseAuthor(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class ResponseAuthorUnionMember1Avatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class ResponseAuthorUnionMember1(BaseModel):
+    id: object
+
+    avatar: Optional[List[ResponseAuthorUnionMember1Avatar]] = None
+
+    bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
+
+    github_username: Optional[str] = FieldInfo(alias="githubUsername", default=None)
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    linkedin_username: Optional[str] = FieldInfo(alias="linkedinUsername", default=None)
+
+    orcid_id: Optional[str] = FieldInfo(alias="orcidId", default=None)
+
+    public_email: Optional[str] = FieldInfo(alias="publicEmail", default=None)
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    role: Literal["user", "reviewer", "admin", "bot"]
+
+    username: str
+
+    verified: bool
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+    x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+ResponseAuthor: TypeAlias = Union[ResponseAuthorUnionMember0, ResponseAuthorUnionMember1]
 
 
 class ResponseEndorsement(BaseModel):

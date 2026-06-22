@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from .v3_like_params import V3LikeParams as V3LikeParams
 from .v3_like_response import V3LikeResponse as V3LikeResponse
 from .v2_comment_params import V2CommentParams as V2CommentParams
 from .v3_comment_params import V3CommentParams as V3CommentParams
@@ -20,7 +21,6 @@ from .v3_retrieve_feed_response import V3RetrieveFeedResponse as V3RetrieveFeedR
 from .v3_implementation_response import V3ImplementationResponse as V3ImplementationResponse
 from .ingest_ingest_latest_params import IngestIngestLatestParams as IngestIngestLatestParams
 from .v3_process_countries_params import V3ProcessCountriesParams as V3ProcessCountriesParams
-from .v3_process_full_text_params import V3ProcessFullTextParams as V3ProcessFullTextParams
 from .v3_request_podcast_response import V3RequestPodcastResponse as V3RequestPodcastResponse
 from .ingest_ingest_version_params import IngestIngestVersionParams as IngestIngestVersionParams
 from .v3_retrieve_figures_response import V3RetrieveFiguresResponse as V3RetrieveFiguresResponse
@@ -34,14 +34,12 @@ from .v3_retrieve_full_text_response import V3RetrieveFullTextResponse as V3Retr
 from .v3_retrieve_unrelated_response import V3RetrieveUnrelatedResponse as V3RetrieveUnrelatedResponse
 from .v3_request_implementation_params import V3RequestImplementationParams as V3RequestImplementationParams
 from .v3_kickoff_paper_countries_params import V3KickoffPaperCountriesParams as V3KickoffPaperCountriesParams
-from .v3_kickoff_paper_full_text_params import V3KickoffPaperFullTextParams as V3KickoffPaperFullTextParams
 from .v3_retrieve_diverse_papers_params import V3RetrieveDiversePapersParams as V3RetrieveDiversePapersParams
 from .v3_retrieve_similar_papers_params import V3RetrieveSimilarPapersParams as V3RetrieveSimilarPapersParams
 from .v3_request_implementation_response import V3RequestImplementationResponse as V3RequestImplementationResponse
 from .version_request_ai_overview_params import VersionRequestAIOverviewParams as VersionRequestAIOverviewParams
 from .v3_retrieve_diverse_papers_response import V3RetrieveDiversePapersResponse as V3RetrieveDiversePapersResponse
 from .v3_retrieve_similar_papers_response import V3RetrieveSimilarPapersResponse as V3RetrieveSimilarPapersResponse
-from .v3_prune_embeddings_by_date_response import V3PruneEmbeddingsByDateResponse as V3PruneEmbeddingsByDateResponse
 from .version_request_ai_overview_response import VersionRequestAIOverviewResponse as VersionRequestAIOverviewResponse
 from .version_request_ai_translation_response import (
     VersionRequestAITranslationResponse as VersionRequestAITranslationResponse,
@@ -60,9 +58,6 @@ from .metadata_retrieve_latest_metadata_response import (
 )
 from .metadata_retrieve_version_metadata_response import (
     MetadataRetrieveVersionMetadataResponse as MetadataRetrieveVersionMetadataResponse,
-)
-from .v3_kickoff_thumbnails_trending_papers_response import (
-    V3KickoffThumbnailsTrendingPapersResponse as V3KickoffThumbnailsTrendingPapersResponse,
 )
 from .kickoff_daily_github_star_kickoff_daily_github_stars_response import (
     KickoffDailyGitHubStarKickoffDailyGitHubStarsResponse as KickoffDailyGitHubStarKickoffDailyGitHubStarsResponse,

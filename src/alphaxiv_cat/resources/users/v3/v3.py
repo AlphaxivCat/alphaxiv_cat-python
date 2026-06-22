@@ -41,7 +41,6 @@ from ....types.users import (
     v3_get_claimed_papers_params,
     v3_get_viewed_history_params,
     v3_update_preferences_params,
-    v3_autocomplete_profile_params,
 )
 from ...._base_client import make_request_options
 from .semantic_scholar import (
@@ -72,7 +71,6 @@ from ....types.users.v3_get_claimed_papers_response import V3GetClaimedPapersRes
 from ....types.users.v3_get_viewed_history_response import V3GetViewedHistoryResponse
 from ....types.users.v3_toggle_follow_user_response import V3ToggleFollowUserResponse
 from ....types.users.v3_update_preferences_response import V3UpdatePreferencesResponse
-from ....types.users.v3_autocomplete_profile_response import V3AutocompleteProfileResponse
 from ....types.users.v3_get_featured_activity_response import V3GetFeaturedActivityResponse
 from ....types.users.v3_process_notification_email_response import V3ProcessNotificationEmailResponse
 
@@ -115,42 +113,6 @@ class V3Resource(SyncAPIResource):
         """
         return V3ResourceWithStreamingResponse(self)
 
-    @typing_extensions.deprecated("deprecated")
-    def autocomplete_profile(
-        self,
-        *,
-        user_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3AutocompleteProfileResponse:
-        """
-        Generate a biography and institution for a user using their claimed papers
-
-        Source file:
-        `api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/users/v3/autocomplete-profile",
-            body=maybe_transform({"user_id": user_id}, v3_autocomplete_profile_params.V3AutocompleteProfileParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3AutocompleteProfileResponse,
-        )
-
     def delete_banner(
         self,
         banner_id: str,
@@ -165,7 +127,8 @@ class V3Resource(SyncAPIResource):
         """
         Delete the given banner
 
-        Source file: `api-server/src/controllers/users/v3/delete-banner.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-banner.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -200,7 +163,8 @@ class V3Resource(SyncAPIResource):
         """
         Deletes the user's account
 
-        Source file: `api-server/src/controllers/users/v3/delete-own-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-own-user.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
@@ -226,7 +190,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve public activity timeline for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-activity.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-activity.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -267,7 +232,7 @@ class V3Resource(SyncAPIResource):
         Retrieve the claimed papers for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -306,7 +271,7 @@ class V3Resource(SyncAPIResource):
         Retrieve information about yourself
 
         Source file:
-        `api-server/src/controllers/users/v3/get-current-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-current-user.controller.ts`
         """
         return self._get(
             "/users/v3",
@@ -330,7 +295,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve highlighted activity for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-featured.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-featured.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -365,7 +331,8 @@ class V3Resource(SyncAPIResource):
         """
         List the users following the specified user
 
-        Source file: `api-server/src/controllers/users/v3/get-followers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-followers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -399,7 +366,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve weekly and all-time leaderboards for users ranked by reputation
 
-        Source file: `api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
         """
         return self._get(
             "/users/v3/leaderboard",
@@ -423,7 +391,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve a user's basic information given its UUID
 
-        Source file: `api-server/src/controllers/users/v3/get-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -460,7 +429,7 @@ class V3Resource(SyncAPIResource):
         Retrieve the view history for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -505,7 +474,7 @@ class V3Resource(SyncAPIResource):
         Send a notification digest email for the given user when necessary.
 
         Source file:
-        `api-server/src/controllers/users/v3/process-notification-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/process-notification-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -541,7 +510,8 @@ class V3Resource(SyncAPIResource):
         """
         Search for users by name, username, or institution
 
-        Source file: `api-server/src/controllers/users/v3/search-users.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/search-users.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -585,7 +555,7 @@ class V3Resource(SyncAPIResource):
         Follow or unfollow another user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -622,7 +592,7 @@ class V3Resource(SyncAPIResource):
         Update base or banner preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/users/v3/update-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-preferences.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -657,6 +627,7 @@ class V3Resource(SyncAPIResource):
         institution: Optional[str] | Omit = omit,
         linkedin_username: Optional[str] | Omit = omit,
         location: Optional[str] | Omit = omit,
+        orcid_id: Optional[str] | Omit = omit,
         public_email: Optional[str] | Omit = omit,
         real_name: str | Omit = omit,
         username: str | Omit = omit,
@@ -671,7 +642,8 @@ class V3Resource(SyncAPIResource):
         """
         Update profile details for the authenticated user
 
-        Source file: `api-server/src/controllers/users/v3/update-profile.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-profile.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -692,6 +664,7 @@ class V3Resource(SyncAPIResource):
                     "institution": institution,
                     "linkedin_username": linkedin_username,
                     "location": location,
+                    "orcid_id": orcid_id,
                     "public_email": public_email,
                     "real_name": real_name,
                     "username": username,
@@ -718,7 +691,8 @@ class V3Resource(SyncAPIResource):
         """
         Upload or remove the authenticated user's avatar image.
 
-        Source file: `api-server/src/controllers/users/v3/upload-avatar.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/upload-avatar.controller.ts`
         """
         return self._post(
             "/users/v3/avatar",
@@ -765,44 +739,6 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         return AsyncV3ResourceWithStreamingResponse(self)
 
-    @typing_extensions.deprecated("deprecated")
-    async def autocomplete_profile(
-        self,
-        *,
-        user_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3AutocompleteProfileResponse:
-        """
-        Generate a biography and institution for a user using their claimed papers
-
-        Source file:
-        `api-server/src/controllers/users/v3/autocomplete-profile.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/users/v3/autocomplete-profile",
-            body=await async_maybe_transform(
-                {"user_id": user_id}, v3_autocomplete_profile_params.V3AutocompleteProfileParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3AutocompleteProfileResponse,
-        )
-
     async def delete_banner(
         self,
         banner_id: str,
@@ -817,7 +753,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Delete the given banner
 
-        Source file: `api-server/src/controllers/users/v3/delete-banner.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-banner.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -852,7 +789,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Deletes the user's account
 
-        Source file: `api-server/src/controllers/users/v3/delete-own-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/delete-own-user.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
@@ -878,7 +816,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve public activity timeline for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-activity.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-activity.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -919,7 +858,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve the claimed papers for a user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-claimed-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -960,7 +899,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve information about yourself
 
         Source file:
-        `api-server/src/controllers/users/v3/get-current-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-current-user.controller.ts`
         """
         return await self._get(
             "/users/v3",
@@ -984,7 +923,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve highlighted activity for a user
 
-        Source file: `api-server/src/controllers/users/v3/get-featured.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-featured.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1019,7 +959,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         List the users following the specified user
 
-        Source file: `api-server/src/controllers/users/v3/get-followers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-followers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1053,7 +994,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve weekly and all-time leaderboards for users ranked by reputation
 
-        Source file: `api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-leaderboard.controller.ts`
         """
         return await self._get(
             "/users/v3/leaderboard",
@@ -1077,7 +1019,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve a user's basic information given its UUID
 
-        Source file: `api-server/src/controllers/users/v3/get-user.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1114,7 +1057,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve the view history for the current user
 
         Source file:
-        `api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-viewed-history.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1159,7 +1102,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Send a notification digest email for the given user when necessary.
 
         Source file:
-        `api-server/src/controllers/users/v3/process-notification-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/process-notification-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1195,7 +1138,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Search for users by name, username, or institution
 
-        Source file: `api-server/src/controllers/users/v3/search-users.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/search-users.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1239,7 +1183,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Follow or unfollow another user
 
         Source file:
-        `api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1276,7 +1220,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Update base or banner preferences for the authenticated user
 
         Source file:
-        `api-server/src/controllers/users/v3/update-preferences.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-preferences.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1311,6 +1255,7 @@ class AsyncV3Resource(AsyncAPIResource):
         institution: Optional[str] | Omit = omit,
         linkedin_username: Optional[str] | Omit = omit,
         location: Optional[str] | Omit = omit,
+        orcid_id: Optional[str] | Omit = omit,
         public_email: Optional[str] | Omit = omit,
         real_name: str | Omit = omit,
         username: str | Omit = omit,
@@ -1325,7 +1270,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Update profile details for the authenticated user
 
-        Source file: `api-server/src/controllers/users/v3/update-profile.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/update-profile.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1346,6 +1292,7 @@ class AsyncV3Resource(AsyncAPIResource):
                     "institution": institution,
                     "linkedin_username": linkedin_username,
                     "location": location,
+                    "orcid_id": orcid_id,
                     "public_email": public_email,
                     "real_name": real_name,
                     "username": username,
@@ -1372,7 +1319,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Upload or remove the authenticated user's avatar image.
 
-        Source file: `api-server/src/controllers/users/v3/upload-avatar.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/users/v3/upload-avatar.controller.ts`
         """
         return await self._post(
             "/users/v3/avatar",
@@ -1387,11 +1335,6 @@ class V3ResourceWithRawResponse:
     def __init__(self, v3: V3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = to_raw_response_wrapper(
             v3.delete_banner,
         )
@@ -1464,11 +1407,6 @@ class AsyncV3ResourceWithRawResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = async_to_raw_response_wrapper(
             v3.delete_banner,
         )
@@ -1541,11 +1479,6 @@ class V3ResourceWithStreamingResponse:
     def __init__(self, v3: V3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = to_streamed_response_wrapper(
             v3.delete_banner,
         )
@@ -1618,11 +1551,6 @@ class AsyncV3ResourceWithStreamingResponse:
     def __init__(self, v3: AsyncV3Resource) -> None:
         self._v3 = v3
 
-        self.autocomplete_profile = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                v3.autocomplete_profile,  # pyright: ignore[reportDeprecated],
-            )
-        )
         self.delete_banner = async_to_streamed_response_wrapper(
             v3.delete_banner,
         )

@@ -72,7 +72,7 @@ class EmailsResource(SyncAPIResource):
         Receives bounce notifications from AWS SES via SNS
 
         Source file:
-        `api-server/src/controllers/v1/emails/capture-bounced-emails.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/capture-bounced-emails.controller.ts`
 
         Args:
           message: Stringified JSON message containing bounce/complaint data
@@ -118,7 +118,7 @@ class EmailsResource(SyncAPIResource):
         Receives bounce notifications from Resend
 
         Source file:
-        `api-server/src/controllers/v1/emails/capture-resend-bounced-emails.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/capture-resend-bounced-emails.controller.ts`
 
         Args:
           data: Event data containing bounced emails
@@ -165,7 +165,7 @@ class EmailsResource(SyncAPIResource):
         Kicks off a background job to send comment digest emails to users
 
         Source file:
-        `api-server/src/controllers/v1/emails/kickoff-comment-updates.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/kickoff-comment-updates.controller.ts`
 
         Args:
           role: User role to filter by
@@ -213,7 +213,7 @@ class EmailsResource(SyncAPIResource):
         Kicks off a background job to send general digest emails to users
 
         Source file:
-        `api-server/src/controllers/v1/emails/kickoff-general-updates.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/kickoff-general-updates.controller.ts`
 
         Args:
           role: User role to filter by
@@ -252,7 +252,7 @@ class EmailsResource(SyncAPIResource):
         Process a bounced email and update user preferences
 
         Source file:
-        `api-server/src/controllers/v1/emails/process-bounced-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/process-bounced-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -289,7 +289,7 @@ class EmailsResource(SyncAPIResource):
         Process comment digest email for a user
 
         Source file:
-        `api-server/src/controllers/v1/emails/process-user-comment-update.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/process-user-comment-update.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -331,7 +331,7 @@ class EmailsResource(SyncAPIResource):
         Process general digest email for a user
 
         Source file:
-        `api-server/src/controllers/v1/emails/process-user-general-update.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/process-user-general-update.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -390,7 +390,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Receives bounce notifications from AWS SES via SNS
 
         Source file:
-        `api-server/src/controllers/v1/emails/capture-bounced-emails.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/capture-bounced-emails.controller.ts`
 
         Args:
           message: Stringified JSON message containing bounce/complaint data
@@ -436,7 +436,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Receives bounce notifications from Resend
 
         Source file:
-        `api-server/src/controllers/v1/emails/capture-resend-bounced-emails.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/capture-resend-bounced-emails.controller.ts`
 
         Args:
           data: Event data containing bounced emails
@@ -483,7 +483,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Kicks off a background job to send comment digest emails to users
 
         Source file:
-        `api-server/src/controllers/v1/emails/kickoff-comment-updates.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/kickoff-comment-updates.controller.ts`
 
         Args:
           role: User role to filter by
@@ -531,7 +531,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Kicks off a background job to send general digest emails to users
 
         Source file:
-        `api-server/src/controllers/v1/emails/kickoff-general-updates.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/kickoff-general-updates.controller.ts`
 
         Args:
           role: User role to filter by
@@ -570,7 +570,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Process a bounced email and update user preferences
 
         Source file:
-        `api-server/src/controllers/v1/emails/process-bounced-email.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/process-bounced-email.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -609,7 +609,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Process comment digest email for a user
 
         Source file:
-        `api-server/src/controllers/v1/emails/process-user-comment-update.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/process-user-comment-update.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -651,7 +651,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Process general digest email for a user
 
         Source file:
-        `api-server/src/controllers/v1/emails/process-user-general-update.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/emails/process-user-general-update.controller.ts`
 
         Args:
           extra_headers: Send extra headers

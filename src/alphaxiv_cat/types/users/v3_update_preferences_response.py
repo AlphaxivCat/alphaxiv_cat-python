@@ -43,7 +43,9 @@ class Base(BaseModel):
         alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"] = FieldInfo(alias="feedSort")
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"] = FieldInfo(
+        alias="feedSort"
+    )
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 

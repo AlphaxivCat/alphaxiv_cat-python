@@ -56,7 +56,7 @@ class SharedResource(SyncAPIResource):
         Get a folder that has been shared publicly, including nested child folders
 
         Source file:
-        `api-server/src/controllers/folders/v3/get-shared-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/get-shared-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -92,7 +92,7 @@ class SharedResource(SyncAPIResource):
         Copy a shared folder and all nested folders to your own library
 
         Source file:
-        `api-server/src/controllers/folders/v3/copy-shared-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/copy-shared-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -149,7 +149,7 @@ class AsyncSharedResource(AsyncAPIResource):
         Get a folder that has been shared publicly, including nested child folders
 
         Source file:
-        `api-server/src/controllers/folders/v3/get-shared-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/get-shared-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -185,7 +185,7 @@ class AsyncSharedResource(AsyncAPIResource):
         Copy a shared folder and all nested folders to your own library
 
         Source file:
-        `api-server/src/controllers/folders/v3/copy-shared-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/copy-shared-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers

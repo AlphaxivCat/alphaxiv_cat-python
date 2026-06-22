@@ -22,11 +22,9 @@ from alphaxiv_cat.types.papers import (
     V3RetrievePreviewResponse,
     V3RetrieveFullTextResponse,
     V3RetrieveUnrelatedResponse,
-    V3PruneEmbeddingsByDateResponse,
     V3RequestImplementationResponse,
     V3RetrieveDiversePapersResponse,
     V3RetrieveSimilarPapersResponse,
-    V3KickoffThumbnailsTrendingPapersResponse,
 )
 
 # pyright: reportDeprecated=false
@@ -259,42 +257,6 @@ class TestV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_kickoff_paper_full_text(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.kickoff_paper_full_text()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_kickoff_paper_full_text_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.kickoff_paper_full_text(
-            max_papers=1,
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_kickoff_paper_full_text(self, client: AlphaxivCat) -> None:
-        response = client.papers.v3.with_raw_response.kickoff_paper_full_text()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_kickoff_paper_full_text(self, client: AlphaxivCat) -> None:
-        with client.papers.v3.with_streaming_response.kickoff_paper_full_text() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     def test_method_kickoff_paper_podcasts(self, client: AlphaxivCat) -> None:
         v3 = client.papers.v3.kickoff_paper_podcasts()
         assert v3 is None
@@ -323,37 +285,10 @@ class TestV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_kickoff_thumbnails_trending_papers(self, client: AlphaxivCat) -> None:
-        v3 = client.papers.v3.kickoff_thumbnails_trending_papers()
-        assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_kickoff_thumbnails_trending_papers(self, client: AlphaxivCat) -> None:
-        response = client.papers.v3.with_raw_response.kickoff_thumbnails_trending_papers()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_kickoff_thumbnails_trending_papers(self, client: AlphaxivCat) -> None:
-        with client.papers.v3.with_streaming_response.kickoff_thumbnails_trending_papers() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     def test_method_like(self, client: AlphaxivCat) -> None:
         v3 = client.papers.v3.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked="true",
         )
         assert_matches_type(V3LikeResponse, v3, path=["response"])
 
@@ -361,7 +296,8 @@ class TestV3:
     @parametrize
     def test_raw_response_like(self, client: AlphaxivCat) -> None:
         response = client.papers.v3.with_raw_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked="true",
         )
 
         assert response.is_closed is True
@@ -373,7 +309,8 @@ class TestV3:
     @parametrize
     def test_streaming_response_like(self, client: AlphaxivCat) -> None:
         with client.papers.v3.with_streaming_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked="true",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -388,7 +325,8 @@ class TestV3:
     def test_path_params_like(self, client: AlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group` but received ''"):
             client.papers.v3.with_raw_response.like(
-                "",
+                group="",
+                liked="true",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -531,76 +469,6 @@ class TestV3:
 
                 v3 = response.parse()
                 assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_process_full_text(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            v3 = client.papers.v3.process_full_text(
-                paper_version_id="paperVersionId",
-            )
-
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_process_full_text(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = client.papers.v3.with_raw_response.process_full_text(
-                paper_version_id="paperVersionId",
-            )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_process_full_text(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            with client.papers.v3.with_streaming_response.process_full_text(
-                paper_version_id="paperVersionId",
-            ) as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-                v3 = response.parse()
-                assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_prune_embeddings_by_date(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            v3 = client.papers.v3.prune_embeddings_by_date()
-
-        assert_matches_type(V3PruneEmbeddingsByDateResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_prune_embeddings_by_date(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = client.papers.v3.with_raw_response.prune_embeddings_by_date()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3PruneEmbeddingsByDateResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_prune_embeddings_by_date(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            with client.papers.v3.with_streaming_response.prune_embeddings_by_date() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-                v3 = response.parse()
-                assert_matches_type(V3PruneEmbeddingsByDateResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -797,7 +665,7 @@ class TestV3:
             page_num="pageNum",
             page_size="pageSize",
             sort="Hot",
-            organizations="organizations",
+            include_external_blogs="includeExternalBlogs",
             source="GitHub",
             topics="topics",
             universal_id="universalId",
@@ -1368,42 +1236,6 @@ class TestAsyncV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_kickoff_paper_full_text(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.kickoff_paper_full_text()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_kickoff_paper_full_text_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.kickoff_paper_full_text(
-            max_papers=1,
-        )
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_kickoff_paper_full_text(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.v3.with_raw_response.kickoff_paper_full_text()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_kickoff_paper_full_text(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.v3.with_streaming_response.kickoff_paper_full_text() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_kickoff_paper_podcasts(self, async_client: AsyncAlphaxivCat) -> None:
         v3 = await async_client.papers.v3.kickoff_paper_podcasts()
         assert v3 is None
@@ -1432,37 +1264,10 @@ class TestAsyncV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_kickoff_thumbnails_trending_papers(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.papers.v3.kickoff_thumbnails_trending_papers()
-        assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_kickoff_thumbnails_trending_papers(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.papers.v3.with_raw_response.kickoff_thumbnails_trending_papers()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_kickoff_thumbnails_trending_papers(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.papers.v3.with_streaming_response.kickoff_thumbnails_trending_papers() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert_matches_type(V3KickoffThumbnailsTrendingPapersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_like(self, async_client: AsyncAlphaxivCat) -> None:
         v3 = await async_client.papers.v3.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked="true",
         )
         assert_matches_type(V3LikeResponse, v3, path=["response"])
 
@@ -1470,7 +1275,8 @@ class TestAsyncV3:
     @parametrize
     async def test_raw_response_like(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.v3.with_raw_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked="true",
         )
 
         assert response.is_closed is True
@@ -1482,7 +1288,8 @@ class TestAsyncV3:
     @parametrize
     async def test_streaming_response_like(self, async_client: AsyncAlphaxivCat) -> None:
         async with async_client.papers.v3.with_streaming_response.like(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            group="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            liked="true",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1497,7 +1304,8 @@ class TestAsyncV3:
     async def test_path_params_like(self, async_client: AsyncAlphaxivCat) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `group` but received ''"):
             await async_client.papers.v3.with_raw_response.like(
-                "",
+                group="",
+                liked="true",
             )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
@@ -1640,76 +1448,6 @@ class TestAsyncV3:
 
                 v3 = await response.parse()
                 assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_process_full_text(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            v3 = await async_client.papers.v3.process_full_text(
-                paper_version_id="paperVersionId",
-            )
-
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_process_full_text(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = await async_client.papers.v3.with_raw_response.process_full_text(
-                paper_version_id="paperVersionId",
-            )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert v3 is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_process_full_text(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            async with async_client.papers.v3.with_streaming_response.process_full_text(
-                paper_version_id="paperVersionId",
-            ) as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-                v3 = await response.parse()
-                assert v3 is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_prune_embeddings_by_date(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            v3 = await async_client.papers.v3.prune_embeddings_by_date()
-
-        assert_matches_type(V3PruneEmbeddingsByDateResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_prune_embeddings_by_date(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = await async_client.papers.v3.with_raw_response.prune_embeddings_by_date()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3PruneEmbeddingsByDateResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_prune_embeddings_by_date(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            async with async_client.papers.v3.with_streaming_response.prune_embeddings_by_date() as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-                v3 = await response.parse()
-                assert_matches_type(V3PruneEmbeddingsByDateResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1906,7 +1644,7 @@ class TestAsyncV3:
             page_num="pageNum",
             page_size="pageSize",
             sort="Hot",
-            organizations="organizations",
+            include_external_blogs="includeExternalBlogs",
             source="GitHub",
             topics="topics",
             universal_id="universalId",

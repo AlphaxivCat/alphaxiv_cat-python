@@ -82,7 +82,8 @@ class V3Resource(SyncAPIResource):
         """
         Create a new folder for the current user
 
-        Source file: `api-server/src/controllers/folders/v3/create-folder.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/create-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -115,7 +116,8 @@ class V3Resource(SyncAPIResource):
         """
         Get all folders for the current user
 
-        Source file: `api-server/src/controllers/folders/v3/get-folders.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/get-folders.controller.ts`
         """
         return self._get(
             "/folders/v3",
@@ -139,7 +141,8 @@ class V3Resource(SyncAPIResource):
         """
         Delete a folder
 
-        Source file: `api-server/src/controllers/folders/v3/delete-folder.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/delete-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -178,7 +181,7 @@ class V3Resource(SyncAPIResource):
         Add papers to a folder (without removing from other folders)
 
         Source file:
-        `api-server/src/controllers/folders/v3/add-papers-to-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/add-papers-to-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -223,7 +226,7 @@ class V3Resource(SyncAPIResource):
         Move papers from source folder to destination folder
 
         Source file:
-        `api-server/src/controllers/folders/v3/move-papers-to-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/move-papers-to-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -266,7 +269,8 @@ class V3Resource(SyncAPIResource):
         """
         Remove papers from a specific folder
 
-        Source file: `api-server/src/controllers/folders/v3/remove-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/remove-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -305,7 +309,7 @@ class V3Resource(SyncAPIResource):
         Toggle whether a folder and all its descendant folders are shared or not
 
         Source file:
-        `api-server/src/controllers/folders/v3/toggle-folder-sharing.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/toggle-folder-sharing.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -343,7 +347,7 @@ class V3Resource(SyncAPIResource):
         Rename a folder
 
         Source file:
-        `api-server/src/controllers/folders/v3/update-folder-name.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/update-folder-name.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -382,7 +386,7 @@ class V3Resource(SyncAPIResource):
         Update a folder's parent (for nesting)
 
         Source file:
-        `api-server/src/controllers/folders/v3/update-folder-parent.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/update-folder-parent.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -444,7 +448,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Create a new folder for the current user
 
-        Source file: `api-server/src/controllers/folders/v3/create-folder.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/create-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -477,7 +482,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get all folders for the current user
 
-        Source file: `api-server/src/controllers/folders/v3/get-folders.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/get-folders.controller.ts`
         """
         return await self._get(
             "/folders/v3",
@@ -501,7 +507,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Delete a folder
 
-        Source file: `api-server/src/controllers/folders/v3/delete-folder.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/delete-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -540,7 +547,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Add papers to a folder (without removing from other folders)
 
         Source file:
-        `api-server/src/controllers/folders/v3/add-papers-to-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/add-papers-to-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -585,7 +592,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Move papers from source folder to destination folder
 
         Source file:
-        `api-server/src/controllers/folders/v3/move-papers-to-folder.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/move-papers-to-folder.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -628,7 +635,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Remove papers from a specific folder
 
-        Source file: `api-server/src/controllers/folders/v3/remove-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/folders/v3/remove-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -669,7 +677,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Toggle whether a folder and all its descendant folders are shared or not
 
         Source file:
-        `api-server/src/controllers/folders/v3/toggle-folder-sharing.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/toggle-folder-sharing.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -709,7 +717,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Rename a folder
 
         Source file:
-        `api-server/src/controllers/folders/v3/update-folder-name.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/update-folder-name.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -748,7 +756,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Update a folder's parent (for nesting)
 
         Source file:
-        `api-server/src/controllers/folders/v3/update-folder-parent.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/folders/v3/update-folder-parent.controller.ts`
 
         Args:
           extra_headers: Send extra headers

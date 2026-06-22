@@ -7,7 +7,7 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["V2ChatParams", "File"]
+__all__ = ["V2ChatParams", "File", "CustomFilter"]
 
 
 class V2ChatParams(TypedDict, total=False):
@@ -29,34 +29,11 @@ class V2ChatParams(TypedDict, total=False):
 
     assistant_variant: Annotated[Literal["homepage", "paper", "landing"], PropertyInfo(alias="assistantVariant")]
 
-    model: Literal[
-        "claude-opus-4.5",
-        "claude-opus-4.6",
-        "claude-opus-4.7",
-        "claude-sonnet-4.5",
-        "claude-sonnet-4.6",
-        "gemini-2.5-flash",
-        "gemini-2.5-pro",
-        "gemini-3-flash",
-        "gemini-3.1-pro",
-        "glm-5-turbo",
-        "glm-5.1",
-        "gpt-5",
-        "gpt-5.1",
-        "gpt-5.2",
-        "gpt-5.4",
-        "gpt-5.4-mini",
-        "gpt-5.4-nano",
-        "kimi-k2.5",
-        "kimi-k2.6",
-        "mercury-2",
-        "minimax-m2.5",
-        "minimax-m2.7",
-        "qwen-3.5",
-        "fast",
-        "smart",
-        "pro",
-    ]
+    custom_filter: Annotated[CustomFilter, PropertyInfo(alias="customFilter")]
+
+    filter_model: Annotated[Literal["cohere"], PropertyInfo(alias="filterModel")]
+
+    model: str
 
     plan: Literal["free", "pro"]
 
@@ -65,5 +42,11 @@ class V2ChatParams(TypedDict, total=False):
 
 class File(TypedDict, total=False):
     content_type: Required[Annotated[str, PropertyInfo(alias="contentType")]]
+
+    url: Required[str]
+
+
+class CustomFilter(TypedDict, total=False):
+    api_key: Required[Annotated[str, PropertyInfo(alias="apiKey")]]
 
     url: Required[str]

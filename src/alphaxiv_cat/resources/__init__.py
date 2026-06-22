@@ -48,14 +48,6 @@ from .papers import (
     PapersResourceWithStreamingResponse,
     AsyncPapersResourceWithStreamingResponse,
 )
-from .retool import (
-    RetoolResource,
-    AsyncRetoolResource,
-    RetoolResourceWithRawResponse,
-    AsyncRetoolResourceWithRawResponse,
-    RetoolResourceWithStreamingResponse,
-    AsyncRetoolResourceWithStreamingResponse,
-)
 from .search import (
     SearchResource,
     AsyncSearchResource,
@@ -244,12 +236,6 @@ __all__ = [
     "AsyncRetrieveResourceWithRawResponse",
     "RetrieveResourceWithStreamingResponse",
     "AsyncRetrieveResourceWithStreamingResponse",
-    "RetoolResource",
-    "AsyncRetoolResource",
-    "RetoolResourceWithRawResponse",
-    "AsyncRetoolResourceWithRawResponse",
-    "RetoolResourceWithStreamingResponse",
-    "AsyncRetoolResourceWithStreamingResponse",
     "McpResource",
     "AsyncMcpResource",
     "McpResourceWithRawResponse",

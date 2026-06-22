@@ -12,6 +12,7 @@ __all__ = [
     "V3RetrieveDiversePapersResponseItem",
     "V3RetrieveDiversePapersResponseItemAuthorInfo",
     "V3RetrieveDiversePapersResponseItemAuthorInfoAvatar",
+    "V3RetrieveDiversePapersResponseItemExternalBlog",
     "V3RetrieveDiversePapersResponseItemFullAuthor",
     "V3RetrieveDiversePapersResponseItemMetrics",
     "V3RetrieveDiversePapersResponseItemMetricsVisitsCount",
@@ -58,6 +59,10 @@ class V3RetrieveDiversePapersResponseItemAuthorInfo(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class V3RetrieveDiversePapersResponseItemExternalBlog(BaseModel):
+    body_blob_id: str
 
 
 class V3RetrieveDiversePapersResponseItemFullAuthor(BaseModel):
@@ -114,6 +119,8 @@ class V3RetrieveDiversePapersResponseItem(BaseModel):
     canonical_id: str
     """A versioned paper ID (e.g. 1706.03762v1)"""
 
+    external_blog: Optional[V3RetrieveDiversePapersResponseItemExternalBlog] = None
+
     first_publication_date: str
 
     full_authors: List[V3RetrieveDiversePapersResponseItemFullAuthor]
@@ -121,6 +128,8 @@ class V3RetrieveDiversePapersResponseItem(BaseModel):
     github_stars: Optional[float] = None
 
     github_url: Optional[str] = None
+
+    has_run_report: bool
 
     image_url: Optional[str] = None
 

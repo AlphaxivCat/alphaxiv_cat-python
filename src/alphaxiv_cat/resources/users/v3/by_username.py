@@ -56,7 +56,7 @@ class ByUsernameResource(SyncAPIResource):
         This route is specifically for the Client's user page
 
         Source file:
-        `api-server/src/controllers/users/v3/get-profile-page-by-username.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-profile-page-by-username.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -92,7 +92,7 @@ class ByUsernameResource(SyncAPIResource):
         Retrieve a user's basic information given its username
 
         Source file:
-        `api-server/src/controllers/users/v3/get-user-by-username.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-user-by-username.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -149,7 +149,7 @@ class AsyncByUsernameResource(AsyncAPIResource):
         This route is specifically for the Client's user page
 
         Source file:
-        `api-server/src/controllers/users/v3/get-profile-page-by-username.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-profile-page-by-username.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -185,7 +185,7 @@ class AsyncByUsernameResource(AsyncAPIResource):
         Retrieve a user's basic information given its username
 
         Source file:
-        `api-server/src/controllers/users/v3/get-user-by-username.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/users/v3/get-user-by-username.controller.ts`
 
         Args:
           extra_headers: Send extra headers

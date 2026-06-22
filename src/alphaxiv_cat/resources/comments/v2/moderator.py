@@ -57,7 +57,7 @@ class ModeratorResource(SyncAPIResource):
         Send moderator feedback to comment author
 
         Source file:
-        `api-server/src/controllers/comments/v2/moderator-send-feedback.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/moderator-send-feedback.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -98,7 +98,7 @@ class ModeratorResource(SyncAPIResource):
         Toggle one (or more) of a set of comment moderation flags
 
         Source file:
-        `api-server/src/controllers/comments/v2/toggle-comment-moderation-flag.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/toggle-comment-moderation-flag.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -164,7 +164,7 @@ class AsyncModeratorResource(AsyncAPIResource):
         Send moderator feedback to comment author
 
         Source file:
-        `api-server/src/controllers/comments/v2/moderator-send-feedback.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/moderator-send-feedback.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -207,7 +207,7 @@ class AsyncModeratorResource(AsyncAPIResource):
         Toggle one (or more) of a set of comment moderation flags
 
         Source file:
-        `api-server/src/controllers/comments/v2/toggle-comment-moderation-flag.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/comments/v2/toggle-comment-moderation-flag.controller.ts`
 
         Args:
           extra_headers: Send extra headers

@@ -12,6 +12,7 @@ __all__ = [
     "Paper",
     "PaperAuthorInfo",
     "PaperAuthorInfoAvatar",
+    "PaperExternalBlog",
     "PaperFullAuthor",
     "PaperMetrics",
     "PaperMetricsVisitsCount",
@@ -58,6 +59,10 @@ class PaperAuthorInfo(BaseModel):
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
     x_username: Optional[str] = FieldInfo(alias="xUsername", default=None)
+
+
+class PaperExternalBlog(BaseModel):
+    body_blob_id: str
 
 
 class PaperFullAuthor(BaseModel):
@@ -114,6 +119,8 @@ class Paper(BaseModel):
     canonical_id: str
     """A versioned paper ID (e.g. 1706.03762v1)"""
 
+    external_blog: Optional[PaperExternalBlog] = None
+
     first_publication_date: str
 
     full_authors: List[PaperFullAuthor]
@@ -121,6 +128,8 @@ class Paper(BaseModel):
     github_stars: Optional[float] = None
 
     github_url: Optional[str] = None
+
+    has_run_report: bool
 
     image_url: Optional[str] = None
 

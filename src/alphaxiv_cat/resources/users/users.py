@@ -83,7 +83,7 @@ class UsersResource(SyncAPIResource):
         Get private notes for a user with pagination
 
         Source file:
-        `api-server/src/controllers/v1/users/get-private-notes.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/users/get-private-notes.controller.ts`
 
         Args:
           uid: ignored field
@@ -134,7 +134,7 @@ class UsersResource(SyncAPIResource):
         Calculates and updates weekly reputation weights for users
 
         Source file:
-        `api-server/src/controllers/v1/users/weigh-weekly-reputation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/users/weigh-weekly-reputation.controller.ts`
         """
         return self._post(
             "/v1/users/weigh-weekly-reputation",
@@ -190,7 +190,7 @@ class AsyncUsersResource(AsyncAPIResource):
         Get private notes for a user with pagination
 
         Source file:
-        `api-server/src/controllers/v1/users/get-private-notes.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/users/get-private-notes.controller.ts`
 
         Args:
           uid: ignored field
@@ -241,7 +241,7 @@ class AsyncUsersResource(AsyncAPIResource):
         Calculates and updates weekly reputation weights for users
 
         Source file:
-        `api-server/src/controllers/v1/users/weigh-weekly-reputation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v1/users/weigh-weekly-reputation.controller.ts`
         """
         return await self._post(
             "/v1/users/weigh-weekly-reputation",

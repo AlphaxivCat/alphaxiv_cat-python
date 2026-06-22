@@ -120,7 +120,8 @@ class OverviewResource(SyncAPIResource):
         Does not create it if it
         doesn't exist
 
-        Source file: `api-server/src/controllers/papers/v3/get-overviews.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-overviews.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -160,7 +161,7 @@ class OverviewResource(SyncAPIResource):
         Retrieve paper version status for overview generation and translations
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-overviews-status.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-overviews-status.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -279,7 +280,8 @@ class AsyncOverviewResource(AsyncAPIResource):
         Does not create it if it
         doesn't exist
 
-        Source file: `api-server/src/controllers/papers/v3/get-overviews.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-overviews.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -319,7 +321,7 @@ class AsyncOverviewResource(AsyncAPIResource):
         Retrieve paper version status for overview generation and translations
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-overviews-status.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-overviews-status.controller.ts`
 
         Args:
           extra_headers: Send extra headers

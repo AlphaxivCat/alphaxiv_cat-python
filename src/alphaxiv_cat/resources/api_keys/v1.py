@@ -62,7 +62,7 @@ class V1Resource(SyncAPIResource):
         Create a new API key for the current user.
 
         Source file:
-        `api-server/src/controllers/api-keys/v1/create-api-key.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/create-api-key.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -95,7 +95,8 @@ class V1Resource(SyncAPIResource):
         """
         List API keys for the current user.
 
-        Source file: `api-server/src/controllers/api-keys/v1/get-api-keys.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/get-api-keys.controller.ts`
         """
         return self._get(
             "/api-keys/v1",
@@ -120,7 +121,7 @@ class V1Resource(SyncAPIResource):
         Create a new API key for the current user.
 
         Source file:
-        `api-server/src/controllers/api-keys/v1/create-impersonation-api-key.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/create-impersonation-api-key.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -156,7 +157,7 @@ class V1Resource(SyncAPIResource):
         No-op if already revoked.
 
         Source file:
-        `api-server/src/controllers/api-keys/v1/revoke-api-key.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/revoke-api-key.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -211,7 +212,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Create a new API key for the current user.
 
         Source file:
-        `api-server/src/controllers/api-keys/v1/create-api-key.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/create-api-key.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -244,7 +245,8 @@ class AsyncV1Resource(AsyncAPIResource):
         """
         List API keys for the current user.
 
-        Source file: `api-server/src/controllers/api-keys/v1/get-api-keys.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/get-api-keys.controller.ts`
         """
         return await self._get(
             "/api-keys/v1",
@@ -269,7 +271,7 @@ class AsyncV1Resource(AsyncAPIResource):
         Create a new API key for the current user.
 
         Source file:
-        `api-server/src/controllers/api-keys/v1/create-impersonation-api-key.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/create-impersonation-api-key.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -307,7 +309,7 @@ class AsyncV1Resource(AsyncAPIResource):
         No-op if already revoked.
 
         Source file:
-        `api-server/src/controllers/api-keys/v1/revoke-api-key.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/api-keys/v1/revoke-api-key.controller.ts`
 
         Args:
           extra_headers: Send extra headers

@@ -36,17 +36,16 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.papers import (
+    v3_like_params,
     v3_comment_params,
     v3_process_ai_params,
     v3_retrieve_all_params,
     v3_retrieve_feed_params,
     v3_implementation_params,
     v3_process_countries_params,
-    v3_process_full_text_params,
     v3_retrieve_unrelated_params,
     v3_request_implementation_params,
     v3_kickoff_paper_countries_params,
-    v3_kickoff_paper_full_text_params,
     v3_retrieve_diverse_papers_params,
     v3_retrieve_similar_papers_params,
 )
@@ -73,8 +72,6 @@ from ....types.papers.v3_retrieve_unrelated_response import V3RetrieveUnrelatedR
 from ....types.papers.v3_request_implementation_response import V3RequestImplementationResponse
 from ....types.papers.v3_retrieve_diverse_papers_response import V3RetrieveDiversePapersResponse
 from ....types.papers.v3_retrieve_similar_papers_response import V3RetrieveSimilarPapersResponse
-from ....types.papers.v3_prune_embeddings_by_date_response import V3PruneEmbeddingsByDateResponse
-from ....types.papers.v3_kickoff_thumbnails_trending_papers_response import V3KickoffThumbnailsTrendingPapersResponse
 
 __all__ = ["V3Resource", "AsyncV3Resource"]
 
@@ -126,7 +123,8 @@ class V3Resource(SyncAPIResource):
 
         Fetches from ArXiv if needed.
 
-        Source file: `api-server/src/controllers/papers/v3/get-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -167,7 +165,8 @@ class V3Resource(SyncAPIResource):
         """
         Create a public comment or private note on a paper.
 
-        Source file: `api-server/src/controllers/papers/v3/post-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/post-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -212,7 +211,7 @@ class V3Resource(SyncAPIResource):
         Remove votes from many papers at once
 
         Source file:
-        `api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -249,7 +248,7 @@ class V3Resource(SyncAPIResource):
         Create or update an implementation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -288,7 +287,7 @@ class V3Resource(SyncAPIResource):
         Kickoff paper countries processing for hot papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
 
         Args:
           batch: Number of papers to process in each batch
@@ -322,46 +321,6 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def kickoff_paper_full_text(
-        self,
-        *,
-        max_papers: float | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Kickoff paper full text processing for recent papers
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
-
-        Args:
-          max_papers: Maximum number of paper versions to process
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/papers/v3/kickoff-paper-full-text",
-            body=maybe_transform(
-                {"max_papers": max_papers}, v3_kickoff_paper_full_text_params.V3KickoffPaperFullTextParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def kickoff_paper_podcasts(
         self,
         *,
@@ -376,7 +335,7 @@ class V3Resource(SyncAPIResource):
         Kickoff paper podcasts on Uptash for a subset of paper groups
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
@@ -387,34 +346,11 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    def kickoff_thumbnails_trending_papers(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3KickoffThumbnailsTrendingPapersResponse:
-        """
-        Kickoff background job to generate thumbnails for trending papers
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
-        """
-        return self._post(
-            "/papers/v3/kickoff-thumbnails-trending-papers",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3KickoffThumbnailsTrendingPapersResponse,
-        )
-
     def like(
         self,
         group: str,
         *,
+        liked: Literal["true", "false"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -423,9 +359,10 @@ class V3Resource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V3LikeResponse:
         """
-        Toggle your like status on a paper group
+        Set your like status on a paper group
 
-        Source file: `api-server/src/controllers/papers/v3/like-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/like-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -441,7 +378,11 @@ class V3Resource(SyncAPIResource):
         return self._post(
             path_template("/papers/v3/{group}/like", group=group),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"liked": liked}, v3_like_params.V3LikeParams),
             ),
             cast_to=V3LikeResponse,
         )
@@ -462,7 +403,7 @@ class V3Resource(SyncAPIResource):
         Generates a podcast for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -563,7 +504,8 @@ class V3Resource(SyncAPIResource):
         """
         Generates AI overviews for a paper version
 
-        Source file: `api-server/src/controllers/papers/v3/process-ai.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-ai.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -608,7 +550,7 @@ class V3Resource(SyncAPIResource):
         affiliations
 
         Source file:
-        `api-server/src/controllers/papers/v3/process-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-countries.controller.ts`
 
         Args:
           universal_paper_ids: Array of universal paper IDs (versionless)
@@ -633,72 +575,6 @@ class V3Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    def process_full_text(
-        self,
-        *,
-        paper_version_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Processes and extracts full text from paper PDFs for indexing and search
-
-        Source file:
-        `api-server/src/controllers/papers/v3/process-full-text.controller.ts`
-
-        Args:
-          paper_version_id: Paper version ID to process for full text extraction
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/papers/v3/process-full-text",
-            body=maybe_transform(
-                {"paper_version_id": paper_version_id}, v3_process_full_text_params.V3ProcessFullTextParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    @typing_extensions.deprecated("deprecated")
-    def prune_embeddings_by_date(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3PruneEmbeddingsByDateResponse:
-        """
-        Clear 'is_last_X_days' flags from paper embeddings that have become too old
-
-        Source file:
-        `api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
-        """
-        return self._post(
-            "/papers/v3/prune-embeddings-by-date",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3PruneEmbeddingsByDateResponse,
-        )
-
     def request_implementation(
         self,
         group: str,
@@ -717,7 +593,7 @@ class V3Resource(SyncAPIResource):
         Toggle your implementation request status on a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -761,7 +637,7 @@ class V3Resource(SyncAPIResource):
         Request podcast generation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -799,7 +675,8 @@ class V3Resource(SyncAPIResource):
         """
         Get all paper universal IDs sorted by most recent publication date
 
-        Source file: `api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -842,7 +719,8 @@ class V3Resource(SyncAPIResource):
         """
         Get an initial batch of diverse papers on the given topics for recommendations
 
-        Source file: `api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -873,8 +751,8 @@ class V3Resource(SyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
-        organizations: str | Omit = omit,
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"],
+        include_external_blogs: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
@@ -888,7 +766,8 @@ class V3Resource(SyncAPIResource):
         """
         Get an optionally filtered list of papers for the main feed
 
-        Source file: `api-server/src/controllers/papers/v3/feed.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/feed.controller.ts`
 
         Args:
           universal_id: A versionless universal paper ID (e.g. 1706.03762)
@@ -914,7 +793,7 @@ class V3Resource(SyncAPIResource):
                         "page_num": page_num,
                         "page_size": page_size,
                         "sort": sort,
-                        "organizations": organizations,
+                        "include_external_blogs": include_external_blogs,
                         "source": source,
                         "topics": topics,
                         "universal_id": universal_id,
@@ -940,7 +819,7 @@ class V3Resource(SyncAPIResource):
         Get list of figure URLs for a paper
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -975,7 +854,8 @@ class V3Resource(SyncAPIResource):
         """
         Get the full extracted text of a paper, page by page
 
-        Source file: `api-server/src/controllers/papers/v3/get-full-text.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-full-text.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1010,7 +890,8 @@ class V3Resource(SyncAPIResource):
         """
         Retrieve metrics for a paper (comments count, upvotes, views)
 
-        Source file: `api-server/src/controllers/papers/v3/get-metrics.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-metrics.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1048,7 +929,7 @@ class V3Resource(SyncAPIResource):
         Retrieve paper data for paper preview cards
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1090,7 +971,7 @@ class V3Resource(SyncAPIResource):
         Get papers semantically similar to the selected one
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1142,7 +1023,7 @@ class V3Resource(SyncAPIResource):
         Get some papers on the provided topics that are unrelated to the provided papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1187,7 +1068,7 @@ class V3Resource(SyncAPIResource):
         Track paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1257,7 +1138,8 @@ class AsyncV3Resource(AsyncAPIResource):
 
         Fetches from ArXiv if needed.
 
-        Source file: `api-server/src/controllers/papers/v3/get-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -1298,7 +1180,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Create a public comment or private note on a paper.
 
-        Source file: `api-server/src/controllers/papers/v3/post-comment.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/post-comment.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1343,7 +1226,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Remove votes from many papers at once
 
         Source file:
-        `api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/remove-vote-batch.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1380,7 +1263,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Create or update an implementation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/create-or-update-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1419,7 +1302,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Kickoff paper countries processing for hot papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-countries.controller.ts`
 
         Args:
           batch: Number of papers to process in each batch
@@ -1453,46 +1336,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def kickoff_paper_full_text(
-        self,
-        *,
-        max_papers: float | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Kickoff paper full text processing for recent papers
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-full-text.controller.ts`
-
-        Args:
-          max_papers: Maximum number of paper versions to process
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/papers/v3/kickoff-paper-full-text",
-            body=await async_maybe_transform(
-                {"max_papers": max_papers}, v3_kickoff_paper_full_text_params.V3KickoffPaperFullTextParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def kickoff_paper_podcasts(
         self,
         *,
@@ -1507,7 +1350,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Kickoff paper podcasts on Uptash for a subset of paper groups
 
         Source file:
-        `api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/kickoff-paper-podcasts.controller.ts`
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
@@ -1518,34 +1361,11 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def kickoff_thumbnails_trending_papers(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3KickoffThumbnailsTrendingPapersResponse:
-        """
-        Kickoff background job to generate thumbnails for trending papers
-
-        Source file:
-        `api-server/src/controllers/papers/v3/kickoff-thumbnails-trending-papers.controller.ts`
-        """
-        return await self._post(
-            "/papers/v3/kickoff-thumbnails-trending-papers",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3KickoffThumbnailsTrendingPapersResponse,
-        )
-
     async def like(
         self,
         group: str,
         *,
+        liked: Literal["true", "false"],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1554,9 +1374,10 @@ class AsyncV3Resource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V3LikeResponse:
         """
-        Toggle your like status on a paper group
+        Set your like status on a paper group
 
-        Source file: `api-server/src/controllers/papers/v3/like-paper.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/like-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1572,7 +1393,11 @@ class AsyncV3Resource(AsyncAPIResource):
         return await self._post(
             path_template("/papers/v3/{group}/like", group=group),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"liked": liked}, v3_like_params.V3LikeParams),
             ),
             cast_to=V3LikeResponse,
         )
@@ -1593,7 +1418,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Generates a podcast for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/generate-paper-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -1694,7 +1519,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Generates AI overviews for a paper version
 
-        Source file: `api-server/src/controllers/papers/v3/process-ai.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-ai.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1739,7 +1565,7 @@ class AsyncV3Resource(AsyncAPIResource):
         affiliations
 
         Source file:
-        `api-server/src/controllers/papers/v3/process-countries.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/process-countries.controller.ts`
 
         Args:
           universal_paper_ids: Array of universal paper IDs (versionless)
@@ -1764,72 +1590,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    async def process_full_text(
-        self,
-        *,
-        paper_version_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Processes and extracts full text from paper PDFs for indexing and search
-
-        Source file:
-        `api-server/src/controllers/papers/v3/process-full-text.controller.ts`
-
-        Args:
-          paper_version_id: Paper version ID to process for full text extraction
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/papers/v3/process-full-text",
-            body=await async_maybe_transform(
-                {"paper_version_id": paper_version_id}, v3_process_full_text_params.V3ProcessFullTextParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
-    @typing_extensions.deprecated("deprecated")
-    async def prune_embeddings_by_date(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3PruneEmbeddingsByDateResponse:
-        """
-        Clear 'is_last_X_days' flags from paper embeddings that have become too old
-
-        Source file:
-        `api-server/src/controllers/papers/v3/prune-embeddings-by-date.controller.ts`
-        """
-        return await self._post(
-            "/papers/v3/prune-embeddings-by-date",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3PruneEmbeddingsByDateResponse,
-        )
-
     async def request_implementation(
         self,
         group: str,
@@ -1848,7 +1608,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Toggle your implementation request status on a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-paper-implementation.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1892,7 +1652,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Request podcast generation for a paper group
 
         Source file:
-        `api-server/src/controllers/papers/v3/request-podcast.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/request-podcast.controller.ts`
 
         Args:
           paper_group_id: Paper Group ID to generate a podcast for
@@ -1930,7 +1690,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get all paper universal IDs sorted by most recent publication date
 
-        Source file: `api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-all-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -1973,7 +1734,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get an initial batch of diverse papers on the given topics for recommendations
 
-        Source file: `api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/diverse-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2004,8 +1766,8 @@ class AsyncV3Resource(AsyncAPIResource):
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"],
         page_num: str,
         page_size: str,
-        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended"],
-        organizations: str | Omit = omit,
+        sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"],
+        include_external_blogs: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
         universal_id: str | Omit = omit,
@@ -2019,7 +1781,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get an optionally filtered list of papers for the main feed
 
-        Source file: `api-server/src/controllers/papers/v3/feed.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/feed.controller.ts`
 
         Args:
           universal_id: A versionless universal paper ID (e.g. 1706.03762)
@@ -2045,7 +1808,7 @@ class AsyncV3Resource(AsyncAPIResource):
                         "page_num": page_num,
                         "page_size": page_size,
                         "sort": sort,
-                        "organizations": organizations,
+                        "include_external_blogs": include_external_blogs,
                         "source": source,
                         "topics": topics,
                         "universal_id": universal_id,
@@ -2071,7 +1834,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Get list of figure URLs for a paper
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-figures.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2106,7 +1869,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Get the full extracted text of a paper, page by page
 
-        Source file: `api-server/src/controllers/papers/v3/get-full-text.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-full-text.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2141,7 +1905,8 @@ class AsyncV3Resource(AsyncAPIResource):
         """
         Retrieve metrics for a paper (comments count, upvotes, views)
 
-        Source file: `api-server/src/controllers/papers/v3/get-metrics.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-metrics.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -2179,7 +1944,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Retrieve paper data for paper preview cards
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-paper-preview.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -2221,7 +1986,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Get papers semantically similar to the selected one
 
         Source file:
-        `api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/get-similar-papers.controller.ts`
 
         Args:
           id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -2273,7 +2038,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Get some papers on the provided topics that are unrelated to the provided papers
 
         Source file:
-        `api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/unrelated-papers.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2318,7 +2083,7 @@ class AsyncV3Resource(AsyncAPIResource):
         Track paper view event for analytics
 
         Source file:
-        `api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/mark-paper-view.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -2360,14 +2125,8 @@ class V3ResourceWithRawResponse:
         self.kickoff_paper_countries = to_raw_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = to_raw_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = to_raw_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = to_raw_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = to_raw_response_wrapper(
             v3.like,
@@ -2385,16 +2144,6 @@ class V3ResourceWithRawResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             to_raw_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
             )
         )
         self.request_implementation = to_raw_response_wrapper(
@@ -2466,14 +2215,8 @@ class AsyncV3ResourceWithRawResponse:
         self.kickoff_paper_countries = async_to_raw_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = async_to_raw_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = async_to_raw_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = async_to_raw_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = async_to_raw_response_wrapper(
             v3.like,
@@ -2491,16 +2234,6 @@ class AsyncV3ResourceWithRawResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             async_to_raw_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
             )
         )
         self.request_implementation = async_to_raw_response_wrapper(
@@ -2572,14 +2305,8 @@ class V3ResourceWithStreamingResponse:
         self.kickoff_paper_countries = to_streamed_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = to_streamed_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = to_streamed_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = to_streamed_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = to_streamed_response_wrapper(
             v3.like,
@@ -2597,16 +2324,6 @@ class V3ResourceWithStreamingResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             to_streamed_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
             )
         )
         self.request_implementation = to_streamed_response_wrapper(
@@ -2678,14 +2395,8 @@ class AsyncV3ResourceWithStreamingResponse:
         self.kickoff_paper_countries = async_to_streamed_response_wrapper(
             v3.kickoff_paper_countries,
         )
-        self.kickoff_paper_full_text = async_to_streamed_response_wrapper(
-            v3.kickoff_paper_full_text,
-        )
         self.kickoff_paper_podcasts = async_to_streamed_response_wrapper(
             v3.kickoff_paper_podcasts,
-        )
-        self.kickoff_thumbnails_trending_papers = async_to_streamed_response_wrapper(
-            v3.kickoff_thumbnails_trending_papers,
         )
         self.like = async_to_streamed_response_wrapper(
             v3.like,
@@ -2703,16 +2414,6 @@ class AsyncV3ResourceWithStreamingResponse:
         self.process_countries = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(
                 v3.process_countries,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.process_full_text = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                v3.process_full_text,  # pyright: ignore[reportDeprecated],
-            )
-        )
-        self.prune_embeddings_by_date = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                v3.prune_embeddings_by_date,  # pyright: ignore[reportDeprecated],
             )
         )
         self.request_implementation = async_to_streamed_response_wrapper(

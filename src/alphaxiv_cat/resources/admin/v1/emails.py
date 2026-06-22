@@ -58,7 +58,7 @@ class EmailsResource(SyncAPIResource):
         Queue monthly digest emails to users
 
         Source file:
-        `api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
 
         Args:
           role: Filter by user role
@@ -99,7 +99,7 @@ class EmailsResource(SyncAPIResource):
         Queue weekly digest emails to users
 
         Source file:
-        `api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`
 
         Args:
           events: Custom events to include
@@ -172,7 +172,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Queue monthly digest emails to users
 
         Source file:
-        `api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
 
         Args:
           role: Filter by user role
@@ -215,7 +215,7 @@ class AsyncEmailsResource(AsyncAPIResource):
         Queue weekly digest emails to users
 
         Source file:
-        `api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`
 
         Args:
           events: Custom events to include

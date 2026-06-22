@@ -60,7 +60,7 @@ class PrivateResource(SyncAPIResource):
         Upload a private PDF paper
 
         Source file:
-        `api-server/src/controllers/v2/papers/upload-private-paper.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/upload-private-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -108,7 +108,7 @@ class PrivateResource(SyncAPIResource):
         Update metadata for a private paper
 
         Source file:
-        `api-server/src/controllers/v2/papers/update-private-paper.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/update-private-paper.controller.ts`
 
         Args:
           paper_id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -181,7 +181,7 @@ class AsyncPrivateResource(AsyncAPIResource):
         Upload a private PDF paper
 
         Source file:
-        `api-server/src/controllers/v2/papers/upload-private-paper.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/upload-private-paper.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -229,7 +229,7 @@ class AsyncPrivateResource(AsyncAPIResource):
         Update metadata for a private paper
 
         Source file:
-        `api-server/src/controllers/v2/papers/update-private-paper.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/v2/papers/update-private-paper.controller.ts`
 
         Args:
           paper_id: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)

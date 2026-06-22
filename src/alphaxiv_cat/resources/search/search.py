@@ -67,7 +67,8 @@ class SearchResource(SyncAPIResource):
         """
         Find the closest matching topics/categories for a given input using AI
 
-        Source file: `api-server/src/controllers/v1/search/closest-topic.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/search/closest-topic.controller.ts`
 
         Args:
           input: User input to match against categories
@@ -106,7 +107,8 @@ class SearchResource(SyncAPIResource):
         """
         Search for papers using Google and enrich results
 
-        Source file: `api-server/src/controllers/v1/search/search-google.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/search/search-google.controller.ts`
 
         Args:
           q: Search query
@@ -170,7 +172,8 @@ class AsyncSearchResource(AsyncAPIResource):
         """
         Find the closest matching topics/categories for a given input using AI
 
-        Source file: `api-server/src/controllers/v1/search/closest-topic.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/search/closest-topic.controller.ts`
 
         Args:
           input: User input to match against categories
@@ -211,7 +214,8 @@ class AsyncSearchResource(AsyncAPIResource):
         """
         Search for papers using Google and enrich results
 
-        Source file: `api-server/src/controllers/v1/search/search-google.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/v1/search/search-google.controller.ts`
 
         Args:
           q: Search query

@@ -43,7 +43,6 @@ if TYPE_CHECKING:
         emails,
         events,
         papers,
-        retool,
         search,
         folders,
         api_keys,
@@ -66,7 +65,6 @@ if TYPE_CHECKING:
     from .resources.users.users import UsersResource, AsyncUsersResource
     from .resources.notifications import NotificationsResource, AsyncNotificationsResource
     from .resources.papers.papers import PapersResource, AsyncPapersResource
-    from .resources.retool.retool import RetoolResource, AsyncRetoolResource
     from .resources.search.search import SearchResource, AsyncSearchResource
     from .resources.folders.folders import FoldersResource, AsyncFoldersResource
     from .resources.api_keys.api_keys import APIKeysResource, AsyncAPIKeysResource
@@ -240,12 +238,6 @@ class AlphaxivCat(SyncAPIClient):
         return RetrieveResource(self)
 
     @cached_property
-    def retool(self) -> RetoolResource:
-        from .resources.retool import RetoolResource
-
-        return RetoolResource(self)
-
-    @cached_property
     def mcp(self) -> McpResource:
         from .resources.mcp import McpResource
 
@@ -278,9 +270,11 @@ class AlphaxivCat(SyncAPIClient):
 
     @override
     def _auth_headers(self, security: SecurityOptions) -> dict[str, str]:
-        return {
-            **(self._api_key if security.get("api_key", False) else {}),
-        }
+        headers: dict[str, str] = {}
+        if security.get("api_key", False):
+            for key, value in self._api_key.items():
+                headers.setdefault(key, value)
+        return headers
 
     @property
     def _api_key(self) -> dict[str, str]:
@@ -534,12 +528,6 @@ class AsyncAlphaxivCat(AsyncAPIClient):
         return AsyncRetrieveResource(self)
 
     @cached_property
-    def retool(self) -> AsyncRetoolResource:
-        from .resources.retool import AsyncRetoolResource
-
-        return AsyncRetoolResource(self)
-
-    @cached_property
     def mcp(self) -> AsyncMcpResource:
         from .resources.mcp import AsyncMcpResource
 
@@ -572,9 +560,11 @@ class AsyncAlphaxivCat(AsyncAPIClient):
 
     @override
     def _auth_headers(self, security: SecurityOptions) -> dict[str, str]:
-        return {
-            **(self._api_key if security.get("api_key", False) else {}),
-        }
+        headers: dict[str, str] = {}
+        if security.get("api_key", False):
+            for key, value in self._api_key.items():
+                headers.setdefault(key, value)
+        return headers
 
     @property
     def _api_key(self) -> dict[str, str]:
@@ -774,12 +764,6 @@ class AlphaxivCatWithRawResponse:
         return RetrieveResourceWithRawResponse(self._client.retrieve)
 
     @cached_property
-    def retool(self) -> retool.RetoolResourceWithRawResponse:
-        from .resources.retool import RetoolResourceWithRawResponse
-
-        return RetoolResourceWithRawResponse(self._client.retool)
-
-    @cached_property
     def mcp(self) -> mcp.McpResourceWithRawResponse:
         from .resources.mcp import McpResourceWithRawResponse
 
@@ -893,12 +877,6 @@ class AsyncAlphaxivCatWithRawResponse:
         from .resources.retrieve import AsyncRetrieveResourceWithRawResponse
 
         return AsyncRetrieveResourceWithRawResponse(self._client.retrieve)
-
-    @cached_property
-    def retool(self) -> retool.AsyncRetoolResourceWithRawResponse:
-        from .resources.retool import AsyncRetoolResourceWithRawResponse
-
-        return AsyncRetoolResourceWithRawResponse(self._client.retool)
 
     @cached_property
     def mcp(self) -> mcp.AsyncMcpResourceWithRawResponse:
@@ -1016,12 +994,6 @@ class AlphaxivCatWithStreamedResponse:
         return RetrieveResourceWithStreamingResponse(self._client.retrieve)
 
     @cached_property
-    def retool(self) -> retool.RetoolResourceWithStreamingResponse:
-        from .resources.retool import RetoolResourceWithStreamingResponse
-
-        return RetoolResourceWithStreamingResponse(self._client.retool)
-
-    @cached_property
     def mcp(self) -> mcp.McpResourceWithStreamingResponse:
         from .resources.mcp import McpResourceWithStreamingResponse
 
@@ -1135,12 +1107,6 @@ class AsyncAlphaxivCatWithStreamedResponse:
         from .resources.retrieve import AsyncRetrieveResourceWithStreamingResponse
 
         return AsyncRetrieveResourceWithStreamingResponse(self._client.retrieve)
-
-    @cached_property
-    def retool(self) -> retool.AsyncRetoolResourceWithStreamingResponse:
-        from .resources.retool import AsyncRetoolResourceWithStreamingResponse
-
-        return AsyncRetoolResourceWithStreamingResponse(self._client.retool)
 
     @cached_property
     def mcp(self) -> mcp.AsyncMcpResourceWithStreamingResponse:

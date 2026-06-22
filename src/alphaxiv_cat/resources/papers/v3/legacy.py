@@ -59,7 +59,7 @@ class LegacyResource(SyncAPIResource):
         format. Do not write new code with this please.
 
         Source file:
-        `api-server/src/controllers/papers/v3/legacy/get-v2-paper-for-display.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/legacy/get-v2-paper-for-display.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -99,7 +99,7 @@ class LegacyResource(SyncAPIResource):
         from "there are no comments"
 
         Source file:
-        `api-server/src/controllers/papers/v3/legacy/get-v2-comments.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/legacy/get-v2-comments.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -159,7 +159,7 @@ class AsyncLegacyResource(AsyncAPIResource):
         format. Do not write new code with this please.
 
         Source file:
-        `api-server/src/controllers/papers/v3/legacy/get-v2-paper-for-display.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/legacy/get-v2-paper-for-display.controller.ts`
 
         Args:
           unresolved: An Unresolved Paper ID (UUID, ArXiv ID, or Versioned ArXiv ID)
@@ -199,7 +199,7 @@ class AsyncLegacyResource(AsyncAPIResource):
         from "there are no comments"
 
         Source file:
-        `api-server/src/controllers/papers/v3/legacy/get-v2-comments.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/papers/v3/legacy/get-v2-comments.controller.ts`
 
         Args:
           extra_headers: Send extra headers

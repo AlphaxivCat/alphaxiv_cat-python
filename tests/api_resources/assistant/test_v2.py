@@ -58,7 +58,12 @@ class TestV2:
             thinking=True,
             web_search="off",
             assistant_variant="homepage",
-            model="claude-opus-4.5",
+            custom_filter={
+                "api_key": "x",
+                "url": "https://example.com",
+            },
+            filter_model="cohere",
+            model="model",
             plan="free",
             signature="signature",
         )
@@ -316,7 +321,12 @@ class TestAsyncV2:
             thinking=True,
             web_search="off",
             assistant_variant="homepage",
-            model="claude-opus-4.5",
+            custom_filter={
+                "api_key": "x",
+                "url": "https://example.com",
+            },
+            filter_model="cohere",
+            model="model",
             plan="free",
             signature="signature",
         )

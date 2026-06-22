@@ -4,19 +4,13 @@ from typing import List, Optional
 
 from ..._models import BaseModel
 
-__all__ = ["IngestIngestLatestResponse", "Data", "DataPdfInfo"]
-
-
-class DataPdfInfo(BaseModel):
-    fetcher_url: str
+__all__ = ["IngestIngestLatestResponse", "Data"]
 
 
 class Data(BaseModel):
     authors: List[Optional[object]]
 
     max_version_order: float
-
-    pdf_info: DataPdfInfo
 
     verified_authors: List[Optional[object]]
 

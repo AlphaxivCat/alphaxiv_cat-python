@@ -7,9 +7,7 @@ from .event_list_response import EventListResponse as EventListResponse
 from .paper_vote_response import PaperVoteResponse as PaperVoteResponse
 from .paper_unclaim_response import PaperUnclaimResponse as PaperUnclaimResponse
 from .paper_add_author_params import PaperAddAuthorParams as PaperAddAuthorParams
-from .paper_admin_vote_params import PaperAdminVoteParams as PaperAdminVoteParams
 from .paper_add_author_response import PaperAddAuthorResponse as PaperAddAuthorResponse
-from .paper_admin_vote_response import PaperAdminVoteResponse as PaperAdminVoteResponse
 from .paper_email_author_params import PaperEmailAuthorParams as PaperEmailAuthorParams
 from .paper_kickoff_ai_response import PaperKickoffAIResponse as PaperKickoffAIResponse
 from .sitemap_list_users_params import SitemapListUsersParams as SitemapListUsersParams
@@ -43,7 +41,6 @@ from .paper_set_github_repository_params import PaperSetGitHubRepositoryParams a
 from .email_capture_bounced_emails_params import EmailCaptureBouncedEmailsParams as EmailCaptureBouncedEmailsParams
 from .email_process_comment_update_params import EmailProcessCommentUpdateParams as EmailProcessCommentUpdateParams
 from .email_process_general_update_params import EmailProcessGeneralUpdateParams as EmailProcessGeneralUpdateParams
-from .paper_process_abstract_embed_params import PaperProcessAbstractEmbedParams as PaperProcessAbstractEmbedParams
 from .email_process_bounced_email_response import EmailProcessBouncedEmailResponse as EmailProcessBouncedEmailResponse
 from .paper_kickoff_recent_papers_response import PaperKickoffRecentPapersResponse as PaperKickoffRecentPapersResponse
 from .paper_set_github_repository_response import PaperSetGitHubRepositoryResponse as PaperSetGitHubRepositoryResponse
@@ -62,12 +59,6 @@ from .email_process_comment_update_response import (
 )
 from .email_process_general_update_response import (
     EmailProcessGeneralUpdateResponse as EmailProcessGeneralUpdateResponse,
-)
-from .paper_kickoff_abstract_embed_response import (
-    PaperKickoffAbstractEmbedResponse as PaperKickoffAbstractEmbedResponse,
-)
-from .paper_process_abstract_embed_response import (
-    PaperProcessAbstractEmbedResponse as PaperProcessAbstractEmbedResponse,
 )
 from .user_weigh_weekly_reputation_response import (
     UserWeighWeeklyReputationResponse as UserWeighWeeklyReputationResponse,

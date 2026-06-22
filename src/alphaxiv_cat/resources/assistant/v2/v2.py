@@ -70,35 +70,9 @@ class V2Resource(SyncAPIResource):
         thinking: Union[bool, str, None],
         web_search: Literal["off", "full"],
         assistant_variant: Literal["homepage", "paper", "landing"] | Omit = omit,
-        model: Literal[
-            "claude-opus-4.5",
-            "claude-opus-4.6",
-            "claude-opus-4.7",
-            "claude-sonnet-4.5",
-            "claude-sonnet-4.6",
-            "gemini-2.5-flash",
-            "gemini-2.5-pro",
-            "gemini-3-flash",
-            "gemini-3.1-pro",
-            "glm-5-turbo",
-            "glm-5.1",
-            "gpt-5",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "kimi-k2.5",
-            "kimi-k2.6",
-            "mercury-2",
-            "minimax-m2.5",
-            "minimax-m2.7",
-            "qwen-3.5",
-            "fast",
-            "smart",
-            "pro",
-        ]
-        | Omit = omit,
+        custom_filter: v2_chat_params.CustomFilter | Omit = omit,
+        filter_model: Literal["cohere"] | Omit = omit,
+        model: str | Omit = omit,
         plan: Literal["free", "pro"] | Omit = omit,
         signature: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -111,7 +85,8 @@ class V2Resource(SyncAPIResource):
         """
         Send a message to the AI assistant and receive streaming responses
 
-        Source file: `api-server/src/controllers/assistant/v2/chat.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/chat.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -136,6 +111,8 @@ class V2Resource(SyncAPIResource):
                     "thinking": thinking,
                     "web_search": web_search,
                     "assistant_variant": assistant_variant,
+                    "custom_filter": custom_filter,
+                    "filter_model": filter_model,
                     "model": model,
                     "plan": plan,
                     "signature": signature,
@@ -164,7 +141,8 @@ class V2Resource(SyncAPIResource):
         """
         Delete an llm chat by id
 
-        Source file: `api-server/src/controllers/assistant/v2/delete-chat.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/delete-chat.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -202,7 +180,8 @@ class V2Resource(SyncAPIResource):
 
         Currently only supports title
 
-        Source file: `api-server/src/controllers/assistant/v2/edit-chat.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/edit-chat.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -241,7 +220,8 @@ class V2Resource(SyncAPIResource):
         Get llm chats for this user, filtered by variant, and optionally by paper
         version
 
-        Source file: `api-server/src/controllers/assistant/v2/get-chats.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/get-chats.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -285,7 +265,7 @@ class V2Resource(SyncAPIResource):
         Fetch metadata (title and favicon) from a given URL
 
         Source file:
-        `api-server/src/controllers/assistant/v2/get-url-metadata.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/get-url-metadata.controller.ts`
 
         Args:
           url: The URL to fetch metadata from
@@ -347,35 +327,9 @@ class AsyncV2Resource(AsyncAPIResource):
         thinking: Union[bool, str, None],
         web_search: Literal["off", "full"],
         assistant_variant: Literal["homepage", "paper", "landing"] | Omit = omit,
-        model: Literal[
-            "claude-opus-4.5",
-            "claude-opus-4.6",
-            "claude-opus-4.7",
-            "claude-sonnet-4.5",
-            "claude-sonnet-4.6",
-            "gemini-2.5-flash",
-            "gemini-2.5-pro",
-            "gemini-3-flash",
-            "gemini-3.1-pro",
-            "glm-5-turbo",
-            "glm-5.1",
-            "gpt-5",
-            "gpt-5.1",
-            "gpt-5.2",
-            "gpt-5.4",
-            "gpt-5.4-mini",
-            "gpt-5.4-nano",
-            "kimi-k2.5",
-            "kimi-k2.6",
-            "mercury-2",
-            "minimax-m2.5",
-            "minimax-m2.7",
-            "qwen-3.5",
-            "fast",
-            "smart",
-            "pro",
-        ]
-        | Omit = omit,
+        custom_filter: v2_chat_params.CustomFilter | Omit = omit,
+        filter_model: Literal["cohere"] | Omit = omit,
+        model: str | Omit = omit,
         plan: Literal["free", "pro"] | Omit = omit,
         signature: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -388,7 +342,8 @@ class AsyncV2Resource(AsyncAPIResource):
         """
         Send a message to the AI assistant and receive streaming responses
 
-        Source file: `api-server/src/controllers/assistant/v2/chat.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/chat.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -413,6 +368,8 @@ class AsyncV2Resource(AsyncAPIResource):
                     "thinking": thinking,
                     "web_search": web_search,
                     "assistant_variant": assistant_variant,
+                    "custom_filter": custom_filter,
+                    "filter_model": filter_model,
                     "model": model,
                     "plan": plan,
                     "signature": signature,
@@ -441,7 +398,8 @@ class AsyncV2Resource(AsyncAPIResource):
         """
         Delete an llm chat by id
 
-        Source file: `api-server/src/controllers/assistant/v2/delete-chat.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/delete-chat.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -479,7 +437,8 @@ class AsyncV2Resource(AsyncAPIResource):
 
         Currently only supports title
 
-        Source file: `api-server/src/controllers/assistant/v2/edit-chat.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/edit-chat.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -518,7 +477,8 @@ class AsyncV2Resource(AsyncAPIResource):
         Get llm chats for this user, filtered by variant, and optionally by paper
         version
 
-        Source file: `api-server/src/controllers/assistant/v2/get-chats.controller.ts`
+        Source file:
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/get-chats.controller.ts`
 
         Args:
           extra_headers: Send extra headers
@@ -562,7 +522,7 @@ class AsyncV2Resource(AsyncAPIResource):
         Fetch metadata (title and favicon) from a given URL
 
         Source file:
-        `api-server/src/controllers/assistant/v2/get-url-metadata.controller.ts`
+        `api-server/file:/app/api-server/src/controllers/assistant/v2/get-url-metadata.controller.ts`
 
         Args:
           url: The URL to fetch metadata from

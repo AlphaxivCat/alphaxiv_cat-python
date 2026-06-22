@@ -81,9 +81,10 @@ class V3ListResponseItemPaper(BaseModel):
 
     authors: List[V3ListResponseItemPaperAuthor]
 
-    citation: Optional[str] = None
+    canonical_id: Optional[str] = FieldInfo(alias="canonicalId", default=None)
+    """A versioned paper ID (e.g. 1706.03762v1)"""
 
-    image_url: Optional[str] = FieldInfo(alias="imageUrl", default=None)
+    citation: Optional[str] = None
 
     organizations: List[V3ListResponseItemPaperOrganization]
 
