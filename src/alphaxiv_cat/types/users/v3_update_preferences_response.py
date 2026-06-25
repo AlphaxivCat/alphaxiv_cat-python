@@ -51,8 +51,6 @@ class Base(BaseModel):
 
     is_debug_mode_enabled: bool = FieldInfo(alias="isDebugModeEnabled")
 
-    is_members_sidebar_visible: bool = FieldInfo(alias="isMembersSidebarVisible")
-
     preferred_language: Optional[
         Literal[
             "am",

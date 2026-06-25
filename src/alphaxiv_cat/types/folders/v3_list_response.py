@@ -86,6 +86,8 @@ class V3ListResponseItemPaper(BaseModel):
 
     citation: Optional[str] = None
 
+    is_external_blog: bool = FieldInfo(alias="isExternalBlog")
+
     organizations: List[V3ListResponseItemPaperOrganization]
 
     paper_group_id: str = FieldInfo(alias="paperGroupId")
