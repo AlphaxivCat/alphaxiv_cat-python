@@ -24,6 +24,8 @@ class V3GetClaimedPapersResponseItem(BaseModel):
 
     google_citation_id: Optional[str] = None
 
+    is_external_blog: bool = FieldInfo(alias="isExternalBlog")
+
     paper_id: str
     """A versionless universal paper ID (e.g. 1706.03762)"""
 

@@ -57,8 +57,6 @@ class Base(TypedDict, total=False):
 
     is_debug_mode_enabled: Annotated[bool, PropertyInfo(alias="isDebugModeEnabled")]
 
-    is_members_sidebar_visible: Annotated[bool, PropertyInfo(alias="isMembersSidebarVisible")]
-
     preferred_language: Annotated[
         Optional[
             Literal[

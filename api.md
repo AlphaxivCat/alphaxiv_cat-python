@@ -632,19 +632,13 @@ Methods:
 Types:
 
 ```python
-from alphaxiv_cat.types.api_keys import (
-    V1CreateResponse,
-    V1ListResponse,
-    V1CreateImpersonationResponse,
-    V1RevokeResponse,
-)
+from alphaxiv_cat.types.api_keys import V1CreateResponse, V1ListResponse, V1RevokeResponse
 ```
 
 Methods:
 
 - <code title="post /api-keys/v1">client.api_keys.v1.<a href="./src/alphaxiv_cat/resources/api_keys/v1.py">create</a>(\*\*<a href="src/alphaxiv_cat/types/api_keys/v1_create_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/api_keys/v1_create_response.py">V1CreateResponse</a></code>
 - <code title="get /api-keys/v1">client.api_keys.v1.<a href="./src/alphaxiv_cat/resources/api_keys/v1.py">list</a>() -> <a href="./src/alphaxiv_cat/types/api_keys/v1_list_response.py">V1ListResponse</a></code>
-- <code title="post /api-keys/v1/impersonate">client.api_keys.v1.<a href="./src/alphaxiv_cat/resources/api_keys/v1.py">create_impersonation</a>(\*\*<a href="src/alphaxiv_cat/types/api_keys/v1_create_impersonation_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/api_keys/v1_create_impersonation_response.py">V1CreateImpersonationResponse</a></code>
 - <code title="post /api-keys/v1/{apiKeyId}/revoke">client.api_keys.v1.<a href="./src/alphaxiv_cat/resources/api_keys/v1.py">revoke</a>(api_key_id) -> <a href="./src/alphaxiv_cat/types/api_keys/v1_revoke_response.py">V1RevokeResponse</a></code>
 
 # Admin

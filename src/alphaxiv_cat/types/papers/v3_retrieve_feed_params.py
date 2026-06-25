@@ -20,6 +20,8 @@ class V3RetrieveFeedParams(TypedDict, total=False):
 
     include_external_blogs: Annotated[str, PropertyInfo(alias="includeExternalBlogs")]
 
+    runnable: str
+
     source: Literal["GitHub"]
 
     topics: str
