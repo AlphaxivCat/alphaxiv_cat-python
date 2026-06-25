@@ -240,6 +240,8 @@ class ClaimedPaper(BaseModel):
 
     google_citation_id: Optional[str] = None
 
+    is_external_blog: bool = FieldInfo(alias="isExternalBlog")
+
     paper_id: str
     """A versionless universal paper ID (e.g. 1706.03762)"""
 
@@ -329,10 +331,6 @@ class User(BaseModel):
     biography: Optional[str] = None
 
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
-
-    email: str
-
-    first_login: bool = FieldInfo(alias="firstLogin")
 
     follower_count: float = FieldInfo(alias="followerCount")
 

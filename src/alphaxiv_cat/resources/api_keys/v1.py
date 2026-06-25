@@ -18,11 +18,10 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.api_keys import v1_create_params, v1_create_impersonation_params
+from ...types.api_keys import v1_create_params
 from ...types.api_keys.v1_list_response import V1ListResponse
 from ...types.api_keys.v1_create_response import V1CreateResponse
 from ...types.api_keys.v1_revoke_response import V1RevokeResponse
-from ...types.api_keys.v1_create_impersonation_response import V1CreateImpersonationResponse
 
 __all__ = ["V1Resource", "AsyncV1Resource"]
 
@@ -104,41 +103,6 @@ class V1Resource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V1ListResponse,
-        )
-
-    def create_impersonation(
-        self,
-        *,
-        user: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V1CreateImpersonationResponse:
-        """
-        Create a new API key for the current user.
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/api-keys/v1/create-impersonation-api-key.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/api-keys/v1/impersonate",
-            body=maybe_transform({"user": user}, v1_create_impersonation_params.V1CreateImpersonationParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V1CreateImpersonationResponse,
         )
 
     def revoke(
@@ -256,43 +220,6 @@ class AsyncV1Resource(AsyncAPIResource):
             cast_to=V1ListResponse,
         )
 
-    async def create_impersonation(
-        self,
-        *,
-        user: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V1CreateImpersonationResponse:
-        """
-        Create a new API key for the current user.
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/api-keys/v1/create-impersonation-api-key.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/api-keys/v1/impersonate",
-            body=await async_maybe_transform(
-                {"user": user}, v1_create_impersonation_params.V1CreateImpersonationParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V1CreateImpersonationResponse,
-        )
-
     async def revoke(
         self,
         api_key_id: Union[str, Literal["own"]],
@@ -339,9 +266,6 @@ class V1ResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             v1.list,
         )
-        self.create_impersonation = to_raw_response_wrapper(
-            v1.create_impersonation,
-        )
         self.revoke = to_raw_response_wrapper(
             v1.revoke,
         )
@@ -356,9 +280,6 @@ class AsyncV1ResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             v1.list,
-        )
-        self.create_impersonation = async_to_raw_response_wrapper(
-            v1.create_impersonation,
         )
         self.revoke = async_to_raw_response_wrapper(
             v1.revoke,
@@ -375,9 +296,6 @@ class V1ResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             v1.list,
         )
-        self.create_impersonation = to_streamed_response_wrapper(
-            v1.create_impersonation,
-        )
         self.revoke = to_streamed_response_wrapper(
             v1.revoke,
         )
@@ -392,9 +310,6 @@ class AsyncV1ResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             v1.list,
-        )
-        self.create_impersonation = async_to_streamed_response_wrapper(
-            v1.create_impersonation,
         )
         self.revoke = async_to_streamed_response_wrapper(
             v1.revoke,

@@ -69,8 +69,6 @@ class PreferencesBase(BaseModel):
 
     is_debug_mode_enabled: bool = FieldInfo(alias="isDebugModeEnabled")
 
-    is_members_sidebar_visible: bool = FieldInfo(alias="isMembersSidebarVisible")
-
     preferred_language: Optional[
         Literal[
             "am",
@@ -223,8 +221,6 @@ class UserPreferencesBase(BaseModel):
 
     is_debug_mode_enabled: bool = FieldInfo(alias="isDebugModeEnabled")
 
-    is_members_sidebar_visible: bool = FieldInfo(alias="isMembersSidebarVisible")
-
     preferred_language: Optional[
         Literal[
             "am",
@@ -362,8 +358,6 @@ class User(BaseModel):
     bluesky_username: Optional[str] = FieldInfo(alias="blueskyUsername", default=None)
 
     email: str
-
-    first_login: bool = FieldInfo(alias="firstLogin")
 
     follower_count: float = FieldInfo(alias="followerCount")
 

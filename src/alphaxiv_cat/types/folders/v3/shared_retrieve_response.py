@@ -92,6 +92,8 @@ class ChildFolderPaper(BaseModel):
 
     citation: Optional[str] = None
 
+    is_external_blog: bool = FieldInfo(alias="isExternalBlog")
+
     organizations: List[ChildFolderPaperOrganization]
 
     paper_group_id: str = FieldInfo(alias="paperGroupId")
@@ -192,6 +194,8 @@ class FolderPaper(BaseModel):
     """A versioned paper ID (e.g. 1706.03762v1)"""
 
     citation: Optional[str] = None
+
+    is_external_blog: bool = FieldInfo(alias="isExternalBlog")
 
     organizations: List[FolderPaperOrganization]
 

@@ -18,6 +18,8 @@ class V3GetViewedHistoryResponseItem(BaseModel):
     canonical_id: str = FieldInfo(alias="canonicalId")
     """A versioned paper ID (e.g. 1706.03762v1)"""
 
+    is_external_blog: bool = FieldInfo(alias="isExternalBlog")
+
     paper_id: str = FieldInfo(alias="paperId")
     """A versionless universal paper ID (e.g. 1706.03762)"""
 
