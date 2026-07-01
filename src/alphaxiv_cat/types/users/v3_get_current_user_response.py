@@ -145,6 +145,8 @@ class PreferencesBase(BaseModel):
 
     show_model_thinking: bool = FieldInfo(alias="showModelThinking")
 
+    theme: Optional[Literal["light", "dark", "system"]] = None
+
     tooling_pane_width: Optional[float] = FieldInfo(alias="toolingPaneWidth", default=None)
 
     web_search: Literal["off", "full"] = FieldInfo(alias="webSearch")
@@ -296,6 +298,8 @@ class UserPreferencesBase(BaseModel):
     reading_mode_enabled: bool = FieldInfo(alias="readingModeEnabled")
 
     show_model_thinking: bool = FieldInfo(alias="showModelThinking")
+
+    theme: Optional[Literal["light", "dark", "system"]] = None
 
     tooling_pane_width: Optional[float] = FieldInfo(alias="toolingPaneWidth", default=None)
 

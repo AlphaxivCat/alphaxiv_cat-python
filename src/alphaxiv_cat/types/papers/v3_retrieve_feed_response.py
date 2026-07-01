@@ -64,6 +64,8 @@ class PaperAuthorInfo(BaseModel):
 class PaperExternalBlog(BaseModel):
     body_blob_id: str
 
+    cover_blob_id: Optional[str] = None
+
 
 class PaperFullAuthor(BaseModel):
     id: str

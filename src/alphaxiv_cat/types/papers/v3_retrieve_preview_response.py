@@ -63,6 +63,8 @@ class AuthorInfo(BaseModel):
 class ExternalBlog(BaseModel):
     body_blob_id: str
 
+    cover_blob_id: Optional[str] = None
+
 
 class FullAuthor(BaseModel):
     id: str

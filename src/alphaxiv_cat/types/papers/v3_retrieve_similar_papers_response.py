@@ -64,6 +64,8 @@ class V3RetrieveSimilarPapersResponseItemAuthorInfo(BaseModel):
 class V3RetrieveSimilarPapersResponseItemExternalBlog(BaseModel):
     body_blob_id: str
 
+    cover_blob_id: Optional[str] = None
+
 
 class V3RetrieveSimilarPapersResponseItemFullAuthor(BaseModel):
     id: str
