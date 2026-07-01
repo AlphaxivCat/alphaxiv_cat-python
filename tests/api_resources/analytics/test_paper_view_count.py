@@ -11,7 +11,6 @@ from tests.utils import assert_matches_type
 from alphaxiv_cat import AlphaxivCat, AsyncAlphaxivCat
 from alphaxiv_cat.types.analytics import (
     PaperViewCountKickoffJobResponse,
-    PaperViewCountProcessJobResponse,
     PaperViewCountIngestEventResponse,
 )
 
@@ -116,59 +115,6 @@ class TestPaperViewCount:
 
         assert cast(Any, response.is_closed) is True
 
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_process_job(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            paper_view_count = client.analytics.paper_view_count.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-            )
-
-        assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_process_job_with_all_params(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            paper_view_count = client.analytics.paper_view_count.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-                like=True,
-            )
-
-        assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_process_job(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = client.analytics.paper_view_count.with_raw_response.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-            )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        paper_view_count = response.parse()
-        assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_process_job(self, client: AlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            with client.analytics.paper_view_count.with_streaming_response.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-            ) as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-                paper_view_count = response.parse()
-                assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
 
 class TestAsyncPaperViewCount:
     parametrize = pytest.mark.parametrize(
@@ -265,58 +211,5 @@ class TestAsyncPaperViewCount:
 
             paper_view_count = await response.parse()
             assert_matches_type(PaperViewCountKickoffJobResponse, paper_view_count, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_process_job(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            paper_view_count = await async_client.analytics.paper_view_count.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-            )
-
-        assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_process_job_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            paper_view_count = await async_client.analytics.paper_view_count.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-                like=True,
-            )
-
-        assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_process_job(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            response = await async_client.analytics.paper_view_count.with_raw_response.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-            )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        paper_view_count = await response.parse()
-        assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_process_job(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.warns(DeprecationWarning):
-            async with async_client.analytics.paper_view_count.with_streaming_response.process_job(
-                paper_id="paperId",
-                publication_date="publicationDate",
-            ) as response:
-                assert not response.is_closed
-                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-                paper_view_count = await response.parse()
-                assert_matches_type(PaperViewCountProcessJobResponse, paper_view_count, path=["response"])
 
         assert cast(Any, response.is_closed) is True
