@@ -136,6 +136,8 @@ class Base(TypedDict, total=False):
 
     show_model_thinking: Annotated[bool, PropertyInfo(alias="showModelThinking")]
 
+    theme: Optional[Literal["light", "dark", "system"]]
+
     tooling_pane_width: Annotated[Optional[float], PropertyInfo(alias="toolingPaneWidth")]
 
     web_search: Annotated[Literal["off", "full"], PropertyInfo(alias="webSearch")]

@@ -64,6 +64,8 @@ class V3RetrieveUnrelatedResponseItemAuthorInfo(BaseModel):
 class V3RetrieveUnrelatedResponseItemExternalBlog(BaseModel):
     body_blob_id: str
 
+    cover_blob_id: Optional[str] = None
+
 
 class V3RetrieveUnrelatedResponseItemFullAuthor(BaseModel):
     id: str
