@@ -238,6 +238,8 @@ class ClaimedPaper(BaseModel):
 
     citations: float
 
+    cover_blob_id: Optional[str] = FieldInfo(alias="coverBlobId", default=None)
+
     google_citation_id: Optional[str] = None
 
     is_external_blog: bool = FieldInfo(alias="isExternalBlog")

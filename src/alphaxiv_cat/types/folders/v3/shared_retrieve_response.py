@@ -92,6 +92,8 @@ class ChildFolderPaper(BaseModel):
 
     citation: Optional[str] = None
 
+    cover_blob_id: Optional[str] = FieldInfo(alias="coverBlobId", default=None)
+
     is_external_blog: bool = FieldInfo(alias="isExternalBlog")
 
     organizations: List[ChildFolderPaperOrganization]
@@ -194,6 +196,8 @@ class FolderPaper(BaseModel):
     """A versioned paper ID (e.g. 1706.03762v1)"""
 
     citation: Optional[str] = None
+
+    cover_blob_id: Optional[str] = FieldInfo(alias="coverBlobId", default=None)
 
     is_external_blog: bool = FieldInfo(alias="isExternalBlog")
 
