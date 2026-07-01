@@ -536,7 +536,6 @@ Types:
 from alphaxiv_cat.types.analytics import (
     PaperViewCountIngestEventResponse,
     PaperViewCountKickoffJobResponse,
-    PaperViewCountProcessJobResponse,
 )
 ```
 
@@ -544,7 +543,6 @@ Methods:
 
 - <code title="post /v1/analytics/paper-view-count/ingest">client.analytics.paper_view_count.<a href="./src/alphaxiv_cat/resources/analytics/paper_view_count.py">ingest_event</a>(\*\*<a href="src/alphaxiv_cat/types/analytics/paper_view_count_ingest_event_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/analytics/paper_view_count_ingest_event_response.py">PaperViewCountIngestEventResponse</a></code>
 - <code title="post /v1/analytics/paper-view-count/kickoff-job">client.analytics.paper_view_count.<a href="./src/alphaxiv_cat/resources/analytics/paper_view_count.py">kickoff_job</a>(\*\*<a href="src/alphaxiv_cat/types/analytics/paper_view_count_kickoff_job_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/analytics/paper_view_count_kickoff_job_response.py">PaperViewCountKickoffJobResponse</a></code>
-- <code title="post /v1/analytics/paper-view-count/process-job">client.analytics.paper_view_count.<a href="./src/alphaxiv_cat/resources/analytics/paper_view_count.py">process_job</a>(\*\*<a href="src/alphaxiv_cat/types/analytics/paper_view_count_process_job_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/analytics/paper_view_count_process_job_response.py">PaperViewCountProcessJobResponse</a></code>
 
 # Search
 
