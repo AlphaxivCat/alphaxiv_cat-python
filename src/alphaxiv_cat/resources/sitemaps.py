@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import sitemap_list_users_params, sitemap_list_papers_params, sitemap_list_overviews_params
+from ..types import sitemap_list_papers_params, sitemap_list_overviews_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -16,7 +16,6 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.sitemap_list_users_response import SitemapListUsersResponse
 from ..types.sitemap_list_papers_response import SitemapListPapersResponse
 from ..types.sitemap_list_overviews_response import SitemapListOverviewsResponse
 
@@ -100,10 +99,9 @@ class SitemapsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SitemapListPapersResponse:
-        """Get paginated list of public papers for sitemap generation.
-
-        Uses cursor caching
-        for efficient deep pagination.
+        """
+        Get paginated list of original (non-arXiv, non-blog) public papers for sitemap
+        generation. Uses cursor caching for efficient deep pagination.
 
         Source file:
         `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-papers-for-sitemap.controller.ts`
@@ -133,51 +131,6 @@ class SitemapsResource(SyncAPIResource):
                 ),
             ),
             cast_to=SitemapListPapersResponse,
-        )
-
-    def list_users(
-        self,
-        *,
-        limit: str | Omit = omit,
-        page: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SitemapListUsersResponse:
-        """
-        Get paginated list of users for sitemap generation
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-users-for-sitemap.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/v1/sitemaps/users",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "limit": limit,
-                        "page": page,
-                    },
-                    sitemap_list_users_params.SitemapListUsersParams,
-                ),
-            ),
-            cast_to=SitemapListUsersResponse,
         )
 
 
@@ -258,10 +211,9 @@ class AsyncSitemapsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SitemapListPapersResponse:
-        """Get paginated list of public papers for sitemap generation.
-
-        Uses cursor caching
-        for efficient deep pagination.
+        """
+        Get paginated list of original (non-arXiv, non-blog) public papers for sitemap
+        generation. Uses cursor caching for efficient deep pagination.
 
         Source file:
         `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-papers-for-sitemap.controller.ts`
@@ -293,51 +245,6 @@ class AsyncSitemapsResource(AsyncAPIResource):
             cast_to=SitemapListPapersResponse,
         )
 
-    async def list_users(
-        self,
-        *,
-        limit: str | Omit = omit,
-        page: str | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> SitemapListUsersResponse:
-        """
-        Get paginated list of users for sitemap generation
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v1/sitemaps/get-users-for-sitemap.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/v1/sitemaps/users",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "limit": limit,
-                        "page": page,
-                    },
-                    sitemap_list_users_params.SitemapListUsersParams,
-                ),
-            ),
-            cast_to=SitemapListUsersResponse,
-        )
-
 
 class SitemapsResourceWithRawResponse:
     def __init__(self, sitemaps: SitemapsResource) -> None:
@@ -348,9 +255,6 @@ class SitemapsResourceWithRawResponse:
         )
         self.list_papers = to_raw_response_wrapper(
             sitemaps.list_papers,
-        )
-        self.list_users = to_raw_response_wrapper(
-            sitemaps.list_users,
         )
 
 
@@ -364,9 +268,6 @@ class AsyncSitemapsResourceWithRawResponse:
         self.list_papers = async_to_raw_response_wrapper(
             sitemaps.list_papers,
         )
-        self.list_users = async_to_raw_response_wrapper(
-            sitemaps.list_users,
-        )
 
 
 class SitemapsResourceWithStreamingResponse:
@@ -379,9 +280,6 @@ class SitemapsResourceWithStreamingResponse:
         self.list_papers = to_streamed_response_wrapper(
             sitemaps.list_papers,
         )
-        self.list_users = to_streamed_response_wrapper(
-            sitemaps.list_users,
-        )
 
 
 class AsyncSitemapsResourceWithStreamingResponse:
@@ -393,7 +291,4 @@ class AsyncSitemapsResourceWithStreamingResponse:
         )
         self.list_papers = async_to_streamed_response_wrapper(
             sitemaps.list_papers,
-        )
-        self.list_users = async_to_streamed_response_wrapper(
-            sitemaps.list_users,
         )

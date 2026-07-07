@@ -14,6 +14,9 @@ __all__ = [
     "V3RetrieveUnrelatedResponseItemAuthorInfoAvatar",
     "V3RetrieveUnrelatedResponseItemExternalBlog",
     "V3RetrieveUnrelatedResponseItemFullAuthor",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks",
     "V3RetrieveUnrelatedResponseItemMetrics",
     "V3RetrieveUnrelatedResponseItemMetricsVisitsCount",
     "V3RetrieveUnrelatedResponseItemOrganizationInfo",
@@ -76,6 +79,50 @@ class V3RetrieveUnrelatedResponseItemFullAuthor(BaseModel):
 
     username: Optional[str] = None
 
+    researcher_slug: Optional[str] = None
+
+
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks(BaseModel):
+    email: Optional[str] = None
+
+    github: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
+
+    scholar: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher(BaseModel):
+    affiliation: Optional[str] = None
+
+    bio: Optional[str] = None
+
+    citations: float
+
+    headline: Optional[str] = None
+
+    h_index: float = FieldInfo(alias="hIndex")
+
+    links: V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks
+
+    name: str
+
+    photo_url: str = FieldInfo(alias="photoUrl")
+
+    research_areas: List[str] = FieldInfo(alias="researchAreas")
+
+    slug: str
+
+
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2(BaseModel):
+    full_name: str
+
+    researcher: Optional[V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher] = None
+
 
 class V3RetrieveUnrelatedResponseItemMetricsVisitsCount(BaseModel):
     all: float
@@ -126,6 +173,8 @@ class V3RetrieveUnrelatedResponseItem(BaseModel):
     first_publication_date: str
 
     full_authors: List[V3RetrieveUnrelatedResponseItemFullAuthor]
+
+    full_authors_v2: List[V3RetrieveUnrelatedResponseItemFullAuthorsV2]
 
     github_stars: Optional[float] = None
 

@@ -678,18 +678,13 @@ Methods:
 Types:
 
 ```python
-from alphaxiv_cat.types import (
-    SitemapListOverviewsResponse,
-    SitemapListPapersResponse,
-    SitemapListUsersResponse,
-)
+from alphaxiv_cat.types import SitemapListOverviewsResponse, SitemapListPapersResponse
 ```
 
 Methods:
 
 - <code title="get /v1/sitemaps/overviews">client.sitemaps.<a href="./src/alphaxiv_cat/resources/sitemaps.py">list_overviews</a>(\*\*<a href="src/alphaxiv_cat/types/sitemap_list_overviews_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/sitemap_list_overviews_response.py">SitemapListOverviewsResponse</a></code>
 - <code title="get /v1/sitemaps/papers">client.sitemaps.<a href="./src/alphaxiv_cat/resources/sitemaps.py">list_papers</a>(\*\*<a href="src/alphaxiv_cat/types/sitemap_list_papers_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/sitemap_list_papers_response.py">SitemapListPapersResponse</a></code>
-- <code title="get /v1/sitemaps/users">client.sitemaps.<a href="./src/alphaxiv_cat/resources/sitemaps.py">list_users</a>(\*\*<a href="src/alphaxiv_cat/types/sitemap_list_users_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/sitemap_list_users_response.py">SitemapListUsersResponse</a></code>
 
 # Retrieve
 
