@@ -14,6 +14,9 @@ __all__ = [
     "V3RetrieveDiversePapersResponseItemAuthorInfoAvatar",
     "V3RetrieveDiversePapersResponseItemExternalBlog",
     "V3RetrieveDiversePapersResponseItemFullAuthor",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks",
     "V3RetrieveDiversePapersResponseItemMetrics",
     "V3RetrieveDiversePapersResponseItemMetricsVisitsCount",
     "V3RetrieveDiversePapersResponseItemOrganizationInfo",
@@ -76,6 +79,50 @@ class V3RetrieveDiversePapersResponseItemFullAuthor(BaseModel):
 
     username: Optional[str] = None
 
+    researcher_slug: Optional[str] = None
+
+
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks(BaseModel):
+    email: Optional[str] = None
+
+    github: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
+
+    scholar: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher(BaseModel):
+    affiliation: Optional[str] = None
+
+    bio: Optional[str] = None
+
+    citations: float
+
+    headline: Optional[str] = None
+
+    h_index: float = FieldInfo(alias="hIndex")
+
+    links: V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks
+
+    name: str
+
+    photo_url: str = FieldInfo(alias="photoUrl")
+
+    research_areas: List[str] = FieldInfo(alias="researchAreas")
+
+    slug: str
+
+
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2(BaseModel):
+    full_name: str
+
+    researcher: Optional[V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher] = None
+
 
 class V3RetrieveDiversePapersResponseItemMetricsVisitsCount(BaseModel):
     all: float
@@ -126,6 +173,8 @@ class V3RetrieveDiversePapersResponseItem(BaseModel):
     first_publication_date: str
 
     full_authors: List[V3RetrieveDiversePapersResponseItemFullAuthor]
+
+    full_authors_v2: List[V3RetrieveDiversePapersResponseItemFullAuthorsV2]
 
     github_stars: Optional[float] = None
 
