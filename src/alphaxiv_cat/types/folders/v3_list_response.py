@@ -12,6 +12,9 @@ __all__ = [
     "V3ListResponseItem",
     "V3ListResponseItemPaper",
     "V3ListResponseItemPaperAuthor",
+    "V3ListResponseItemPaperAuthorsV2",
+    "V3ListResponseItemPaperAuthorsV2Researcher",
+    "V3ListResponseItemPaperAuthorsV2ResearcherLinks",
     "V3ListResponseItemPaperOrganization",
     "V3ListResponseItemPaperUserAuthor",
     "V3ListResponseItemPaperUserAuthorAvatar",
@@ -26,6 +29,48 @@ class V3ListResponseItemPaperAuthor(BaseModel):
     user_id: Optional[str] = None
 
     username: Optional[str] = None
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherLinks(BaseModel):
+    email: Optional[str] = None
+
+    github: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
+
+    scholar: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+
+class V3ListResponseItemPaperAuthorsV2Researcher(BaseModel):
+    affiliation: Optional[str] = None
+
+    bio: Optional[str] = None
+
+    citations: float
+
+    headline: Optional[str] = None
+
+    h_index: float = FieldInfo(alias="hIndex")
+
+    links: V3ListResponseItemPaperAuthorsV2ResearcherLinks
+
+    name: str
+
+    photo_url: str = FieldInfo(alias="photoUrl")
+
+    research_areas: List[str] = FieldInfo(alias="researchAreas")
+
+    slug: str
+
+
+class V3ListResponseItemPaperAuthorsV2(BaseModel):
+    full_name: str
+
+    researcher: Optional[V3ListResponseItemPaperAuthorsV2Researcher] = None
 
 
 class V3ListResponseItemPaperOrganization(BaseModel):
@@ -80,6 +125,8 @@ class V3ListResponseItemPaper(BaseModel):
     added_at: str = FieldInfo(alias="addedAt")
 
     authors: List[V3ListResponseItemPaperAuthor]
+
+    authors_v2: List[V3ListResponseItemPaperAuthorsV2]
 
     canonical_id: Optional[str] = FieldInfo(alias="canonicalId", default=None)
     """A versioned paper ID (e.g. 1706.03762v1)"""

@@ -12,12 +12,18 @@ __all__ = [
     "ChildFolder",
     "ChildFolderPaper",
     "ChildFolderPaperAuthor",
+    "ChildFolderPaperAuthorsV2",
+    "ChildFolderPaperAuthorsV2Researcher",
+    "ChildFolderPaperAuthorsV2ResearcherLinks",
     "ChildFolderPaperOrganization",
     "ChildFolderPaperUserAuthor",
     "ChildFolderPaperUserAuthorAvatar",
     "Folder",
     "FolderPaper",
     "FolderPaperAuthor",
+    "FolderPaperAuthorsV2",
+    "FolderPaperAuthorsV2Researcher",
+    "FolderPaperAuthorsV2ResearcherLinks",
     "FolderPaperOrganization",
     "FolderPaperUserAuthor",
     "FolderPaperUserAuthorAvatar",
@@ -32,6 +38,48 @@ class ChildFolderPaperAuthor(BaseModel):
     user_id: Optional[str] = None
 
     username: Optional[str] = None
+
+
+class ChildFolderPaperAuthorsV2ResearcherLinks(BaseModel):
+    email: Optional[str] = None
+
+    github: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
+
+    scholar: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+
+class ChildFolderPaperAuthorsV2Researcher(BaseModel):
+    affiliation: Optional[str] = None
+
+    bio: Optional[str] = None
+
+    citations: float
+
+    headline: Optional[str] = None
+
+    h_index: float = FieldInfo(alias="hIndex")
+
+    links: ChildFolderPaperAuthorsV2ResearcherLinks
+
+    name: str
+
+    photo_url: str = FieldInfo(alias="photoUrl")
+
+    research_areas: List[str] = FieldInfo(alias="researchAreas")
+
+    slug: str
+
+
+class ChildFolderPaperAuthorsV2(BaseModel):
+    full_name: str
+
+    researcher: Optional[ChildFolderPaperAuthorsV2Researcher] = None
 
 
 class ChildFolderPaperOrganization(BaseModel):
@@ -87,6 +135,8 @@ class ChildFolderPaper(BaseModel):
 
     authors: List[ChildFolderPaperAuthor]
 
+    authors_v2: List[ChildFolderPaperAuthorsV2]
+
     canonical_id: Optional[str] = FieldInfo(alias="canonicalId", default=None)
     """A versioned paper ID (e.g. 1706.03762v1)"""
 
@@ -137,6 +187,48 @@ class FolderPaperAuthor(BaseModel):
     user_id: Optional[str] = None
 
     username: Optional[str] = None
+
+
+class FolderPaperAuthorsV2ResearcherLinks(BaseModel):
+    email: Optional[str] = None
+
+    github: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
+
+    scholar: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+
+class FolderPaperAuthorsV2Researcher(BaseModel):
+    affiliation: Optional[str] = None
+
+    bio: Optional[str] = None
+
+    citations: float
+
+    headline: Optional[str] = None
+
+    h_index: float = FieldInfo(alias="hIndex")
+
+    links: FolderPaperAuthorsV2ResearcherLinks
+
+    name: str
+
+    photo_url: str = FieldInfo(alias="photoUrl")
+
+    research_areas: List[str] = FieldInfo(alias="researchAreas")
+
+    slug: str
+
+
+class FolderPaperAuthorsV2(BaseModel):
+    full_name: str
+
+    researcher: Optional[FolderPaperAuthorsV2Researcher] = None
 
 
 class FolderPaperOrganization(BaseModel):
@@ -191,6 +283,8 @@ class FolderPaper(BaseModel):
     added_at: str = FieldInfo(alias="addedAt")
 
     authors: List[FolderPaperAuthor]
+
+    authors_v2: List[FolderPaperAuthorsV2]
 
     canonical_id: Optional[str] = FieldInfo(alias="canonicalId", default=None)
     """A versioned paper ID (e.g. 1706.03762v1)"""
