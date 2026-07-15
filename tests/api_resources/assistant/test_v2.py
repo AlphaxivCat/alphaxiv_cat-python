@@ -65,6 +65,7 @@ class TestV2:
             filter_model="cohere",
             model="model",
             plan="free",
+            protocol=0,
             signature="signature",
         )
         v2_stream.response.close()
@@ -328,6 +329,7 @@ class TestAsyncV2:
             filter_model="cohere",
             model="model",
             plan="free",
+            protocol=0,
             signature="signature",
         )
         await v2_stream.response.aclose()

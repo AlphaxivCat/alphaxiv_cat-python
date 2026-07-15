@@ -37,6 +37,8 @@ class V2ChatParams(TypedDict, total=False):
 
     plan: Literal["free", "pro"]
 
+    protocol: int
+
     signature: str
 
 
