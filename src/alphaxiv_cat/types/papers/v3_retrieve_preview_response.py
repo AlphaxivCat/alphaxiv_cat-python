@@ -82,17 +82,31 @@ class FullAuthor(BaseModel):
 
 
 class FullAuthorsV2ResearcherLinks(BaseModel):
+    bluesky: Optional[str] = None
+
+    cv: Optional[str] = None
+
+    dblp: Optional[str] = None
+
     email: Optional[str] = None
 
     github: Optional[str] = None
 
+    huggingface: Optional[str] = None
+
     linkedin: Optional[str] = None
+
+    openreview: Optional[str] = None
+
+    orcid: Optional[str] = None
 
     personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
 
     scholar: Optional[str] = None
 
     twitter: Optional[str] = None
+
+    wikipedia: Optional[str] = None
 
 
 class FullAuthorsV2Researcher(BaseModel):

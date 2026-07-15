@@ -29,7 +29,7 @@ class MessageListResponseItemToolUseActivitySearchCounters(BaseModel):
 
 class MessageListResponseItemToolUseActivity(BaseModel):
     read_kind: Optional[
-        Literal["paper", "page", "webpage", "repository", "file", "organization", "source", "multi"]
+        Literal["paper", "page", "webpage", "repository", "file", "organization", "source", "researcher", "multi"]
     ] = FieldInfo(alias="readKind", default=None)
 
     read_subjects: List[str] = FieldInfo(alias="readSubjects")

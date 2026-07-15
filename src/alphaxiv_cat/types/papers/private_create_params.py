@@ -10,8 +10,8 @@ __all__ = ["PrivateCreateParams"]
 
 
 class PrivateCreateParams(TypedDict, total=False):
-    content_type: Required[Annotated[str, PropertyInfo(alias="contentType")]]
-
     file: Required[str]
 
     filename: Required[str]
+
+    content_type: Annotated[str, PropertyInfo(alias="contentType")]
