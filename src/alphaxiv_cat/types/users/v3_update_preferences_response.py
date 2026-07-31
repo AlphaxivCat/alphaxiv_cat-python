@@ -43,9 +43,13 @@ class Base(BaseModel):
         alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"] = FieldInfo(
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"] = FieldInfo(
         alias="feedSort"
     )
+
+    has_seen_for_you_onboarding: bool = FieldInfo(alias="hasSeenForYouOnboarding")
+
+    has_seen_researcher_onboarding: bool = FieldInfo(alias="hasSeenResearcherOnboarding")
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
@@ -124,6 +128,8 @@ class Base(BaseModel):
     preferred_llm_thinking: Optional[str] = FieldInfo(alias="preferredLlmThinking", default=None)
 
     reading_mode_enabled: bool = FieldInfo(alias="readingModeEnabled")
+
+    show_liked_papers_publicly: bool = FieldInfo(alias="showLikedPapersPublicly")
 
     show_model_thinking: bool = FieldInfo(alias="showModelThinking")
 

@@ -16,6 +16,7 @@ __all__ = [
     "V3RetrieveUnrelatedResponseItemFullAuthor",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinkedUser",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks",
     "V3RetrieveUnrelatedResponseItemMetrics",
     "V3RetrieveUnrelatedResponseItemMetricsVisitsCount",
@@ -69,6 +70,10 @@ class V3RetrieveUnrelatedResponseItemExternalBlog(BaseModel):
 
     cover_blob_id: Optional[str] = None
 
+    source_name: str
+
+    source_url: str
+
 
 class V3RetrieveUnrelatedResponseItemFullAuthor(BaseModel):
     id: str
@@ -80,6 +85,12 @@ class V3RetrieveUnrelatedResponseItemFullAuthor(BaseModel):
     username: Optional[str] = None
 
     researcher_slug: Optional[str] = None
+
+
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
 
 
 class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks(BaseModel):
@@ -120,6 +131,10 @@ class V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinkedUser] = FieldInfo(
+        alias="linkedUser", default=None
+    )
 
     links: V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks
 
@@ -205,6 +220,8 @@ class V3RetrieveUnrelatedResponseItem(BaseModel):
     paper_group_id: str
 
     paper_summary: Optional[V3RetrieveUnrelatedResponseItemPaperSummary] = None
+
+    pdf_only: bool
 
     publication_date: str
 

@@ -47,6 +47,8 @@ class V3RetrieveResponse(BaseModel):
 
     license: Optional[str] = None
 
+    pdf_only: bool = FieldInfo(alias="pdfOnly")
+
     publication_date: float = FieldInfo(alias="publicationDate")
 
     resources: List[Resource]

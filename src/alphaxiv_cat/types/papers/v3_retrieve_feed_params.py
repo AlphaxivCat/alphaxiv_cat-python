@@ -16,7 +16,7 @@ class V3RetrieveFeedParams(TypedDict, total=False):
 
     page_size: Required[Annotated[str, PropertyInfo(alias="pageSize")]]
 
-    sort: Required[Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"]]
+    sort: Required[Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"]]
 
     include_external_blogs: Annotated[str, PropertyInfo(alias="includeExternalBlogs")]
 

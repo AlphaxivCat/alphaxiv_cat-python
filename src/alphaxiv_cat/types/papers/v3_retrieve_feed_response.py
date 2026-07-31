@@ -16,6 +16,7 @@ __all__ = [
     "PaperFullAuthor",
     "PaperFullAuthorsV2",
     "PaperFullAuthorsV2Researcher",
+    "PaperFullAuthorsV2ResearcherLinkedUser",
     "PaperFullAuthorsV2ResearcherLinks",
     "PaperMetrics",
     "PaperMetricsVisitsCount",
@@ -69,6 +70,10 @@ class PaperExternalBlog(BaseModel):
 
     cover_blob_id: Optional[str] = None
 
+    source_name: str
+
+    source_url: str
+
 
 class PaperFullAuthor(BaseModel):
     id: str
@@ -80,6 +85,12 @@ class PaperFullAuthor(BaseModel):
     username: Optional[str] = None
 
     researcher_slug: Optional[str] = None
+
+
+class PaperFullAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
 
 
 class PaperFullAuthorsV2ResearcherLinks(BaseModel):
@@ -120,6 +131,8 @@ class PaperFullAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[PaperFullAuthorsV2ResearcherLinkedUser] = FieldInfo(alias="linkedUser", default=None)
 
     links: PaperFullAuthorsV2ResearcherLinks
 
@@ -205,6 +218,8 @@ class Paper(BaseModel):
     paper_group_id: str
 
     paper_summary: Optional[PaperPaperSummary] = None
+
+    pdf_only: bool
 
     publication_date: str
 

@@ -15,6 +15,7 @@ __all__ = [
     "FullAuthor",
     "FullAuthorsV2",
     "FullAuthorsV2Researcher",
+    "FullAuthorsV2ResearcherLinkedUser",
     "FullAuthorsV2ResearcherLinks",
     "Metrics",
     "MetricsVisitsCount",
@@ -68,6 +69,10 @@ class ExternalBlog(BaseModel):
 
     cover_blob_id: Optional[str] = None
 
+    source_name: str
+
+    source_url: str
+
 
 class FullAuthor(BaseModel):
     id: str
@@ -79,6 +84,12 @@ class FullAuthor(BaseModel):
     username: Optional[str] = None
 
     researcher_slug: Optional[str] = None
+
+
+class FullAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
 
 
 class FullAuthorsV2ResearcherLinks(BaseModel):
@@ -119,6 +130,8 @@ class FullAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[FullAuthorsV2ResearcherLinkedUser] = FieldInfo(alias="linkedUser", default=None)
 
     links: FullAuthorsV2ResearcherLinks
 
@@ -204,6 +217,8 @@ class V3RetrievePreviewResponse(BaseModel):
     paper_group_id: str
 
     paper_summary: Optional[PaperSummary] = None
+
+    pdf_only: bool
 
     publication_date: str
 
