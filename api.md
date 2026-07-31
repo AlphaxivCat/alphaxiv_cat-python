@@ -623,22 +623,6 @@ Methods:
 - <code title="post /google-scholar/v1/sync">client.google_scholar.v1.<a href="./src/alphaxiv_cat/resources/google_scholar/v1.py">sync</a>() -> <a href="./src/alphaxiv_cat/types/google_scholar/v1_sync_response.py">V1SyncResponse</a></code>
 - <code title="post /google-scholar/v1/verify">client.google_scholar.v1.<a href="./src/alphaxiv_cat/resources/google_scholar/v1.py">verify_email</a>(\*\*<a href="src/alphaxiv_cat/types/google_scholar/v1_verify_email_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/google_scholar/v1_verify_email_response.py">V1VerifyEmailResponse</a></code>
 
-# APIKeys
-
-## V1
-
-Types:
-
-```python
-from alphaxiv_cat.types.api_keys import V1CreateResponse, V1ListResponse, V1RevokeResponse
-```
-
-Methods:
-
-- <code title="post /api-keys/v1">client.api_keys.v1.<a href="./src/alphaxiv_cat/resources/api_keys/v1.py">create</a>(\*\*<a href="src/alphaxiv_cat/types/api_keys/v1_create_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/api_keys/v1_create_response.py">V1CreateResponse</a></code>
-- <code title="get /api-keys/v1">client.api_keys.v1.<a href="./src/alphaxiv_cat/resources/api_keys/v1.py">list</a>() -> <a href="./src/alphaxiv_cat/types/api_keys/v1_list_response.py">V1ListResponse</a></code>
-- <code title="post /api-keys/v1/{apiKeyId}/revoke">client.api_keys.v1.<a href="./src/alphaxiv_cat/resources/api_keys/v1.py">revoke</a>(api_key_id) -> <a href="./src/alphaxiv_cat/types/api_keys/v1_revoke_response.py">V1RevokeResponse</a></code>
-
 # Admin
 
 ## V1

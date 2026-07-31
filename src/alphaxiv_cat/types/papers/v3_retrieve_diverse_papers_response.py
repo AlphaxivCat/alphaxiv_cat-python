@@ -16,6 +16,7 @@ __all__ = [
     "V3RetrieveDiversePapersResponseItemFullAuthor",
     "V3RetrieveDiversePapersResponseItemFullAuthorsV2",
     "V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinkedUser",
     "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks",
     "V3RetrieveDiversePapersResponseItemMetrics",
     "V3RetrieveDiversePapersResponseItemMetricsVisitsCount",
@@ -69,6 +70,10 @@ class V3RetrieveDiversePapersResponseItemExternalBlog(BaseModel):
 
     cover_blob_id: Optional[str] = None
 
+    source_name: str
+
+    source_url: str
+
 
 class V3RetrieveDiversePapersResponseItemFullAuthor(BaseModel):
     id: str
@@ -80,6 +85,12 @@ class V3RetrieveDiversePapersResponseItemFullAuthor(BaseModel):
     username: Optional[str] = None
 
     researcher_slug: Optional[str] = None
+
+
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
 
 
 class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks(BaseModel):
@@ -120,6 +131,10 @@ class V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinkedUser] = FieldInfo(
+        alias="linkedUser", default=None
+    )
 
     links: V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks
 
@@ -205,6 +220,8 @@ class V3RetrieveDiversePapersResponseItem(BaseModel):
     paper_group_id: str
 
     paper_summary: Optional[V3RetrieveDiversePapersResponseItemPaperSummary] = None
+
+    pdf_only: bool
 
     publication_date: str
 

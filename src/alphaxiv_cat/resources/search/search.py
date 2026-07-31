@@ -105,7 +105,7 @@ class SearchResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
-        Search for papers using Google and enrich results
+        Search for papers, fusing Google's ranking with built-in keyword search
 
         Source file:
         `api-server/file:/app/api-server/src/controllers/v1/search/search-google.controller.ts`
@@ -212,7 +212,7 @@ class AsyncSearchResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
-        Search for papers using Google and enrich results
+        Search for papers, fusing Google's ranking with built-in keyword search
 
         Source file:
         `api-server/file:/app/api-server/src/controllers/v1/search/search-google.controller.ts`

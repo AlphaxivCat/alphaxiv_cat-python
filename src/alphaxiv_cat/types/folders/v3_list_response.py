@@ -14,6 +14,7 @@ __all__ = [
     "V3ListResponseItemPaperAuthor",
     "V3ListResponseItemPaperAuthorsV2",
     "V3ListResponseItemPaperAuthorsV2Researcher",
+    "V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser",
     "V3ListResponseItemPaperAuthorsV2ResearcherLinks",
     "V3ListResponseItemPaperOrganization",
     "V3ListResponseItemPaperUserAuthor",
@@ -29,6 +30,12 @@ class V3ListResponseItemPaperAuthor(BaseModel):
     user_id: Optional[str] = None
 
     username: Optional[str] = None
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
 
 
 class V3ListResponseItemPaperAuthorsV2ResearcherLinks(BaseModel):
@@ -69,6 +76,10 @@ class V3ListResponseItemPaperAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser] = FieldInfo(
+        alias="linkedUser", default=None
+    )
 
     links: V3ListResponseItemPaperAuthorsV2ResearcherLinks
 

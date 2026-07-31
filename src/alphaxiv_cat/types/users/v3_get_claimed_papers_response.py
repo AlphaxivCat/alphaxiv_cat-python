@@ -39,5 +39,7 @@ class V3GetClaimedPapersResponseItem(BaseModel):
 
     topics: List[str]
 
+    views: float
+
 
 V3GetClaimedPapersResponse: TypeAlias = List[V3GetClaimedPapersResponseItem]

@@ -255,6 +255,8 @@ class ClaimedPaper(BaseModel):
 
     topics: List[str]
 
+    views: float
+
 
 class FeaturedUnionMember0Data(BaseModel):
     id: str
@@ -381,5 +383,7 @@ class ByUsernameGetProfilePageResponse(BaseModel):
     claimed_papers: List[ClaimedPaper] = FieldInfo(alias="claimedPapers")
 
     featured: List[Featured]
+
+    show_liked_papers_publicly: bool = FieldInfo(alias="showLikedPapersPublicly")
 
     user: User
