@@ -14,6 +14,7 @@ __all__ = [
     "ChildFolderPaperAuthor",
     "ChildFolderPaperAuthorsV2",
     "ChildFolderPaperAuthorsV2Researcher",
+    "ChildFolderPaperAuthorsV2ResearcherLinkedUser",
     "ChildFolderPaperAuthorsV2ResearcherLinks",
     "ChildFolderPaperOrganization",
     "ChildFolderPaperUserAuthor",
@@ -23,6 +24,7 @@ __all__ = [
     "FolderPaperAuthor",
     "FolderPaperAuthorsV2",
     "FolderPaperAuthorsV2Researcher",
+    "FolderPaperAuthorsV2ResearcherLinkedUser",
     "FolderPaperAuthorsV2ResearcherLinks",
     "FolderPaperOrganization",
     "FolderPaperUserAuthor",
@@ -38,6 +40,12 @@ class ChildFolderPaperAuthor(BaseModel):
     user_id: Optional[str] = None
 
     username: Optional[str] = None
+
+
+class ChildFolderPaperAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
 
 
 class ChildFolderPaperAuthorsV2ResearcherLinks(BaseModel):
@@ -78,6 +86,8 @@ class ChildFolderPaperAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[ChildFolderPaperAuthorsV2ResearcherLinkedUser] = FieldInfo(alias="linkedUser", default=None)
 
     links: ChildFolderPaperAuthorsV2ResearcherLinks
 
@@ -203,6 +213,12 @@ class FolderPaperAuthor(BaseModel):
     username: Optional[str] = None
 
 
+class FolderPaperAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
+
+
 class FolderPaperAuthorsV2ResearcherLinks(BaseModel):
     bluesky: Optional[str] = None
 
@@ -241,6 +257,8 @@ class FolderPaperAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[FolderPaperAuthorsV2ResearcherLinkedUser] = FieldInfo(alias="linkedUser", default=None)
 
     links: FolderPaperAuthorsV2ResearcherLinks
 

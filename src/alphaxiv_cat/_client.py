@@ -45,7 +45,6 @@ if TYPE_CHECKING:
         papers,
         search,
         folders,
-        api_keys,
         comments,
         retrieve,
         sitemaps,
@@ -67,7 +66,6 @@ if TYPE_CHECKING:
     from .resources.papers.papers import PapersResource, AsyncPapersResource
     from .resources.search.search import SearchResource, AsyncSearchResource
     from .resources.folders.folders import FoldersResource, AsyncFoldersResource
-    from .resources.api_keys.api_keys import APIKeysResource, AsyncAPIKeysResource
     from .resources.comments.comments import CommentsResource, AsyncCommentsResource
     from .resources.retrieve.retrieve import RetrieveResource, AsyncRetrieveResource
     from .resources.analytics.analytics import AnalyticsResource, AsyncAnalyticsResource
@@ -206,12 +204,6 @@ class AlphaxivCat(SyncAPIClient):
         from .resources.google_scholar import GoogleScholarResource
 
         return GoogleScholarResource(self)
-
-    @cached_property
-    def api_keys(self) -> APIKeysResource:
-        from .resources.api_keys import APIKeysResource
-
-        return APIKeysResource(self)
 
     @cached_property
     def admin(self) -> AdminResource:
@@ -498,12 +490,6 @@ class AsyncAlphaxivCat(AsyncAPIClient):
         return AsyncGoogleScholarResource(self)
 
     @cached_property
-    def api_keys(self) -> AsyncAPIKeysResource:
-        from .resources.api_keys import AsyncAPIKeysResource
-
-        return AsyncAPIKeysResource(self)
-
-    @cached_property
     def admin(self) -> AsyncAdminResource:
         from .resources.admin import AsyncAdminResource
 
@@ -734,12 +720,6 @@ class AlphaxivCatWithRawResponse:
         return GoogleScholarResourceWithRawResponse(self._client.google_scholar)
 
     @cached_property
-    def api_keys(self) -> api_keys.APIKeysResourceWithRawResponse:
-        from .resources.api_keys import APIKeysResourceWithRawResponse
-
-        return APIKeysResourceWithRawResponse(self._client.api_keys)
-
-    @cached_property
     def admin(self) -> admin.AdminResourceWithRawResponse:
         from .resources.admin import AdminResourceWithRawResponse
 
@@ -847,12 +827,6 @@ class AsyncAlphaxivCatWithRawResponse:
         from .resources.google_scholar import AsyncGoogleScholarResourceWithRawResponse
 
         return AsyncGoogleScholarResourceWithRawResponse(self._client.google_scholar)
-
-    @cached_property
-    def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithRawResponse:
-        from .resources.api_keys import AsyncAPIKeysResourceWithRawResponse
-
-        return AsyncAPIKeysResourceWithRawResponse(self._client.api_keys)
 
     @cached_property
     def admin(self) -> admin.AsyncAdminResourceWithRawResponse:
@@ -964,12 +938,6 @@ class AlphaxivCatWithStreamedResponse:
         return GoogleScholarResourceWithStreamingResponse(self._client.google_scholar)
 
     @cached_property
-    def api_keys(self) -> api_keys.APIKeysResourceWithStreamingResponse:
-        from .resources.api_keys import APIKeysResourceWithStreamingResponse
-
-        return APIKeysResourceWithStreamingResponse(self._client.api_keys)
-
-    @cached_property
     def admin(self) -> admin.AdminResourceWithStreamingResponse:
         from .resources.admin import AdminResourceWithStreamingResponse
 
@@ -1077,12 +1045,6 @@ class AsyncAlphaxivCatWithStreamedResponse:
         from .resources.google_scholar import AsyncGoogleScholarResourceWithStreamingResponse
 
         return AsyncGoogleScholarResourceWithStreamingResponse(self._client.google_scholar)
-
-    @cached_property
-    def api_keys(self) -> api_keys.AsyncAPIKeysResourceWithStreamingResponse:
-        from .resources.api_keys import AsyncAPIKeysResourceWithStreamingResponse
-
-        return AsyncAPIKeysResourceWithStreamingResponse(self._client.api_keys)
 
     @cached_property
     def admin(self) -> admin.AsyncAdminResourceWithStreamingResponse:

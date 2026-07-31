@@ -16,6 +16,7 @@ __all__ = [
     "V3RetrieveSimilarPapersResponseItemFullAuthor",
     "V3RetrieveSimilarPapersResponseItemFullAuthorsV2",
     "V3RetrieveSimilarPapersResponseItemFullAuthorsV2Researcher",
+    "V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherLinkedUser",
     "V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherLinks",
     "V3RetrieveSimilarPapersResponseItemMetrics",
     "V3RetrieveSimilarPapersResponseItemMetricsVisitsCount",
@@ -69,6 +70,10 @@ class V3RetrieveSimilarPapersResponseItemExternalBlog(BaseModel):
 
     cover_blob_id: Optional[str] = None
 
+    source_name: str
+
+    source_url: str
+
 
 class V3RetrieveSimilarPapersResponseItemFullAuthor(BaseModel):
     id: str
@@ -80,6 +85,12 @@ class V3RetrieveSimilarPapersResponseItemFullAuthor(BaseModel):
     username: Optional[str] = None
 
     researcher_slug: Optional[str] = None
+
+
+class V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
 
 
 class V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherLinks(BaseModel):
@@ -120,6 +131,10 @@ class V3RetrieveSimilarPapersResponseItemFullAuthorsV2Researcher(BaseModel):
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherLinkedUser] = FieldInfo(
+        alias="linkedUser", default=None
+    )
 
     links: V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherLinks
 
@@ -205,6 +220,8 @@ class V3RetrieveSimilarPapersResponseItem(BaseModel):
     paper_group_id: str
 
     paper_summary: Optional[V3RetrieveSimilarPapersResponseItemPaperSummary] = None
+
+    pdf_only: bool
 
     publication_date: str
 

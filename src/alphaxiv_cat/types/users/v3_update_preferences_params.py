@@ -50,8 +50,13 @@ class Base(TypedDict, total=False):
     ]
 
     feed_sort: Annotated[
-        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"], PropertyInfo(alias="feedSort")
+        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"],
+        PropertyInfo(alias="feedSort"),
     ]
+
+    has_seen_for_you_onboarding: Annotated[bool, PropertyInfo(alias="hasSeenForYouOnboarding")]
+
+    has_seen_researcher_onboarding: Annotated[bool, PropertyInfo(alias="hasSeenResearcherOnboarding")]
 
     is_dark_mode_enabled: Annotated[bool, PropertyInfo(alias="isDarkModeEnabled")]
 
@@ -133,6 +138,8 @@ class Base(TypedDict, total=False):
     preferred_llm_thinking: Annotated[Optional[str], PropertyInfo(alias="preferredLlmThinking")]
 
     reading_mode_enabled: Annotated[bool, PropertyInfo(alias="readingModeEnabled")]
+
+    show_liked_papers_publicly: Annotated[bool, PropertyInfo(alias="showLikedPapersPublicly")]
 
     show_model_thinking: Annotated[bool, PropertyInfo(alias="showModelThinking")]
 
