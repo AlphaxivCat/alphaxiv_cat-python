@@ -22,6 +22,9 @@ __all__ = [
     "V3RetrieveSimilarPapersResponseItemMetricsVisitsCount",
     "V3RetrieveSimilarPapersResponseItemOrganizationInfo",
     "V3RetrieveSimilarPapersResponseItemPaperSummary",
+    "V3RetrieveSimilarPapersResponseItemRecommendationContext",
+    "V3RetrieveSimilarPapersResponseItemRecommendationContextFollowedLiker",
+    "V3RetrieveSimilarPapersResponseItemRecommendationContextFollowedLikerAvatar",
 ]
 
 
@@ -185,6 +188,36 @@ class V3RetrieveSimilarPapersResponseItemPaperSummary(BaseModel):
     summary: str
 
 
+class V3RetrieveSimilarPapersResponseItemRecommendationContextFollowedLikerAvatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class V3RetrieveSimilarPapersResponseItemRecommendationContextFollowedLiker(BaseModel):
+    id: str
+
+    avatar: Optional[List[V3RetrieveSimilarPapersResponseItemRecommendationContextFollowedLikerAvatar]] = None
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    username: str
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+
+class V3RetrieveSimilarPapersResponseItemRecommendationContext(BaseModel):
+    followed_likers: Optional[List[V3RetrieveSimilarPapersResponseItemRecommendationContextFollowedLiker]] = None
+
+    hot: Optional[bool] = None
+
+
 class V3RetrieveSimilarPapersResponseItem(BaseModel):
     id: str
 
@@ -235,6 +268,8 @@ class V3RetrieveSimilarPapersResponseItem(BaseModel):
     updated_at: str
 
     version_id: str
+
+    recommendation_context: Optional[V3RetrieveSimilarPapersResponseItemRecommendationContext] = None
 
 
 V3RetrieveSimilarPapersResponse: TypeAlias = List[V3RetrieveSimilarPapersResponseItem]

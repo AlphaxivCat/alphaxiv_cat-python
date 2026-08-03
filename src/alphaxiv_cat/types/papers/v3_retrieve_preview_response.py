@@ -21,6 +21,9 @@ __all__ = [
     "MetricsVisitsCount",
     "OrganizationInfo",
     "PaperSummary",
+    "RecommendationContext",
+    "RecommendationContextFollowedLiker",
+    "RecommendationContextFollowedLikerAvatar",
 ]
 
 
@@ -182,6 +185,36 @@ class PaperSummary(BaseModel):
     summary: str
 
 
+class RecommendationContextFollowedLikerAvatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class RecommendationContextFollowedLiker(BaseModel):
+    id: str
+
+    avatar: Optional[List[RecommendationContextFollowedLikerAvatar]] = None
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    username: str
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+
+class RecommendationContext(BaseModel):
+    followed_likers: Optional[List[RecommendationContextFollowedLiker]] = None
+
+    hot: Optional[bool] = None
+
+
 class V3RetrievePreviewResponse(BaseModel):
     id: str
 
@@ -232,3 +265,5 @@ class V3RetrievePreviewResponse(BaseModel):
     updated_at: str
 
     version_id: str
+
+    recommendation_context: Optional[RecommendationContext] = None
