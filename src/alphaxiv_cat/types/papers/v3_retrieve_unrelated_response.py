@@ -22,6 +22,9 @@ __all__ = [
     "V3RetrieveUnrelatedResponseItemMetricsVisitsCount",
     "V3RetrieveUnrelatedResponseItemOrganizationInfo",
     "V3RetrieveUnrelatedResponseItemPaperSummary",
+    "V3RetrieveUnrelatedResponseItemRecommendationContext",
+    "V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLiker",
+    "V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLikerAvatar",
 ]
 
 
@@ -185,6 +188,36 @@ class V3RetrieveUnrelatedResponseItemPaperSummary(BaseModel):
     summary: str
 
 
+class V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLikerAvatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLiker(BaseModel):
+    id: str
+
+    avatar: Optional[List[V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLikerAvatar]] = None
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    username: str
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+
+class V3RetrieveUnrelatedResponseItemRecommendationContext(BaseModel):
+    followed_likers: Optional[List[V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLiker]] = None
+
+    hot: Optional[bool] = None
+
+
 class V3RetrieveUnrelatedResponseItem(BaseModel):
     id: str
 
@@ -235,6 +268,8 @@ class V3RetrieveUnrelatedResponseItem(BaseModel):
     updated_at: str
 
     version_id: str
+
+    recommendation_context: Optional[V3RetrieveUnrelatedResponseItemRecommendationContext] = None
 
 
 V3RetrieveUnrelatedResponse: TypeAlias = List[V3RetrieveUnrelatedResponseItem]
