@@ -22,6 +22,9 @@ __all__ = [
     "PaperMetricsVisitsCount",
     "PaperOrganizationInfo",
     "PaperPaperSummary",
+    "PaperRecommendationContext",
+    "PaperRecommendationContextFollowedLiker",
+    "PaperRecommendationContextFollowedLikerAvatar",
 ]
 
 
@@ -183,6 +186,36 @@ class PaperPaperSummary(BaseModel):
     summary: str
 
 
+class PaperRecommendationContextFollowedLikerAvatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class PaperRecommendationContextFollowedLiker(BaseModel):
+    id: str
+
+    avatar: Optional[List[PaperRecommendationContextFollowedLikerAvatar]] = None
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    username: str
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+
+class PaperRecommendationContext(BaseModel):
+    followed_likers: Optional[List[PaperRecommendationContextFollowedLiker]] = None
+
+    hot: Optional[bool] = None
+
+
 class Paper(BaseModel):
     id: str
 
@@ -233,6 +266,8 @@ class Paper(BaseModel):
     updated_at: str
 
     version_id: str
+
+    recommendation_context: Optional[PaperRecommendationContext] = None
 
 
 class V3RetrieveFeedResponse(BaseModel):
