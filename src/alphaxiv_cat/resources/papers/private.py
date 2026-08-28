@@ -49,6 +49,7 @@ class PrivateResource(SyncAPIResource):
         file: str,
         filename: str,
         content_type: str | Omit = omit,
+        folder_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -78,6 +79,7 @@ class PrivateResource(SyncAPIResource):
                     "file": file,
                     "filename": filename,
                     "content_type": content_type,
+                    "folder_id": folder_id,
                 },
                 private_create_params.PrivateCreateParams,
             ),
@@ -170,6 +172,7 @@ class AsyncPrivateResource(AsyncAPIResource):
         file: str,
         filename: str,
         content_type: str | Omit = omit,
+        folder_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -199,6 +202,7 @@ class AsyncPrivateResource(AsyncAPIResource):
                     "file": file,
                     "filename": filename,
                     "content_type": content_type,
+                    "folder_id": folder_id,
                 },
                 private_create_params.PrivateCreateParams,
             ),

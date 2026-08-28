@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -17,11 +17,17 @@ __all__ = [
     "FullAuthorsV2Researcher",
     "FullAuthorsV2ResearcherLinkedUser",
     "FullAuthorsV2ResearcherLinks",
+    "FullAuthorsV2ResearcherReason",
+    "FullAuthorsV2ResearcherReasonUnionMember0",
+    "FullAuthorsV2ResearcherReasonKind",
+    "FullAuthorsV2ResearcherReasonUnionMember2",
+    "FullAuthorsV2ResearcherReasonUnionMember2Followed",
     "Metrics",
     "MetricsVisitsCount",
     "OrganizationInfo",
     "PaperSummary",
     "RecommendationContext",
+    "RecommendationContextFollowedAuthor",
     "RecommendationContextFollowedLiker",
     "RecommendationContextFollowedLikerAvatar",
 ]
@@ -55,6 +61,8 @@ class AuthorInfo(BaseModel):
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     role: Literal["user", "reviewer", "admin", "bot"]
 
@@ -123,6 +131,37 @@ class FullAuthorsV2ResearcherLinks(BaseModel):
     wikipedia: Optional[str] = None
 
 
+class FullAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class FullAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class FullAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class FullAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[FullAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+FullAuthorsV2ResearcherReason: TypeAlias = Union[
+    FullAuthorsV2ResearcherReasonUnionMember0,
+    FullAuthorsV2ResearcherReasonKind,
+    FullAuthorsV2ResearcherReasonUnionMember2,
+]
+
+
 class FullAuthorsV2Researcher(BaseModel):
     affiliation: Optional[str] = None
 
@@ -145,6 +184,8 @@ class FullAuthorsV2Researcher(BaseModel):
     research_areas: List[str] = FieldInfo(alias="researchAreas")
 
     slug: str
+
+    reason: Optional[FullAuthorsV2ResearcherReason] = None
 
 
 class FullAuthorsV2(BaseModel):
@@ -185,6 +226,12 @@ class PaperSummary(BaseModel):
     summary: str
 
 
+class RecommendationContextFollowedAuthor(BaseModel):
+    name: str
+
+    slug: Optional[str] = None
+
+
 class RecommendationContextFollowedLikerAvatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
@@ -204,12 +251,16 @@ class RecommendationContextFollowedLiker(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     username: str
 
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
 
 class RecommendationContext(BaseModel):
+    followed_authors: Optional[List[RecommendationContextFollowedAuthor]] = None
+
     followed_likers: Optional[List[RecommendationContextFollowedLiker]] = None
 
     hot: Optional[bool] = None
@@ -265,5 +316,9 @@ class V3RetrievePreviewResponse(BaseModel):
     updated_at: str
 
     version_id: str
+
+    card_preview_blob_id: Optional[str] = None
+
+    narration_audio_url: Optional[str] = None
 
     recommendation_context: Optional[RecommendationContext] = None

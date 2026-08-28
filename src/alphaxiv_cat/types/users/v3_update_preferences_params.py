@@ -40,6 +40,8 @@ class Base(TypedDict, total=False):
         PropertyInfo(alias="assistantStyleSelection"),
     ]
 
+    default_paper_page: Annotated[Literal["abstract", "pdf"], PropertyInfo(alias="defaultPaperPage")]
+
     default_private_paper_sidebar_tab: Annotated[
         Optional[Literal["assistant", "notes", "similar"]], PropertyInfo(alias="defaultPrivatePaperSidebarTab")
     ]
@@ -54,13 +56,27 @@ class Base(TypedDict, total=False):
         PropertyInfo(alias="feedSort"),
     ]
 
+    folder_sort: Annotated[Literal["added", "name", "modified", "manual"], PropertyInfo(alias="folderSort")]
+
+    folder_sort_reversed: Annotated[bool, PropertyInfo(alias="folderSortReversed")]
+
+    has_completed_onboarding: Annotated[bool, PropertyInfo(alias="hasCompletedOnboarding")]
+
+    has_seen_assistant_intro: Annotated[bool, PropertyInfo(alias="hasSeenAssistantIntro")]
+
     has_seen_for_you_onboarding: Annotated[bool, PropertyInfo(alias="hasSeenForYouOnboarding")]
 
     has_seen_researcher_onboarding: Annotated[bool, PropertyInfo(alias="hasSeenResearcherOnboarding")]
 
+    hides_home_assistant_intro: Annotated[bool, PropertyInfo(alias="hidesHomeAssistantIntro")]
+
     is_dark_mode_enabled: Annotated[bool, PropertyInfo(alias="isDarkModeEnabled")]
 
     is_debug_mode_enabled: Annotated[bool, PropertyInfo(alias="isDebugModeEnabled")]
+
+    paper_sort: Annotated[Literal["added", "name", "published", "votes"], PropertyInfo(alias="paperSort")]
+
+    paper_sort_reversed: Annotated[bool, PropertyInfo(alias="paperSortReversed")]
 
     preferred_language: Annotated[
         Optional[

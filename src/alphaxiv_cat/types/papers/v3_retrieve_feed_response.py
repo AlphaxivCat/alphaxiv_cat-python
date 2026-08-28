@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -18,11 +18,17 @@ __all__ = [
     "PaperFullAuthorsV2Researcher",
     "PaperFullAuthorsV2ResearcherLinkedUser",
     "PaperFullAuthorsV2ResearcherLinks",
+    "PaperFullAuthorsV2ResearcherReason",
+    "PaperFullAuthorsV2ResearcherReasonUnionMember0",
+    "PaperFullAuthorsV2ResearcherReasonKind",
+    "PaperFullAuthorsV2ResearcherReasonUnionMember2",
+    "PaperFullAuthorsV2ResearcherReasonUnionMember2Followed",
     "PaperMetrics",
     "PaperMetricsVisitsCount",
     "PaperOrganizationInfo",
     "PaperPaperSummary",
     "PaperRecommendationContext",
+    "PaperRecommendationContextFollowedAuthor",
     "PaperRecommendationContextFollowedLiker",
     "PaperRecommendationContextFollowedLikerAvatar",
 ]
@@ -56,6 +62,8 @@ class PaperAuthorInfo(BaseModel):
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     role: Literal["user", "reviewer", "admin", "bot"]
 
@@ -124,6 +132,37 @@ class PaperFullAuthorsV2ResearcherLinks(BaseModel):
     wikipedia: Optional[str] = None
 
 
+class PaperFullAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class PaperFullAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class PaperFullAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class PaperFullAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[PaperFullAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+PaperFullAuthorsV2ResearcherReason: TypeAlias = Union[
+    PaperFullAuthorsV2ResearcherReasonUnionMember0,
+    PaperFullAuthorsV2ResearcherReasonKind,
+    PaperFullAuthorsV2ResearcherReasonUnionMember2,
+]
+
+
 class PaperFullAuthorsV2Researcher(BaseModel):
     affiliation: Optional[str] = None
 
@@ -146,6 +185,8 @@ class PaperFullAuthorsV2Researcher(BaseModel):
     research_areas: List[str] = FieldInfo(alias="researchAreas")
 
     slug: str
+
+    reason: Optional[PaperFullAuthorsV2ResearcherReason] = None
 
 
 class PaperFullAuthorsV2(BaseModel):
@@ -186,6 +227,12 @@ class PaperPaperSummary(BaseModel):
     summary: str
 
 
+class PaperRecommendationContextFollowedAuthor(BaseModel):
+    name: str
+
+    slug: Optional[str] = None
+
+
 class PaperRecommendationContextFollowedLikerAvatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
@@ -205,12 +252,16 @@ class PaperRecommendationContextFollowedLiker(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     username: str
 
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
 
 class PaperRecommendationContext(BaseModel):
+    followed_authors: Optional[List[PaperRecommendationContextFollowedAuthor]] = None
+
     followed_likers: Optional[List[PaperRecommendationContextFollowedLiker]] = None
 
     hot: Optional[bool] = None
@@ -267,6 +318,10 @@ class Paper(BaseModel):
 
     version_id: str
 
+    card_preview_blob_id: Optional[str] = None
+
+    narration_audio_url: Optional[str] = None
+
     recommendation_context: Optional[PaperRecommendationContext] = None
 
 
@@ -274,3 +329,7 @@ class V3RetrieveFeedResponse(BaseModel):
     page: float
 
     papers: List[Paper]
+
+    feed_cursor: Optional[str] = FieldInfo(alias="feedCursor", default=None)
+
+    feed_refreshed: Optional[bool] = FieldInfo(alias="feedRefreshed", default=None)

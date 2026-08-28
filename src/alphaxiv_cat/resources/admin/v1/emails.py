@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -18,7 +18,7 @@ from ...._response import (
     async_to_streamed_response_wrapper,
 )
 from ...._base_client import make_request_options
-from ....types.admin.v1 import email_send_weekly_digest_params, email_send_monthly_digest_params
+from ....types.admin.v1 import email_send_weekly_digest_params
 
 __all__ = ["EmailsResource", "AsyncEmailsResource"]
 
@@ -43,51 +43,15 @@ class EmailsResource(SyncAPIResource):
         """
         return EmailsResourceWithStreamingResponse(self)
 
-    def send_monthly_digest(
-        self,
-        *,
-        role: Literal["admin", "user"] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Queue monthly digest emails to users
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
-
-        Args:
-          role: Filter by user role
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._post(
-            "/admin/v1/emails/send-monthly-digest",
-            body=maybe_transform({"role": role}, email_send_monthly_digest_params.EmailSendMonthlyDigestParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     def send_weekly_digest(
         self,
         *,
+        a: email_send_weekly_digest_params.A | Omit = omit,
+        b: email_send_weekly_digest_params.B | Omit = omit,
         events: Iterable[email_send_weekly_digest_params.Event] | Omit = omit,
-        intro_text: str | Omit = omit,
         role: Literal["admin", "user"] | Omit = omit,
-        subject: str | Omit = omit,
+        test_batch_size: int | Omit = omit,
+        test_emails: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -102,13 +66,17 @@ class EmailsResource(SyncAPIResource):
         `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`
 
         Args:
-          events: Custom events to include
+          a: Text overrides for copy variant A
 
-          intro_text: Custom intro message
+          b: Text overrides for copy variant B
+
+          events: Custom events to include, both variants
 
           role: Filter by user role
 
-          subject: Custom email subject
+          test_batch_size: Test mode: page size override, to exercise batching
+
+          test_emails: Test mode: only these addresses can receive the digest
 
           extra_headers: Send extra headers
 
@@ -123,10 +91,12 @@ class EmailsResource(SyncAPIResource):
             "/admin/v1/emails/send-weekly-digest",
             body=maybe_transform(
                 {
+                    "a": a,
+                    "b": b,
                     "events": events,
-                    "intro_text": intro_text,
                     "role": role,
-                    "subject": subject,
+                    "test_batch_size": test_batch_size,
+                    "test_emails": test_emails,
                 },
                 email_send_weekly_digest_params.EmailSendWeeklyDigestParams,
             ),
@@ -157,53 +127,15 @@ class AsyncEmailsResource(AsyncAPIResource):
         """
         return AsyncEmailsResourceWithStreamingResponse(self)
 
-    async def send_monthly_digest(
-        self,
-        *,
-        role: Literal["admin", "user"] | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> None:
-        """
-        Queue monthly digest emails to users
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-monthly-digest.controller.ts`
-
-        Args:
-          role: Filter by user role
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._post(
-            "/admin/v1/emails/send-monthly-digest",
-            body=await async_maybe_transform(
-                {"role": role}, email_send_monthly_digest_params.EmailSendMonthlyDigestParams
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=NoneType,
-        )
-
     async def send_weekly_digest(
         self,
         *,
+        a: email_send_weekly_digest_params.A | Omit = omit,
+        b: email_send_weekly_digest_params.B | Omit = omit,
         events: Iterable[email_send_weekly_digest_params.Event] | Omit = omit,
-        intro_text: str | Omit = omit,
         role: Literal["admin", "user"] | Omit = omit,
-        subject: str | Omit = omit,
+        test_batch_size: int | Omit = omit,
+        test_emails: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -218,13 +150,17 @@ class AsyncEmailsResource(AsyncAPIResource):
         `api-server/file:/app/api-server/src/controllers/admin/v1/emails/send-weekly-digest.controller.ts`
 
         Args:
-          events: Custom events to include
+          a: Text overrides for copy variant A
 
-          intro_text: Custom intro message
+          b: Text overrides for copy variant B
+
+          events: Custom events to include, both variants
 
           role: Filter by user role
 
-          subject: Custom email subject
+          test_batch_size: Test mode: page size override, to exercise batching
+
+          test_emails: Test mode: only these addresses can receive the digest
 
           extra_headers: Send extra headers
 
@@ -239,10 +175,12 @@ class AsyncEmailsResource(AsyncAPIResource):
             "/admin/v1/emails/send-weekly-digest",
             body=await async_maybe_transform(
                 {
+                    "a": a,
+                    "b": b,
                     "events": events,
-                    "intro_text": intro_text,
                     "role": role,
-                    "subject": subject,
+                    "test_batch_size": test_batch_size,
+                    "test_emails": test_emails,
                 },
                 email_send_weekly_digest_params.EmailSendWeeklyDigestParams,
             ),
@@ -257,9 +195,6 @@ class EmailsResourceWithRawResponse:
     def __init__(self, emails: EmailsResource) -> None:
         self._emails = emails
 
-        self.send_monthly_digest = to_raw_response_wrapper(
-            emails.send_monthly_digest,
-        )
         self.send_weekly_digest = to_raw_response_wrapper(
             emails.send_weekly_digest,
         )
@@ -269,9 +204,6 @@ class AsyncEmailsResourceWithRawResponse:
     def __init__(self, emails: AsyncEmailsResource) -> None:
         self._emails = emails
 
-        self.send_monthly_digest = async_to_raw_response_wrapper(
-            emails.send_monthly_digest,
-        )
         self.send_weekly_digest = async_to_raw_response_wrapper(
             emails.send_weekly_digest,
         )
@@ -281,9 +213,6 @@ class EmailsResourceWithStreamingResponse:
     def __init__(self, emails: EmailsResource) -> None:
         self._emails = emails
 
-        self.send_monthly_digest = to_streamed_response_wrapper(
-            emails.send_monthly_digest,
-        )
         self.send_weekly_digest = to_streamed_response_wrapper(
             emails.send_weekly_digest,
         )
@@ -293,9 +222,6 @@ class AsyncEmailsResourceWithStreamingResponse:
     def __init__(self, emails: AsyncEmailsResource) -> None:
         self._emails = emails
 
-        self.send_monthly_digest = async_to_streamed_response_wrapper(
-            emails.send_monthly_digest,
-        )
         self.send_weekly_digest = async_to_streamed_response_wrapper(
             emails.send_weekly_digest,
         )

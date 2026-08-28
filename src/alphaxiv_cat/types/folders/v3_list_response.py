@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -16,6 +16,11 @@ __all__ = [
     "V3ListResponseItemPaperAuthorsV2Researcher",
     "V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser",
     "V3ListResponseItemPaperAuthorsV2ResearcherLinks",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReason",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember0",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonKind",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2Followed",
     "V3ListResponseItemPaperOrganization",
     "V3ListResponseItemPaperUserAuthor",
     "V3ListResponseItemPaperUserAuthorAvatar",
@@ -66,6 +71,37 @@ class V3ListResponseItemPaperAuthorsV2ResearcherLinks(BaseModel):
     wikipedia: Optional[str] = None
 
 
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+V3ListResponseItemPaperAuthorsV2ResearcherReason: TypeAlias = Union[
+    V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember0,
+    V3ListResponseItemPaperAuthorsV2ResearcherReasonKind,
+    V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2,
+]
+
+
 class V3ListResponseItemPaperAuthorsV2Researcher(BaseModel):
     affiliation: Optional[str] = None
 
@@ -90,6 +126,8 @@ class V3ListResponseItemPaperAuthorsV2Researcher(BaseModel):
     research_areas: List[str] = FieldInfo(alias="researchAreas")
 
     slug: str
+
+    reason: Optional[V3ListResponseItemPaperAuthorsV2ResearcherReason] = None
 
 
 class V3ListResponseItemPaperAuthorsV2(BaseModel):
@@ -133,6 +171,8 @@ class V3ListResponseItemPaperUserAuthor(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     username: str
@@ -172,11 +212,13 @@ class V3ListResponseItemPaper(BaseModel):
 
     topics: List[str]
 
-    type: Literal["private", "community", "public"]
+    type: Literal["private", "public"]
 
     universal_paper_id: str = FieldInfo(alias="universalPaperId")
 
     user_authors: List[V3ListResponseItemPaperUserAuthor] = FieldInfo(alias="userAuthors")
+
+    votes: float
 
 
 class V3ListResponseItem(BaseModel):
