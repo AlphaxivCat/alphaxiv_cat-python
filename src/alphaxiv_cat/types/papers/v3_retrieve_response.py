@@ -59,7 +59,7 @@ class V3RetrieveResponse(BaseModel):
 
     title: str
 
-    type: Literal["public", "private", "community"]
+    type: Literal["public", "private"]
 
     universal_id: str = FieldInfo(alias="universalId")
 

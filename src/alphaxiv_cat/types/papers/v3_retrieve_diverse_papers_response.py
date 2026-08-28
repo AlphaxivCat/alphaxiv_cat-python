@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -18,11 +18,17 @@ __all__ = [
     "V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher",
     "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinkedUser",
     "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReason",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember0",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonKind",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2",
+    "V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed",
     "V3RetrieveDiversePapersResponseItemMetrics",
     "V3RetrieveDiversePapersResponseItemMetricsVisitsCount",
     "V3RetrieveDiversePapersResponseItemOrganizationInfo",
     "V3RetrieveDiversePapersResponseItemPaperSummary",
     "V3RetrieveDiversePapersResponseItemRecommendationContext",
+    "V3RetrieveDiversePapersResponseItemRecommendationContextFollowedAuthor",
     "V3RetrieveDiversePapersResponseItemRecommendationContextFollowedLiker",
     "V3RetrieveDiversePapersResponseItemRecommendationContextFollowedLikerAvatar",
 ]
@@ -56,6 +62,8 @@ class V3RetrieveDiversePapersResponseItemAuthorInfo(BaseModel):
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     role: Literal["user", "reviewer", "admin", "bot"]
 
@@ -124,6 +132,37 @@ class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherLinks(BaseModel)
     wikipedia: Optional[str] = None
 
 
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReason: TypeAlias = Union[
+    V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember0,
+    V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonKind,
+    V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2,
+]
+
+
 class V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher(BaseModel):
     affiliation: Optional[str] = None
 
@@ -148,6 +187,8 @@ class V3RetrieveDiversePapersResponseItemFullAuthorsV2Researcher(BaseModel):
     research_areas: List[str] = FieldInfo(alias="researchAreas")
 
     slug: str
+
+    reason: Optional[V3RetrieveDiversePapersResponseItemFullAuthorsV2ResearcherReason] = None
 
 
 class V3RetrieveDiversePapersResponseItemFullAuthorsV2(BaseModel):
@@ -188,6 +229,12 @@ class V3RetrieveDiversePapersResponseItemPaperSummary(BaseModel):
     summary: str
 
 
+class V3RetrieveDiversePapersResponseItemRecommendationContextFollowedAuthor(BaseModel):
+    name: str
+
+    slug: Optional[str] = None
+
+
 class V3RetrieveDiversePapersResponseItemRecommendationContextFollowedLikerAvatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
@@ -207,12 +254,16 @@ class V3RetrieveDiversePapersResponseItemRecommendationContextFollowedLiker(Base
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     username: str
 
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
 
 class V3RetrieveDiversePapersResponseItemRecommendationContext(BaseModel):
+    followed_authors: Optional[List[V3RetrieveDiversePapersResponseItemRecommendationContextFollowedAuthor]] = None
+
     followed_likers: Optional[List[V3RetrieveDiversePapersResponseItemRecommendationContextFollowedLiker]] = None
 
     hot: Optional[bool] = None
@@ -268,6 +319,10 @@ class V3RetrieveDiversePapersResponseItem(BaseModel):
     updated_at: str
 
     version_id: str
+
+    card_preview_blob_id: Optional[str] = None
+
+    narration_audio_url: Optional[str] = None
 
     recommendation_context: Optional[V3RetrieveDiversePapersResponseItemRecommendationContext] = None
 

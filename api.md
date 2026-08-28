@@ -236,11 +236,7 @@ Types:
 from alphaxiv_cat.types import (
     EmailCaptureBouncedEmailsResponse,
     EmailCaptureResendBouncedEmailResponse,
-    EmailKickoffCommentUpdateResponse,
-    EmailKickoffGeneralUpdateResponse,
     EmailProcessBouncedEmailResponse,
-    EmailProcessCommentUpdateResponse,
-    EmailProcessGeneralUpdateResponse,
 )
 ```
 
@@ -248,11 +244,7 @@ Methods:
 
 - <code title="post /v1/emails/capture-bounced-emails">client.emails.<a href="./src/alphaxiv_cat/resources/emails.py">capture_bounced_emails</a>(\*\*<a href="src/alphaxiv_cat/types/email_capture_bounced_emails_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/email_capture_bounced_emails_response.py">EmailCaptureBouncedEmailsResponse</a></code>
 - <code title="post /v1/emails/capture-resend-bounced-email">client.emails.<a href="./src/alphaxiv_cat/resources/emails.py">capture_resend_bounced_email</a>(\*\*<a href="src/alphaxiv_cat/types/email_capture_resend_bounced_email_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/email_capture_resend_bounced_email_response.py">EmailCaptureResendBouncedEmailResponse</a></code>
-- <code title="post /v1/emails/kickoff-comment-update/{role}/{window}/{custom}">client.emails.<a href="./src/alphaxiv_cat/resources/emails.py">kickoff_comment_update</a>(custom, \*, role, window) -> <a href="./src/alphaxiv_cat/types/email_kickoff_comment_update_response.py">EmailKickoffCommentUpdateResponse</a></code>
-- <code title="post /v1/emails/kickoff-general-update/{role}">client.emails.<a href="./src/alphaxiv_cat/resources/emails.py">kickoff_general_update</a>(role) -> <a href="./src/alphaxiv_cat/types/email_kickoff_general_update_response.py">EmailKickoffGeneralUpdateResponse</a></code>
 - <code title="post /v1/emails/process-bounced-email">client.emails.<a href="./src/alphaxiv_cat/resources/emails.py">process_bounced_email</a>(\*\*<a href="src/alphaxiv_cat/types/email_process_bounced_email_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/email_process_bounced_email_response.py">EmailProcessBouncedEmailResponse</a></code>
-- <code title="post /v1/emails/process-comment-update">client.emails.<a href="./src/alphaxiv_cat/resources/emails.py">process_comment_update</a>(\*\*<a href="src/alphaxiv_cat/types/email_process_comment_update_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/email_process_comment_update_response.py">EmailProcessCommentUpdateResponse</a></code>
-- <code title="post /v1/emails/process-general-update">client.emails.<a href="./src/alphaxiv_cat/resources/emails.py">process_general_update</a>(\*\*<a href="src/alphaxiv_cat/types/email_process_general_update_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/email_process_general_update_response.py">EmailProcessGeneralUpdateResponse</a></code>
 
 # Users
 
@@ -273,8 +265,6 @@ Types:
 
 ```python
 from alphaxiv_cat.types.users import (
-    V3GetActivityResponse,
-    V3GetClaimedPapersResponse,
     V3GetCurrentUserResponse,
     V3GetFeaturedActivityResponse,
     V3GetFollowersResponse,
@@ -294,8 +284,6 @@ Methods:
 
 - <code title="delete /users/v3/banners/{bannerId}">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">delete_banner</a>(banner_id) -> None</code>
 - <code title="delete /users/v3">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">delete_own_user</a>() -> None</code>
-- <code title="get /users/v3/{id}/activity">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_activity</a>(id, \*\*<a href="src/alphaxiv_cat/types/users/v3_get_activity_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_get_activity_response.py">V3GetActivityResponse</a></code>
-- <code title="get /users/v3/{id}/claimed-papers">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_claimed_papers</a>(id, \*\*<a href="src/alphaxiv_cat/types/users/v3_get_claimed_papers_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_get_claimed_papers_response.py">V3GetClaimedPapersResponse</a></code>
 - <code title="get /users/v3">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_current_user</a>() -> <a href="./src/alphaxiv_cat/types/users/v3_get_current_user_response.py">V3GetCurrentUserResponse</a></code>
 - <code title="get /users/v3/{id}/featured">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_featured_activity</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3_get_featured_activity_response.py">V3GetFeaturedActivityResponse</a></code>
 - <code title="get /users/v3/{id}/followers">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_followers</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3_get_followers_response.py">V3GetFollowersResponse</a></code>
@@ -355,26 +343,12 @@ Methods:
 Types:
 
 ```python
-from alphaxiv_cat.types.users.v3 import ByUsernameGetProfilePageResponse, ByUsernameGetUserResponse
+from alphaxiv_cat.types.users.v3 import ByUsernameGetUserResponse
 ```
 
 Methods:
 
-- <code title="get /users/v3/by-username/{username}/profile-page">client.users.v3.by_username.<a href="./src/alphaxiv_cat/resources/users/v3/by_username.py">get_profile_page</a>(username) -> <a href="./src/alphaxiv_cat/types/users/v3/by_username_get_profile_page_response.py">ByUsernameGetProfilePageResponse</a></code>
 - <code title="get /users/v3/by-username/{username}">client.users.v3.by_username.<a href="./src/alphaxiv_cat/resources/users/v3/by_username.py">get_user</a>(username) -> <a href="./src/alphaxiv_cat/types/users/v3/by_username_get_user_response.py">ByUsernameGetUserResponse</a></code>
-
-### SemanticScholar
-
-Types:
-
-```python
-from alphaxiv_cat.types.users.v3 import SemanticScholarLinkResponse, SemanticScholarScrapeResponse
-```
-
-Methods:
-
-- <code title="post /users/v3/{id}/semantic-scholar/link">client.users.v3.semantic_scholar.<a href="./src/alphaxiv_cat/resources/users/v3/semantic_scholar.py">link</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3/semantic_scholar_link_response.py">SemanticScholarLinkResponse</a></code>
-- <code title="post /users/v3/{id}/semantic-scholar/scrape">client.users.v3.semantic_scholar.<a href="./src/alphaxiv_cat/resources/users/v3/semantic_scholar.py">scrape</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3/semantic_scholar_scrape_response.py">SemanticScholarScrapeResponse</a></code>
 
 ### Citations
 
@@ -642,7 +616,6 @@ Methods:
 
 Methods:
 
-- <code title="post /admin/v1/emails/send-monthly-digest">client.admin.v1.emails.<a href="./src/alphaxiv_cat/resources/admin/v1/emails.py">send_monthly_digest</a>(\*\*<a href="src/alphaxiv_cat/types/admin/v1/email_send_monthly_digest_params.py">params</a>) -> None</code>
 - <code title="post /admin/v1/emails/send-weekly-digest">client.admin.v1.emails.<a href="./src/alphaxiv_cat/resources/admin/v1/emails.py">send_weekly_digest</a>(\*\*<a href="src/alphaxiv_cat/types/admin/v1/email_send_weekly_digest_params.py">params</a>) -> None</code>
 
 # Notifications

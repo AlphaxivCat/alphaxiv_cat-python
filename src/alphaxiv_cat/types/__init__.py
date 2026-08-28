@@ -37,26 +37,12 @@ from .paper_get_crx_paper_info_response import PaperGetCrxPaperInfoResponse as P
 from .email_process_bounced_email_params import EmailProcessBouncedEmailParams as EmailProcessBouncedEmailParams
 from .paper_set_github_repository_params import PaperSetGitHubRepositoryParams as PaperSetGitHubRepositoryParams
 from .email_capture_bounced_emails_params import EmailCaptureBouncedEmailsParams as EmailCaptureBouncedEmailsParams
-from .email_process_comment_update_params import EmailProcessCommentUpdateParams as EmailProcessCommentUpdateParams
-from .email_process_general_update_params import EmailProcessGeneralUpdateParams as EmailProcessGeneralUpdateParams
 from .email_process_bounced_email_response import EmailProcessBouncedEmailResponse as EmailProcessBouncedEmailResponse
 from .paper_kickoff_recent_papers_response import PaperKickoffRecentPapersResponse as PaperKickoffRecentPapersResponse
 from .paper_set_github_repository_response import PaperSetGitHubRepositoryResponse as PaperSetGitHubRepositoryResponse
 from .paper_translate_ai_overview_response import PaperTranslateAIOverviewResponse as PaperTranslateAIOverviewResponse
 from .email_capture_bounced_emails_response import (
     EmailCaptureBouncedEmailsResponse as EmailCaptureBouncedEmailsResponse,
-)
-from .email_kickoff_comment_update_response import (
-    EmailKickoffCommentUpdateResponse as EmailKickoffCommentUpdateResponse,
-)
-from .email_kickoff_general_update_response import (
-    EmailKickoffGeneralUpdateResponse as EmailKickoffGeneralUpdateResponse,
-)
-from .email_process_comment_update_response import (
-    EmailProcessCommentUpdateResponse as EmailProcessCommentUpdateResponse,
-)
-from .email_process_general_update_response import (
-    EmailProcessGeneralUpdateResponse as EmailProcessGeneralUpdateResponse,
 )
 from .user_weigh_weekly_reputation_response import (
     UserWeighWeeklyReputationResponse as UserWeighWeeklyReputationResponse,

@@ -32,14 +32,6 @@ from .by_username import (
     ByUsernameResourceWithStreamingResponse,
     AsyncByUsernameResourceWithStreamingResponse,
 )
-from .semantic_scholar import (
-    SemanticScholarResource,
-    AsyncSemanticScholarResource,
-    SemanticScholarResourceWithRawResponse,
-    AsyncSemanticScholarResourceWithRawResponse,
-    SemanticScholarResourceWithStreamingResponse,
-    AsyncSemanticScholarResourceWithStreamingResponse,
-)
 
 __all__ = [
     "FollowingResource",
@@ -54,12 +46,6 @@ __all__ = [
     "AsyncByUsernameResourceWithRawResponse",
     "ByUsernameResourceWithStreamingResponse",
     "AsyncByUsernameResourceWithStreamingResponse",
-    "SemanticScholarResource",
-    "AsyncSemanticScholarResource",
-    "SemanticScholarResourceWithRawResponse",
-    "AsyncSemanticScholarResourceWithRawResponse",
-    "SemanticScholarResourceWithStreamingResponse",
-    "AsyncSemanticScholarResourceWithStreamingResponse",
     "CitationsResource",
     "AsyncCitationsResource",
     "CitationsResourceWithRawResponse",

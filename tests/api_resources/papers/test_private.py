@@ -33,6 +33,7 @@ class TestPrivate:
             file="x",
             filename="x",
             content_type="contentType",
+            folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
         assert_matches_type(PrivateCreateResponse, private, path=["response"])
 
@@ -152,6 +153,7 @@ class TestAsyncPrivate:
             file="x",
             filename="x",
             content_type="contentType",
+            folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
         )
         assert_matches_type(PrivateCreateResponse, private, path=["response"])
 

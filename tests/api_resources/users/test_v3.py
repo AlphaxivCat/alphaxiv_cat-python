@@ -11,14 +11,12 @@ from tests.utils import assert_matches_type
 from alphaxiv_cat import AlphaxivCat, AsyncAlphaxivCat
 from alphaxiv_cat.types.users import (
     V3SearchResponse,
-    V3GetActivityResponse,
     V3GetFollowersResponse,
     V3UploadAvatarResponse,
     V3GetUserByUuidResponse,
     V3UpdateProfileResponse,
     V3GetCurrentUserResponse,
     V3GetLeaderboardResponse,
-    V3GetClaimedPapersResponse,
     V3GetViewedHistoryResponse,
     V3ToggleFollowUserResponse,
     V3UpdatePreferencesResponse,
@@ -106,108 +104,6 @@ class TestV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_get_activity(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_get_activity_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            sort="date",
-        )
-        assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_get_activity(self, client: AlphaxivCat) -> None:
-        response = client.users.v3.with_raw_response.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_get_activity(self, client: AlphaxivCat) -> None:
-        with client.users.v3.with_streaming_response.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_path_params_get_activity(self, client: AlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.users.v3.with_raw_response.get_activity(
-                id="",
-            )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_get_claimed_papers(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_get_claimed_papers_with_all_params(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            sort="date",
-        )
-        assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_get_claimed_papers(self, client: AlphaxivCat) -> None:
-        response = client.users.v3.with_raw_response.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_get_claimed_papers(self, client: AlphaxivCat) -> None:
-        with client.users.v3.with_streaming_response.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_path_params_get_claimed_papers(self, client: AlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.users.v3.with_raw_response.get_claimed_papers(
-                id="",
-            )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     def test_method_get_current_user(self, client: AlphaxivCat) -> None:
         v3 = client.users.v3.get_current_user()
         assert_matches_type(V3GetCurrentUserResponse, v3, path=["response"])
@@ -237,17 +133,20 @@ class TestV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_method_get_featured_activity(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.get_featured_activity(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            v3 = client.users.v3.get_featured_activity(
+                "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
+
         assert_matches_type(V3GetFeaturedActivityResponse, v3, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_raw_response_get_featured_activity(self, client: AlphaxivCat) -> None:
-        response = client.users.v3.with_raw_response.get_featured_activity(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.users.v3.with_raw_response.get_featured_activity(
+                "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -257,24 +156,26 @@ class TestV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_streaming_response_get_featured_activity(self, client: AlphaxivCat) -> None:
-        with client.users.v3.with_streaming_response.get_featured_activity(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.users.v3.with_streaming_response.get_featured_activity(
+                "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            v3 = response.parse()
-            assert_matches_type(V3GetFeaturedActivityResponse, v3, path=["response"])
+                v3 = response.parse()
+                assert_matches_type(V3GetFeaturedActivityResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     def test_path_params_get_featured_activity(self, client: AlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.users.v3.with_raw_response.get_featured_activity(
-                "",
-            )
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+                client.users.v3.with_raw_response.get_featured_activity(
+                    "",
+                )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -583,13 +484,21 @@ class TestV3:
                     }
                 ],
                 "assistant_style_selection": "default",
+                "default_paper_page": "abstract",
                 "default_private_paper_sidebar_tab": "assistant",
                 "default_public_paper_sidebar_tab": "comments",
                 "feed_sort": "Hot",
+                "folder_sort": "added",
+                "folder_sort_reversed": True,
+                "has_completed_onboarding": True,
+                "has_seen_assistant_intro": True,
                 "has_seen_for_you_onboarding": True,
                 "has_seen_researcher_onboarding": True,
+                "hides_home_assistant_intro": True,
                 "is_dark_mode_enabled": True,
                 "is_debug_mode_enabled": True,
+                "paper_sort": "added",
+                "paper_sort_reversed": True,
                 "preferred_language": "am",
                 "preferred_llm_follow_latest_category": "preferredLlmFollowLatestCategory",
                 "preferred_llm_model": "preferredLlmModel",
@@ -778,108 +687,6 @@ class TestAsyncV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_get_activity_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            sort="date",
-        )
-        assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_get_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.users.v3.with_raw_response.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_get_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.users.v3.with_streaming_response.get_activity(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert_matches_type(V3GetActivityResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_path_params_get_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.users.v3.with_raw_response.get_activity(
-                id="",
-            )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_get_claimed_papers(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_get_claimed_papers_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-            sort="date",
-        )
-        assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_get_claimed_papers(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.users.v3.with_raw_response.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_get_claimed_papers(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.users.v3.with_streaming_response.get_claimed_papers(
-            id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert_matches_type(V3GetClaimedPapersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_path_params_get_claimed_papers(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.users.v3.with_raw_response.get_claimed_papers(
-                id="",
-            )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_get_current_user(self, async_client: AsyncAlphaxivCat) -> None:
         v3 = await async_client.users.v3.get_current_user()
         assert_matches_type(V3GetCurrentUserResponse, v3, path=["response"])
@@ -909,17 +716,20 @@ class TestAsyncV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_method_get_featured_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.get_featured_activity(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            v3 = await async_client.users.v3.get_featured_activity(
+                "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
+
         assert_matches_type(V3GetFeaturedActivityResponse, v3, path=["response"])
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_raw_response_get_featured_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.users.v3.with_raw_response.get_featured_activity(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.users.v3.with_raw_response.get_featured_activity(
+                "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -929,24 +739,26 @@ class TestAsyncV3:
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_streaming_response_get_featured_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.users.v3.with_streaming_response.get_featured_activity(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.users.v3.with_streaming_response.get_featured_activity(
+                "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            v3 = await response.parse()
-            assert_matches_type(V3GetFeaturedActivityResponse, v3, path=["response"])
+                v3 = await response.parse()
+                assert_matches_type(V3GetFeaturedActivityResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
     async def test_path_params_get_featured_activity(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.users.v3.with_raw_response.get_featured_activity(
-                "",
-            )
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+                await async_client.users.v3.with_raw_response.get_featured_activity(
+                    "",
+                )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -1255,13 +1067,21 @@ class TestAsyncV3:
                     }
                 ],
                 "assistant_style_selection": "default",
+                "default_paper_page": "abstract",
                 "default_private_paper_sidebar_tab": "assistant",
                 "default_public_paper_sidebar_tab": "comments",
                 "feed_sort": "Hot",
+                "folder_sort": "added",
+                "folder_sort_reversed": True,
+                "has_completed_onboarding": True,
+                "has_seen_assistant_intro": True,
                 "has_seen_for_you_onboarding": True,
                 "has_seen_researcher_onboarding": True,
+                "hides_home_assistant_intro": True,
                 "is_dark_mode_enabled": True,
                 "is_debug_mode_enabled": True,
+                "paper_sort": "added",
+                "paper_sort_reversed": True,
                 "preferred_language": "am",
                 "preferred_llm_follow_latest_category": "preferredLlmFollowLatestCategory",
                 "preferred_llm_model": "preferredLlmModel",
