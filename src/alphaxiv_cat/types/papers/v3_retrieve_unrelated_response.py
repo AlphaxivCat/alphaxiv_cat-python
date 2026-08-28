@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -18,11 +18,17 @@ __all__ = [
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinkedUser",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReason",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember0",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonKind",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember2",
+    "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed",
     "V3RetrieveUnrelatedResponseItemMetrics",
     "V3RetrieveUnrelatedResponseItemMetricsVisitsCount",
     "V3RetrieveUnrelatedResponseItemOrganizationInfo",
     "V3RetrieveUnrelatedResponseItemPaperSummary",
     "V3RetrieveUnrelatedResponseItemRecommendationContext",
+    "V3RetrieveUnrelatedResponseItemRecommendationContextFollowedAuthor",
     "V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLiker",
     "V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLikerAvatar",
 ]
@@ -56,6 +62,8 @@ class V3RetrieveUnrelatedResponseItemAuthorInfo(BaseModel):
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     role: Literal["user", "reviewer", "admin", "bot"]
 
@@ -124,6 +132,37 @@ class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinks(BaseModel):
     wikipedia: Optional[str] = None
 
 
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReason: TypeAlias = Union[
+    V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember0,
+    V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonKind,
+    V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReasonUnionMember2,
+]
+
+
 class V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher(BaseModel):
     affiliation: Optional[str] = None
 
@@ -148,6 +187,8 @@ class V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher(BaseModel):
     research_areas: List[str] = FieldInfo(alias="researchAreas")
 
     slug: str
+
+    reason: Optional[V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherReason] = None
 
 
 class V3RetrieveUnrelatedResponseItemFullAuthorsV2(BaseModel):
@@ -188,6 +229,12 @@ class V3RetrieveUnrelatedResponseItemPaperSummary(BaseModel):
     summary: str
 
 
+class V3RetrieveUnrelatedResponseItemRecommendationContextFollowedAuthor(BaseModel):
+    name: str
+
+    slug: Optional[str] = None
+
+
 class V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLikerAvatar(BaseModel):
     type: Literal["full_size", "thumbnail"]
 
@@ -207,12 +254,16 @@ class V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLiker(BaseMode
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     username: str
 
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
 
 
 class V3RetrieveUnrelatedResponseItemRecommendationContext(BaseModel):
+    followed_authors: Optional[List[V3RetrieveUnrelatedResponseItemRecommendationContextFollowedAuthor]] = None
+
     followed_likers: Optional[List[V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLiker]] = None
 
     hot: Optional[bool] = None
@@ -268,6 +319,10 @@ class V3RetrieveUnrelatedResponseItem(BaseModel):
     updated_at: str
 
     version_id: str
+
+    card_preview_blob_id: Optional[str] = None
+
+    narration_audio_url: Optional[str] = None
 
     recommendation_context: Optional[V3RetrieveUnrelatedResponseItemRecommendationContext] = None
 

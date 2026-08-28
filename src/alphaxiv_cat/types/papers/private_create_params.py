@@ -15,3 +15,5 @@ class PrivateCreateParams(TypedDict, total=False):
     filename: Required[str]
 
     content_type: Annotated[str, PropertyInfo(alias="contentType")]
+
+    folder_id: Annotated[str, PropertyInfo(alias="folderId")]

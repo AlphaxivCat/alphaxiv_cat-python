@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -16,6 +16,11 @@ __all__ = [
     "ChildFolderPaperAuthorsV2Researcher",
     "ChildFolderPaperAuthorsV2ResearcherLinkedUser",
     "ChildFolderPaperAuthorsV2ResearcherLinks",
+    "ChildFolderPaperAuthorsV2ResearcherReason",
+    "ChildFolderPaperAuthorsV2ResearcherReasonUnionMember0",
+    "ChildFolderPaperAuthorsV2ResearcherReasonKind",
+    "ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2",
+    "ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2Followed",
     "ChildFolderPaperOrganization",
     "ChildFolderPaperUserAuthor",
     "ChildFolderPaperUserAuthorAvatar",
@@ -26,6 +31,11 @@ __all__ = [
     "FolderPaperAuthorsV2Researcher",
     "FolderPaperAuthorsV2ResearcherLinkedUser",
     "FolderPaperAuthorsV2ResearcherLinks",
+    "FolderPaperAuthorsV2ResearcherReason",
+    "FolderPaperAuthorsV2ResearcherReasonUnionMember0",
+    "FolderPaperAuthorsV2ResearcherReasonKind",
+    "FolderPaperAuthorsV2ResearcherReasonUnionMember2",
+    "FolderPaperAuthorsV2ResearcherReasonUnionMember2Followed",
     "FolderPaperOrganization",
     "FolderPaperUserAuthor",
     "FolderPaperUserAuthorAvatar",
@@ -76,6 +86,37 @@ class ChildFolderPaperAuthorsV2ResearcherLinks(BaseModel):
     wikipedia: Optional[str] = None
 
 
+class ChildFolderPaperAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class ChildFolderPaperAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+ChildFolderPaperAuthorsV2ResearcherReason: TypeAlias = Union[
+    ChildFolderPaperAuthorsV2ResearcherReasonUnionMember0,
+    ChildFolderPaperAuthorsV2ResearcherReasonKind,
+    ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2,
+]
+
+
 class ChildFolderPaperAuthorsV2Researcher(BaseModel):
     affiliation: Optional[str] = None
 
@@ -98,6 +139,8 @@ class ChildFolderPaperAuthorsV2Researcher(BaseModel):
     research_areas: List[str] = FieldInfo(alias="researchAreas")
 
     slug: str
+
+    reason: Optional[ChildFolderPaperAuthorsV2ResearcherReason] = None
 
 
 class ChildFolderPaperAuthorsV2(BaseModel):
@@ -141,6 +184,8 @@ class ChildFolderPaperUserAuthor(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     username: str
@@ -180,11 +225,13 @@ class ChildFolderPaper(BaseModel):
 
     topics: List[str]
 
-    type: Literal["private", "community", "public"]
+    type: Literal["private", "public"]
 
     universal_paper_id: str = FieldInfo(alias="universalPaperId")
 
     user_authors: List[ChildFolderPaperUserAuthor] = FieldInfo(alias="userAuthors")
+
+    votes: float
 
 
 class ChildFolder(BaseModel):
@@ -247,6 +294,37 @@ class FolderPaperAuthorsV2ResearcherLinks(BaseModel):
     wikipedia: Optional[str] = None
 
 
+class FolderPaperAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class FolderPaperAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class FolderPaperAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class FolderPaperAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[FolderPaperAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+FolderPaperAuthorsV2ResearcherReason: TypeAlias = Union[
+    FolderPaperAuthorsV2ResearcherReasonUnionMember0,
+    FolderPaperAuthorsV2ResearcherReasonKind,
+    FolderPaperAuthorsV2ResearcherReasonUnionMember2,
+]
+
+
 class FolderPaperAuthorsV2Researcher(BaseModel):
     affiliation: Optional[str] = None
 
@@ -269,6 +347,8 @@ class FolderPaperAuthorsV2Researcher(BaseModel):
     research_areas: List[str] = FieldInfo(alias="researchAreas")
 
     slug: str
+
+    reason: Optional[FolderPaperAuthorsV2ResearcherReason] = None
 
 
 class FolderPaperAuthorsV2(BaseModel):
@@ -312,6 +392,8 @@ class FolderPaperUserAuthor(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     username: str
@@ -351,11 +433,13 @@ class FolderPaper(BaseModel):
 
     topics: List[str]
 
-    type: Literal["private", "community", "public"]
+    type: Literal["private", "public"]
 
     universal_paper_id: str = FieldInfo(alias="universalPaperId")
 
     user_authors: List[FolderPaperUserAuthor] = FieldInfo(alias="userAuthors")
+
+    votes: float
 
 
 class Folder(BaseModel):

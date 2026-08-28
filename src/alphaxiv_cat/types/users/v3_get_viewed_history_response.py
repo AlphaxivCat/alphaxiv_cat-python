@@ -15,6 +15,8 @@ class V3GetViewedHistoryResponseItem(BaseModel):
 
     abstract: str
 
+    authors: List[str]
+
     canonical_id: str = FieldInfo(alias="canonicalId")
     """A versioned paper ID (e.g. 1706.03762v1)"""
 

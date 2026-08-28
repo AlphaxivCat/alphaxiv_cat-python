@@ -16,7 +16,6 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.users.v3.by_username_get_user_response import ByUsernameGetUserResponse
-from ....types.users.v3.by_username_get_profile_page_response import ByUsernameGetProfilePageResponse
 
 __all__ = ["ByUsernameResource", "AsyncByUsernameResource"]
 
@@ -40,42 +39,6 @@ class ByUsernameResource(SyncAPIResource):
         For more information, see https://www.github.com/AlphaxivCat/alphaxiv_cat-python#with_streaming_response
         """
         return ByUsernameResourceWithStreamingResponse(self)
-
-    def get_profile_page(
-        self,
-        username: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ByUsernameGetProfilePageResponse:
-        """
-        This route is specifically for the Client's user page
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/get-profile-page-by-username.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not username:
-            raise ValueError(f"Expected a non-empty value for `username` but received {username!r}")
-        return self._get(
-            path_template("/users/v3/by-username/{username}/profile-page", username=username),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ByUsernameGetProfilePageResponse,
-        )
 
     def get_user(
         self,
@@ -134,42 +97,6 @@ class AsyncByUsernameResource(AsyncAPIResource):
         """
         return AsyncByUsernameResourceWithStreamingResponse(self)
 
-    async def get_profile_page(
-        self,
-        username: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> ByUsernameGetProfilePageResponse:
-        """
-        This route is specifically for the Client's user page
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/get-profile-page-by-username.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not username:
-            raise ValueError(f"Expected a non-empty value for `username` but received {username!r}")
-        return await self._get(
-            path_template("/users/v3/by-username/{username}/profile-page", username=username),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ByUsernameGetProfilePageResponse,
-        )
-
     async def get_user(
         self,
         username: str,
@@ -211,9 +138,6 @@ class ByUsernameResourceWithRawResponse:
     def __init__(self, by_username: ByUsernameResource) -> None:
         self._by_username = by_username
 
-        self.get_profile_page = to_raw_response_wrapper(
-            by_username.get_profile_page,
-        )
         self.get_user = to_raw_response_wrapper(
             by_username.get_user,
         )
@@ -223,9 +147,6 @@ class AsyncByUsernameResourceWithRawResponse:
     def __init__(self, by_username: AsyncByUsernameResource) -> None:
         self._by_username = by_username
 
-        self.get_profile_page = async_to_raw_response_wrapper(
-            by_username.get_profile_page,
-        )
         self.get_user = async_to_raw_response_wrapper(
             by_username.get_user,
         )
@@ -235,9 +156,6 @@ class ByUsernameResourceWithStreamingResponse:
     def __init__(self, by_username: ByUsernameResource) -> None:
         self._by_username = by_username
 
-        self.get_profile_page = to_streamed_response_wrapper(
-            by_username.get_profile_page,
-        )
         self.get_user = to_streamed_response_wrapper(
             by_username.get_user,
         )
@@ -247,9 +165,6 @@ class AsyncByUsernameResourceWithStreamingResponse:
     def __init__(self, by_username: AsyncByUsernameResource) -> None:
         self._by_username = by_username
 
-        self.get_profile_page = async_to_streamed_response_wrapper(
-            by_username.get_profile_page,
-        )
         self.get_user = async_to_streamed_response_wrapper(
             by_username.get_user,
         )

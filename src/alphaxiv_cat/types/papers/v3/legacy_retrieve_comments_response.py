@@ -111,6 +111,8 @@ class LegacyRetrieveCommentsResponseItemAuthorUnionMember0(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     username: str
@@ -150,6 +152,8 @@ class LegacyRetrieveCommentsResponseItemAuthorUnionMember1(BaseModel):
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     role: Literal["user", "reviewer", "admin", "bot"]
 
@@ -252,6 +256,8 @@ class LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember0(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     username: str
@@ -291,6 +297,8 @@ class LegacyRetrieveCommentsResponseItemResponseAuthorUnionMember1(BaseModel):
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     role: Literal["user", "reviewer", "admin", "bot"]
 

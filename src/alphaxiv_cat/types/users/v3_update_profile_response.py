@@ -71,6 +71,8 @@ class V3UpdateProfileResponse(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     semantic_scholar: Optional[SemanticScholar] = FieldInfo(alias="semanticScholar", default=None)
