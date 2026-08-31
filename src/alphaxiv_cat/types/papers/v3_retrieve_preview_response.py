@@ -22,6 +22,7 @@ __all__ = [
     "FullAuthorsV2ResearcherReasonKind",
     "FullAuthorsV2ResearcherReasonUnionMember2",
     "FullAuthorsV2ResearcherReasonUnionMember2Followed",
+    "FullAuthorsV2ResearcherReasonUnionMember3",
     "Metrics",
     "MetricsVisitsCount",
     "OrganizationInfo",
@@ -155,10 +156,17 @@ class FullAuthorsV2ResearcherReasonUnionMember2(BaseModel):
     followed: Optional[FullAuthorsV2ResearcherReasonUnionMember2Followed] = None
 
 
+class FullAuthorsV2ResearcherReasonUnionMember3(BaseModel):
+    count: float
+
+    kind: Literal["coauthored"]
+
+
 FullAuthorsV2ResearcherReason: TypeAlias = Union[
     FullAuthorsV2ResearcherReasonUnionMember0,
     FullAuthorsV2ResearcherReasonKind,
     FullAuthorsV2ResearcherReasonUnionMember2,
+    FullAuthorsV2ResearcherReasonUnionMember3,
 ]
 
 

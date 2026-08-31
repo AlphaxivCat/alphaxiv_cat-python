@@ -23,6 +23,7 @@ __all__ = [
     "V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonKind",
     "V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2",
     "V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed",
+    "V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember3",
     "V3RetrieveSimilarPapersResponseItemMetrics",
     "V3RetrieveSimilarPapersResponseItemMetricsVisitsCount",
     "V3RetrieveSimilarPapersResponseItemOrganizationInfo",
@@ -156,10 +157,17 @@ class V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMembe
     followed: Optional[V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2Followed] = None
 
 
+class V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember3(BaseModel):
+    count: float
+
+    kind: Literal["coauthored"]
+
+
 V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReason: TypeAlias = Union[
     V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember0,
     V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonKind,
     V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember2,
+    V3RetrieveSimilarPapersResponseItemFullAuthorsV2ResearcherReasonUnionMember3,
 ]
 
 
