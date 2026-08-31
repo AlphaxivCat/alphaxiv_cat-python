@@ -21,6 +21,7 @@ __all__ = [
     "ChildFolderPaperAuthorsV2ResearcherReasonKind",
     "ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2",
     "ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2Followed",
+    "ChildFolderPaperAuthorsV2ResearcherReasonUnionMember3",
     "ChildFolderPaperOrganization",
     "ChildFolderPaperUserAuthor",
     "ChildFolderPaperUserAuthorAvatar",
@@ -36,6 +37,7 @@ __all__ = [
     "FolderPaperAuthorsV2ResearcherReasonKind",
     "FolderPaperAuthorsV2ResearcherReasonUnionMember2",
     "FolderPaperAuthorsV2ResearcherReasonUnionMember2Followed",
+    "FolderPaperAuthorsV2ResearcherReasonUnionMember3",
     "FolderPaperOrganization",
     "FolderPaperUserAuthor",
     "FolderPaperUserAuthorAvatar",
@@ -110,10 +112,17 @@ class ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2(BaseModel):
     followed: Optional[ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2Followed] = None
 
 
+class ChildFolderPaperAuthorsV2ResearcherReasonUnionMember3(BaseModel):
+    count: float
+
+    kind: Literal["coauthored"]
+
+
 ChildFolderPaperAuthorsV2ResearcherReason: TypeAlias = Union[
     ChildFolderPaperAuthorsV2ResearcherReasonUnionMember0,
     ChildFolderPaperAuthorsV2ResearcherReasonKind,
     ChildFolderPaperAuthorsV2ResearcherReasonUnionMember2,
+    ChildFolderPaperAuthorsV2ResearcherReasonUnionMember3,
 ]
 
 
@@ -318,10 +327,17 @@ class FolderPaperAuthorsV2ResearcherReasonUnionMember2(BaseModel):
     followed: Optional[FolderPaperAuthorsV2ResearcherReasonUnionMember2Followed] = None
 
 
+class FolderPaperAuthorsV2ResearcherReasonUnionMember3(BaseModel):
+    count: float
+
+    kind: Literal["coauthored"]
+
+
 FolderPaperAuthorsV2ResearcherReason: TypeAlias = Union[
     FolderPaperAuthorsV2ResearcherReasonUnionMember0,
     FolderPaperAuthorsV2ResearcherReasonKind,
     FolderPaperAuthorsV2ResearcherReasonUnionMember2,
+    FolderPaperAuthorsV2ResearcherReasonUnionMember3,
 ]
 
 
