@@ -28,6 +28,7 @@ __all__ = [
     "PaperMetricsVisitsCount",
     "PaperOrganizationInfo",
     "PaperPaperSummary",
+    "PaperExternalLink",
     "PaperRecommendationContext",
     "PaperRecommendationContextFollowedAuthor",
     "PaperRecommendationContextFollowedLiker",
@@ -235,6 +236,14 @@ class PaperPaperSummary(BaseModel):
     summary: str
 
 
+class PaperExternalLink(BaseModel):
+    cover_blob_id: Optional[str] = None
+
+    source_name: str
+
+    source_url: str
+
+
 class PaperRecommendationContextFollowedAuthor(BaseModel):
     name: str
 
@@ -327,6 +336,8 @@ class Paper(BaseModel):
     version_id: str
 
     card_preview_blob_id: Optional[str] = None
+
+    external_link: Optional[PaperExternalLink] = None
 
     narration_audio_url: Optional[str] = None
 

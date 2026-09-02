@@ -267,13 +267,11 @@ Types:
 from alphaxiv_cat.types.users import (
     V3GetCurrentUserResponse,
     V3GetFeaturedActivityResponse,
-    V3GetFollowersResponse,
     V3GetLeaderboardResponse,
     V3GetUserByUuidResponse,
     V3GetViewedHistoryResponse,
     V3ProcessNotificationEmailResponse,
     V3SearchResponse,
-    V3ToggleFollowUserResponse,
     V3UpdatePreferencesResponse,
     V3UpdateProfileResponse,
     V3UploadAvatarResponse,
@@ -286,28 +284,16 @@ Methods:
 - <code title="delete /users/v3">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">delete_own_user</a>() -> None</code>
 - <code title="get /users/v3">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_current_user</a>() -> <a href="./src/alphaxiv_cat/types/users/v3_get_current_user_response.py">V3GetCurrentUserResponse</a></code>
 - <code title="get /users/v3/{id}/featured">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_featured_activity</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3_get_featured_activity_response.py">V3GetFeaturedActivityResponse</a></code>
-- <code title="get /users/v3/{id}/followers">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_followers</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3_get_followers_response.py">V3GetFollowersResponse</a></code>
 - <code title="get /users/v3/leaderboard">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_leaderboard</a>() -> <a href="./src/alphaxiv_cat/types/users/v3_get_leaderboard_response.py">V3GetLeaderboardResponse</a></code>
 - <code title="get /users/v3/{id}">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_user_by_uuid</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3_get_user_by_uuid_response.py">V3GetUserByUuidResponse</a></code>
 - <code title="get /users/v3/viewed-history">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">get_viewed_history</a>(\*\*<a href="src/alphaxiv_cat/types/users/v3_get_viewed_history_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_get_viewed_history_response.py">V3GetViewedHistoryResponse</a></code>
 - <code title="post /users/v3/{id}/process-notification-email">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">process_notification_email</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3_process_notification_email_response.py">V3ProcessNotificationEmailResponse</a></code>
 - <code title="get /users/v3/search">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">search</a>(\*\*<a href="src/alphaxiv_cat/types/users/v3_search_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_search_response.py">V3SearchResponse</a></code>
-- <code title="post /users/v3/{id}/follow">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">toggle_follow_user</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3_toggle_follow_user_response.py">V3ToggleFollowUserResponse</a></code>
 - <code title="patch /users/v3/preferences">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">update_preferences</a>(\*\*<a href="src/alphaxiv_cat/types/users/v3_update_preferences_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_update_preferences_response.py">V3UpdatePreferencesResponse</a></code>
 - <code title="patch /users/v3/profile">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">update_profile</a>(\*\*<a href="src/alphaxiv_cat/types/users/v3_update_profile_params.py">params</a>) -> <a href="./src/alphaxiv_cat/types/users/v3_update_profile_response.py">V3UpdateProfileResponse</a></code>
 - <code title="post /users/v3/avatar">client.users.v3.<a href="./src/alphaxiv_cat/resources/users/v3/v3.py">upload_avatar</a>() -> <a href="./src/alphaxiv_cat/types/users/v3_upload_avatar_response.py">Optional[V3UploadAvatarResponse]</a></code>
 
 ### Following
-
-Types:
-
-```python
-from alphaxiv_cat.types.users.v3 import FollowingListResponse
-```
-
-Methods:
-
-- <code title="get /users/v3/{id}/following">client.users.v3.following.<a href="./src/alphaxiv_cat/resources/users/v3/following/following.py">list</a>(id) -> <a href="./src/alphaxiv_cat/types/users/v3/following_list_response.py">FollowingListResponse</a></code>
 
 #### Topics
 

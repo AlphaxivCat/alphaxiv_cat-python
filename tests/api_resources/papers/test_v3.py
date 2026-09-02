@@ -622,6 +622,15 @@ class TestV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_retrieve_diverse_papers_with_all_params(self, client: AlphaxivCat) -> None:
+        v3 = client.papers.v3.retrieve_diverse_papers(
+            topics="topics",
+            link_blogs="linkBlogs",
+        )
+        assert_matches_type(V3RetrieveDiversePapersResponse, v3, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_raw_response_retrieve_diverse_papers(self, client: AlphaxivCat) -> None:
         response = client.papers.v3.with_raw_response.retrieve_diverse_papers(
             topics="topics",
@@ -667,6 +676,7 @@ class TestV3:
             sort="Hot",
             feed_cursor="feedCursor",
             include_external_blogs="includeExternalBlogs",
+            link_blogs="linkBlogs",
             runnable="runnable",
             source="GitHub",
             topics="topics",
@@ -891,6 +901,7 @@ class TestV3:
             exclude_likes="false",
             interval="3 Days",
             limit="limit",
+            link_blogs="linkBlogs",
         )
         assert_matches_type(V3RetrieveSimilarPapersResponse, v3, path=["response"])
 
@@ -935,6 +946,17 @@ class TestV3:
             limit="limit",
             papers="papers",
             topics="topics",
+        )
+        assert_matches_type(V3RetrieveUnrelatedResponse, v3, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    def test_method_retrieve_unrelated_with_all_params(self, client: AlphaxivCat) -> None:
+        v3 = client.papers.v3.retrieve_unrelated(
+            limit="limit",
+            papers="papers",
+            topics="topics",
+            link_blogs="linkBlogs",
         )
         assert_matches_type(V3RetrieveUnrelatedResponse, v3, path=["response"])
 
@@ -1603,6 +1625,15 @@ class TestAsyncV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_retrieve_diverse_papers_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
+        v3 = await async_client.papers.v3.retrieve_diverse_papers(
+            topics="topics",
+            link_blogs="linkBlogs",
+        )
+        assert_matches_type(V3RetrieveDiversePapersResponse, v3, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_raw_response_retrieve_diverse_papers(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.v3.with_raw_response.retrieve_diverse_papers(
             topics="topics",
@@ -1648,6 +1679,7 @@ class TestAsyncV3:
             sort="Hot",
             feed_cursor="feedCursor",
             include_external_blogs="includeExternalBlogs",
+            link_blogs="linkBlogs",
             runnable="runnable",
             source="GitHub",
             topics="topics",
@@ -1872,6 +1904,7 @@ class TestAsyncV3:
             exclude_likes="false",
             interval="3 Days",
             limit="limit",
+            link_blogs="linkBlogs",
         )
         assert_matches_type(V3RetrieveSimilarPapersResponse, v3, path=["response"])
 
@@ -1916,6 +1949,17 @@ class TestAsyncV3:
             limit="limit",
             papers="papers",
             topics="topics",
+        )
+        assert_matches_type(V3RetrieveUnrelatedResponse, v3, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_retrieve_unrelated_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
+        v3 = await async_client.papers.v3.retrieve_unrelated(
+            limit="limit",
+            papers="papers",
+            topics="topics",
+            link_blogs="linkBlogs",
         )
         assert_matches_type(V3RetrieveUnrelatedResponse, v3, path=["response"])
 

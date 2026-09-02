@@ -28,6 +28,7 @@ __all__ = [
     "V3RetrieveDiversePapersResponseItemMetricsVisitsCount",
     "V3RetrieveDiversePapersResponseItemOrganizationInfo",
     "V3RetrieveDiversePapersResponseItemPaperSummary",
+    "V3RetrieveDiversePapersResponseItemExternalLink",
     "V3RetrieveDiversePapersResponseItemRecommendationContext",
     "V3RetrieveDiversePapersResponseItemRecommendationContextFollowedAuthor",
     "V3RetrieveDiversePapersResponseItemRecommendationContextFollowedLiker",
@@ -237,6 +238,14 @@ class V3RetrieveDiversePapersResponseItemPaperSummary(BaseModel):
     summary: str
 
 
+class V3RetrieveDiversePapersResponseItemExternalLink(BaseModel):
+    cover_blob_id: Optional[str] = None
+
+    source_name: str
+
+    source_url: str
+
+
 class V3RetrieveDiversePapersResponseItemRecommendationContextFollowedAuthor(BaseModel):
     name: str
 
@@ -329,6 +338,8 @@ class V3RetrieveDiversePapersResponseItem(BaseModel):
     version_id: str
 
     card_preview_blob_id: Optional[str] = None
+
+    external_link: Optional[V3RetrieveDiversePapersResponseItemExternalLink] = None
 
     narration_audio_url: Optional[str] = None
 

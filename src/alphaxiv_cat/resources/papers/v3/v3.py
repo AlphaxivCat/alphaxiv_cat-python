@@ -709,6 +709,7 @@ class V3Resource(SyncAPIResource):
         self,
         *,
         topics: str,
+        link_blogs: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -739,7 +740,11 @@ class V3Resource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {"topics": topics}, v3_retrieve_diverse_papers_params.V3RetrieveDiversePapersParams
+                    {
+                        "topics": topics,
+                        "link_blogs": link_blogs,
+                    },
+                    v3_retrieve_diverse_papers_params.V3RetrieveDiversePapersParams,
                 ),
             ),
             cast_to=V3RetrieveDiversePapersResponse,
@@ -754,6 +759,7 @@ class V3Resource(SyncAPIResource):
         sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"],
         feed_cursor: str | Omit = omit,
         include_external_blogs: str | Omit = omit,
+        link_blogs: str | Omit = omit,
         runnable: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
@@ -797,6 +803,7 @@ class V3Resource(SyncAPIResource):
                         "sort": sort,
                         "feed_cursor": feed_cursor,
                         "include_external_blogs": include_external_blogs,
+                        "link_blogs": link_blogs,
                         "runnable": runnable,
                         "source": source,
                         "topics": topics,
@@ -964,6 +971,7 @@ class V3Resource(SyncAPIResource):
         exclude_likes: Literal["false", "true"] | Omit = omit,
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"] | Omit = omit,
         limit: str | Omit = omit,
+        link_blogs: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1003,6 +1011,7 @@ class V3Resource(SyncAPIResource):
                         "exclude_likes": exclude_likes,
                         "interval": interval,
                         "limit": limit,
+                        "link_blogs": link_blogs,
                     },
                     v3_retrieve_similar_papers_params.V3RetrieveSimilarPapersParams,
                 ),
@@ -1016,6 +1025,7 @@ class V3Resource(SyncAPIResource):
         limit: str,
         papers: str,
         topics: str,
+        link_blogs: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1050,6 +1060,7 @@ class V3Resource(SyncAPIResource):
                         "limit": limit,
                         "papers": papers,
                         "topics": topics,
+                        "link_blogs": link_blogs,
                     },
                     v3_retrieve_unrelated_params.V3RetrieveUnrelatedParams,
                 ),
@@ -1728,6 +1739,7 @@ class AsyncV3Resource(AsyncAPIResource):
         self,
         *,
         topics: str,
+        link_blogs: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1758,7 +1770,11 @@ class AsyncV3Resource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"topics": topics}, v3_retrieve_diverse_papers_params.V3RetrieveDiversePapersParams
+                    {
+                        "topics": topics,
+                        "link_blogs": link_blogs,
+                    },
+                    v3_retrieve_diverse_papers_params.V3RetrieveDiversePapersParams,
                 ),
             ),
             cast_to=V3RetrieveDiversePapersResponse,
@@ -1773,6 +1789,7 @@ class AsyncV3Resource(AsyncAPIResource):
         sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"],
         feed_cursor: str | Omit = omit,
         include_external_blogs: str | Omit = omit,
+        link_blogs: str | Omit = omit,
         runnable: str | Omit = omit,
         source: Literal["GitHub"] | Omit = omit,
         topics: str | Omit = omit,
@@ -1816,6 +1833,7 @@ class AsyncV3Resource(AsyncAPIResource):
                         "sort": sort,
                         "feed_cursor": feed_cursor,
                         "include_external_blogs": include_external_blogs,
+                        "link_blogs": link_blogs,
                         "runnable": runnable,
                         "source": source,
                         "topics": topics,
@@ -1983,6 +2001,7 @@ class AsyncV3Resource(AsyncAPIResource):
         exclude_likes: Literal["false", "true"] | Omit = omit,
         interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"] | Omit = omit,
         limit: str | Omit = omit,
+        link_blogs: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2022,6 +2041,7 @@ class AsyncV3Resource(AsyncAPIResource):
                         "exclude_likes": exclude_likes,
                         "interval": interval,
                         "limit": limit,
+                        "link_blogs": link_blogs,
                     },
                     v3_retrieve_similar_papers_params.V3RetrieveSimilarPapersParams,
                 ),
@@ -2035,6 +2055,7 @@ class AsyncV3Resource(AsyncAPIResource):
         limit: str,
         papers: str,
         topics: str,
+        link_blogs: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -2069,6 +2090,7 @@ class AsyncV3Resource(AsyncAPIResource):
                         "limit": limit,
                         "papers": papers,
                         "topics": topics,
+                        "link_blogs": link_blogs,
                     },
                     v3_retrieve_unrelated_params.V3RetrieveUnrelatedParams,
                 ),

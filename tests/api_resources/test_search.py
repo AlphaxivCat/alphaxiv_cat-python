@@ -61,6 +61,15 @@ class TestSearch:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_google_search_with_all_params(self, client: AlphaxivCat) -> None:
+        search = client.search.google_search(
+            q="q",
+            link_blogs="linkBlogs",
+        )
+        assert_matches_type(object, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_raw_response_google_search(self, client: AlphaxivCat) -> None:
         response = client.search.with_raw_response.google_search(
             q="q",
@@ -130,6 +139,15 @@ class TestAsyncSearch:
     async def test_method_google_search(self, async_client: AsyncAlphaxivCat) -> None:
         search = await async_client.search.google_search(
             q="q",
+        )
+        assert_matches_type(object, search, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
+    async def test_method_google_search_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
+        search = await async_client.search.google_search(
+            q="q",
+            link_blogs="linkBlogs",
         )
         assert_matches_type(object, search, path=["response"])
 

@@ -22,6 +22,8 @@ class V3RetrieveFeedParams(TypedDict, total=False):
 
     include_external_blogs: Annotated[str, PropertyInfo(alias="includeExternalBlogs")]
 
+    link_blogs: Annotated[str, PropertyInfo(alias="linkBlogs")]
+
     runnable: str
 
     source: Literal["GitHub"]
