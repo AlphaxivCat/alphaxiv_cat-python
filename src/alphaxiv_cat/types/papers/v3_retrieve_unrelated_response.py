@@ -28,6 +28,7 @@ __all__ = [
     "V3RetrieveUnrelatedResponseItemMetricsVisitsCount",
     "V3RetrieveUnrelatedResponseItemOrganizationInfo",
     "V3RetrieveUnrelatedResponseItemPaperSummary",
+    "V3RetrieveUnrelatedResponseItemExternalLink",
     "V3RetrieveUnrelatedResponseItemRecommendationContext",
     "V3RetrieveUnrelatedResponseItemRecommendationContextFollowedAuthor",
     "V3RetrieveUnrelatedResponseItemRecommendationContextFollowedLiker",
@@ -237,6 +238,14 @@ class V3RetrieveUnrelatedResponseItemPaperSummary(BaseModel):
     summary: str
 
 
+class V3RetrieveUnrelatedResponseItemExternalLink(BaseModel):
+    cover_blob_id: Optional[str] = None
+
+    source_name: str
+
+    source_url: str
+
+
 class V3RetrieveUnrelatedResponseItemRecommendationContextFollowedAuthor(BaseModel):
     name: str
 
@@ -329,6 +338,8 @@ class V3RetrieveUnrelatedResponseItem(BaseModel):
     version_id: str
 
     card_preview_blob_id: Optional[str] = None
+
+    external_link: Optional[V3RetrieveUnrelatedResponseItemExternalLink] = None
 
     narration_audio_url: Optional[str] = None
 
