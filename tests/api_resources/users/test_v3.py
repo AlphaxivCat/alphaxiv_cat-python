@@ -11,14 +11,12 @@ from tests.utils import assert_matches_type
 from alphaxiv_cat import AlphaxivCat, AsyncAlphaxivCat
 from alphaxiv_cat.types.users import (
     V3SearchResponse,
-    V3GetFollowersResponse,
     V3UploadAvatarResponse,
     V3GetUserByUuidResponse,
     V3UpdateProfileResponse,
     V3GetCurrentUserResponse,
     V3GetLeaderboardResponse,
     V3GetViewedHistoryResponse,
-    V3ToggleFollowUserResponse,
     V3UpdatePreferencesResponse,
     V3GetFeaturedActivityResponse,
     V3ProcessNotificationEmailResponse,
@@ -176,48 +174,6 @@ class TestV3:
                 client.users.v3.with_raw_response.get_featured_activity(
                     "",
                 )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_get_followers(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.get_followers(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3GetFollowersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_get_followers(self, client: AlphaxivCat) -> None:
-        response = client.users.v3.with_raw_response.get_followers(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3GetFollowersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_get_followers(self, client: AlphaxivCat) -> None:
-        with client.users.v3.with_streaming_response.get_followers(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert_matches_type(V3GetFollowersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_path_params_get_followers(self, client: AlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.users.v3.with_raw_response.get_followers(
-                "",
-            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -415,48 +371,6 @@ class TestV3:
             assert_matches_type(V3SearchResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_toggle_follow_user(self, client: AlphaxivCat) -> None:
-        v3 = client.users.v3.toggle_follow_user(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3ToggleFollowUserResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_toggle_follow_user(self, client: AlphaxivCat) -> None:
-        response = client.users.v3.with_raw_response.toggle_follow_user(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = response.parse()
-        assert_matches_type(V3ToggleFollowUserResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_toggle_follow_user(self, client: AlphaxivCat) -> None:
-        with client.users.v3.with_streaming_response.toggle_follow_user(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = response.parse()
-            assert_matches_type(V3ToggleFollowUserResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_path_params_toggle_follow_user(self, client: AlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.users.v3.with_raw_response.toggle_follow_user(
-                "",
-            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
@@ -762,48 +676,6 @@ class TestAsyncV3:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_get_followers(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.get_followers(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3GetFollowersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_get_followers(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.users.v3.with_raw_response.get_followers(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3GetFollowersResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_get_followers(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.users.v3.with_streaming_response.get_followers(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert_matches_type(V3GetFollowersResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_path_params_get_followers(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.users.v3.with_raw_response.get_followers(
-                "",
-            )
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_get_leaderboard(self, async_client: AsyncAlphaxivCat) -> None:
         v3 = await async_client.users.v3.get_leaderboard()
         assert_matches_type(V3GetLeaderboardResponse, v3, path=["response"])
@@ -998,48 +870,6 @@ class TestAsyncV3:
             assert_matches_type(V3SearchResponse, v3, path=["response"])
 
         assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_toggle_follow_user(self, async_client: AsyncAlphaxivCat) -> None:
-        v3 = await async_client.users.v3.toggle_follow_user(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-        assert_matches_type(V3ToggleFollowUserResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_toggle_follow_user(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.users.v3.with_raw_response.toggle_follow_user(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        v3 = await response.parse()
-        assert_matches_type(V3ToggleFollowUserResponse, v3, path=["response"])
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_toggle_follow_user(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.users.v3.with_streaming_response.toggle_follow_user(
-            "182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            v3 = await response.parse()
-            assert_matches_type(V3ToggleFollowUserResponse, v3, path=["response"])
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_path_params_toggle_follow_user(self, async_client: AsyncAlphaxivCat) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.users.v3.with_raw_response.toggle_follow_user(
-                "",
-            )
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize

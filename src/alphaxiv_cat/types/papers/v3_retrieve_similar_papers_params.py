@@ -17,3 +17,5 @@ class V3RetrieveSimilarPapersParams(TypedDict, total=False):
     interval: Literal["3 Days", "7 Days", "30 Days", "90 Days", "All time"]
 
     limit: str
+
+    link_blogs: Annotated[str, PropertyInfo(alias="linkBlogs")]

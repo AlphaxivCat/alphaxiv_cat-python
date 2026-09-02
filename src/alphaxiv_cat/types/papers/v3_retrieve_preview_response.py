@@ -27,6 +27,7 @@ __all__ = [
     "MetricsVisitsCount",
     "OrganizationInfo",
     "PaperSummary",
+    "ExternalLink",
     "RecommendationContext",
     "RecommendationContextFollowedAuthor",
     "RecommendationContextFollowedLiker",
@@ -234,6 +235,14 @@ class PaperSummary(BaseModel):
     summary: str
 
 
+class ExternalLink(BaseModel):
+    cover_blob_id: Optional[str] = None
+
+    source_name: str
+
+    source_url: str
+
+
 class RecommendationContextFollowedAuthor(BaseModel):
     name: str
 
@@ -326,6 +335,8 @@ class V3RetrievePreviewResponse(BaseModel):
     version_id: str
 
     card_preview_blob_id: Optional[str] = None
+
+    external_link: Optional[ExternalLink] = None
 
     narration_audio_url: Optional[str] = None
 

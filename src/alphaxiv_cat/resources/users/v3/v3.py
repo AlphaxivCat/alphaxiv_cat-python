@@ -49,14 +49,12 @@ from .following.following import (
     AsyncFollowingResourceWithStreamingResponse,
 )
 from ....types.users.v3_search_response import V3SearchResponse
-from ....types.users.v3_get_followers_response import V3GetFollowersResponse
 from ....types.users.v3_upload_avatar_response import V3UploadAvatarResponse
 from ....types.users.v3_update_profile_response import V3UpdateProfileResponse
 from ....types.users.v3_get_leaderboard_response import V3GetLeaderboardResponse
 from ....types.users.v3_get_current_user_response import V3GetCurrentUserResponse
 from ....types.users.v3_get_user_by_uuid_response import V3GetUserByUuidResponse
 from ....types.users.v3_get_viewed_history_response import V3GetViewedHistoryResponse
-from ....types.users.v3_toggle_follow_user_response import V3ToggleFollowUserResponse
 from ....types.users.v3_update_preferences_response import V3UpdatePreferencesResponse
 from ....types.users.v3_get_featured_activity_response import V3GetFeaturedActivityResponse
 from ....types.users.v3_process_notification_email_response import V3ProcessNotificationEmailResponse
@@ -217,42 +215,6 @@ class V3Resource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=V3GetFeaturedActivityResponse,
-        )
-
-    def get_followers(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3GetFollowersResponse:
-        """
-        List the users following the specified user
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/get-followers.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._get(
-            path_template("/users/v3/{id}/followers", id=id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3GetFollowersResponse,
         )
 
     def get_leaderboard(
@@ -440,42 +402,6 @@ class V3Resource(SyncAPIResource):
                 ),
             ),
             cast_to=V3SearchResponse,
-        )
-
-    def toggle_follow_user(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3ToggleFollowUserResponse:
-        """
-        Follow or unfollow another user
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return self._post(
-            path_template("/users/v3/{id}/follow", id=id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3ToggleFollowUserResponse,
         )
 
     def update_preferences(
@@ -760,42 +686,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=V3GetFeaturedActivityResponse,
         )
 
-    async def get_followers(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3GetFollowersResponse:
-        """
-        List the users following the specified user
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/get-followers.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._get(
-            path_template("/users/v3/{id}/followers", id=id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3GetFollowersResponse,
-        )
-
     async def get_leaderboard(
         self,
         *,
@@ -983,42 +873,6 @@ class AsyncV3Resource(AsyncAPIResource):
             cast_to=V3SearchResponse,
         )
 
-    async def toggle_follow_user(
-        self,
-        id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> V3ToggleFollowUserResponse:
-        """
-        Follow or unfollow another user
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/users/v3/toggle-follow-user.controller.ts`
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not id:
-            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
-        return await self._post(
-            path_template("/users/v3/{id}/follow", id=id),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=V3ToggleFollowUserResponse,
-        )
-
     async def update_preferences(
         self,
         *,
@@ -1164,9 +1018,6 @@ class V3ResourceWithRawResponse:
                 v3.get_featured_activity,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.get_followers = to_raw_response_wrapper(
-            v3.get_followers,
-        )
         self.get_leaderboard = to_raw_response_wrapper(
             v3.get_leaderboard,
         )
@@ -1183,9 +1034,6 @@ class V3ResourceWithRawResponse:
         )
         self.search = to_raw_response_wrapper(
             v3.search,
-        )
-        self.toggle_follow_user = to_raw_response_wrapper(
-            v3.toggle_follow_user,
         )
         self.update_preferences = to_raw_response_wrapper(
             v3.update_preferences,
@@ -1228,9 +1076,6 @@ class AsyncV3ResourceWithRawResponse:
                 v3.get_featured_activity,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.get_followers = async_to_raw_response_wrapper(
-            v3.get_followers,
-        )
         self.get_leaderboard = async_to_raw_response_wrapper(
             v3.get_leaderboard,
         )
@@ -1247,9 +1092,6 @@ class AsyncV3ResourceWithRawResponse:
         )
         self.search = async_to_raw_response_wrapper(
             v3.search,
-        )
-        self.toggle_follow_user = async_to_raw_response_wrapper(
-            v3.toggle_follow_user,
         )
         self.update_preferences = async_to_raw_response_wrapper(
             v3.update_preferences,
@@ -1292,9 +1134,6 @@ class V3ResourceWithStreamingResponse:
                 v3.get_featured_activity,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.get_followers = to_streamed_response_wrapper(
-            v3.get_followers,
-        )
         self.get_leaderboard = to_streamed_response_wrapper(
             v3.get_leaderboard,
         )
@@ -1311,9 +1150,6 @@ class V3ResourceWithStreamingResponse:
         )
         self.search = to_streamed_response_wrapper(
             v3.search,
-        )
-        self.toggle_follow_user = to_streamed_response_wrapper(
-            v3.toggle_follow_user,
         )
         self.update_preferences = to_streamed_response_wrapper(
             v3.update_preferences,
@@ -1356,9 +1192,6 @@ class AsyncV3ResourceWithStreamingResponse:
                 v3.get_featured_activity,  # pyright: ignore[reportDeprecated],
             )
         )
-        self.get_followers = async_to_streamed_response_wrapper(
-            v3.get_followers,
-        )
         self.get_leaderboard = async_to_streamed_response_wrapper(
             v3.get_leaderboard,
         )
@@ -1375,9 +1208,6 @@ class AsyncV3ResourceWithStreamingResponse:
         )
         self.search = async_to_streamed_response_wrapper(
             v3.search,
-        )
-        self.toggle_follow_user = async_to_streamed_response_wrapper(
-            v3.toggle_follow_user,
         )
         self.update_preferences = async_to_streamed_response_wrapper(
             v3.update_preferences,
