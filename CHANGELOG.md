@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.10.0 (2026-09-04)
+
+Full Changelog: [v0.9.0...v0.10.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.9.0...v0.10.0)
+
+### Features
+
+* **api:** api update ([d1dcc04](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/d1dcc04ab58ee73cd94d9b24bf8176d774adc5ed))
+* **api:** api update ([122c1a6](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/122c1a6f3c025e02362c11271d1759cf27b400b1))
+* **api:** api update ([7fb9f8c](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/7fb9f8cf28d14cdfe901c9c15d10744d6c07a16b))
+* **api:** api update ([5f2a669](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/5f2a6690d261f8e892e5e8cd8c0f7168029e4381))
+* **api:** api update ([0067d1e](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/0067d1e96ecb58de86288ae65796e764fc90523c))
+* **api:** api update ([c4561f1](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/c4561f14ef788f9079fd96ddc69f0c6e261b7c5d))
+* **api:** api update ([f5bc845](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/f5bc8456fe70983eed70b9b8d80a9dbd71a5a681))
+* **api:** api update ([7649c80](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/7649c802764c18765461db720b882863b2b724fa))
+* **api:** api update ([162de8f](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/162de8fa03395e2ce084833f622222bf957f522d))
+* **api:** api update ([c80cb00](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/c80cb00ca145f9f3c43f7e36f3b1870b8eb2c2fb))
+* **api:** api update ([edfcf5c](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/edfcf5c1d8ce39f17d5f62180c56e2e068156baa))
+* **api:** api update ([3eae70e](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/3eae70e658d1144f041519148ccbbbb2f3fa0135))
+* **api:** api update ([0de0a70](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/0de0a70f2c264f2b2851aff68b0e6e2099a4ae0e))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([4197ded](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/4197dede8a438c0b6f950c4da50d92b07e2469fd))
+
+
+### Bug Fixes
+
+* **internal:** resolve build failures ([78f5733](https://github.com/AlphaxivCat/alphaxiv_cat-python/commit/78f5733892e53572e2323328a20582a2579beb92))
+
 ## 0.9.0 (2026-06-18)
 
 Full Changelog: [v0.8.0...v0.9.0](https://github.com/AlphaxivCat/alphaxiv_cat-python/compare/v0.8.0...v0.9.0)
