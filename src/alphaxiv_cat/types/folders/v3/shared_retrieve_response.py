@@ -11,7 +11,6 @@ __all__ = [
     "SharedRetrieveResponse",
     "ChildFolder",
     "ChildFolderPaper",
-    "ChildFolderPaperAuthor",
     "ChildFolderPaperAuthorsV2",
     "ChildFolderPaperAuthorsV2Researcher",
     "ChildFolderPaperAuthorsV2ResearcherLinkedUser",
@@ -27,7 +26,6 @@ __all__ = [
     "ChildFolderPaperUserAuthorAvatar",
     "Folder",
     "FolderPaper",
-    "FolderPaperAuthor",
     "FolderPaperAuthorsV2",
     "FolderPaperAuthorsV2Researcher",
     "FolderPaperAuthorsV2ResearcherLinkedUser",
@@ -42,16 +40,6 @@ __all__ = [
     "FolderPaperUserAuthor",
     "FolderPaperUserAuthorAvatar",
 ]
-
-
-class ChildFolderPaperAuthor(BaseModel):
-    id: str
-
-    full_name: str
-
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
 
 
 class ChildFolderPaperAuthorsV2ResearcherLinkedUser(BaseModel):
@@ -211,7 +199,7 @@ class ChildFolderPaper(BaseModel):
 
     added_at: str = FieldInfo(alias="addedAt")
 
-    authors: List[ChildFolderPaperAuthor]
+    authors: List[Optional[object]]
 
     authors_v2: List[ChildFolderPaperAuthorsV2]
 
@@ -257,16 +245,6 @@ class ChildFolder(BaseModel):
     sharing_status: Literal["not_shared", "shared"] = FieldInfo(alias="sharingStatus")
 
     type: str
-
-
-class FolderPaperAuthor(BaseModel):
-    id: str
-
-    full_name: str
-
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
 
 
 class FolderPaperAuthorsV2ResearcherLinkedUser(BaseModel):
@@ -426,7 +404,7 @@ class FolderPaper(BaseModel):
 
     added_at: str = FieldInfo(alias="addedAt")
 
-    authors: List[FolderPaperAuthor]
+    authors: List[Optional[object]]
 
     authors_v2: List[FolderPaperAuthorsV2]
 

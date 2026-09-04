@@ -13,7 +13,6 @@ __all__ = [
     "PaperAuthorInfo",
     "PaperAuthorInfoAvatar",
     "PaperExternalBlog",
-    "PaperFullAuthor",
     "PaperFullAuthorsV2",
     "PaperFullAuthorsV2Researcher",
     "PaperFullAuthorsV2ResearcherLinkedUser",
@@ -86,18 +85,6 @@ class PaperExternalBlog(BaseModel):
     source_name: str
 
     source_url: str
-
-
-class PaperFullAuthor(BaseModel):
-    id: str
-
-    full_name: str
-
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
-
-    researcher_slug: Optional[str] = None
 
 
 class PaperFullAuthorsV2ResearcherLinkedUser(BaseModel):
@@ -300,7 +287,7 @@ class Paper(BaseModel):
 
     first_publication_date: str
 
-    full_authors: List[PaperFullAuthor]
+    full_authors: List[Optional[object]]
 
     full_authors_v2: List[PaperFullAuthorsV2]
 
