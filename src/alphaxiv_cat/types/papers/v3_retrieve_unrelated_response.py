@@ -13,7 +13,6 @@ __all__ = [
     "V3RetrieveUnrelatedResponseItemAuthorInfo",
     "V3RetrieveUnrelatedResponseItemAuthorInfoAvatar",
     "V3RetrieveUnrelatedResponseItemExternalBlog",
-    "V3RetrieveUnrelatedResponseItemFullAuthor",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher",
     "V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinkedUser",
@@ -86,18 +85,6 @@ class V3RetrieveUnrelatedResponseItemExternalBlog(BaseModel):
     source_name: str
 
     source_url: str
-
-
-class V3RetrieveUnrelatedResponseItemFullAuthor(BaseModel):
-    id: str
-
-    full_name: str
-
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
-
-    researcher_slug: Optional[str] = None
 
 
 class V3RetrieveUnrelatedResponseItemFullAuthorsV2ResearcherLinkedUser(BaseModel):
@@ -302,7 +289,7 @@ class V3RetrieveUnrelatedResponseItem(BaseModel):
 
     first_publication_date: str
 
-    full_authors: List[V3RetrieveUnrelatedResponseItemFullAuthor]
+    full_authors: List[Optional[object]]
 
     full_authors_v2: List[V3RetrieveUnrelatedResponseItemFullAuthorsV2]
 

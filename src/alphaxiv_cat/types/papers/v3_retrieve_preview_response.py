@@ -12,7 +12,6 @@ __all__ = [
     "AuthorInfo",
     "AuthorInfoAvatar",
     "ExternalBlog",
-    "FullAuthor",
     "FullAuthorsV2",
     "FullAuthorsV2Researcher",
     "FullAuthorsV2ResearcherLinkedUser",
@@ -85,18 +84,6 @@ class ExternalBlog(BaseModel):
     source_name: str
 
     source_url: str
-
-
-class FullAuthor(BaseModel):
-    id: str
-
-    full_name: str
-
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
-
-    researcher_slug: Optional[str] = None
 
 
 class FullAuthorsV2ResearcherLinkedUser(BaseModel):
@@ -299,7 +286,7 @@ class V3RetrievePreviewResponse(BaseModel):
 
     first_publication_date: str
 
-    full_authors: List[FullAuthor]
+    full_authors: List[Optional[object]]
 
     full_authors_v2: List[FullAuthorsV2]
 

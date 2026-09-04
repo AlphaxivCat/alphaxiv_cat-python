@@ -11,7 +11,6 @@ __all__ = [
     "V3ListResponse",
     "V3ListResponseItem",
     "V3ListResponseItemPaper",
-    "V3ListResponseItemPaperAuthor",
     "V3ListResponseItemPaperAuthorsV2",
     "V3ListResponseItemPaperAuthorsV2Researcher",
     "V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser",
@@ -26,16 +25,6 @@ __all__ = [
     "V3ListResponseItemPaperUserAuthor",
     "V3ListResponseItemPaperUserAuthorAvatar",
 ]
-
-
-class V3ListResponseItemPaperAuthor(BaseModel):
-    id: str
-
-    full_name: str
-
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
 
 
 class V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser(BaseModel):
@@ -197,7 +186,7 @@ class V3ListResponseItemPaper(BaseModel):
 
     added_at: str = FieldInfo(alias="addedAt")
 
-    authors: List[V3ListResponseItemPaperAuthor]
+    authors: List[Optional[object]]
 
     authors_v2: List[V3ListResponseItemPaperAuthorsV2]
 
