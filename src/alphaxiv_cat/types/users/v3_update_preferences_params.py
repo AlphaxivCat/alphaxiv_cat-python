@@ -40,6 +40,8 @@ class Base(TypedDict, total=False):
         PropertyInfo(alias="assistantStyleSelection"),
     ]
 
+    default_paper_page: Annotated[Literal["abstract", "pdf"], PropertyInfo(alias="defaultPaperPage")]
+
     default_private_paper_sidebar_tab: Annotated[
         Optional[Literal["assistant", "notes", "similar"]], PropertyInfo(alias="defaultPrivatePaperSidebarTab")
     ]
@@ -50,14 +52,31 @@ class Base(TypedDict, total=False):
     ]
 
     feed_sort: Annotated[
-        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"], PropertyInfo(alias="feedSort")
+        Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"],
+        PropertyInfo(alias="feedSort"),
     ]
+
+    folder_sort: Annotated[Literal["added", "name", "modified", "manual"], PropertyInfo(alias="folderSort")]
+
+    folder_sort_reversed: Annotated[bool, PropertyInfo(alias="folderSortReversed")]
+
+    has_completed_onboarding: Annotated[bool, PropertyInfo(alias="hasCompletedOnboarding")]
+
+    has_seen_assistant_intro: Annotated[bool, PropertyInfo(alias="hasSeenAssistantIntro")]
+
+    has_seen_for_you_onboarding: Annotated[bool, PropertyInfo(alias="hasSeenForYouOnboarding")]
+
+    has_seen_researcher_onboarding: Annotated[bool, PropertyInfo(alias="hasSeenResearcherOnboarding")]
+
+    hides_home_assistant_intro: Annotated[bool, PropertyInfo(alias="hidesHomeAssistantIntro")]
 
     is_dark_mode_enabled: Annotated[bool, PropertyInfo(alias="isDarkModeEnabled")]
 
     is_debug_mode_enabled: Annotated[bool, PropertyInfo(alias="isDebugModeEnabled")]
 
-    is_members_sidebar_visible: Annotated[bool, PropertyInfo(alias="isMembersSidebarVisible")]
+    paper_sort: Annotated[Literal["added", "name", "published", "votes"], PropertyInfo(alias="paperSort")]
+
+    paper_sort_reversed: Annotated[bool, PropertyInfo(alias="paperSortReversed")]
 
     preferred_language: Annotated[
         Optional[
@@ -136,7 +155,11 @@ class Base(TypedDict, total=False):
 
     reading_mode_enabled: Annotated[bool, PropertyInfo(alias="readingModeEnabled")]
 
+    show_liked_papers_publicly: Annotated[bool, PropertyInfo(alias="showLikedPapersPublicly")]
+
     show_model_thinking: Annotated[bool, PropertyInfo(alias="showModelThinking")]
+
+    theme: Optional[Literal["light", "dark", "system"]]
 
     tooling_pane_width: Annotated[Optional[float], PropertyInfo(alias="toolingPaneWidth")]
 

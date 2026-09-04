@@ -53,6 +53,8 @@ class PreferencesBase(BaseModel):
         alias="assistantStyleSelection"
     )
 
+    default_paper_page: Literal["abstract", "pdf"] = FieldInfo(alias="defaultPaperPage")
+
     default_private_paper_sidebar_tab: Optional[Literal["assistant", "notes", "similar"]] = FieldInfo(
         alias="defaultPrivatePaperSidebarTab", default=None
     )
@@ -61,15 +63,31 @@ class PreferencesBase(BaseModel):
         alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"] = FieldInfo(
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"] = FieldInfo(
         alias="feedSort"
     )
+
+    folder_sort: Literal["added", "name", "modified", "manual"] = FieldInfo(alias="folderSort")
+
+    folder_sort_reversed: bool = FieldInfo(alias="folderSortReversed")
+
+    has_completed_onboarding: bool = FieldInfo(alias="hasCompletedOnboarding")
+
+    has_seen_assistant_intro: bool = FieldInfo(alias="hasSeenAssistantIntro")
+
+    has_seen_for_you_onboarding: bool = FieldInfo(alias="hasSeenForYouOnboarding")
+
+    has_seen_researcher_onboarding: bool = FieldInfo(alias="hasSeenResearcherOnboarding")
+
+    hides_home_assistant_intro: bool = FieldInfo(alias="hidesHomeAssistantIntro")
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
     is_debug_mode_enabled: bool = FieldInfo(alias="isDebugModeEnabled")
 
-    is_members_sidebar_visible: bool = FieldInfo(alias="isMembersSidebarVisible")
+    paper_sort: Literal["added", "name", "published", "votes"] = FieldInfo(alias="paperSort")
+
+    paper_sort_reversed: bool = FieldInfo(alias="paperSortReversed")
 
     preferred_language: Optional[
         Literal[
@@ -145,7 +163,11 @@ class PreferencesBase(BaseModel):
 
     reading_mode_enabled: bool = FieldInfo(alias="readingModeEnabled")
 
+    show_liked_papers_publicly: bool = FieldInfo(alias="showLikedPapersPublicly")
+
     show_model_thinking: bool = FieldInfo(alias="showModelThinking")
+
+    theme: Optional[Literal["light", "dark", "system"]] = None
 
     tooling_pane_width: Optional[float] = FieldInfo(alias="toolingPaneWidth", default=None)
 
@@ -207,6 +229,8 @@ class UserPreferencesBase(BaseModel):
         alias="assistantStyleSelection"
     )
 
+    default_paper_page: Literal["abstract", "pdf"] = FieldInfo(alias="defaultPaperPage")
+
     default_private_paper_sidebar_tab: Optional[Literal["assistant", "notes", "similar"]] = FieldInfo(
         alias="defaultPrivatePaperSidebarTab", default=None
     )
@@ -215,15 +239,31 @@ class UserPreferencesBase(BaseModel):
         alias="defaultPublicPaperSidebarTab", default=None
     )
 
-    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "Recent"] = FieldInfo(
+    feed_sort: Literal["Hot", "Comments", "Views", "Likes", "GitHub", "Recommended", "ForYou", "Recent"] = FieldInfo(
         alias="feedSort"
     )
+
+    folder_sort: Literal["added", "name", "modified", "manual"] = FieldInfo(alias="folderSort")
+
+    folder_sort_reversed: bool = FieldInfo(alias="folderSortReversed")
+
+    has_completed_onboarding: bool = FieldInfo(alias="hasCompletedOnboarding")
+
+    has_seen_assistant_intro: bool = FieldInfo(alias="hasSeenAssistantIntro")
+
+    has_seen_for_you_onboarding: bool = FieldInfo(alias="hasSeenForYouOnboarding")
+
+    has_seen_researcher_onboarding: bool = FieldInfo(alias="hasSeenResearcherOnboarding")
+
+    hides_home_assistant_intro: bool = FieldInfo(alias="hidesHomeAssistantIntro")
 
     is_dark_mode_enabled: bool = FieldInfo(alias="isDarkModeEnabled")
 
     is_debug_mode_enabled: bool = FieldInfo(alias="isDebugModeEnabled")
 
-    is_members_sidebar_visible: bool = FieldInfo(alias="isMembersSidebarVisible")
+    paper_sort: Literal["added", "name", "published", "votes"] = FieldInfo(alias="paperSort")
+
+    paper_sort_reversed: bool = FieldInfo(alias="paperSortReversed")
 
     preferred_language: Optional[
         Literal[
@@ -299,7 +339,11 @@ class UserPreferencesBase(BaseModel):
 
     reading_mode_enabled: bool = FieldInfo(alias="readingModeEnabled")
 
+    show_liked_papers_publicly: bool = FieldInfo(alias="showLikedPapersPublicly")
+
     show_model_thinking: bool = FieldInfo(alias="showModelThinking")
+
+    theme: Optional[Literal["light", "dark", "system"]] = None
 
     tooling_pane_width: Optional[float] = FieldInfo(alias="toolingPaneWidth", default=None)
 
@@ -363,8 +407,6 @@ class User(BaseModel):
 
     email: str
 
-    first_login: bool = FieldInfo(alias="firstLogin")
-
     follower_count: float = FieldInfo(alias="followerCount")
 
     following_count: float = FieldInfo(alias="followingCount")
@@ -394,6 +436,8 @@ class User(BaseModel):
     reputation: float
 
     requested_implementations: List[str] = FieldInfo(alias="requestedImplementations")
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     role: Literal["user", "reviewer", "admin", "bot"]
 

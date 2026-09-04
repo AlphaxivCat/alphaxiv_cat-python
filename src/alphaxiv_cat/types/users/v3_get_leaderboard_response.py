@@ -29,6 +29,8 @@ class AllTime(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     username: str
 
     weekly_reputation: float = FieldInfo(alias="weeklyReputation")
@@ -52,6 +54,8 @@ class Weekly(BaseModel):
     real_name: str = FieldInfo(alias="realName")
 
     reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
 
     username: str
 

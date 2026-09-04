@@ -64,7 +64,9 @@ class TestV2:
             },
             filter_model="cohere",
             model="model",
+            overview_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             plan="free",
+            protocol=0,
             signature="signature",
         )
         v2_stream.response.close()
@@ -327,7 +329,9 @@ class TestAsyncV2:
             },
             filter_model="cohere",
             model="model",
+            overview_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             plan="free",
+            protocol=0,
             signature="signature",
         )
         await v2_stream.response.aclose()

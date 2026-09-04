@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -11,21 +11,126 @@ __all__ = [
     "V3ListResponse",
     "V3ListResponseItem",
     "V3ListResponseItemPaper",
-    "V3ListResponseItemPaperAuthor",
+    "V3ListResponseItemPaperAuthorsV2",
+    "V3ListResponseItemPaperAuthorsV2Researcher",
+    "V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser",
+    "V3ListResponseItemPaperAuthorsV2ResearcherLinks",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReason",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember0",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonKind",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2Followed",
+    "V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember3",
     "V3ListResponseItemPaperOrganization",
     "V3ListResponseItemPaperUserAuthor",
     "V3ListResponseItemPaperUserAuthorAvatar",
 ]
 
 
-class V3ListResponseItemPaperAuthor(BaseModel):
-    id: str
+class V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
 
+    username: str
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherLinks(BaseModel):
+    bluesky: Optional[str] = None
+
+    cv: Optional[str] = None
+
+    dblp: Optional[str] = None
+
+    email: Optional[str] = None
+
+    github: Optional[str] = None
+
+    huggingface: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    openreview: Optional[str] = None
+
+    orcid: Optional[str] = None
+
+    personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
+
+    scholar: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+    wikipedia: Optional[str] = None
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+class V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember3(BaseModel):
+    count: float
+
+    kind: Literal["coauthored"]
+
+
+V3ListResponseItemPaperAuthorsV2ResearcherReason: TypeAlias = Union[
+    V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember0,
+    V3ListResponseItemPaperAuthorsV2ResearcherReasonKind,
+    V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember2,
+    V3ListResponseItemPaperAuthorsV2ResearcherReasonUnionMember3,
+]
+
+
+class V3ListResponseItemPaperAuthorsV2Researcher(BaseModel):
+    affiliation: Optional[str] = None
+
+    bio: Optional[str] = None
+
+    citations: float
+
+    headline: Optional[str] = None
+
+    h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[V3ListResponseItemPaperAuthorsV2ResearcherLinkedUser] = FieldInfo(
+        alias="linkedUser", default=None
+    )
+
+    links: V3ListResponseItemPaperAuthorsV2ResearcherLinks
+
+    name: str
+
+    photo_url: str = FieldInfo(alias="photoUrl")
+
+    research_areas: List[str] = FieldInfo(alias="researchAreas")
+
+    slug: str
+
+    reason: Optional[V3ListResponseItemPaperAuthorsV2ResearcherReason] = None
+
+
+class V3ListResponseItemPaperAuthorsV2(BaseModel):
     full_name: str
 
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
+    researcher: Optional[V3ListResponseItemPaperAuthorsV2Researcher] = None
 
 
 class V3ListResponseItemPaperOrganization(BaseModel):
@@ -63,6 +168,8 @@ class V3ListResponseItemPaperUserAuthor(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     username: str
@@ -79,12 +186,18 @@ class V3ListResponseItemPaper(BaseModel):
 
     added_at: str = FieldInfo(alias="addedAt")
 
-    authors: List[V3ListResponseItemPaperAuthor]
+    authors: List[Optional[object]]
+
+    authors_v2: List[V3ListResponseItemPaperAuthorsV2]
 
     canonical_id: Optional[str] = FieldInfo(alias="canonicalId", default=None)
     """A versioned paper ID (e.g. 1706.03762v1)"""
 
     citation: Optional[str] = None
+
+    cover_blob_id: Optional[str] = FieldInfo(alias="coverBlobId", default=None)
+
+    is_external_blog: bool = FieldInfo(alias="isExternalBlog")
 
     organizations: List[V3ListResponseItemPaperOrganization]
 
@@ -96,11 +209,13 @@ class V3ListResponseItemPaper(BaseModel):
 
     topics: List[str]
 
-    type: Literal["private", "community", "public"]
+    type: Literal["private", "public"]
 
     universal_paper_id: str = FieldInfo(alias="universalPaperId")
 
     user_authors: List[V3ListResponseItemPaperUserAuthor] = FieldInfo(alias="userAuthors")
+
+    votes: float
 
 
 class V3ListResponseItem(BaseModel):

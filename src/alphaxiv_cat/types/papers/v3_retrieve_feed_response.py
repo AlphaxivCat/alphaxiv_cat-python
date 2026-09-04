@@ -1,7 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
-from typing_extensions import Literal
+from typing import List, Union, Optional
+from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
 
@@ -13,11 +13,25 @@ __all__ = [
     "PaperAuthorInfo",
     "PaperAuthorInfoAvatar",
     "PaperExternalBlog",
-    "PaperFullAuthor",
+    "PaperFullAuthorsV2",
+    "PaperFullAuthorsV2Researcher",
+    "PaperFullAuthorsV2ResearcherLinkedUser",
+    "PaperFullAuthorsV2ResearcherLinks",
+    "PaperFullAuthorsV2ResearcherReason",
+    "PaperFullAuthorsV2ResearcherReasonUnionMember0",
+    "PaperFullAuthorsV2ResearcherReasonKind",
+    "PaperFullAuthorsV2ResearcherReasonUnionMember2",
+    "PaperFullAuthorsV2ResearcherReasonUnionMember2Followed",
+    "PaperFullAuthorsV2ResearcherReasonUnionMember3",
     "PaperMetrics",
     "PaperMetricsVisitsCount",
     "PaperOrganizationInfo",
     "PaperPaperSummary",
+    "PaperExternalLink",
+    "PaperRecommendationContext",
+    "PaperRecommendationContextFollowedAuthor",
+    "PaperRecommendationContextFollowedLiker",
+    "PaperRecommendationContextFollowedLikerAvatar",
 ]
 
 
@@ -50,6 +64,8 @@ class PaperAuthorInfo(BaseModel):
 
     reputation: float
 
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
     role: Literal["user", "reviewer", "admin", "bot"]
 
     username: str
@@ -64,15 +80,115 @@ class PaperAuthorInfo(BaseModel):
 class PaperExternalBlog(BaseModel):
     body_blob_id: str
 
+    cover_blob_id: Optional[str] = None
 
-class PaperFullAuthor(BaseModel):
-    id: str
+    source_name: str
 
+    source_url: str
+
+
+class PaperFullAuthorsV2ResearcherLinkedUser(BaseModel):
+    name: str
+
+    username: str
+
+
+class PaperFullAuthorsV2ResearcherLinks(BaseModel):
+    bluesky: Optional[str] = None
+
+    cv: Optional[str] = None
+
+    dblp: Optional[str] = None
+
+    email: Optional[str] = None
+
+    github: Optional[str] = None
+
+    huggingface: Optional[str] = None
+
+    linkedin: Optional[str] = None
+
+    openreview: Optional[str] = None
+
+    orcid: Optional[str] = None
+
+    personal_site: Optional[str] = FieldInfo(alias="personalSite", default=None)
+
+    scholar: Optional[str] = None
+
+    twitter: Optional[str] = None
+
+    wikipedia: Optional[str] = None
+
+
+class PaperFullAuthorsV2ResearcherReasonUnionMember0(BaseModel):
+    kind: Literal["interest"]
+
+    paper_title: Optional[str] = FieldInfo(alias="paperTitle", default=None)
+
+
+class PaperFullAuthorsV2ResearcherReasonKind(BaseModel):
+    kind: Literal["read"]
+
+
+class PaperFullAuthorsV2ResearcherReasonUnionMember2Followed(BaseModel):
+    name: str
+
+    slug: str
+
+
+class PaperFullAuthorsV2ResearcherReasonUnionMember2(BaseModel):
+    count: float
+
+    kind: Literal["coauthor"]
+
+    followed: Optional[PaperFullAuthorsV2ResearcherReasonUnionMember2Followed] = None
+
+
+class PaperFullAuthorsV2ResearcherReasonUnionMember3(BaseModel):
+    count: float
+
+    kind: Literal["coauthored"]
+
+
+PaperFullAuthorsV2ResearcherReason: TypeAlias = Union[
+    PaperFullAuthorsV2ResearcherReasonUnionMember0,
+    PaperFullAuthorsV2ResearcherReasonKind,
+    PaperFullAuthorsV2ResearcherReasonUnionMember2,
+    PaperFullAuthorsV2ResearcherReasonUnionMember3,
+]
+
+
+class PaperFullAuthorsV2Researcher(BaseModel):
+    affiliation: Optional[str] = None
+
+    bio: Optional[str] = None
+
+    citations: float
+
+    headline: Optional[str] = None
+
+    h_index: float = FieldInfo(alias="hIndex")
+
+    linked_user: Optional[PaperFullAuthorsV2ResearcherLinkedUser] = FieldInfo(alias="linkedUser", default=None)
+
+    links: PaperFullAuthorsV2ResearcherLinks
+
+    name: str
+
+    photo_url: str = FieldInfo(alias="photoUrl")
+
+    research_areas: List[str] = FieldInfo(alias="researchAreas")
+
+    slug: str
+
+    reason: Optional[PaperFullAuthorsV2ResearcherReason] = None
+
+
+class PaperFullAuthorsV2(BaseModel):
     full_name: str
 
-    user_id: Optional[str] = None
-
-    username: Optional[str] = None
+    researcher: Optional[PaperFullAuthorsV2Researcher] = None
 
 
 class PaperMetricsVisitsCount(BaseModel):
@@ -107,6 +223,54 @@ class PaperPaperSummary(BaseModel):
     summary: str
 
 
+class PaperExternalLink(BaseModel):
+    cover_blob_id: Optional[str] = None
+
+    source_name: str
+
+    source_url: str
+
+
+class PaperRecommendationContextFollowedAuthor(BaseModel):
+    name: str
+
+    slug: Optional[str] = None
+
+
+class PaperRecommendationContextFollowedLikerAvatar(BaseModel):
+    type: Literal["full_size", "thumbnail"]
+
+    url: str
+
+
+class PaperRecommendationContextFollowedLiker(BaseModel):
+    id: str
+
+    avatar: Optional[List[PaperRecommendationContextFollowedLikerAvatar]] = None
+
+    google_scholar_id: Optional[str] = FieldInfo(alias="googleScholarId", default=None)
+
+    institution: Optional[str] = None
+
+    real_name: str = FieldInfo(alias="realName")
+
+    reputation: float
+
+    researcher_slug: Optional[str] = FieldInfo(alias="researcherSlug", default=None)
+
+    username: str
+
+    weekly_reputation: float = FieldInfo(alias="weeklyReputation")
+
+
+class PaperRecommendationContext(BaseModel):
+    followed_authors: Optional[List[PaperRecommendationContextFollowedAuthor]] = None
+
+    followed_likers: Optional[List[PaperRecommendationContextFollowedLiker]] = None
+
+    hot: Optional[bool] = None
+
+
 class Paper(BaseModel):
     id: str
 
@@ -123,7 +287,9 @@ class Paper(BaseModel):
 
     first_publication_date: str
 
-    full_authors: List[PaperFullAuthor]
+    full_authors: List[Optional[object]]
+
+    full_authors_v2: List[PaperFullAuthorsV2]
 
     github_stars: Optional[float] = None
 
@@ -141,6 +307,8 @@ class Paper(BaseModel):
 
     paper_summary: Optional[PaperPaperSummary] = None
 
+    pdf_only: bool
+
     publication_date: str
 
     title: str
@@ -154,8 +322,20 @@ class Paper(BaseModel):
 
     version_id: str
 
+    card_preview_blob_id: Optional[str] = None
+
+    external_link: Optional[PaperExternalLink] = None
+
+    narration_audio_url: Optional[str] = None
+
+    recommendation_context: Optional[PaperRecommendationContext] = None
+
 
 class V3RetrieveFeedResponse(BaseModel):
     page: float
 
     papers: List[Paper]
+
+    feed_cursor: Optional[str] = FieldInfo(alias="feedCursor", default=None)
+
+    feed_refreshed: Optional[bool] = FieldInfo(alias="feedRefreshed", default=None)
