@@ -121,6 +121,8 @@ class ChildFolderPaperAuthorsV2Researcher(BaseModel):
 
     citations: float
 
+    follower_count: float = FieldInfo(alias="followerCount")
+
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
@@ -228,6 +230,8 @@ class ChildFolderPaper(BaseModel):
 
     user_authors: List[ChildFolderPaperUserAuthor] = FieldInfo(alias="userAuthors")
 
+    version_id: Optional[str] = FieldInfo(alias="versionId", default=None)
+
     votes: float
 
 
@@ -325,6 +329,8 @@ class FolderPaperAuthorsV2Researcher(BaseModel):
     bio: Optional[str] = None
 
     citations: float
+
+    follower_count: float = FieldInfo(alias="followerCount")
 
     headline: Optional[str] = None
 
@@ -432,6 +438,8 @@ class FolderPaper(BaseModel):
     universal_paper_id: str = FieldInfo(alias="universalPaperId")
 
     user_authors: List[FolderPaperUserAuthor] = FieldInfo(alias="userAuthors")
+
+    version_id: Optional[str] = FieldInfo(alias="versionId", default=None)
 
     votes: float
 
