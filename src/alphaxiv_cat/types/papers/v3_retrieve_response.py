@@ -47,6 +47,10 @@ class V3RetrieveResponse(BaseModel):
 
     license: Optional[str] = None
 
+    page_height_pt: Optional[float] = FieldInfo(alias="pageHeightPt", default=None)
+
+    page_width_pt: Optional[float] = FieldInfo(alias="pageWidthPt", default=None)
+
     pdf_only: bool = FieldInfo(alias="pdfOnly")
 
     publication_date: float = FieldInfo(alias="publicationDate")

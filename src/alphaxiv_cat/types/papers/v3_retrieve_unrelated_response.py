@@ -166,6 +166,8 @@ class V3RetrieveUnrelatedResponseItemFullAuthorsV2Researcher(BaseModel):
 
     citations: float
 
+    follower_count: float = FieldInfo(alias="followerCount")
+
     headline: Optional[str] = None
 
     h_index: float = FieldInfo(alias="hIndex")
