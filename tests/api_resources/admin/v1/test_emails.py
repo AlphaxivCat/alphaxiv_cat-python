@@ -17,42 +17,6 @@ class TestEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    def test_method_send_monthly_digest(self, client: AlphaxivCat) -> None:
-        email = client.admin.v1.emails.send_monthly_digest()
-        assert email is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_method_send_monthly_digest_with_all_params(self, client: AlphaxivCat) -> None:
-        email = client.admin.v1.emails.send_monthly_digest(
-            role="admin",
-        )
-        assert email is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_raw_response_send_monthly_digest(self, client: AlphaxivCat) -> None:
-        response = client.admin.v1.emails.with_raw_response.send_monthly_digest()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = response.parse()
-        assert email is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    def test_streaming_response_send_monthly_digest(self, client: AlphaxivCat) -> None:
-        with client.admin.v1.emails.with_streaming_response.send_monthly_digest() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = response.parse()
-            assert email is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     def test_method_send_weekly_digest(self, client: AlphaxivCat) -> None:
         email = client.admin.v1.emails.send_weekly_digest()
         assert email is None
@@ -61,6 +25,14 @@ class TestEmails:
     @parametrize
     def test_method_send_weekly_digest_with_all_params(self, client: AlphaxivCat) -> None:
         email = client.admin.v1.emails.send_weekly_digest(
+            a={
+                "intro_text": "introText",
+                "subject": "subject",
+            },
+            b={
+                "intro_text": "introText",
+                "subject": "subject",
+            },
             events=[
                 {
                     "date": "date",
@@ -72,9 +44,9 @@ class TestEmails:
                     "start_time_raw": "startTimeRaw",
                 }
             ],
-            intro_text="introText",
             role="admin",
-            subject="subject",
+            test_batch_size=1,
+            test_emails=["string"],
         )
         assert email is None
 
@@ -108,42 +80,6 @@ class TestAsyncEmails:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
-    async def test_method_send_monthly_digest(self, async_client: AsyncAlphaxivCat) -> None:
-        email = await async_client.admin.v1.emails.send_monthly_digest()
-        assert email is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_method_send_monthly_digest_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
-        email = await async_client.admin.v1.emails.send_monthly_digest(
-            role="admin",
-        )
-        assert email is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_raw_response_send_monthly_digest(self, async_client: AsyncAlphaxivCat) -> None:
-        response = await async_client.admin.v1.emails.with_raw_response.send_monthly_digest()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        email = await response.parse()
-        assert email is None
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
-    async def test_streaming_response_send_monthly_digest(self, async_client: AsyncAlphaxivCat) -> None:
-        async with async_client.admin.v1.emails.with_streaming_response.send_monthly_digest() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            email = await response.parse()
-            assert email is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @pytest.mark.skip(reason="Mock server tests are disabled")
-    @parametrize
     async def test_method_send_weekly_digest(self, async_client: AsyncAlphaxivCat) -> None:
         email = await async_client.admin.v1.emails.send_weekly_digest()
         assert email is None
@@ -152,6 +88,14 @@ class TestAsyncEmails:
     @parametrize
     async def test_method_send_weekly_digest_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
         email = await async_client.admin.v1.emails.send_weekly_digest(
+            a={
+                "intro_text": "introText",
+                "subject": "subject",
+            },
+            b={
+                "intro_text": "introText",
+                "subject": "subject",
+            },
             events=[
                 {
                     "date": "date",
@@ -163,9 +107,9 @@ class TestAsyncEmails:
                     "start_time_raw": "startTimeRaw",
                 }
             ],
-            intro_text="introText",
             role="admin",
-            subject="subject",
+            test_batch_size=1,
+            test_emails=["string"],
         )
         assert email is None
 

@@ -73,7 +73,9 @@ class V2Resource(SyncAPIResource):
         custom_filter: v2_chat_params.CustomFilter | Omit = omit,
         filter_model: Literal["cohere"] | Omit = omit,
         model: str | Omit = omit,
+        overview_id: str | Omit = omit,
         plan: Literal["free", "pro"] | Omit = omit,
+        protocol: int | Omit = omit,
         signature: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -114,7 +116,9 @@ class V2Resource(SyncAPIResource):
                     "custom_filter": custom_filter,
                     "filter_model": filter_model,
                     "model": model,
+                    "overview_id": overview_id,
                     "plan": plan,
+                    "protocol": protocol,
                     "signature": signature,
                 },
                 v2_chat_params.V2ChatParams,
@@ -330,7 +334,9 @@ class AsyncV2Resource(AsyncAPIResource):
         custom_filter: v2_chat_params.CustomFilter | Omit = omit,
         filter_model: Literal["cohere"] | Omit = omit,
         model: str | Omit = omit,
+        overview_id: str | Omit = omit,
         plan: Literal["free", "pro"] | Omit = omit,
+        protocol: int | Omit = omit,
         signature: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -371,7 +377,9 @@ class AsyncV2Resource(AsyncAPIResource):
                     "custom_filter": custom_filter,
                     "filter_model": filter_model,
                     "model": model,
+                    "overview_id": overview_id,
                     "plan": plan,
+                    "protocol": protocol,
                     "signature": signature,
                 },
                 v2_chat_params.V2ChatParams,

@@ -18,13 +18,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.analytics import (
-    paper_view_count_kickoff_job_params,
-    paper_view_count_process_job_params,
-    paper_view_count_ingest_event_params,
-)
+from ...types.analytics import paper_view_count_kickoff_job_params, paper_view_count_ingest_event_params
 from ...types.analytics.paper_view_count_kickoff_job_response import PaperViewCountKickoffJobResponse
-from ...types.analytics.paper_view_count_process_job_response import PaperViewCountProcessJobResponse
 from ...types.analytics.paper_view_count_ingest_event_response import PaperViewCountIngestEventResponse
 
 __all__ = ["PaperViewCountResource", "AsyncPaperViewCountResource"]
@@ -147,57 +142,6 @@ class PaperViewCountResource(SyncAPIResource):
             cast_to=PaperViewCountKickoffJobResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    def process_job(
-        self,
-        *,
-        paper_id: str,
-        publication_date: str,
-        like: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperViewCountProcessJobResponse:
-        """
-        Process view count aggregation for a specific paper
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v1/analytics/process-paper-view-count-aggregation-job.controller.ts`
-
-        Args:
-          paper_id: Paper ID to process view counts for
-
-          publication_date: Publication date for age decay calculation
-
-          like: Whether to add noise to votes
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._post(
-            "/v1/analytics/paper-view-count/process-job",
-            body=maybe_transform(
-                {
-                    "paper_id": paper_id,
-                    "publication_date": publication_date,
-                    "like": like,
-                },
-                paper_view_count_process_job_params.PaperViewCountProcessJobParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperViewCountProcessJobResponse,
-        )
-
 
 class AsyncPaperViewCountResource(AsyncAPIResource):
     @cached_property
@@ -316,57 +260,6 @@ class AsyncPaperViewCountResource(AsyncAPIResource):
             cast_to=PaperViewCountKickoffJobResponse,
         )
 
-    @typing_extensions.deprecated("deprecated")
-    async def process_job(
-        self,
-        *,
-        paper_id: str,
-        publication_date: str,
-        like: bool | Omit = omit,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> PaperViewCountProcessJobResponse:
-        """
-        Process view count aggregation for a specific paper
-
-        Source file:
-        `api-server/file:/app/api-server/src/controllers/v1/analytics/process-paper-view-count-aggregation-job.controller.ts`
-
-        Args:
-          paper_id: Paper ID to process view counts for
-
-          publication_date: Publication date for age decay calculation
-
-          like: Whether to add noise to votes
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._post(
-            "/v1/analytics/paper-view-count/process-job",
-            body=await async_maybe_transform(
-                {
-                    "paper_id": paper_id,
-                    "publication_date": publication_date,
-                    "like": like,
-                },
-                paper_view_count_process_job_params.PaperViewCountProcessJobParams,
-            ),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=PaperViewCountProcessJobResponse,
-        )
-
 
 class PaperViewCountResourceWithRawResponse:
     def __init__(self, paper_view_count: PaperViewCountResource) -> None:
@@ -379,11 +272,6 @@ class PaperViewCountResourceWithRawResponse:
         )
         self.kickoff_job = to_raw_response_wrapper(
             paper_view_count.kickoff_job,
-        )
-        self.process_job = (  # pyright: ignore[reportDeprecated]
-            to_raw_response_wrapper(
-                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
-            )
         )
 
 
@@ -399,11 +287,6 @@ class AsyncPaperViewCountResourceWithRawResponse:
         self.kickoff_job = async_to_raw_response_wrapper(
             paper_view_count.kickoff_job,
         )
-        self.process_job = (  # pyright: ignore[reportDeprecated]
-            async_to_raw_response_wrapper(
-                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
-            )
-        )
 
 
 class PaperViewCountResourceWithStreamingResponse:
@@ -418,11 +301,6 @@ class PaperViewCountResourceWithStreamingResponse:
         self.kickoff_job = to_streamed_response_wrapper(
             paper_view_count.kickoff_job,
         )
-        self.process_job = (  # pyright: ignore[reportDeprecated]
-            to_streamed_response_wrapper(
-                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
-            )
-        )
 
 
 class AsyncPaperViewCountResourceWithStreamingResponse:
@@ -436,9 +314,4 @@ class AsyncPaperViewCountResourceWithStreamingResponse:
         )
         self.kickoff_job = async_to_streamed_response_wrapper(
             paper_view_count.kickoff_job,
-        )
-        self.process_job = (  # pyright: ignore[reportDeprecated]
-            async_to_streamed_response_wrapper(
-                paper_view_count.process_job,  # pyright: ignore[reportDeprecated],
-            )
         )

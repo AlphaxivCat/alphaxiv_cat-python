@@ -21,7 +21,6 @@ class TestPrivate:
     @parametrize
     def test_method_create(self, client: AlphaxivCat) -> None:
         private = client.papers.private.create(
-            content_type="x",
             file="x",
             filename="x",
         )
@@ -29,9 +28,19 @@ class TestPrivate:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    def test_method_create_with_all_params(self, client: AlphaxivCat) -> None:
+        private = client.papers.private.create(
+            file="x",
+            filename="x",
+            content_type="contentType",
+            folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(PrivateCreateResponse, private, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     def test_raw_response_create(self, client: AlphaxivCat) -> None:
         response = client.papers.private.with_raw_response.create(
-            content_type="x",
             file="x",
             filename="x",
         )
@@ -45,7 +54,6 @@ class TestPrivate:
     @parametrize
     def test_streaming_response_create(self, client: AlphaxivCat) -> None:
         with client.papers.private.with_streaming_response.create(
-            content_type="x",
             file="x",
             filename="x",
         ) as response:
@@ -133,7 +141,6 @@ class TestAsyncPrivate:
     @parametrize
     async def test_method_create(self, async_client: AsyncAlphaxivCat) -> None:
         private = await async_client.papers.private.create(
-            content_type="x",
             file="x",
             filename="x",
         )
@@ -141,9 +148,19 @@ class TestAsyncPrivate:
 
     @pytest.mark.skip(reason="Mock server tests are disabled")
     @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncAlphaxivCat) -> None:
+        private = await async_client.papers.private.create(
+            file="x",
+            filename="x",
+            content_type="contentType",
+            folder_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
+        )
+        assert_matches_type(PrivateCreateResponse, private, path=["response"])
+
+    @pytest.mark.skip(reason="Mock server tests are disabled")
+    @parametrize
     async def test_raw_response_create(self, async_client: AsyncAlphaxivCat) -> None:
         response = await async_client.papers.private.with_raw_response.create(
-            content_type="x",
             file="x",
             filename="x",
         )
@@ -157,7 +174,6 @@ class TestAsyncPrivate:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncAlphaxivCat) -> None:
         async with async_client.papers.private.with_streaming_response.create(
-            content_type="x",
             file="x",
             filename="x",
         ) as response:

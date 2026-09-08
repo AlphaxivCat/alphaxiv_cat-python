@@ -20,6 +20,8 @@ class DataPaper(BaseModel):
 
     language: str
 
+    languages: List[str]
+
     universal_paper_id: str
 
     updated_at: str

@@ -64,14 +64,6 @@ from .folders import (
     FoldersResourceWithStreamingResponse,
     AsyncFoldersResourceWithStreamingResponse,
 )
-from .api_keys import (
-    APIKeysResource,
-    AsyncAPIKeysResource,
-    APIKeysResourceWithRawResponse,
-    AsyncAPIKeysResourceWithRawResponse,
-    APIKeysResourceWithStreamingResponse,
-    AsyncAPIKeysResourceWithStreamingResponse,
-)
 from .comments import (
     CommentsResource,
     AsyncCommentsResource,
@@ -206,12 +198,6 @@ __all__ = [
     "AsyncGoogleScholarResourceWithRawResponse",
     "GoogleScholarResourceWithStreamingResponse",
     "AsyncGoogleScholarResourceWithStreamingResponse",
-    "APIKeysResource",
-    "AsyncAPIKeysResource",
-    "APIKeysResourceWithRawResponse",
-    "AsyncAPIKeysResourceWithRawResponse",
-    "APIKeysResourceWithStreamingResponse",
-    "AsyncAPIKeysResourceWithStreamingResponse",
     "AdminResource",
     "AsyncAdminResource",
     "AdminResourceWithRawResponse",

@@ -35,7 +35,11 @@ class V2ChatParams(TypedDict, total=False):
 
     model: str
 
+    overview_id: Annotated[str, PropertyInfo(alias="overviewId")]
+
     plan: Literal["free", "pro"]
+
+    protocol: int
 
     signature: str
 

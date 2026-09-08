@@ -6,7 +6,7 @@ from typing import Iterable, Optional
 
 import httpx
 
-from ..._types import Body, Query, Headers, NoneType, NotGiven, SequenceNotStr, not_given
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,9 +46,10 @@ class PrivateResource(SyncAPIResource):
     def create(
         self,
         *,
-        content_type: str,
         file: str,
         filename: str,
+        content_type: str | Omit = omit,
+        folder_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -75,9 +76,10 @@ class PrivateResource(SyncAPIResource):
             "/v2/papers/private",
             body=maybe_transform(
                 {
-                    "content_type": content_type,
                     "file": file,
                     "filename": filename,
+                    "content_type": content_type,
+                    "folder_id": folder_id,
                 },
                 private_create_params.PrivateCreateParams,
             ),
@@ -167,9 +169,10 @@ class AsyncPrivateResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        content_type: str,
         file: str,
         filename: str,
+        content_type: str | Omit = omit,
+        folder_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -196,9 +199,10 @@ class AsyncPrivateResource(AsyncAPIResource):
             "/v2/papers/private",
             body=await async_maybe_transform(
                 {
-                    "content_type": content_type,
                     "file": file,
                     "filename": filename,
+                    "content_type": content_type,
+                    "folder_id": folder_id,
                 },
                 private_create_params.PrivateCreateParams,
             ),
