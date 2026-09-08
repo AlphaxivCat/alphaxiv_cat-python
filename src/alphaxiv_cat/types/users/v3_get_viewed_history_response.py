@@ -35,6 +35,8 @@ class V3GetViewedHistoryResponseItem(BaseModel):
 
     topics: List[str]
 
+    version_id: str = FieldInfo(alias="versionId")
+
     viewed_at: str = FieldInfo(alias="viewedAt")
 
 
